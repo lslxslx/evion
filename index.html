@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="sq">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidenca mësimore | UPT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="institution-university">
+        UNIVERSITETI POLITEKNIK I TIRANËS
+      </div>
+
+      <div class="institution-faculty">
+        FAKULTETI I GJEOLOGJISË DHE I MINIERAVE
+      </div>
+
+      <div class="institution-department">
+        DEPARTAMENTI I GJEOLOGJISË SË ZBATUAR
+        DHE I GJEOINFORMATIKËS
+      </div>
+
+      <div class="header-divider"></div>
+
+      <h1>Evidenca e ngarkesës mësimore</h1>
+
+      <p>
+        Plotësoni të dhënat, verifikoni orët
+        dhe shkarkoni dokumentin PDF.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <form id="form" novalidate>
+      <section>
+        <h2>01 · Të dhënat e evidencës</h2>
+
+        <div id="metadata"></div>
+
+        <p class="muted">
+          Zgjidhni datat nga kalendari.
+          Në PDF ato shfaqen në formatin dd.MM.yyyy.
+        </p>
+      </section>
+
+      <section>
+        <h2>02 · Kreditet dhe ngarkesa</h2>
+
+        <div class="scroll">
+          <table id="credits">
+            <thead>
+              <tr>
+                <th>Aktiviteti</th>
+                <th>ECTS</th>
+                <th>Nr. grupeve</th>
+                <th>Orë të parashikuara</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <p class="muted">
+          ECTS gjithsej: <strong id="ects">0</strong>.
+          Maksimumi 6 grupe për kategori.
+          Detyra/projekti dhe praktika nuk shumëzohen
+          me numrin e grupeve.
+        </p>
+      </section>
+
+      <section>
+        <h2>03 · Regjistrimet e mësimit</h2>
+
+        <p class="muted">
+          Java propozohet automatikisht dhe mund të korrigjohet.
+          Fshini vlerën e javës për të rikthyer llogaritjen automatike.
+          Shenja * tregon mësim zëvendësues.
+          Praktika shfaqet kur ka kredite praktike.
+        </p>
+
+        <div id="practice-warning" class="status error" role="status" hidden></div>
+
+        <div class="scroll">
+          <table id="lessons">
+            <thead>
+              <tr>
+                <th>Java</th>
+                <th>Data</th>
+                <th>Nr. Std.</th>
+                <th>Tema e mësimit</th>
+                <th>Leksion</th>
+                <th>Seminar</th>
+                <th>Lab.</th>
+                <th>Det./Proj.</th>
+                <th data-practice>Praktikë</th>
+                <th>Shuma / dt.</th>
+                <th>Zëv. *</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <p>
+          <button type="button" id="add" class="secondary">
+            + Shto regjistrim
+          </button>
+        </p>
+
+        <label>
+          Shënime dhe referenca për zëvendësimet
+          <textarea
+            id="notes"
+            maxlength="3000"
+            placeholder="Zëvendësim sipas shkresës nr. ... prot., datë ..."
+          ></textarea>
+        </label>
+      </section>
+
+      <section>
+        <h2>04 · Verifikimi dhe PDF-ja</h2>
+
+        <div class="scroll">
+          <table id="summary">
+            <thead>
+              <tr>
+                <th>Aktiviteti</th>
+                <th>Faktike</th>
+                <th>Parashikuar</th>
+                <th>Mbeten (+) / Tejkalim (−)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div id="status" class="status" role="status" aria-live="polite">Plotësoni formularin dhe shtypni “Verifiko”.
+        </div>
+
+        <div class="actions">
+          <button type="button" id="verify">
+            Verifiko
+          </button>
+
+          <button type="button" id="pdf" disabled>
+            Gjenero PDF
+          </button>
+
+          <a id="download" class="download" hidden>
+            Shkarko PDF
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vazhdoni më vonë</h2>
+
+        <p class="muted">
+          Shkarkoni draftin në kompjuter dhe hapeni përsëri
+          për të vazhduar plotësimin.
+          Mbyllja e faqes pa ruajtur draftin humbet të dhënat.
+        </p>
+
+        <div class="actions">
+          <button type="button" id="save" class="secondary">
+            Shkarko draftin
+          </button>
+
+          <button type="button" id="load" class="secondary">
+            Hap draftin
+          </button>
+
+          <input
+            type="file"
+            id="file"
+            accept=".json,application/json"
+            hidden
+          >
+
+          <button type="button" id="clear" class="secondary">
+            Formular i ri
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <footer>
+      Aplikacioni nuk krijon arkiv të përbashkët të evidencave.
+      Dokumenti gjenerohet nga formulari juaj. &copy; 2026-2027 DGJZGJI
+    </footer>
+  </main>
+
+  <script src="vendor/pdfmake.min.js"></script>
+  <script src="vendor/comfortaa-vfs.js"></script>
+  <script src="core.js"></script>
+  <script src="pdf.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
