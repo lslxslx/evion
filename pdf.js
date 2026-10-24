@@ -1,4 +1,4 @@
-/* PDF A4 me tekst të përzgjedhshëm dhe font Comfortaa të përfshirë. */
+/* PDF A4 font Comfortaa */
 function pdfFilename(data) {
   return ('Evidenca_' + data.subject + '_' + data.teacher)
     .replace(/[^\p{L}\p{N}_-]/gu, '_').slice(0, 130) + '.pdf';
