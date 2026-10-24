@@ -47,7 +47,7 @@ reportButton.textContent = 'Gjenero raport';
 
 if (printPdfButton) {
   printPdfButton.type = 'button';
-  printPdfButton.textContent = '&rarr; PDF / Printo';
+  printPdfButton.textContent = 'PDF / Printo';
 }
 
 function updateActionButtons() {
@@ -58,7 +58,7 @@ function updateActionButtons() {
 
     printPdfButton.textContent = pdfBusy
       ? 'Po gjenerohet PDF…'
-      : 'Hap PDF / Printo';
+      : 'PDF / Printo';
   }
 }
 
