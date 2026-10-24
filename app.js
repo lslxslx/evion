@@ -852,3 +852,93 @@ window.addEventListener('beforeunload', event => {
 addRow();
 updateTotals();
 updatePracticeVisibility();
+
+const printPdfButton = $('print-pdf');
+let pdfBusy = false;
+
+// Aktivizohet pas verifikimit, si "Gjenero raport".
+function syncPrintPdfButton() {
+  printPdfButton.disabled = pdfBusy || $('pdf').disabled;
+}
+
+new MutationObserver(syncPrintPdfButton).observe(
+  $('pdf'),
+  {
+    attributes: true,
+    attributeFilter: ['disabled']
+  }
+);
+
+syncPrintPdfButton();
+
+printPdfButton.onclick = async event => {
+  event.preventDefault();
+
+  if (pdfBusy || $('pdf').disabled) return;
+
+  let pdfTab = null;
+
+  try {
+    const data = readForm();
+    const errors = validationErrors(evaluate_(data));
+
+    if (errors.length) {
+      showMessage(errors.join('\n'), 'error');
+      return;
+    }
+
+    if (typeof generatePdfBlob !== 'function') {
+      throw new Error(
+        'Nuk është ngarkuar funksioni generatePdfBlob().'
+      );
+    }
+
+    // Hapet menjëherë gjatë klikimit.
+    pdfTab = window.open('about:blank', '_blank');
+
+    if (!pdfTab) {
+      throw new Error(
+        'Lejoni hapjen e skedave të reja për këtë faqe.'
+      );
+    }
+
+    pdfTab.opener = null;
+
+    pdfBusy = true;
+    printPdfButton.textContent = 'Po gjenerohet PDF…';
+    syncPrintPdfButton();
+
+    // Përdor funksionin ekzistues me pdfmake.
+    const blob = await generatePdfBlob(data);
+
+    if (pdfTab.closed) {
+      throw new Error('Skeda e PDF-së u mbyll.');
+    }
+
+    const url = URL.createObjectURL(blob);
+    pdfTab.location.replace(url);
+
+    // PDF-ja mbetet e disponueshme derisa të mbyllet skeda.
+    const cleanup = setInterval(() => {
+      if (pdfTab.closed) {
+        clearInterval(cleanup);
+        URL.revokeObjectURL(url);
+      }
+    }, 2000);
+
+    showMessage(
+      'PDF-ja u hap. Mund ta printoni ose ta ruani',
+      'success'
+    );
+  } catch (error) {
+    if (pdfTab && !pdfTab.closed) {
+      pdfTab.close();
+    }
+
+    showMessage(error.message, 'error');
+  } finally {
+    pdfBusy = false;
+    printPdfButton.textContent = 'Hap PDF / Printo';
+    syncPrintPdfButton();
+  }
+};
