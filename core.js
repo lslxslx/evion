@@ -1,4 +1,4 @@
-/* Formulat dhe verifikimet e Core.gs; ekzekutohen në shfletues. */
+/* Formulat dhe verifikimet e Core.gs; ekzekutohen ne shfletues. */
 function evaluate_(data) {
   const names = ['Leksion', 'Seminar', 'Laborator', 'Detyrë/projekt', 'Praktikë'];
   const errors = [], actual = [0, 0, 0, 0, 0];
