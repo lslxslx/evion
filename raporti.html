@@ -181,13 +181,27 @@
       button.type = 'button';
       button.disabled = true;
 
-      button.addEventListener('click', event => {
-        event.preventDefault();
+      let printPending = false;
 
-        // Printon vetëm këtë skedë.
-        // Nuk mbyll skedën dhe nuk prek formularin.
-        window.print();
-      });
+button.addEventListener('click', event => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (printPending) return;
+
+  printPending = true;
+  button.blur();
+
+  // Lë të përfundojë klikimi përpara hapjes së printimit.
+  setTimeout(() => {
+    try {
+      window.focus();
+      window.print();
+    } finally {
+      printPending = false;
+    }
+  }, 300);
+});
 
       let timer;
       let fontsLoaded = false;
