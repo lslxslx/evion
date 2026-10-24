@@ -86,16 +86,10 @@ function reportHtml(data, result) {
       Lënda <strong>${escape(data.subject)}</strong>
       është zhvilluar në
       <strong>${weeks.length} javë me regjistrime mësimore</strong>,
-      brenda intervalit nga java
+      brenda intervalit nga <strong>${formatDate(first.date)}</strong> (java ${escape(first.week)})
       <strong>${weeks[0]}</strong>
-      deri në javën
+      deri në <strong>${formatDate(last.date)}</strong> (java ${escape(last.week)}) 
       <strong>${weeks[weeks.length - 1]}</strong>.
-      Mësimi i parë i regjistruar është më
-      <strong>${formatDate(first.date)}</strong>
-      (java ${escape(first.week)}),
-      ndërsa i fundit më
-      <strong>${formatDate(last.date)}</strong>
-      (java ${escape(last.week)}).
     </p>
   ` : `
     <p>Nuk ka regjistrime mësimore.</p>
@@ -459,7 +453,7 @@ function reportHtml(data, result) {
       <p>${escape(data.department)}</p>
 
       <h1>
-        EVIDENCË E NGARKESËS MËSIMORE ${escape(data.year)}
+        RAPORT I NGARKESËS MËSIMORE ${escape(data.year)}
       </h1>
 
       <table class="top">
