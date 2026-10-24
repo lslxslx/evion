@@ -35,98 +35,28 @@ const fields = [
 const MAX_ROWS = 100;
 
 let dirty = false;
-let busy = false;
 let verified = false;
 
-const disabledStates = new Map();
-
-// Ruajtje e përkohshme në skedën aktuale të shfletuesit.
-const SESSION_KEY = 'upt-evidenca-form-v1';
-
-function rememberForm() {
-  try {
-    sessionStorage.setItem(
-      SESSION_KEY,
-      JSON.stringify({
-        version: 1,
-        dateFormat: 'yyyy-MM-dd',
-        data: readForm()
-      })
-    );
-
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function restoreForm() {
-  let saved;
-
-  try {
-    saved = sessionStorage.getItem(SESSION_KEY);
-
-    if (!saved) return false;
-
-    const data = checkDraft(JSON.parse(saved));
-
-    fields.forEach(([id, , defaultValue]) => {
-      const value = data[id] ?? defaultValue;
-
-      $(id).value = id === 'start'
-        ? internalDate(value)
-        : String(value);
-    });
-
-    labels.forEach((_, index) => {
-      $('c' + index).value = String(
-        data.credits[index] ?? 0
-      ).replace(',', '.');
-
-      $('g' + index).value = String(
-        data.groups[index] ?? 1
-      ).replace(',', '.');
-    });
-
-    $('notes').value = data.notes || '';
-
-    $('lessons').tBodies[0].replaceChildren();
-    data.rows.forEach(addRow);
-
-    if (!data.rows.length) {
-      addRow();
-    }
-
-    syncCycle();
-    updatePracticeVisibility();
-    updateTotals();
-
-    dirty = true;
-    verified = false;
-    $('pdf').disabled = true;
-
-    showMessage(
-      'Plotësimet e mëparshme u rikthyen. ' +
-      'Kontrollojini dhe shtypni “Verifiko”.'
-    );
-
-    return true;
-  } catch {
-    // Nëse kopja nuk lexohet, formulari nis normalisht.
-    return false;
-  }
-}
-
-// Përshtat butonin edhe nëse HTML-ja ka ende emërtimin e vjetër.
+$('pdf').type = 'button';
 $('pdf').textContent = 'Printo / Ruaj PDF';
 $('pdf').disabled = true;
 
-// Lidhja e vjetër e shkarkimit nuk përdoret më.
+// Hiq lidhjen e vjetër të shkarkimit, nëse ekziston.
 if ($('download')) {
   $('download').remove();
 }
 
-// Pranon yyyy-MM-dd dhe datat e drafteve të vjetra dd.MM.yyyy.
+function numericValue(value) {
+  return Number(
+    String(value || 0).trim().replace(',', '.')
+  );
+}
+
+function round(value) {
+  return Math.round(value * 1000000) / 1000000;
+}
+
+// Pranon yyyy-MM-dd dhe dd.MM.yyyy.
 function internalDate(value) {
   const text = String(value || '').trim();
   let iso = '';
@@ -134,7 +64,9 @@ function internalDate(value) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
     iso = text;
   } else {
-    const match = text.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+    const match = text.match(
+      /^(\d{2})\.(\d{2})\.(\d{4})$/
+    );
 
     if (!match) return '';
 
@@ -153,15 +85,7 @@ function internalDate(value) {
   return iso;
 }
 
-function numericValue(value) {
-  return Number(String(value || 0).trim().replace(',', '.'));
-}
-
-function round(value) {
-  return Math.round(value * 1000000) / 1000000;
-}
-
-// Fushat bazë të evidencës.
+// 01 · Të dhënat e evidencës.
 fields.forEach(([id, title, value]) => {
   if (id === 'cycle') {
     const container = document.createElement('div');
@@ -198,13 +122,6 @@ fields.forEach(([id, title, value]) => {
       <input type="hidden" id="cycle" value="1">
     `;
 
-    container.querySelectorAll('[name="cycleChoice"]')
-      .forEach(radio => {
-        radio.addEventListener('input', () => {
-          $('cycle').value = radio.value;
-        });
-      });
-
     $('metadata').append(container);
     return;
   }
@@ -225,7 +142,7 @@ fields.forEach(([id, title, value]) => {
   $('metadata').append(label);
 });
 
-// Kreditet dhe grupet për të pesë kategoritë.
+// 02 · Kreditet dhe grupet.
 labels.forEach((label, index) => {
   const tr = document.createElement('tr');
 
@@ -274,7 +191,10 @@ function updatePracticeVisibility() {
       cell.hidden = !visible;
     });
 
-  $('lessons').classList.toggle('no-practice', !visible);
+  $('lessons').classList.toggle(
+    'no-practice',
+    !visible
+  );
 
   const hasStoredHours = [
     ...$('lessons').querySelectorAll('[data-h="4"]')
@@ -297,11 +217,19 @@ function updateWeek(tr) {
   if (tr.dataset.manual === '1') return;
 
   tr.querySelector('[data-k="week"]').value = week_(
-    internalDate(tr.querySelector('[data-k="date"]').value),
+    internalDate(
+      tr.querySelector('[data-k="date"]').value
+    ),
     internalDate($('start').value)
   );
 }
 
+function refreshWeeks() {
+  $('lessons').tBodies[0].querySelectorAll('tr')
+    .forEach(updateWeek);
+}
+
+// 03 · Regjistrimet.
 function addRow(data = {}) {
   const tr = document.createElement('tr');
 
@@ -380,19 +308,16 @@ function addRow(data = {}) {
 
   tr.querySelectorAll('[data-k]').forEach(element => {
     const key = element.dataset.k;
+    const value = data[key] ?? '';
 
     if (element.type === 'checkbox') {
       element.checked = !!data[key];
     } else if (key === 'date') {
-      element.value = internalDate(data[key]);
-    } else if (
-      element.type === 'number' &&
-      data[key] != null &&
-      data[key] !== ''
-    ) {
-      element.value = String(data[key]).replace(',', '.');
+      element.value = internalDate(value);
+    } else if (element.type === 'number') {
+      element.value = String(value).replace(',', '.');
     } else {
-      element.value = data[key] ?? '';
+      element.value = value;
     }
   });
 
@@ -402,23 +327,7 @@ function addRow(data = {}) {
       element.value = String(value).replace(',', '.');
     });
 
-  tr.querySelector('[data-k="week"]')
-    .addEventListener('input', event => {
-      tr.dataset.manual = event.target.value ? '1' : '0';
-
-      if (!event.target.value) {
-        updateWeek(tr);
-      }
-    });
-
-  const dateInput = tr.querySelector('[data-k="date"]');
-
-  dateInput.addEventListener('input', () => updateWeek(tr));
-  dateInput.addEventListener('change', () => updateWeek(tr));
-
   tr.querySelector('button.remove').onclick = () => {
-    if (busy) return;
-
     tr.remove();
     changed();
   };
@@ -432,8 +341,12 @@ function addRow(data = {}) {
 function readForm() {
   const data = {
     ...institution,
-    credits: labels.map((_, index) => $('c' + index).value),
-    groups: labels.map((_, index) => $('g' + index).value),
+    credits: labels.map((_, index) =>
+      $('c' + index).value
+    ),
+    groups: labels.map((_, index) =>
+      $('g' + index).value
+    ),
     notes: $('notes').value,
     rows: []
   };
@@ -452,17 +365,18 @@ function readForm() {
         manual: tr.dataset.manual === '1'
       };
 
-      tr.querySelectorAll('[data-k]').forEach(element => {
-        const key = element.dataset.k;
+      tr.querySelectorAll('[data-k]')
+        .forEach(element => {
+          const key = element.dataset.k;
 
-        if (element.type === 'checkbox') {
-          row[key] = element.checked;
-        } else if (key === 'date') {
-          row[key] = internalDate(element.value);
-        } else {
-          row[key] = element.value;
-        }
-      });
+          if (element.type === 'checkbox') {
+            row[key] = element.checked;
+          } else if (key === 'date') {
+            row[key] = internalDate(element.value);
+          } else {
+            row[key] = element.value;
+          }
+        });
 
       data.rows.push(row);
     });
@@ -477,7 +391,8 @@ function updateTotals() {
   $('ects').textContent = result.totalCredits;
 
   labels.forEach((_, index) => {
-    $('expected' + index).textContent = result.expected[index];
+    $('expected' + index).textContent =
+      result.expected[index];
   });
 
   $('summary').tBodies[0].innerHTML = labels
@@ -492,19 +407,19 @@ function updateTotals() {
       </tr>
     `).join('');
 
-  [...$('lessons').tBodies[0].rows].forEach((tr, index) => {
-    const total = data.rows[index].hours.reduce(
-      (sum, value) => sum + numericValue(value),
-      0
-    );
+  [...$('lessons').tBodies[0].rows]
+    .forEach((tr, index) => {
+      const total = data.rows[index].hours.reduce(
+        (sum, value) => sum + numericValue(value),
+        0
+      );
 
-    tr.querySelector('[data-total]').textContent = round(total);
-  });
+      tr.querySelector('[data-total]').textContent =
+        round(total);
+    });
 
   return result;
 }
-
-rememberForm();
 
 function showMessage(text, kind = '') {
   $('status').textContent = text;
@@ -524,9 +439,13 @@ function changed() {
 
   dirty = true;
   verified = false;
+
   $('pdf').disabled = true;
 
-  showMessage('Të dhënat ndryshuan. Kryeni verifikimin.');
+  showMessage(
+    'Të dhënat ndryshuan. Kryeni verifikimin.'
+  );
+
   updateTotals();
 }
 
@@ -541,7 +460,8 @@ function validationErrors(result) {
 
   $('lessons').tBodies[0].querySelectorAll('tr')
     .forEach((tr, index) => {
-      const value = tr.querySelector('[data-k="date"]').value;
+      const value =
+        tr.querySelector('[data-k="date"]').value;
 
       if (!internalDate(value)) {
         errors.push(
@@ -571,7 +491,9 @@ function validationErrors(result) {
   if (!hasPractice()) {
     const hasHours = [
       ...$('lessons').querySelectorAll('[data-h="4"]')
-    ].some(input => numericValue(input.value) !== 0);
+    ].some(input =>
+      numericValue(input.value) !== 0
+    );
 
     if (hasHours) {
       errors.push(
@@ -581,15 +503,15 @@ function validationErrors(result) {
     }
   }
 
-  // Kontrollon edhe vlera që shfletuesi nuk arrin
-  // t’i interpretojë si numra gjatë plotësimit.
   $('form').querySelectorAll('input[type="number"]')
     .forEach(input => {
       if (input.validity.badInput) {
         errors.push(
           'Vendosni një numër të vlefshëm te: ' +
-          (input.getAttribute('aria-label') || 'fusha numerike') +
-          '.'
+          (
+            input.getAttribute('aria-label') ||
+            'fusha numerike'
+          ) + '.'
         );
       }
     });
@@ -608,44 +530,52 @@ function validationErrors(result) {
   return [...new Set(errors)];
 }
 
-// Ngjarjet e formularit.
+// Ndalon dërgimin e formularit dhe ringarkimin nga submit.
 $('form').addEventListener('submit', event => {
   event.preventDefault();
 });
 
-$('form').addEventListener('input', event => {
-  if (event.target.type === 'file' || busy) return;
+function handleFormEdit(event) {
+  const target = event.target;
 
-  if (event.target.name === 'cycleChoice') {
-    $('cycle').value = event.target.value;
+  if (
+    !target.matches('input, textarea, select') ||
+    target.type === 'file'
+  ) {
+    return;
+  }
+
+  if (target.name === 'cycleChoice') {
+    $('cycle').value = target.value;
+  }
+
+  if (target.id === 'start') {
+    refreshWeeks();
+  }
+
+  if (target.dataset.k === 'week') {
+    const tr = target.closest('tr');
+
+    tr.dataset.manual = target.value ? '1' : '0';
+
+    if (!target.value) {
+      updateWeek(tr);
+    }
+  }
+
+  if (target.dataset.k === 'date') {
+    updateWeek(target.closest('tr'));
   }
 
   changed();
-});
-
-$('form').addEventListener('change', event => {
-  if (event.target.type === 'file' || busy) return;
-
-  if (event.target.name === 'cycleChoice') {
-    $('cycle').value = event.target.value;
-  }
-
-  if (event.target.matches('input, textarea, select')) {
-    changed();
-  }
-});
-
-function refreshWeeks() {
-  $('lessons').tBodies[0].querySelectorAll('tr')
-    .forEach(updateWeek);
 }
 
-$('start').addEventListener('input', refreshWeeks);
-$('start').addEventListener('change', refreshWeeks);
+$('form').addEventListener('input', handleFormEdit);
+$('form').addEventListener('change', handleFormEdit);
 
-// Shtimi i një regjistrimi.
-$('add').onclick = () => {
-  if (busy) return;
+// Shto regjistrim.
+$('add').onclick = event => {
+  event.preventDefault();
 
   if ($('lessons').tBodies[0].rows.length >= MAX_ROWS) {
     alert('Maksimumi është ' + MAX_ROWS + ' regjistrime.');
@@ -656,9 +586,9 @@ $('add').onclick = () => {
   changed();
 };
 
-// Verifikimi përpara printimit.
-$('verify').onclick = () => {
-  if (busy) return;
+// Verifiko.
+$('verify').onclick = event => {
+  event.preventDefault();
 
   verified = false;
   $('pdf').disabled = true;
@@ -678,7 +608,7 @@ $('verify').onclick = () => {
     showMessage(
       'Verifikimi përfundoi. Të gjitha kategoritë ' +
       'përputhen me ngarkesën e parashikuar. ' +
-      'Mund të vazhdoni me printimin ose ruajtjen si PDF.',
+      'Mund të hapni raportin për printim.',
       'success'
     );
   } catch (error) {
@@ -689,7 +619,43 @@ $('verify').onclick = () => {
   }
 };
 
-// Përdoret vetëm për shkarkimin e draftit JSON.
+// Hap raportin pa ndryshuar të dhënat e formularit.
+$('pdf').onclick = event => {
+  event.preventDefault();
+
+  if (!verified) {
+    showMessage(
+      'Kryeni verifikimin përpara hapjes së raportit.',
+      'error'
+    );
+    return;
+  }
+
+  try {
+    const data = readForm();
+    const errors = validationErrors(evaluate_(data));
+
+    if (errors.length) {
+      verified = false;
+      $('pdf').disabled = true;
+      showMessage(errors.join('\n'), 'error');
+      return;
+    }
+
+    if (typeof printReport !== 'function') {
+      throw new Error(
+        'pdf.js nuk u ngarkua. Kontrolloni lidhjet e skripteve.'
+      );
+    }
+
+    // Nuk ka reset, reload apo ndryshim të fushave.
+    printReport(data);
+  } catch (error) {
+    showMessage(error.message, 'error');
+  }
+};
+
+// Shkarkimi i draftit JSON.
 function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
@@ -704,9 +670,8 @@ function downloadBlob(blob, filename) {
   setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 
-// Ruajtja e draftit.
-$('save').onclick = () => {
-  if (busy) return;
+$('save').onclick = event => {
+  event.preventDefault();
 
   const draft = {
     version: 1,
@@ -723,12 +688,11 @@ $('save').onclick = () => {
   dirty = false;
 };
 
-$('load').onclick = () => {
-  if (busy) return;
+$('load').onclick = event => {
+  event.preventDefault();
   $('file').click();
 };
 
-// Kontrolli i strukturës së draftit përpara importimit.
 function checkDraft(draft) {
   if (
     !draft ||
@@ -762,18 +726,20 @@ function checkDraft(draft) {
       !Array.isArray(row.hours) ||
       row.hours.length !== 5
     ) {
-      throw new Error('Regjistrim i pavlefshëm në draft.');
+      throw new Error(
+        'Regjistrim i pavlefshëm në draft.'
+      );
     }
   });
 
   return data;
 }
 
-// Hapja e draftit.
+// Hap draftin.
 $('file').onchange = async () => {
   const file = $('file').files[0];
 
-  if (!file || busy) return;
+  if (!file) return;
 
   try {
     if (file.size > 500000) {
@@ -848,9 +814,9 @@ $('file').onchange = async () => {
   }
 };
 
-// Formular i ri.
-$('clear').onclick = () => {
-  if (busy) return;
+// Vetëm ky buton e pastron formularin, pas konfirmimit.
+$('clear').onclick = event => {
+  event.preventDefault();
 
   if (!confirm(
     'Të pastrohet formulari? Ruani draftin nëse ju duhet.'
@@ -879,118 +845,15 @@ $('clear').onclick = () => {
   );
 };
 
-// Bllokon përkohësisht formularin gjatë përgatitjes së raportit.
-// Pas përfundimit rikthen gjendjen e mëparshme të kontrolleve.
-function setBusy(value) {
-  if (value === busy) return;
-
-  if (value) {
-    disabledStates.clear();
-
-    $('form')
-      .querySelectorAll('input, textarea, select, button')
-      .forEach(element => {
-        disabledStates.set(element, element.disabled);
-        element.disabled = true;
-      });
-
-    busy = true;
-    return;
-  }
-
-  disabledStates.forEach((wasDisabled, element) => {
-    if (element.isConnected) {
-      element.disabled = wasDisabled;
-    }
-  });
-
-  disabledStates.clear();
-  busy = false;
-
-  $('pdf').disabled = !verified;
-}
-
-// Printimi dhe ruajtja si PDF përmes shfletuesit.
-$('pdf').onclick = async () => {
-  if (busy) return;
-
-  if (!verified) {
-    showMessage(
-      'Kryeni verifikimin përpara printimit.',
-      'error'
-    );
-
-    $('pdf').disabled = true;
-    return;
-  }
-
-  try {
-    const data = readForm();
-    const result = evaluate_(data);
-    const errors = validationErrors(result);
-
-    if (errors.length) {
-      verified = false;
-      $('pdf').disabled = true;
-
-      showMessage(errors.join('\n'), 'error');
-      return;
-    }
-
-    if (typeof printReport !== 'function') {
-      throw new Error(
-        'Funksioni i printimit nuk u ngarkua. ' +
-        'Kontrolloni që pdf.js i ri të ngarkohet përpara app.js.'
-      );
-    }
-    rememberForm();
-    setBusy(true);
-    showMessage('Po përgatitet evidenca për printim…');
-
-    // printReport hap dritaren përpara pritjes së fonteve.
-    await printReport(data);
-
-    showMessage(
-      'Për ta ruajtur evidencën, përdorni “Printo / Ruaj PDF” ' +
-      'në dritaren e raportit dhe zgjidhni “Save as PDF”. ' +
-      'Nëse e mbyllët raportin, mund ta hapni përsëri.'
-    );
-  } catch (error) {
-    showMessage(
-      'Printimi nuk u përgatit: ' + error.message +
-      '\nMund të ruani draftin dhe të provoni përsëri.',
-      'error'
-    );
-  } finally {
-    if (busy) {
-      setBusy(false);
-    }
-  }
-};
-
-// Printimi nuk e shënon draftin si të ruajtur.
+// Paralajmërim kur mbyllet ose ringarkohet vetë formulari.
 window.addEventListener('beforeunload', event => {
-  if (dirty || busy) {
+  if (dirty) {
     event.preventDefault();
     event.returnValue = '';
   }
 });
 
-// Nisja e formularit.
-if (!restoreForm()) {
-  // Pastron edhe ndonjë rikthim të pjesshëm.
-  $('lessons').tBodies[0].replaceChildren();
-
-  addRow();
-  updateTotals();
-  updatePracticeVisibility();
-}
-
-// Ruaj edhe kur faqja kalon në sfond.
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') {
-    rememberForm();
-  }
-});
-
-window.addEventListener('pagehide', rememberForm);
+// Ekzekutohet vetëm kur ngarkohet faqja e formularit.
+addRow();
+updateTotals();
+updatePracticeVisibility();
