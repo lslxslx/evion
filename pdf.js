@@ -1,4 +1,4 @@
-/* Raport A4 në skedë të re, pa pdfmake. */
+/* Raporti HTML dhe PDF A4 me pdfmake / Comfortaa. */
 
 function pdfFilename(data) {
   return (
@@ -7,6 +7,11 @@ function pdfFilename(data) {
     .replace(/[^\p{L}\p{N}_-]/gu, '_')
     .slice(0, 130) + '.pdf';
 }
+
+
+// =====================================================
+// RAPORTI HTML
+// =====================================================
 
 function reportHtml(data, result) {
   const escape = value => String(value ?? '')
@@ -156,21 +161,6 @@ function reportHtml(data, result) {
     .toolbar-inner {
       max-width: 196mm;
       margin: auto;
-    }
-
-    .toolbar button {
-      padding: 11px 18px;
-      border: 0;
-      border-radius: 7px;
-      background: #4a5281;
-      color: #fff;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .toolbar button:disabled {
-      opacity: 0.5;
-      cursor: wait;
     }
 
     .toolbar p {
@@ -370,22 +360,15 @@ function reportHtml(data, result) {
 <body>
   <div class="toolbar">
     <div class="toolbar-inner">
-      <button id="print-button" type="button" disabled>
-        Printo / Ruaj PDF
-      </button>
+      <strong>Printimi / Ruajtja si PDF</strong>
+
+      <p>
+        Përdorni ⌘P në Mac, Ctrl+P në Windows
+        ose menunë File → Print.
+      </p>
 
       <p id="print-status" role="status">
         Po përgatitet dokumenti…
-      </p>
-
-      <p>
-        Për ta ruajtur, zgjidhni “Save as PDF” në
-        dritaren e printimit. Përdorni A4 dhe orientim vertikal.
-      </p>
-
-      <p>
-        Kur të përfundoni, mbylleni këtë skedë për
-        t’u kthyer te formulari.
       </p>
     </div>
   </div>
@@ -529,8 +512,8 @@ function reportHtml(data, result) {
   `;
 }
 
-// Hap raportin. Nuk thërret printimin automatikisht.
-// Hap një kopje të raportit në një skedë të pavarur.
+
+// Hap raporti.html me një kopje të të dhënave.
 function printReport(data) {
   const serialized = JSON.stringify(data);
 
@@ -554,7 +537,7 @@ function printReport(data) {
   const key = prefix + id;
 
   try {
-    // Pastron kopjet e vjetra që nuk janë hapur.
+    // Pastron vetëm kopjet e vjetra të transferimit.
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const storedKey = localStorage.key(i);
 
@@ -579,8 +562,6 @@ function printReport(data) {
       }
     }
 
-    // Dërgon një kopje të të dhënave te raporti.
-    // Formulari ekzistues nuk ndryshohet.
     localStorage.setItem(
       key,
       JSON.stringify({
@@ -611,4 +592,394 @@ function printReport(data) {
   document.body.appendChild(link);
   link.click();
   link.remove();
+}
+
+
+// =====================================================
+// PDF ME PDFMAKE — KODI I MËPARSHËM
+// =====================================================
+
+function reportDefinition(data, result) {
+  const num = value =>
+    Number(String(value || 0).replace(',', '.'));
+
+  const sum = values =>
+    Math.round(
+      values.reduce(
+        (total, value) => total + num(value),
+        0
+      ) * 1000000
+    ) / 1000000;
+
+  const labels = [
+    'Leksion',
+    'Seminar',
+    'Lab.',
+    'Det./Proj.',
+    'Praktikë'
+  ];
+
+  const text = value =>
+    String(value == null ? '' : value);
+
+  const cell = (value, extra = {}) => ({
+    text: text(value),
+    alignment: 'center',
+    ...extra
+  });
+
+  const head = (value, extra = {}) =>
+    cell(value, {
+      fillColor: '#eeeeee',
+      margin: [0, 3, 0, 3],
+      ...extra
+    });
+
+  const body = [
+    [
+      head('', { colSpan: 4 }),
+      {},
+      {},
+      {},
+      head('Orë faktike', { colSpan: 5 }),
+      {},
+      {},
+      {},
+      {},
+      head('')
+    ],
+
+    [
+      'Java',
+      'Data',
+      'Nr. Std.',
+      'Tema e mësimit',
+      ...labels,
+      'Shuma / dt.'
+    ].map((label, index) =>
+      head(label, { bold: index === 9 })
+    )
+  ];
+
+  data.rows.forEach(row => {
+    body.push([
+      cell(
+        text(row.week) +
+        (row.replacement ? ' *' : '')
+      ),
+
+      cell(
+        row.date.split('-').reverse().join('.')
+      ),
+
+      cell(row.students),
+
+      { text: row.topic },
+
+      ...row.hours.map(value =>
+        cell(num(value) || '')
+      ),
+
+      cell(sum(row.hours), {
+        bold: true
+      })
+    ]);
+  });
+
+  const totalIndex = body.length;
+
+  body.push([
+    {
+      text: 'Shuma totale',
+      colSpan: 4,
+      bold: true
+    },
+    {},
+    {},
+    {},
+
+    ...result.actual.map(value =>
+      cell(value, { bold: true })
+    ),
+
+    cell(sum(result.actual), {
+      bold: true
+    })
+  ]);
+
+  body.push([
+    {
+      text:
+        'Shuma sipas krediteve dhe grupeve për ' +
+        'ngarkesën sipas parashikimit.',
+      colSpan: 4
+    },
+    {},
+    {},
+    {},
+
+    ...result.expected.map(value => cell(value)),
+
+    cell(sum(result.expected))
+  ]);
+
+  const pageWidth = 595.28;
+  const margin = 31.18;
+  const contentWidth = pageWidth - 2 * margin;
+
+  const widths = [
+    5, 11, 6, 34, 7, 7, 7, 7, 7, 9
+  ].map(percentage =>
+    (contentWidth - 40) * percentage / 100
+  );
+
+  const plan = [
+    [
+      head(''),
+      head('ECTS'),
+      head('Grupe')
+    ],
+
+    ...labels.map((label, index) => [
+      { text: label },
+      cell(data.credits[index] || 0),
+      cell(data.groups[index])
+    ]),
+
+    [
+      {
+        text: 'ECTS tot.',
+        bold: true,
+        fillColor: '#f2f2f2'
+      },
+
+      cell(result.totalCredits, {
+        bold: true,
+        fillColor: '#f2f2f2'
+      }),
+
+      {
+        text: '',
+        fillColor: '#f2f2f2'
+      }
+    ]
+  ];
+
+  const definition = {
+    pageSize: 'A4',
+    pageOrientation: 'portrait',
+    pageMargins: [margin, margin, margin, margin],
+
+    info: {
+      title:
+        'Evidencë e ngarkesës mësimore — ' +
+        data.subject,
+      author: data.teacher
+    },
+
+    defaultStyle: {
+      font: 'Comfortaa',
+      fontSize: 7,
+      color: '#171717',
+      lineHeight: 1.15
+    },
+
+    content: [
+      {
+        text: data.university,
+        margin: [0, 0, 0, 4]
+      },
+
+      {
+        text: data.faculty,
+        margin: [0, 0, 0, 4]
+      },
+
+      {
+        text: data.department,
+        margin: [0, 0, 0, 4]
+      },
+
+      {
+        text:
+          'EVIDENCË E NGARKESËS MËSIMORE ' +
+          data.year,
+        fontSize: 11,
+        bold: true,
+        margin: [0, 16, 0, 10]
+      },
+
+      {
+        columns: [
+          {
+            width: '66%',
+            stack: [
+              {
+                text: 'LËNDA: ' + data.subject,
+                margin: [0, 0, 0, 5]
+              },
+              {
+                text: 'PROGRAMI: ' + data.program,
+                margin: [0, 0, 0, 5]
+              },
+              {
+                text: 'CIKLI: ' + data.cycle,
+                margin: [0, 0, 0, 5]
+              },
+              {
+                text:
+                  'SEMESTRI: ' +
+                  String(data.semester).toUpperCase()
+              }
+            ]
+          },
+
+          {
+            width: '34%',
+            table: {
+              headerRows: 1,
+              widths: ['46%', '27%', '27%'],
+              body: plan
+            },
+            layout: {
+              hLineWidth: () => 0,
+              vLineWidth: () => 0,
+              paddingLeft: () => 2,
+              paddingRight: () => 2,
+              paddingTop: () => 2,
+              paddingBottom: () => 2
+            }
+          }
+        ]
+      },
+
+      {
+        margin: [0, 14, 0, 0],
+
+        table: {
+          headerRows: 2,
+          keepWithHeaderRows: 1,
+          dontBreakRows: true,
+          widths,
+          body
+        },
+
+        layout: {
+          hLineWidth: index =>
+            index >= 2 ? 0.4 : 0,
+
+          vLineWidth: () => 0,
+
+          hLineColor: index =>
+            index === 2 ? '#999999' : '#e3e3e3',
+
+          paddingLeft: () => 2,
+          paddingRight: () => 2,
+          paddingTop: () => 4,
+          paddingBottom: () => 4,
+
+          fillColor: index =>
+            index === totalIndex ? '#eeeeee' : null
+        }
+      },
+
+      {
+        unbreakable: true,
+        margin: [0, 23, 0, 0],
+
+        columns: [
+          {
+            width: '50%',
+            stack: [
+              { text: 'PEDAGOG/E' },
+              {
+                text: data.teacher,
+                margin: [0, 5, 0, 0]
+              }
+            ]
+          },
+
+          {
+            width: '50%',
+            alignment: 'right',
+            stack: [
+              { text: 'DREJTUES DEPARTAMENTI' },
+              {
+                text: data.head,
+                margin: [0, 5, 0, 0]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  };
+
+  const notes = text(data.notes)
+    .trim()
+    .replace(/^\*+\s*/, '');
+
+  if (notes) {
+    definition.content.push({
+      text: '* ' + notes,
+      margin: [0, 41, 0, 0]
+    });
+  }
+
+  return definition;
+}
+
+
+// Përdor pdfmake 0.2.20, si versioni i mëparshëm.
+async function generatePdfBlob(data) {
+  if (
+    !data ||
+    JSON.stringify(data).length > 500000
+  ) {
+    throw new Error(
+      'Formulari mungon ose është shumë i madh.'
+    );
+  }
+
+  const result = evaluate_(data);
+
+  if (result.errors.length) {
+    throw new Error(result.errors.join('\n'));
+  }
+
+  if (typeof pdfMake === 'undefined') {
+    throw new Error(
+      'Gjeneruesi i PDF-së nuk u ngarkua. ' +
+      'Kontrolloni vendor/pdfmake.min.js.'
+    );
+  }
+
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(
+        new Error(
+          'Gjenerimi zgjati shumë. ' +
+          'Rifreskoni dhe provoni përsëri.'
+        )
+      );
+    }, 60000);
+
+    try {
+      pdfMake
+        .createPdf(reportDefinition(data, result))
+        .getBuffer(bytes => {
+          clearTimeout(timer);
+
+          resolve(
+            new Blob(
+              [bytes],
+              { type: 'application/pdf' }
+            )
+          );
+        });
+    } catch (error) {
+      clearTimeout(timer);
+      reject(error);
+    }
+  });
 }
