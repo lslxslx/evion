@@ -38,7 +38,7 @@ let dirty = false;
 let verified = false;
 
 $('pdf').type = 'button';
-$('pdf').textContent = 'Printo / Ruaj PDF';
+$('pdf').textContent = 'Gjenero raport';
 $('pdf').disabled = true;
 
 // Hiq lidhjen e vjetër të shkarkimit, nëse ekziston.
