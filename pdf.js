@@ -543,83 +543,109 @@ function printReport(data) {
     throw new Error(result.errors.join('\n'));
   }
 
-  const html = reportHtml(data, result);
+  // Ky kod ekzekutohet vetëm brenda skedës së raportit.
+  const reportScript = `
+    <script>
+      (() => {
+        const button =
+          document.getElementById('print-button');
 
-  // Hap një skedë të re dhe ruan formularin në skedën aktuale.
-  const reportWindow = window.open('', '_blank');
+        const status =
+          document.getElementById('print-status');
 
-  if (!reportWindow) {
-    throw new Error(
-      'Shfletuesi bllokoi dritaren e raportit. ' +
-      'Lejoni popup-et për këtë faqe dhe provoni përsëri.'
-    );
-  }
+        let printing = false;
 
-  const reportDocument = reportWindow.document;
+        button.type = 'button';
 
-  reportDocument.open();
-  reportDocument.write(html);
-  reportDocument.close();
+        button.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
 
-  const button =
-    reportDocument.getElementById('print-button');
+          if (printing) return;
 
-  const status =
-    reportDocument.getElementById('print-status');
+          printing = true;
 
-  button.addEventListener('click', () => {
-    reportWindow.focus();
-    reportWindow.print();
-  });
+          try {
+            // Printo vetëm dokumentin e kësaj skede.
+            window.print();
+          } finally {
+            printing = false;
+          }
+        });
 
-  // Nuk shtohen ngjarje për mbylljen e raportit.
-  // Nuk ndryshohet asnjë fushë e formularit origjinal.
-  const enablePrinting = message => {
-    if (reportWindow.closed) return;
+        function enablePrint(message) {
+          button.disabled = false;
+          status.textContent = message;
+        }
 
-    button.disabled = false;
-    status.textContent = message;
-  };
+        async function prepareReport() {
+          let timer;
 
-  if (!reportDocument.fonts) {
-    enablePrinting(
-      'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”.'
-    );
-    return;
-  }
+          try {
+            if (document.fonts) {
+              const fonts = await Promise.race([
+                Promise.all([
+                  document.fonts.load('400 9px "Comfortaa"'),
+                  document.fonts.load('700 14px "Comfortaa"')
+                ]),
 
-  // Shmang mbetjen e butonit të bllokuar nëse fonti nuk ngarkohet.
-  let fontTimer;
+                new Promise((_, reject) => {
+                  timer = setTimeout(() => {
+                    reject(new Error('Fonti nuk u ngarkua.'));
+                  }, 10000);
+                })
+              ]);
 
-  Promise.race([
-    Promise.all([
-      reportDocument.fonts.load('400 9px "Comfortaa"'),
-      reportDocument.fonts.load('700 14px "Comfortaa"')
-    ]),
+              if (!fonts.every(list => list.length > 0)) {
+                throw new Error('Fonti mungon.');
+              }
+            }
 
-    new Promise((_, reject) => {
-      fontTimer = setTimeout(() => {
-        reject(new Error('Fonti nuk u ngarkua në kohë.'));
-      }, 10000);
-    })
-  ])
-    .then(fonts => {
-      const loaded = fonts.every(list => list.length > 0);
+            enablePrint(
+              'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”. ' +
+              'Pas përfundimit mund ta mbyllni këtë skedë.'
+            );
+          } catch {
+            enablePrint(
+              'Comfortaa nuk u ngarkua. Mund të printoni ' +
+              'me fontin rezervë ose ta rihapni raportin.'
+            );
+          } finally {
+            clearTimeout(timer);
+          }
+        }
 
-      enablePrinting(
-        loaded
-          ? 'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”.'
-          : 'Comfortaa nuk u ngarkua. Mund të printoni ' +
-            'me fontin rezervë ose të rihapni raportin.'
-      );
-    })
-    .catch(() => {
-      enablePrinting(
-        'Comfortaa nuk u ngarkua. Mund të printoni ' +
-        'me fontin rezervë ose të rihapni raportin.'
-      );
-    })
-    .finally(() => {
-      clearTimeout(fontTimer);
-    });
+        prepareReport();
+      })();
+    <\/script>
+  `;
+
+  const html = reportHtml(data, result).replace(
+    '</body>',
+    reportScript + '\n</body>'
+  );
+
+  // Dokument i pavarur: nuk përdor document.write().
+  const blob = new Blob(
+    [html],
+    { type: 'text/html;charset=utf-8' }
+  );
+
+  const reportUrl = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = reportUrl;
+  link.target = '_blank';
+
+  // Raporti nuk ka lidhje window.opener me formularin.
+  link.rel = 'noopener noreferrer';
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  // Lë kohë për ngarkimin e raportit përpara lirimit të URL-së.
+  setTimeout(() => {
+    URL.revokeObjectURL(reportUrl);
+  }, 600000);
 }
