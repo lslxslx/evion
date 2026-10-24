@@ -301,7 +301,7 @@ function reportHtml(data, result) {
     }
 
     .signature {
-      margin-top: 30px;
+      margin-top: 35px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -311,7 +311,7 @@ function reportHtml(data, result) {
     }
 
     .signature p {
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
     .signature .head {
@@ -491,13 +491,7 @@ function reportHtml(data, result) {
           <tr>
             <td>
               DEKLARUESI/JA
-              <p>
-              <span style="
-              display: inline-block;
-              padding-bottom: 12px;
-              border-bottom: 0.5px solid #555;
-              ">${escape(data.teacher)}</span>
-              </p>
+              <p>${escape(data.teacher)}</p>
             </td>
 
             <td class="head">
@@ -898,7 +892,7 @@ function reportDefinition(data, result) {
       text:
         'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
         'pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.',
-      margin: [0, 0, 0, 18]
+      margin: [0, 0, 0, 30]
     },
 
     {
@@ -908,11 +902,11 @@ function reportDefinition(data, result) {
 
           stack: [
             {
-              text: 'DEKLARUESI/JA'
+              text: 'PEDAGOG LËNDE'
             },
 
             {
-              margin: [0, 5, 8, 0],
+              margin: [0, 5, 8, 0]
 
               table: {
                 widths: ['auto'],
