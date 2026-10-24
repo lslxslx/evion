@@ -203,14 +203,24 @@
         'Mund ta printoni përsëri ose ta mbyllni këtë skedë ' +
         'për t’u kthyer te formulari.';
 
-      toolbar.replaceChildren(
-        heading,
-        instructions,
-        mobileHelp,
-        settings,
-        status,
-        returnHelp
-      );
+      const printButton = document.createElement('button');
+
+printButton.type = 'button';
+printButton.textContent = 'Printo / Ruaj PDF';
+printButton.onclick = () => window.print();
+
+// Statusi përdoret nga kontrolli ekzistues i fontit.
+status.hidden = true;
+
+toolbar.replaceChildren(printButton, 
+                        status,
+                        heading,
+                        instructions,
+                        mobileHelp,
+                        settings,
+                        status,
+                        returnHelp
+                       );
 
       document.title = parsed.title || 'Evidenca mësimore';
 
