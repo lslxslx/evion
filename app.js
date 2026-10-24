@@ -34,12 +34,35 @@ const fields = [
 
 const MAX_ROWS = 100;
 
+const reportButton = $('pdf');
+const printPdfButton = $('print-pdf');
+
 let dirty = false;
 let verified = false;
+let pdfBusy = false;
+let formRevision = 0;
 
-$('pdf').type = 'button';
-$('pdf').textContent = 'Gjenero raport';
-$('pdf').disabled = true;
+reportButton.type = 'button';
+reportButton.textContent = 'Gjenero raport';
+
+if (printPdfButton) {
+  printPdfButton.type = 'button';
+  printPdfButton.textContent = 'Hap PDF / Printo';
+}
+
+function updateActionButtons() {
+  reportButton.disabled = !verified;
+
+  if (printPdfButton) {
+    printPdfButton.disabled = !verified || pdfBusy;
+
+    printPdfButton.textContent = pdfBusy
+      ? 'Po gjenerohet PDF…'
+      : 'Hap PDF / Printo';
+  }
+}
+
+updateActionButtons();
 
 function numericValue(value) {
   return Number(
@@ -181,7 +204,8 @@ function hasPractice() {
 function updatePracticeVisibility() {
   const visible = hasPractice();
 
-  $('lessons').querySelectorAll('[data-practice]')
+  $('lessons')
+    .querySelectorAll('[data-practice]')
     .forEach(cell => {
       cell.hidden = !visible;
     });
@@ -220,7 +244,8 @@ function updateWeek(tr) {
 }
 
 function refreshWeeks() {
-  $('lessons').tBodies[0].querySelectorAll('tr')
+  $('lessons').tBodies[0]
+    .querySelectorAll('tr')
     .forEach(updateWeek);
 }
 
@@ -336,12 +361,15 @@ function addRow(data = {}) {
 function readForm() {
   const data = {
     ...institution,
+
     credits: labels.map((_, index) =>
       $('c' + index).value
     ),
+
     groups: labels.map((_, index) =>
       $('g' + index).value
     ),
+
     notes: $('notes').value,
     rows: []
   };
@@ -352,11 +380,13 @@ function readForm() {
       : $(id).value.trim();
   });
 
-  $('lessons').tBodies[0].querySelectorAll('tr')
+  $('lessons').tBodies[0]
+    .querySelectorAll('tr')
     .forEach(tr => {
       const row = {
         hours: [...tr.querySelectorAll('[data-h]')]
           .map(element => element.value),
+
         manual: tr.dataset.manual === '1'
       };
 
@@ -434,8 +464,9 @@ function changed() {
 
   dirty = true;
   verified = false;
+  formRevision++;
 
-  $('pdf').disabled = true;
+  updateActionButtons();
 
   showMessage(
     'Të dhënat ndryshuan. Kryeni verifikimin.'
@@ -453,7 +484,8 @@ function validationErrors(result) {
     );
   }
 
-  $('lessons').tBodies[0].querySelectorAll('tr')
+  $('lessons').tBodies[0]
+    .querySelectorAll('tr')
     .forEach((tr, index) => {
       const value =
         tr.querySelector('[data-k="date"]').value;
@@ -525,7 +557,28 @@ function validationErrors(result) {
   return [...new Set(errors)];
 }
 
-// Ndalon dërgimin e formularit dhe ringarkimin nga submit.
+// Kontroll i përbashkët për raportin HTML dhe PDF-në.
+function verifiedData() {
+  if (!verified) {
+    throw new Error(
+      'Kryeni verifikimin përpara hapjes së raportit ose PDF-së.'
+    );
+  }
+
+  const data = readForm();
+  const errors = validationErrors(evaluate_(data));
+
+  if (errors.length) {
+    verified = false;
+    updateActionButtons();
+
+    throw new Error(errors.join('\n'));
+  }
+
+  return data;
+}
+
+// Ndalon ringarkimin e formularit nga submit.
 $('form').addEventListener('submit', event => {
   event.preventDefault();
 });
@@ -581,12 +634,12 @@ $('add').onclick = event => {
   changed();
 };
 
-// Verifiko.
+// Verifiko formularin.
 $('verify').onclick = event => {
   event.preventDefault();
 
   verified = false;
-  $('pdf').disabled = true;
+  updateActionButtons();
 
   try {
     const result = updateTotals();
@@ -598,12 +651,12 @@ $('verify').onclick = event => {
     }
 
     verified = true;
-    $('pdf').disabled = false;
+    updateActionButtons();
 
     showMessage(
       'Verifikimi përfundoi. Të gjitha kategoritë ' +
       'përputhen me ngarkesën e parashikuar. ' +
-      'Mund të hapni raportin për printim.',
+      'Mund të gjeneroni raportin ose të hapni PDF-në.',
       'success'
     );
   } catch (error) {
@@ -614,41 +667,117 @@ $('verify').onclick = event => {
   }
 };
 
-// Hap raportin pa ndryshuar të dhënat e formularit.
-$('pdf').onclick = event => {
+// Hap raportin HTML në raporti.html.
+reportButton.onclick = event => {
   event.preventDefault();
 
-  if (!verified) {
-    showMessage(
-      'Kryeni verifikimin përpara hapjes së raportit.',
-      'error'
-    );
-    return;
-  }
-
   try {
-    const data = readForm();
-    const errors = validationErrors(evaluate_(data));
-
-    if (errors.length) {
-      verified = false;
-      $('pdf').disabled = true;
-      showMessage(errors.join('\n'), 'error');
-      return;
-    }
+    const data = verifiedData();
 
     if (typeof printReport !== 'function') {
       throw new Error(
-        'pdf.js nuk u ngarkua. Kontrolloni lidhjet e skripteve.'
+        'Në pdf.js mungon funksioni printReport().'
       );
     }
 
-    // Nuk ka reset, reload apo ndryshim të fushave.
     printReport(data);
   } catch (error) {
     showMessage(error.message, 'error');
   }
 };
+
+// Hap PDF-në e gjeneruar me pdfmake.
+if (printPdfButton) {
+  printPdfButton.onclick = async event => {
+    event.preventDefault();
+
+    if (pdfBusy) return;
+
+    let pdfTab = null;
+    let pdfUrl = null;
+    const revisionAtStart = formRevision;
+
+    try {
+      const data = verifiedData();
+
+      if (typeof pdfMake === 'undefined') {
+        throw new Error(
+          'pdfmake nuk u ngarkua. Kontrolloni ' +
+          'vendor/pdfmake.min.js në index.html.'
+        );
+      }
+
+      if (typeof generatePdfBlob !== 'function') {
+        throw new Error(
+          'Në pdf.js mungon funksioni generatePdfBlob().'
+        );
+      }
+
+      // Hapet gjatë klikimit, përpara gjenerimit.
+      pdfTab = window.open('about:blank', '_blank');
+
+      if (!pdfTab) {
+        throw new Error(
+          'Shfletuesi bllokoi skedën e re. ' +
+          'Lejoni hapjen e skedave për këtë faqe.'
+        );
+      }
+
+      pdfTab.opener = null;
+
+      pdfBusy = true;
+      updateActionButtons();
+
+      // Përdor një kopje të të dhënave në çastin e klikimit.
+      const blob = await generatePdfBlob(data);
+
+      if (pdfTab.closed) {
+        throw new Error('Skeda e PDF-së u mbyll.');
+      }
+
+      pdfUrl = URL.createObjectURL(blob);
+      pdfTab.location.replace(pdfUrl);
+
+      // Liron URL-në pasi mbyllet skeda e PDF-së.
+      const openedTab = pdfTab;
+      const openedUrl = pdfUrl;
+
+      const cleanup = setInterval(() => {
+        if (openedTab.closed) {
+          clearInterval(cleanup);
+          URL.revokeObjectURL(openedUrl);
+        }
+      }, 2000);
+
+      if (formRevision === revisionAtStart) {
+        showMessage(
+          'PDF-ja u hap. Mund ta printoni ose ta ruani ' +
+          'nga shikuesi i PDF-së.',
+          'success'
+        );
+      } else {
+        showMessage(
+          'PDF-ja u hap me të dhënat në momentin e klikimit. ' +
+          'Formulari ka ndryshime të mëvonshme; ' +
+          'verifikojeni përsëri për një raport të ri.'
+        );
+      }
+    } catch (error) {
+      if (pdfUrl) {
+        URL.revokeObjectURL(pdfUrl);
+      }
+
+      if (pdfTab && !pdfTab.closed) {
+        pdfTab.close();
+      }
+
+      showMessage(error.message, 'error');
+    } finally {
+      pdfBusy = false;
+      updateActionButtons();
+    }
+  };
+}
 
 // Shkarkimi i draftit JSON.
 function downloadBlob(blob, filename) {
@@ -809,7 +938,7 @@ $('file').onchange = async () => {
   }
 };
 
-// Vetëm ky buton e pastron formularin, pas konfirmimit.
+// Vetëm ky buton pastron formularin, pas konfirmimit.
 $('clear').onclick = event => {
   event.preventDefault();
 
@@ -840,7 +969,7 @@ $('clear').onclick = event => {
   );
 };
 
-// Paralajmërim kur mbyllet ose ringarkohet vetë formulari.
+// Paralajmëron kur mbyllet ose ringarkohet formulari.
 window.addEventListener('beforeunload', event => {
   if (dirty) {
     event.preventDefault();
@@ -852,93 +981,4 @@ window.addEventListener('beforeunload', event => {
 addRow();
 updateTotals();
 updatePracticeVisibility();
-
-const printPdfButton = $('print-pdf');
-let pdfBusy = false;
-
-// Aktivizohet pas verifikimit, si "Gjenero raport".
-function syncPrintPdfButton() {
-  printPdfButton.disabled = pdfBusy || $('pdf').disabled;
-}
-
-new MutationObserver(syncPrintPdfButton).observe(
-  $('pdf'),
-  {
-    attributes: true,
-    attributeFilter: ['disabled']
-  }
-);
-
-syncPrintPdfButton();
-
-printPdfButton.onclick = async event => {
-  event.preventDefault();
-
-  if (pdfBusy || $('pdf').disabled) return;
-
-  let pdfTab = null;
-
-  try {
-    const data = readForm();
-    const errors = validationErrors(evaluate_(data));
-
-    if (errors.length) {
-      showMessage(errors.join('\n'), 'error');
-      return;
-    }
-
-    if (typeof generatePdfBlob !== 'function') {
-      throw new Error(
-        'Nuk është ngarkuar funksioni generatePdfBlob().'
-      );
-    }
-
-    // Hapet menjëherë gjatë klikimit.
-    pdfTab = window.open('about:blank', '_blank');
-
-    if (!pdfTab) {
-      throw new Error(
-        'Lejoni hapjen e skedave të reja për këtë faqe.'
-      );
-    }
-
-    pdfTab.opener = null;
-
-    pdfBusy = true;
-    printPdfButton.textContent = 'Po gjenerohet PDF…';
-    syncPrintPdfButton();
-
-    // Përdor funksionin ekzistues me pdfmake.
-    const blob = await generatePdfBlob(data);
-
-    if (pdfTab.closed) {
-      throw new Error('Skeda e PDF-së u mbyll.');
-    }
-
-    const url = URL.createObjectURL(blob);
-    pdfTab.location.replace(url);
-
-    // PDF-ja mbetet e disponueshme derisa të mbyllet skeda.
-    const cleanup = setInterval(() => {
-      if (pdfTab.closed) {
-        clearInterval(cleanup);
-        URL.revokeObjectURL(url);
-      }
-    }, 2000);
-
-    showMessage(
-      'PDF-ja u hap. Mund ta printoni ose ta ruani',
-      'success'
-    );
-  } catch (error) {
-    if (pdfTab && !pdfTab.closed) {
-      pdfTab.close();
-    }
-
-    showMessage(error.message, 'error');
-  } finally {
-    pdfBusy = false;
-    printPdfButton.textContent = 'Hap PDF / Printo';
-    syncPrintPdfButton();
-  }
-};
+updateActionButtons();
