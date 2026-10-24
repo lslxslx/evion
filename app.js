@@ -47,7 +47,7 @@ reportButton.textContent = 'Gjenero raport';
 
 if (printPdfButton) {
   printPdfButton.type = 'button';
-  printPdfButton.textContent = 'Hap PDF / Printo';
+  printPdfButton.textContent = '&rarr; PDF / Printo';
 }
 
 function updateActionButtons() {
