@@ -192,15 +192,12 @@ button.addEventListener('click', event => {
   printPending = true;
   button.blur();
 
-  // Lë të përfundojë klikimi përpara hapjes së printimit.
-  setTimeout(() => {
-    try {
-      window.focus();
-      window.print();
-    } finally {
-      printPending = false;
-    }
-  }, 300);
+  try {
+  window.focus();
+  window.print();
+} finally {
+  printPending = false;
+}
 });
 
       let timer;
