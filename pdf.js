@@ -1,4 +1,4 @@
-/* Evidenca A4 — printim dhe ruajtje si PDF */
+/* Raport A4 në skedë të re, pa pdfmake. */
 
 function pdfFilename(data) {
   return (
@@ -37,7 +37,6 @@ function reportHtml(data, result) {
     'Praktikë'
   ];
 
-  // Adresa absolute që funksionojnë edhe në dritaren e re.
   const regularFont = new URL(
     'fonts/Comfortaa-Regular.ttf',
     document.baseURI
@@ -99,6 +98,7 @@ function reportHtml(data, result) {
 <html lang="sq">
 <head>
   <meta charset="utf-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1"
@@ -154,12 +154,12 @@ function reportHtml(data, result) {
     }
 
     .toolbar-inner {
-      max-width: 188mm;
+      max-width: 196mm;
       margin: auto;
     }
 
     .toolbar button {
-      padding: 10px 16px;
+      padding: 11px 18px;
       border: 0;
       border-radius: 7px;
       background: #4a5281;
@@ -282,7 +282,9 @@ function reportHtml(data, result) {
       color: #222;
       text-align: center;
       vertical-align: middle;
-      font-size: 9px;
+      font-size: 8.5px;
+      white-space: nowrap;
+      overflow-wrap: normal;
     }
 
     .data thead tr:first-child th {
@@ -377,9 +379,13 @@ function reportHtml(data, result) {
       </p>
 
       <p>
-        Zgjidhni A4, orientimin vertikal dhe “Save as PDF”
-        për ta ruajtur. Çaktivizoni header/footer të
-        shfletuesit nëse shfaqen URL-ja dhe data.
+        Për ta ruajtur, zgjidhni “Save as PDF” në
+        dritaren e printimit. Përdorni A4 dhe orientim vertikal.
+      </p>
+
+      <p>
+        Kur të përfundoni, mbylleni këtë skedë për
+        t’u kthyer te formulari.
       </p>
     </div>
   </div>
@@ -489,7 +495,9 @@ function reportHtml(data, result) {
               Shuma sipas krediteve dhe grupeve për
               ngarkesën sipas parashikimit.
             </td>
+
             ${cells(result.expected)}
+
             <td class="num">${sum(result.expected)}</td>
           </tr>
         </tbody>
@@ -521,12 +529,8 @@ function reportHtml(data, result) {
   `;
 }
 
-/*
-  Thirret drejtpërdrejt nga klikimi i butonit.
-  Dritarja hapet përpara pritjes së fonteve, për të
-  shmangur bllokimin e saj si popup.
-*/
-async function printReport(data) {
+// Hap raportin. Nuk thërret printimin automatikisht.
+function printReport(data) {
   if (!data || JSON.stringify(data).length > 500000) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
@@ -541,6 +545,7 @@ async function printReport(data) {
 
   const html = reportHtml(data, result);
 
+  // Hap një skedë të re dhe ruan formularin në skedën aktuale.
   const reportWindow = window.open('', '_blank');
 
   if (!reportWindow) {
@@ -550,80 +555,71 @@ async function printReport(data) {
     );
   }
 
-  try {
-    const reportDocument = reportWindow.document;
+  const reportDocument = reportWindow.document;
 
-    reportDocument.open();
-    reportDocument.write(html);
-    reportDocument.close();
+  reportDocument.open();
+  reportDocument.write(html);
+  reportDocument.close();
 
-    const button =
-      reportDocument.getElementById('print-button');
+  const button =
+    reportDocument.getElementById('print-button');
 
-    const status =
-      reportDocument.getElementById('print-status');
+  const status =
+    reportDocument.getElementById('print-status');
 
-    const openPrintDialog = () => {
-      if (reportWindow.closed) return;
+  button.addEventListener('click', () => {
+    reportWindow.focus();
+    reportWindow.print();
+  });
 
-      reportWindow.focus();
-      reportWindow.print();
-    };
-
-    // Mbetet i disponueshëm edhe kur printimi automatik
-    // nuk hapet ose përdoruesi e anulon dritaren e printimit.
-    button.addEventListener('click', openPrintDialog);
-
-    let fontLoaded = false;
-
-    if (reportDocument.fonts) {
-      let timer;
-
-      try {
-        const fonts = await Promise.race([
-          Promise.all([
-            reportDocument.fonts.load('400 9px "Comfortaa"'),
-            reportDocument.fonts.load('700 14px "Comfortaa"')
-          ]),
-
-          new Promise((_, reject) => {
-            timer = setTimeout(() => {
-              reject(new Error('Koha e ngarkimit të fontit mbaroi.'));
-            }, 10000);
-          })
-        ]);
-
-        fontLoaded = fonts.every(list => list.length > 0);
-      } catch {
-        fontLoaded = false;
-      } finally {
-        clearTimeout(timer);
-      }
-    }
-
+  // Nuk shtohen ngjarje për mbylljen e raportit.
+  // Nuk ndryshohet asnjë fushë e formularit origjinal.
+  const enablePrinting = message => {
     if (reportWindow.closed) return;
 
     button.disabled = false;
+    status.textContent = message;
+  };
 
-    if (!fontLoaded) {
-      status.textContent =
-        'Comfortaa nuk u ngarkua. Kontrolloni dosjen fonts ' +
-        'dhe rihapni raportin, ose shtypni “Printo / Ruaj PDF” ' +
-        'për të vazhduar me fontin rezervë.';
-
-      return;
-    }
-
-    status.textContent = 'Dokumenti është gati. Shtypni “Printo / Ruaj PDF” ' + 
-      'nëse dëshironi ta printoni ose ta ruani. ' + 
-      'Kur të përfundoni, mbyllni këtë skedë për t’u kthyer te formulari.';
-
-    openPrintDialog();
-  } catch (error) {
-    // Mos e mbyll raportin nëse përdoruesi dëshiron
-    // ta printojë manualisht nga menuja e shfletuesit.
-    throw new Error(
-      'Raporti nuk u përgatit për printim: ' + error.message
+  if (!reportDocument.fonts) {
+    enablePrinting(
+      'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”.'
     );
+    return;
   }
+
+  // Shmang mbetjen e butonit të bllokuar nëse fonti nuk ngarkohet.
+  let fontTimer;
+
+  Promise.race([
+    Promise.all([
+      reportDocument.fonts.load('400 9px "Comfortaa"'),
+      reportDocument.fonts.load('700 14px "Comfortaa"')
+    ]),
+
+    new Promise((_, reject) => {
+      fontTimer = setTimeout(() => {
+        reject(new Error('Fonti nuk u ngarkua në kohë.'));
+      }, 10000);
+    })
+  ])
+    .then(fonts => {
+      const loaded = fonts.every(list => list.length > 0);
+
+      enablePrinting(
+        loaded
+          ? 'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”.'
+          : 'Comfortaa nuk u ngarkua. Mund të printoni ' +
+            'me fontin rezervë ose të rihapni raportin.'
+      );
+    })
+    .catch(() => {
+      enablePrinting(
+        'Comfortaa nuk u ngarkua. Mund të printoni ' +
+        'me fontin rezervë ose të rihapni raportin.'
+      );
+    })
+    .finally(() => {
+      clearTimeout(fontTimer);
+    });
 }
