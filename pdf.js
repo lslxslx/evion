@@ -59,12 +59,8 @@ function reportHtml(data, result) {
   const creditRows = labels.map((label, index) => `
     <tr>
       <td>${label}</td>
-      <td class="num">
-        ${escape(data.credits[index] || 0)}
-      </td>
-      <td class="num">
-        ${escape(data.groups[index])}
-      </td>
+      <td class="num">${escape(data.credits[index] || 0)}</td>
+      <td class="num">${escape(data.groups[index])}</td>
     </tr>
   `).join('');
 
@@ -301,7 +297,7 @@ function reportHtml(data, result) {
     }
 
     .signature {
-      margin-top: 35px;
+      margin-top: 45px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -486,6 +482,11 @@ function reportHtml(data, result) {
         </tbody>
       </table>
 
+      <p style="margin-top: 25px;">
+        Deklaroj se të dhënat e paraqitura në këtë evidencë
+        pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.
+      </p>
+
       <table class="signature">
         <tbody>
           <tr>
@@ -513,7 +514,10 @@ function reportHtml(data, result) {
 }
 
 
-// Hap raporti.html me një kopje të të dhënave.
+// =====================================================
+// HAPJA E RAPORTIT HTML
+// =====================================================
+
 function printReport(data) {
   const serialized = JSON.stringify(data);
 
@@ -537,7 +541,6 @@ function printReport(data) {
   const key = prefix + id;
 
   try {
-    // Pastron vetëm kopjet e vjetra të transferimit.
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const storedKey = localStorage.key(i);
 
@@ -596,7 +599,7 @@ function printReport(data) {
 
 
 // =====================================================
-// PDF ME PDFMAKE — KODI I MËPARSHËM
+// PËRMBAJTJA E PDF-SË ME PDFMAKE
 // =====================================================
 
 function reportDefinition(data, result) {
@@ -789,12 +792,10 @@ function reportDefinition(data, result) {
         text: data.university,
         margin: [0, 0, 0, 4]
       },
-
       {
         text: data.faculty,
         margin: [0, 0, 0, 4]
       },
-
       {
         text: data.department,
         margin: [0, 0, 0, 4]
@@ -836,11 +837,13 @@ function reportDefinition(data, result) {
 
           {
             width: '34%',
+
             table: {
               headerRows: 1,
               widths: ['46%', '27%', '27%'],
               body: plan
             },
+
             layout: {
               hLineWidth: () => 0,
               vLineWidth: () => 0,
@@ -883,77 +886,53 @@ function reportDefinition(data, result) {
         }
       },
 
+      // Vetëdeklarimi dhe firmat, pa vijë nën emrin.
       {
-  unbreakable: true,
-  margin: [0, 23, 0, 0],
+        unbreakable: true,
+        margin: [0, 23, 0, 0],
 
-  stack: [
-    {
-      text:
-        'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
-        'pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.',
-      margin: [0, 0, 0, 30]
-    },
+        stack: [
+          {
+            text:
+              'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
+              'pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.',
+            margin: [0, 0, 0, 30]
+          },
 
-    {
-      columns: [
-        {
-          width: '50%',
+          {
+            columns: [
+              {
+                width: '50%',
 
-          stack: [
-            {
-              text: 'PEDAGOG LËNDE'
-            },
-
-            {
-              margin: [0, 5, 8, 0]
-
-              table: {
-                widths: ['auto'],
-                body: [
-                  [
-                    {
-                      text: data.teacher,
-                      margin: [0, 0, 0, 12]
-                    }
-                  ]
+                stack: [
+                  {
+                    text: 'DEKLARUESI/JA'
+                  },
+                  {
+                    text: data.teacher,
+                    margin: [0, 5, 8, 0]
+                  }
                 ]
               },
 
-              layout: {
-                hLineWidth: index =>
-                  index === 1 ? 0.5 : 0,
+              {
+                width: '50%',
+                alignment: 'right',
 
-                vLineWidth: () => 0,
-                hLineColor: () => '#555555',
-
-                paddingLeft: () => 0,
-                paddingRight: () => 0,
-                paddingTop: () => 0,
-                paddingBottom: () => 0
+                stack: [
+                  {
+                    text: 'DREJTUES DEPARTAMENTI'
+                  },
+                  {
+                    text: data.head,
+                    margin: [0, 5, 0, 0]
+                  }
+                ]
               }
-            }
-          ]
-        },
-
-        {
-          width: '50%',
-          alignment: 'right',
-
-          stack: [
-            {
-              text: 'DREJTUES DEPARTAMENTI'
-            },
-            {
-              text: data.head,
-              margin: [0, 5, 0, 0]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+            ]
+          }
+        ]
+      }
     ]
   };
 
@@ -972,7 +951,10 @@ function reportDefinition(data, result) {
 }
 
 
-// Përdor pdfmake 0.2.20, si versioni i mëparshëm.
+// =====================================================
+// GJENERIMI I PDF-SË — PDFMAKE 0.2.20
+// =====================================================
+
 async function generatePdfBlob(data) {
   if (
     !data ||
