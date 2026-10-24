@@ -202,34 +202,61 @@ function hasPractice() {
 }
 
 function updatePracticeVisibility() {
-  const visible = hasPractice();
+  const labVisible = numericValue($('c2').value) > 0;
+  const practiceVisible = hasPractice();
 
+  // Laboratori.
+  $('lessons')
+    .querySelectorAll('[data-lab]')
+    .forEach(cell => {
+      cell.hidden = !labVisible;
+    });
+
+  // Praktika.
   $('lessons')
     .querySelectorAll('[data-practice]')
     .forEach(cell => {
-      cell.hidden = !visible;
+      cell.hidden = !practiceVisible;
     });
 
   $('lessons').classList.toggle(
     'no-practice',
-    !visible
+    !practiceVisible
   );
 
-  const hasStoredHours = [
-    ...$('lessons').querySelectorAll('[data-h="4"]')
+  const hasStoredHours = index => [
+    ...$('lessons').querySelectorAll(
+      `[data-h="${index}"]`
+    )
   ].some(input =>
     input.value !== '' &&
     numericValue(input.value) !== 0
   );
 
+  const messages = [];
+
+  if (!labVisible && hasStoredHours(2)) {
+    messages.push(
+      'Ka orë laboratori të regjistruara, por kreditet ' +
+      'e laboratorit janë zero. Orët janë ruajtur. ' +
+      'Rivendosni kreditet te seksioni 02 për t’i parë ' +
+      'dhe korrigjuar.'
+    );
+  }
+
+  if (!practiceVisible && hasStoredHours(4)) {
+    messages.push(
+      'Ka orë praktike të regjistruara, por kreditet ' +
+      'e praktikës janë zero. Orët janë ruajtur. ' +
+      'Rivendosni kreditet te seksioni 02 për t’i parë ' +
+      'dhe korrigjuar.'
+    );
+  }
+
   const warning = $('practice-warning');
 
-  warning.hidden = visible || !hasStoredHours;
-
-  warning.textContent = warning.hidden ? '' :
-    'Ka orë praktike të regjistruara, por kreditet e praktikës ' +
-    'janë zero. Orët janë ruajtur. Rivendosni kreditet e praktikës ' +
-    'te seksioni 02 për t’i parë dhe korrigjuar.';
+  warning.hidden = messages.length === 0;
+  warning.textContent = messages.join(' ');
 }
 
 function updateWeek(tr) {
@@ -293,7 +320,7 @@ function addRow(data = {}) {
     </td>
 
     ${labels.map((label, index) => `
-      <td ${index === 4 ? 'data-practice' : ''}>
+      <td ${index === 2 ? 'data-lab' : ''} ${index === 4 ? 'data-practice' : ''}>
         <input
           data-h="${index}"
           type="number"
@@ -514,6 +541,21 @@ function validationErrors(result) {
       );
     }
   });
+
+  if (numericValue($('c2').value) <= 0) {
+  const hasLabHours = [
+    ...$('lessons').querySelectorAll('[data-h="2"]')
+  ].some(input =>
+    numericValue(input.value) !== 0
+  );
+
+  if (hasLabHours) {
+    errors.push(
+      'Ka orë laboratori me zero kredite. ' +
+      'Rivendosni kreditet te seksioni 02 për t’i korrigjuar.'
+    );
+  }
+}
 
   if (!hasPractice()) {
     const hasHours = [
