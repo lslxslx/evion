@@ -895,7 +895,7 @@ function reportDefinition(data, result) {
           {
             text:
               'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
-              'pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.',
+              'pasqyrojnë ngarkesën mësimore të realizuar prej meje.',
             margin: [0, 0, 0, 30]
           },
 
