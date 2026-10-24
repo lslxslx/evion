@@ -530,8 +530,11 @@ function reportHtml(data, result) {
 }
 
 // Hap raportin. Nuk thërret printimin automatikisht.
+// Hap një kopje të raportit në një skedë të pavarur.
 function printReport(data) {
-  if (!data || JSON.stringify(data).length > 500000) {
+  const serialized = JSON.stringify(data);
+
+  if (!data || !serialized || serialized.length > 500000) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -543,109 +546,69 @@ function printReport(data) {
     throw new Error(result.errors.join('\n'));
   }
 
-  // Ky kod ekzekutohet vetëm brenda skedës së raportit.
-  const reportScript = `
-    <script>
-      (() => {
-        const button =
-          document.getElementById('print-button');
+  const prefix = 'evion-report-transfer-';
+  const now = Date.now();
+  const lifetime = 15 * 60 * 1000;
 
-        const status =
-          document.getElementById('print-status');
+  const id = crypto.randomUUID();
+  const key = prefix + id;
 
-        let printing = false;
+  try {
+    // Pastron kopjet e vjetra që nuk janë hapur.
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const storedKey = localStorage.key(i);
 
-        button.type = 'button';
+      if (!storedKey || !storedKey.startsWith(prefix)) {
+        continue;
+      }
 
-        button.addEventListener('click', event => {
-          event.preventDefault();
-          event.stopPropagation();
+      try {
+        const item = JSON.parse(
+          localStorage.getItem(storedKey)
+        );
 
-          if (printing) return;
-
-          printing = true;
-
-          try {
-            // Printo vetëm dokumentin e kësaj skede.
-            window.print();
-          } finally {
-            printing = false;
-          }
-        });
-
-        function enablePrint(message) {
-          button.disabled = false;
-          status.textContent = message;
+        if (
+          !item ||
+          !Number.isFinite(item.createdAt) ||
+          now - item.createdAt > lifetime
+        ) {
+          localStorage.removeItem(storedKey);
         }
+      } catch {
+        localStorage.removeItem(storedKey);
+      }
+    }
 
-        async function prepareReport() {
-          let timer;
+    // Dërgon një kopje të të dhënave te raporti.
+    // Formulari ekzistues nuk ndryshohet.
+    localStorage.setItem(
+      key,
+      JSON.stringify({
+        createdAt: now,
+        data: JSON.parse(serialized)
+      })
+    );
+  } catch {
+    throw new Error(
+      'Shfletuesi nuk lejoi ruajtjen e përkohshme të raportit. ' +
+      'Kontrolloni cilësimet e ruajtjes për këtë faqe.'
+    );
+  }
 
-          try {
-            if (document.fonts) {
-              const fonts = await Promise.race([
-                Promise.all([
-                  document.fonts.load('400 9px "Comfortaa"'),
-                  document.fonts.load('700 14px "Comfortaa"')
-                ]),
-
-                new Promise((_, reject) => {
-                  timer = setTimeout(() => {
-                    reject(new Error('Fonti nuk u ngarkua.'));
-                  }, 10000);
-                })
-              ]);
-
-              if (!fonts.every(list => list.length > 0)) {
-                throw new Error('Fonti mungon.');
-              }
-            }
-
-            enablePrint(
-              'Dokumenti është gati. Shtypni “Printo / Ruaj PDF”. ' +
-              'Pas përfundimit mund ta mbyllni këtë skedë.'
-            );
-          } catch {
-            enablePrint(
-              'Comfortaa nuk u ngarkua. Mund të printoni ' +
-              'me fontin rezervë ose ta rihapni raportin.'
-            );
-          } finally {
-            clearTimeout(timer);
-          }
-        }
-
-        prepareReport();
-      })();
-    <\/script>
-  `;
-
-  const html = reportHtml(data, result).replace(
-    '</body>',
-    reportScript + '\n</body>'
+  const reportUrl = new URL(
+    'raporti.html',
+    document.baseURI
   );
 
-  // Dokument i pavarur: nuk përdor document.write().
-  const blob = new Blob(
-    [html],
-    { type: 'text/html;charset=utf-8' }
-  );
-
-  const reportUrl = URL.createObjectURL(blob);
+  reportUrl.hash = id;
 
   const link = document.createElement('a');
-  link.href = reportUrl;
-  link.target = '_blank';
 
-  // Raporti nuk ka lidhje window.opener me formularin.
+  link.href = reportUrl.href;
+  link.target = '_blank';
   link.rel = 'noopener noreferrer';
 
   document.body.appendChild(link);
   link.click();
   link.remove();
-
-  // Lë kohë për ngarkimin e raportit përpara lirimit të URL-së.
-  setTimeout(() => {
-    URL.revokeObjectURL(reportUrl);
-  }, 600000);
 }
