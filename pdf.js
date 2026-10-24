@@ -1,4 +1,4 @@
-/* Raporti HTML dhe PDF A4 me pdfmake / Comfortaa. */
+/* Raport narrativ HTML dhe PDF tabelor me pdfmake / Comfortaa. */
 
 function pdfFilename(data) {
   return (
@@ -10,7 +10,7 @@ function pdfFilename(data) {
 
 
 // =====================================================
-// RAPORTI HTML
+// RAPORTI NARRATIV HTML
 // =====================================================
 
 function reportHtml(data, result) {
@@ -34,6 +34,12 @@ function reportHtml(data, result) {
       ) * 1000000
     ) / 1000000;
 
+  const formatNumber = value =>
+    String(number(value)).replace('.', ',');
+
+  const formatDate = value =>
+    value.split('-').reverse().join('.');
+
   const labels = [
     'Leksion',
     'Seminar',
@@ -52,10 +58,7 @@ function reportHtml(data, result) {
     document.baseURI
   ).href;
 
-  const cells = values => values.map(value => `
-    <td class="num">${escape(value)}</td>
-  `).join('');
-
+  // Tabela përmbledhëse e krediteve.
   const creditRows = labels.map((label, index) => `
     <tr>
       <td>${label}</td>
@@ -64,29 +67,120 @@ function reportHtml(data, result) {
     </tr>
   `).join('');
 
-  const lessonRows = data.rows.map(row => `
-    <tr>
-      <td class="num">
-        ${escape(row.week)}${row.replacement ? ' *' : ''}
-      </td>
+  // Datat renditen pa ndryshuar regjistrimet origjinale.
+  const sortedRows = [...data.rows].sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
 
-      <td class="date">
-        ${escape(row.date.split('-').reverse().join('.'))}
-      </td>
+  const weeks = [
+    ...new Set(
+      data.rows.map(row => number(row.week))
+    )
+  ].sort((a, b) => a - b);
 
-      <td class="num">${escape(row.students)}</td>
+  const first = sortedRows[0];
+  const last = sortedRows[sortedRows.length - 1];
 
-      <td class="topic">${escape(row.topic)}</td>
+  const introduction = first ? `
+    <p>
+      Lënda <strong>${escape(data.subject)}</strong>
+      është zhvilluar në
+      <strong>${weeks.length} javë me regjistrime mësimore</strong>,
+      brenda intervalit nga java
+      <strong>${weeks[0]}</strong>
+      deri në javën
+      <strong>${weeks[weeks.length - 1]}</strong>.
+      Mësimi i parë i regjistruar është më
+      <strong>${formatDate(first.date)}</strong>
+      (java ${escape(first.week)}),
+      ndërsa i fundit më
+      <strong>${formatDate(last.date)}</strong>
+      (java ${escape(last.week)}).
+    </p>
+  ` : `
+    <p>Nuk ka regjistrime mësimore.</p>
+  `;
 
-      ${cells(
-        row.hours.map(value => number(value) || '')
-      )}
+  const categoryNames = [
+    'Leksionet',
+    'Seminaret',
+    'Laboratorët',
+    'Detyrat/projektet',
+    'Praktika'
+  ];
 
-      <td class="num daily-total">
-        ${sum(row.hours)}
-      </td>
-    </tr>
-  `).join('');
+  const categorySummary = categoryNames
+    .map((label, index) => `
+      <p>
+        <strong>${label}:</strong>
+        janë realizuar
+        <strong>${formatNumber(result.actual[index])} orë</strong>
+        nga
+        <strong>${formatNumber(result.expected[index])} orë</strong>
+        të parashikuara.
+      </p>
+    `)
+    .join('');
+
+  // Mbledh të gjitha regjistrimet e së njëjtës datë.
+  const hoursByDate = new Map();
+
+  data.rows.forEach(row => {
+    const hours = hoursByDate.get(row.date) ||
+      [0, 0, 0, 0, 0];
+
+    row.hours.forEach((value, index) => {
+      hours[index] = sum([hours[index], value]);
+    });
+
+    hoursByDate.set(row.date, hours);
+  });
+
+  const dailyNames = [
+    'leksion',
+    'seminar',
+    'laborator',
+    'detyrë/projekt',
+    'praktikë'
+  ];
+
+  const overEight = [...hoursByDate.entries()]
+    .sort(([dateA], [dateB]) =>
+      dateA.localeCompare(dateB)
+    )
+    .filter(([, hours]) => sum(hours) > 8);
+
+  const dailySummary = overEight.length
+    ? overEight.map(([date, hours]) => {
+        const parts = hours
+          .map((value, index) =>
+            value > 0
+              ? `${formatNumber(value)} orë ${dailyNames[index]}`
+              : ''
+          )
+          .filter(Boolean);
+
+        const detail = parts.length > 1
+          ? parts.slice(0, -1).join(', ') +
+            ' dhe ' +
+            parts[parts.length - 1]
+          : parts[0];
+
+        return `
+          <p class="over-eight">
+            Në datën <strong>${formatDate(date)}</strong>
+            janë zhvilluar ${escape(detail)},
+            me një total prej
+            <strong>${formatNumber(sum(hours))} orësh</strong>.
+          </p>
+        `;
+      }).join('')
+    : `
+      <p>
+        Nuk ka data me më shumë se 8 orë mësimore
+        të regjistruara.
+      </p>
+    `;
 
   const notes = String(data.notes || '')
     .trim()
@@ -219,15 +313,6 @@ function reportHtml(data, result) {
       text-align: center;
     }
 
-    .date {
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .topic {
-      white-space: pre-wrap;
-    }
-
     .top {
       margin-bottom: 18px;
     }
@@ -259,41 +344,35 @@ function reportHtml(data, result) {
       font-weight: 700;
     }
 
-    .data td {
-      border-bottom: 1px solid #e3e3e3;
+    .narrative {
+      margin-top: 24px;
+      font-size: 10px;
+      line-height: 1.8;
     }
 
-    .data thead th {
-      background: #eee;
-      color: #222;
-      text-align: center;
-      vertical-align: middle;
-      font-size: 8.5px;
-      white-space: nowrap;
-      overflow-wrap: normal;
+    .narrative h2 {
+      margin: 20px 0 10px;
+      font-size: 11px;
+      color: #4a5281;
+      break-after: avoid;
+      page-break-after: avoid;
     }
 
-    .data thead tr:first-child th {
-      padding: 7px 3px 3px;
+    .narrative p {
+      margin: 0 0 10px;
+      orphans: 3;
+      widows: 3;
     }
 
-    .data thead tr:last-child th {
-      padding: 7px 3px 9px;
-      border-bottom: 1px solid #999;
+    .narrative .total {
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
     }
 
-    .data .daily-total,
-    .data thead .daily-total {
-      font-weight: 700;
-    }
-
-    .data .total td {
-      background: #eee;
-      font-weight: 700;
-    }
-
-    .data .expected td {
-      font-weight: 400;
+    .over-eight {
+      color: #b91c1c;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
 
     .signature {
@@ -348,6 +427,10 @@ function reportHtml(data, result) {
         margin: 0;
         padding: 0;
         box-shadow: none;
+      }
+
+      .over-eight {
+        color: #b91c1c !important;
       }
     }
   </style>
@@ -425,62 +508,27 @@ function reportHtml(data, result) {
         </tbody>
       </table>
 
-      <table class="data">
-        <colgroup>
-          <col style="width:5%">
-          <col style="width:11%">
-          <col style="width:6%">
-          <col style="width:34%">
-          <col style="width:7%">
-          <col style="width:7%">
-          <col style="width:7%">
-          <col style="width:7%">
-          <col style="width:7%">
-          <col style="width:9%">
-        </colgroup>
+      <section class="narrative">
+        <h2>Përmbledhje e zhvillimit të lëndës</h2>
 
-        <thead>
-          <tr>
-            <th colspan="4"></th>
-            <th colspan="5">Orë faktike</th>
-            <th></th>
-          </tr>
+        ${introduction}
 
-          <tr>
-            <th>Java</th>
-            <th>Data</th>
-            <th>Nr. Std.</th>
-            <th>Tema e mësimit</th>
+        <h2>Ngarkesa mësimore e realizuar</h2>
 
-            ${labels.map(label => `
-              <th>${label}</th>
-            `).join('')}
+        ${categorySummary}
 
-            <th class="daily-total">Shuma / dt.</th>
-          </tr>
-        </thead>
+        <p class="total">
+          Në total janë realizuar
+          <strong>${formatNumber(sum(result.actual))} orë</strong>
+          nga
+          <strong>${formatNumber(sum(result.expected))} orë</strong>
+          të parashikuara sipas krediteve dhe grupeve.
+        </p>
 
-        <tbody>
-          ${lessonRows}
+        <h2>Datat me më shumë se 8 orë mësimore</h2>
 
-          <tr class="total">
-            <td colspan="4">Shuma totale</td>
-            ${cells(result.actual)}
-            <td class="num">${sum(result.actual)}</td>
-          </tr>
-
-          <tr class="expected">
-            <td colspan="4">
-              Shuma sipas krediteve dhe grupeve për
-              ngarkesën sipas parashikimit.
-            </td>
-
-            ${cells(result.expected)}
-
-            <td class="num">${sum(result.expected)}</td>
-          </tr>
-        </tbody>
-      </table>
+        ${dailySummary}
+      </section>
 
       <p style="margin-top: 25px;">
         Deklaroj se të dhënat e paraqitura në këtë evidencë
@@ -886,7 +934,6 @@ function reportDefinition(data, result) {
         }
       },
 
-      // Vetëdeklarimi dhe firmat, pa vijë nën emrin.
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
