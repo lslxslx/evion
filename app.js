@@ -40,6 +40,83 @@ let verified = false;
 
 const disabledStates = new Map();
 
+// Ruajtje e përkohshme në skedën aktuale të shfletuesit.
+const SESSION_KEY = 'upt-evidenca-form-v1';
+
+function rememberForm() {
+  try {
+    sessionStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify({
+        version: 1,
+        dateFormat: 'yyyy-MM-dd',
+        data: readForm()
+      })
+    );
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function restoreForm() {
+  let saved;
+
+  try {
+    saved = sessionStorage.getItem(SESSION_KEY);
+
+    if (!saved) return false;
+
+    const data = checkDraft(JSON.parse(saved));
+
+    fields.forEach(([id, , defaultValue]) => {
+      const value = data[id] ?? defaultValue;
+
+      $(id).value = id === 'start'
+        ? internalDate(value)
+        : String(value);
+    });
+
+    labels.forEach((_, index) => {
+      $('c' + index).value = String(
+        data.credits[index] ?? 0
+      ).replace(',', '.');
+
+      $('g' + index).value = String(
+        data.groups[index] ?? 1
+      ).replace(',', '.');
+    });
+
+    $('notes').value = data.notes || '';
+
+    $('lessons').tBodies[0].replaceChildren();
+    data.rows.forEach(addRow);
+
+    if (!data.rows.length) {
+      addRow();
+    }
+
+    syncCycle();
+    updatePracticeVisibility();
+    updateTotals();
+
+    dirty = true;
+    verified = false;
+    $('pdf').disabled = true;
+
+    showMessage(
+      'Plotësimet e mëparshme u rikthyen. ' +
+      'Kontrollojini dhe shtypni “Verifiko”.'
+    );
+
+    return true;
+  } catch {
+    // Nëse kopja nuk lexohet, formulari nis normalisht.
+    return false;
+  }
+}
+
 // Përshtat butonin edhe nëse HTML-ja ka ende emërtimin e vjetër.
 $('pdf').textContent = 'Printo / Ruaj PDF';
 $('pdf').disabled = true;
@@ -426,6 +503,8 @@ function updateTotals() {
 
   return result;
 }
+
+rememberForm();
 
 function showMessage(text, kind = '') {
   $('status').textContent = text;
@@ -864,7 +943,7 @@ $('pdf').onclick = async () => {
         'Kontrolloni që pdf.js i ri të ngarkohet përpara app.js.'
       );
     }
-
+    rememberForm();
     setBusy(true);
     showMessage('Po përgatitet evidenca për printim…');
 
@@ -898,6 +977,20 @@ window.addEventListener('beforeunload', event => {
 });
 
 // Nisja e formularit.
-addRow();
-updateTotals();
-updatePracticeVisibility();
+if (!restoreForm()) {
+  // Pastron edhe ndonjë rikthim të pjesshëm.
+  $('lessons').tBodies[0].replaceChildren();
+
+  addRow();
+  updateTotals();
+  updatePracticeVisibility();
+}
+
+// Ruaj edhe kur faqja kalon në sfond.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    rememberForm();
+  }
+});
+
+window.addEventListener('pagehide', rememberForm);
