@@ -490,8 +490,14 @@ function reportHtml(data, result) {
         <tbody>
           <tr>
             <td>
-              PEDAGOG/E
-              <p>${escape(data.teacher)}</p>
+              DEKLARUESI/JA
+              <p>
+              <span style="
+              display: inline-block;
+              padding-bottom: 12px;
+              border-bottom: 0.5px solid #555;
+              ">${escape(data.teacher)}</span>
+              </p>
             </td>
 
             <td class="head">
@@ -884,34 +890,76 @@ function reportDefinition(data, result) {
       },
 
       {
-        unbreakable: true,
-        margin: [0, 23, 0, 0],
+  unbreakable: true,
+  margin: [0, 23, 0, 0],
 
-        columns: [
-          {
-            width: '50%',
-            stack: [
-              { text: 'PEDAGOG/E' },
-              {
-                text: data.teacher,
-                margin: [0, 5, 0, 0]
-              }
-            ]
-          },
+  stack: [
+    {
+      text:
+        'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
+        'pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.',
+      margin: [0, 0, 0, 18]
+    },
 
-          {
-            width: '50%',
-            alignment: 'right',
-            stack: [
-              { text: 'DREJTUES DEPARTAMENTI' },
-              {
-                text: data.head,
-                margin: [0, 5, 0, 0]
+    {
+      columns: [
+        {
+          width: '50%',
+
+          stack: [
+            {
+              text: 'DEKLARUESI/JA'
+            },
+
+            {
+              margin: [0, 5, 8, 0],
+
+              table: {
+                widths: ['auto'],
+                body: [
+                  [
+                    {
+                      text: data.teacher,
+                      margin: [0, 0, 0, 12]
+                    }
+                  ]
+                ]
+              },
+
+              layout: {
+                hLineWidth: index =>
+                  index === 1 ? 0.5 : 0,
+
+                vLineWidth: () => 0,
+                hLineColor: () => '#555555',
+
+                paddingLeft: () => 0,
+                paddingRight: () => 0,
+                paddingTop: () => 0,
+                paddingBottom: () => 0
               }
-            ]
-          }
-        ]
-      }
+            }
+          ]
+        },
+
+        {
+          width: '50%',
+          alignment: 'right',
+
+          stack: [
+            {
+              text: 'DREJTUES DEPARTAMENTI'
+            },
+            {
+              text: data.head,
+              margin: [0, 5, 0, 0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
     ]
   };
 
