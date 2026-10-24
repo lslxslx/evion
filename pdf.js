@@ -123,7 +123,7 @@ function reportHtml(data, result) {
 
     @page {
       size: A4 portrait;
-      margin: 11mm;
+      margin: 10mm 7mm;
     }
 
     *,
@@ -187,7 +187,7 @@ function reportHtml(data, result) {
       width: 210mm;
       min-height: 297mm;
       margin: auto;
-      padding: 11mm;
+      padding: 10mm 7mm;
       background: #fff;
       box-shadow: 0 3px 18px #00000012;
     }
