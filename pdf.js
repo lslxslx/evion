@@ -484,7 +484,7 @@ function reportHtml(data, result) {
 
       <p style="margin-top: 25px;">
         Deklaroj se të dhënat e paraqitura në këtë evidencë
-        pasqyrojnë saktë ngarkesën mësimore të realizuar prej meje.
+        pasqyrojnë ngarkesën mësimore të realizuar prej meje.
       </p>
 
       <table class="signature">
