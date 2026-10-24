@@ -41,11 +41,6 @@ $('pdf').type = 'button';
 $('pdf').textContent = 'Gjenero raport';
 $('pdf').disabled = true;
 
-// Hiq lidhjen e vjetër të shkarkimit, nëse ekziston.
-if ($('download')) {
-  $('download').remove();
-}
-
 function numericValue(value) {
   return Number(
     String(value || 0).trim().replace(',', '.')
