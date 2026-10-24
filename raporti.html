@@ -44,23 +44,26 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      prepareReport().catch(error => {
+      try {
+        prepareReport();
+      } catch (error) {
         let message =
           document.getElementById('print-status') ||
           document.getElementById('loading-status');
 
         if (!message) {
           message = document.createElement('p');
-          message.setAttribute('role', 'alert');
           document.body.prepend(message);
         }
 
+        message.hidden = false;
+        message.setAttribute('role', 'alert');
         message.textContent =
           'Raporti nuk u hap: ' + error.message;
-      });
+      }
     });
 
-    async function prepareReport() {
+    function prepareReport() {
       const id = window.location.hash.slice(1);
 
       if (!/^[a-f0-9-]{36}$/i.test(id)) {
@@ -113,7 +116,6 @@
       }
 
       // Afati zbatohet vetëm për transferimin fillestar.
-      // Raporti i hapur ruan kopjen në skedën e vet.
       if (
         fromTransfer &&
         (
@@ -124,7 +126,7 @@
         try {
           localStorage.removeItem(transferKey);
         } catch {
-          // Mesazhi i skadimit shfaqet edhe kur pastrimi dështon.
+          // Pastrimi nuk pengon shfaqjen e mesazhit.
         }
 
         throw new Error(
@@ -143,7 +145,7 @@
       }
 
       try {
-        // Ruhet vetëm kopja e raportit në këtë skedë.
+        // Raporti ruan kopjen e vet në këtë skedë.
         sessionStorage.setItem(sessionKey, serialized);
       } catch {
         throw new Error(
@@ -152,10 +154,9 @@
       }
 
       try {
-        // Kopja për transferim nuk nevojitet më.
         localStorage.removeItem(transferKey);
       } catch {
-        // Raporti mund të vazhdojë me kopjen e sessionStorage.
+        // Kopja në sessionStorage mbetet e disponueshme.
       }
 
       // Përdor formatimin ekzistues nga pdf.js.
@@ -168,63 +169,28 @@
 
       if (!toolbar) {
         throw new Error(
-          'Në reportHtml() mungon zona e udhëzimeve të raportit.'
+          'Në reportHtml() mungon zona .toolbar-inner.'
         );
       }
 
-      // Zëvendëson butonin dhe udhëzimet e vjetra.
-      // Nuk thirret window.print().
-      const heading = document.createElement('strong');
-      heading.textContent = 'Printimi / Ruajtja si PDF';
+      // Në krye shfaqet vetëm butoni i printimit.
+      const printButton = parsed.createElement('button');
 
-      const instructions = document.createElement('p');
-      instructions.textContent =
-        'Në Mac përdorni ⌘P; në Windows përdorni Ctrl+P. ' +
-        'Mund të përdorni edhe menunë e shfletuesit File → Print.';
+      printButton.id = 'print-button';
+      printButton.type = 'button';
+      printButton.textContent = 'Printo / Ruaj PDF';
 
-      const mobileHelp = document.createElement('p');
-      mobileHelp.textContent =
-        'Në iPhone ose iPad përdorni menunë Ndaj / Share → Print.';
+      const status = parsed.createElement('p');
 
-      const settings = document.createElement('p');
-      settings.textContent =
-        'Zgjidhni A4 dhe orientim vertikal. Për ta ruajtur ' +
-        'dokumentin, përdorni opsionin PDF / Save as PDF ' +
-        'në dritaren e printimit.';
-
-      const status = document.createElement('p');
       status.id = 'print-status';
+      status.hidden = true;
       status.setAttribute('role', 'status');
-      status.textContent = 'Po ngarkohet fonti i raportit…';
 
-      const returnHelp = document.createElement('p');
-      returnHelp.textContent =
-        'Raporti mbetet i hapur pas printimit. ' +
-        'Mund ta printoni përsëri ose ta mbyllni këtë skedë ' +
-        'për t’u kthyer te formulari.';
-
-      const printButton = document.createElement('button');
-
-printButton.type = 'button';
-printButton.textContent = 'Printo / Ruaj PDF';
-printButton.onclick = () => window.print();
-
-// Statusi përdoret nga kontrolli ekzistues i fontit.
-status.hidden = true;
-
-toolbar.replaceChildren(printButton, 
-                        status,
-                        heading,
-                        instructions,
-                        mobileHelp,
-                        settings,
-                        status,
-                        returnHelp
-                       );
+      toolbar.replaceChildren(printButton, status);
 
       document.title = parsed.title || 'Evidenca mësimore';
 
-      // Vendos stilet e raportit.
+      // Zëvendëson stilet fillestare me stilet e raportit.
       document.head
         .querySelectorAll('style')
         .forEach(style => style.remove());
@@ -237,7 +203,7 @@ toolbar.replaceChildren(printButton,
           );
         });
 
-      // Udhëzimet nuk përfshihen në dokumentin e printuar.
+      // Butoni nuk përfshihet në printim.
       const printStyle = document.createElement('style');
 
       printStyle.textContent = `
@@ -250,7 +216,7 @@ toolbar.replaceChildren(printButton,
 
       document.head.appendChild(printStyle);
 
-      // Vendos raportin vetëm brenda kësaj skede.
+      // Vendos përmbajtjen vetëm në skedën e raportit.
       const content = document.createDocumentFragment();
 
       Array.from(parsed.body.childNodes).forEach(node => {
@@ -261,43 +227,10 @@ toolbar.replaceChildren(printButton,
 
       document.body.replaceChildren(content);
 
-      const reportStatus =
-        document.getElementById('print-status');
-
-      let timer;
-      let fontsLoaded = false;
-
-      try {
-        if (document.fonts) {
-          const fonts = await Promise.race([
-            Promise.all([
-              document.fonts.load('400 9px "Comfortaa"'),
-              document.fonts.load('700 14px "Comfortaa"')
-            ]),
-
-            new Promise((_, reject) => {
-              timer = setTimeout(() => {
-                reject(
-                  new Error('Fonti nuk u ngarkua.')
-                );
-              }, 10000);
-            })
-          ]);
-
-          fontsLoaded = fonts.every(
-            list => list.length > 0
-          );
-        }
-      } catch {
-        fontsLoaded = false;
-      } finally {
-        clearTimeout(timer);
-      }
-
-      reportStatus.textContent = fontsLoaded
-        ? 'Dokumenti është gati për printim.'
-        : 'Comfortaa nuk u ngarkua. Mund të printoni me ' +
-          'fontin rezervë ose të rifreskoni këtë skedë.';
+      // Lidh klikimin PAS kopjimit të butonit në faqen aktuale.
+      document.getElementById('print-button').onclick = () => {
+        window.print();
+      };
     }
   </script>
 </body>
