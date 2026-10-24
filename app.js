@@ -1,6 +1,4 @@
-
-    
-
+/* (C) ルイス  */
     const $ = id => document.getElementById(id);
 
     const labels = [
