@@ -906,7 +906,7 @@ function reportDefinition(data, result) {
 
                 stack: [
                   {
-                    text: 'DEKLARUESI/JA'
+                    text: 'DEKLARUES'
                   },
                   {
                     text: data.teacher,
