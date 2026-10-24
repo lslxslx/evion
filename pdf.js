@@ -614,9 +614,9 @@ async function printReport(data) {
       return;
     }
 
-    status.textContent =
-      'Dokumenti është gati. Nëse printimi nuk hapet ' +
-      'automatikisht, shtypni “Printo / Ruaj PDF”.';
+    status.textContent = 'Dokumenti është gati. Shtypni “Printo / Ruaj PDF” ' + 
+      'nëse dëshironi ta printoni ose ta ruani. ' + 
+      'Kur të përfundoni, mbyllni këtë skedë për t’u kthyer te formulari.';
 
     openPrintDialog();
   } catch (error) {
