@@ -491,7 +491,7 @@ function reportHtml(data, result) {
         <tbody>
           <tr>
             <td>
-              DEKLARUESI/JA
+              DEKLARUES
               <p>${escape(data.teacher)}</p>
             </td>
 
