@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Evidenca mësimore — Raporti</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #f1eef4;
+      color: #171717;
+      font-family: Arial, sans-serif;
+    }
+
+    .loading {
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      line-height: 1.6;
+    }
+  </style>
+
+  <script src="core.js" defer></script>
+  <script src="pdf.js" defer></script>
+</head>
+
+<body>
+  <div class="loading">
+    <h1>Raporti mësimor</h1>
+    <p id="loading-status" role="status">
+      Po përgatitet raporti…
+    </p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      prepareReport().catch(error => {
+        const message =
+          document.getElementById('print-status') ||
+          document.getElementById('loading-status');
+
+        if (message) {
+          message.textContent =
+            'Raporti nuk u hap: ' + error.message;
+        }
+      });
+    });
+
+    async function prepareReport() {
+      const id = window.location.hash.slice(1);
+
+      if (!/^[a-f0-9-]{36}$/i.test(id)) {
+        throw new Error(
+          'Hapeni raportin nga butoni i formularit.'
+        );
+      }
+
+      const transferKey = 'evion-report-transfer-' + id;
+      const sessionKey = 'evion-report-' + id;
+
+      let serialized;
+      let fromTransfer = false;
+
+      try {
+        // Kopja e kësaj skede lejon edhe rifreskimin e raportit.
+        serialized = sessionStorage.getItem(sessionKey);
+
+        if (!serialized) {
+          serialized = localStorage.getItem(transferKey);
+          fromTransfer = true;
+        }
+      } catch {
+        throw new Error(
+          'Shfletuesi nuk lejon leximin e të dhënave të raportit.'
+        );
+      }
+
+      if (!serialized) {
+        throw new Error(
+          'Të dhënat mungojnë. Kthehuni te formulari ' +
+          'dhe hapeni raportin përsëri.'
+        );
+      }
+
+      let snapshot;
+
+      try {
+        snapshot = JSON.parse(serialized);
+      } catch {
+        throw new Error('Të dhënat janë të pavlefshme.');
+      }
+
+      if (!snapshot || !snapshot.data) {
+        throw new Error('Të dhënat e raportit mungojnë.');
+      }
+
+      if (
+        fromTransfer &&
+        (
+          !Number.isFinite(snapshot.createdAt) ||
+          Date.now() - snapshot.createdAt > 15 * 60 * 1000
+        )
+      ) {
+        localStorage.removeItem(transferKey);
+
+        throw new Error(
+          'Koha për hapjen e raportit përfundoi. ' +
+          'Hapeni përsëri nga formulari.'
+        );
+      }
+
+      const data = snapshot.data;
+      const result = evaluate_(data);
+
+      if (result.errors.length) {
+        throw new Error(result.errors.join('\n'));
+      }
+
+      try {
+        // Raporti ruan kopjen e vet brenda kësaj skede.
+        sessionStorage.setItem(sessionKey, serialized);
+
+        // Kopja për transferim nuk nevojitet më.
+        localStorage.removeItem(transferKey);
+      } catch {
+        throw new Error(
+          'Nuk u ruajt dot kopja e raportit në këtë skedë.'
+        );
+      }
+
+      // Përdor të njëjtin format ekzistues të raportit.
+      const parsed = new DOMParser().parseFromString(
+        reportHtml(data, result),
+        'text/html'
+      );
+
+      document.title = parsed.title || 'Evidenca mësimore';
+
+      // Vendos stilet e raportit.
+      document.head
+        .querySelectorAll('style')
+        .forEach(style => style.remove());
+
+      parsed.head
+        .querySelectorAll('style')
+        .forEach(style => {
+          document.head.appendChild(
+            document.importNode(style, true)
+          );
+        });
+
+      // Ndryshon vetëm përmbajtjen e skedës së raportit.
+      const content = document.createDocumentFragment();
+
+      Array.from(parsed.body.childNodes).forEach(node => {
+        content.appendChild(
+          document.importNode(node, true)
+        );
+      });
+
+      document.body.replaceChildren(content);
+
+      const button = document.getElementById('print-button');
+      const status = document.getElementById('print-status');
+
+      if (!button || !status) {
+        throw new Error(
+          'Në reportHtml() mungon butoni ose statusi i printimit.'
+        );
+      }
+
+      button.type = 'button';
+      button.disabled = true;
+
+      button.addEventListener('click', event => {
+        event.preventDefault();
+
+        // Printon vetëm këtë skedë.
+        // Nuk mbyll skedën dhe nuk prek formularin.
+        window.print();
+      });
+
+      let timer;
+      let fontsLoaded = false;
+
+      try {
+        if (document.fonts) {
+          const fonts = await Promise.race([
+            Promise.all([
+              document.fonts.load('400 9px "Comfortaa"'),
+              document.fonts.load('700 14px "Comfortaa"')
+            ]),
+
+            new Promise((_, reject) => {
+              timer = setTimeout(() => {
+                reject(new Error('Fonti nuk u ngarkua.'));
+              }, 10000);
+            })
+          ]);
+
+          fontsLoaded = fonts.every(
+            list => list.length > 0
+          );
+        }
+      } catch {
+        fontsLoaded = false;
+      } finally {
+        clearTimeout(timer);
+      }
+
+      button.disabled = false;
+
+      status.textContent = fontsLoaded
+        ? 'Dokumenti është gati. Mund ta printoni ose ta ' +
+          'ruani si PDF sa herë të dëshironi.'
+        : 'Comfortaa nuk u ngarkua. Mund të printoni me ' +
+          'fontin rezervë ose të rifreskoni këtë skedë.';
+
+      window.addEventListener('afterprint', () => {
+        status.textContent =
+          'Raporti mbetet i hapur. Mund ta printoni përsëri ' +
+          'ose ta mbyllni këtë skedë.';
+      });
+    }
+  </script>
+</body>
+</html>
