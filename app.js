@@ -677,16 +677,12 @@ reportButton.onclick = event => {
   }
 };
 
-// Hap PDF-në në skedë të re dhe nis shkarkimin.
+// Shkarkon PDF-në pa prompt dhe pa hapur skedë të re.
 if (printPdfButton) {
   printPdfButton.onclick = async event => {
     event.preventDefault();
 
     if (pdfBusy) return;
-
-    let pdfTab = null;
-    let pdfUrl = null;
-    let pdfOpened = false;
 
     const revisionAtStart = formRevision;
 
@@ -712,20 +708,6 @@ if (printPdfButton) {
         );
       }
 
-      const filename = pdfFilename(data);
-
-      // Hapet gjatë klikimit, përpara gjenerimit të PDF-së.
-      pdfTab = window.open('about:blank', '_blank');
-
-      if (pdfTab) {
-        pdfTab.opener = null;
-        pdfTab.document.title = filename;
-
-        const loading = pdfTab.document.createElement('p');
-        loading.textContent = 'Po përgatitet PDF-ja…';
-        pdfTab.document.body.append(loading);
-      }
-
       pdfBusy = true;
       updateActionButtons();
 
@@ -737,47 +719,10 @@ if (printPdfButton) {
         );
       }
 
-      let tabNotice = '';
-
-      if (pdfTab && !pdfTab.closed) {
-        try {
-          pdfUrl = URL.createObjectURL(blob);
-          pdfTab.location.replace(pdfUrl);
-          pdfOpened = true;
-
-          const openedTab = pdfTab;
-          const openedUrl = pdfUrl;
-
-          // URL-ja mbetet aktive derisa mbyllet skeda.
-          const cleanup = setInterval(() => {
-            if (openedTab.closed) {
-              clearInterval(cleanup);
-              URL.revokeObjectURL(openedUrl);
-            }
-          }, 2000);
-        } catch {
-          if (pdfUrl) {
-            URL.revokeObjectURL(pdfUrl);
-            pdfUrl = null;
-          }
-
-          if (!pdfTab.closed) {
-            pdfTab.close();
-          }
-
-          tabNotice =
-            ' Skeda e PDF-së nuk u hap; shkarkimi vazhdon.';
-        }
-      } else {
-        tabNotice =
-          ' Skeda e re u bllokua ose u mbyll; ' +
-          'shkarkimi vazhdon.';
-      }
-
-      // Shkarkimi nuk ndryshon ose pastron formularin.
+      const filename = pdfFilename(data);
       downloadBlob(blob, filename);
 
-      let message = 'PDF: ' + filename + tabNotice;
+      let message = 'PDF: ' + filename;
 
       if (formRevision !== revisionAtStart) {
         message +=
@@ -787,21 +732,9 @@ if (printPdfButton) {
 
       showMessage(
         message,
-        !tabNotice && formRevision === revisionAtStart
-          ? 'success'
-          : ''
+        formRevision === revisionAtStart ? 'success' : ''
       );
     } catch (error) {
-      if (!pdfOpened) {
-        if (pdfUrl) {
-          URL.revokeObjectURL(pdfUrl);
-        }
-
-        if (pdfTab && !pdfTab.closed) {
-          pdfTab.close();
-        }
-      }
-
       showMessage(error.message, 'error');
     } finally {
       pdfBusy = false;
