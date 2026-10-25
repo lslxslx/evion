@@ -1135,7 +1135,7 @@ function reportDefinition(data, result) {
           {
             qr: evidenceQrText(data, result),
             eccLevel: 'M',
-            fit: 84,
+            fit: 90,
             foreground: '#1a1a1a',
             background: '#ffffff',
             alignment: 'left',
