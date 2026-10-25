@@ -441,37 +441,136 @@ function reportHtml(data, result) {
     }
 
     @media print {
-      html,
-      body {
-        background: #fff;
-      }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
 
-      body {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+  body {
+    font-size: 9px;
+    line-height: 1.3;
 
-      .toolbar {
-        display: none;
-      }
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-      .preview {
-        overflow: visible;
-        padding: 0;
-      }
+  .toolbar {
+    display: none !important;
+  }
 
-      .sheet {
-        width: auto;
-        min-height: 0;
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
-      }
+  .preview {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
 
-      .over-eight {
-        color: #b91c1c !important;
-      }
-    }
+  .sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  p {
+    margin: 0 0 3px;
+  }
+
+  h1 {
+    margin: 12px 0 8px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .top {
+    margin-bottom: 10px;
+  }
+
+  .plan td,
+  .plan th {
+    padding: 2px 3px;
+  }
+
+  .narrative {
+    margin-top: 12px;
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .narrative h2 {
+    margin: 10px 0 5px;
+    font-size: 10px;
+    line-height: 1.3;
+
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .narrative p {
+    margin: 0 0 5px;
+    orphans: 2;
+    widows: 2;
+  }
+
+  .narrative .total {
+    padding-top: 6px;
+  }
+
+  .declaration {
+    margin-top: 12px;
+    line-height: 1.4;
+  }
+
+  .signature {
+    margin-top: 18px;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .signature p {
+    margin: 5px 0 0;
+  }
+
+  .evidence-qr {
+    margin-top: 6px;
+    padding: 0;
+    border: none;
+    text-align: center;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .evidence-qr-image {
+    width: 40mm;
+    margin: 0 auto;
+  }
+
+  .evidence-qr-image svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .notes {
+    margin-top: 12px;
+    font-size: 8px;
+    line-height: 1.35;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .over-eight {
+    color: #b91c1c !important;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
   </style>
 </head>
 
