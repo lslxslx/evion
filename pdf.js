@@ -1,4 +1,4 @@
-/* Raport narrativ HTML dhe PDF me pdfmake / Comfortaa. (C) lslxslx */
+/* Raport narrativ HTML dhe PDF me pdfmake / Comfortaa. (C) ルイス */
 
 // Emri i PDF-së tabelore.
 function pdfFilename(data) {
