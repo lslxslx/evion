@@ -1483,7 +1483,7 @@ function setupSummaryCsvExport() {
           .trim();
 
         // Parandalon interpretimin e tekstit si formulë në Excel.
-        if (/^[=+\-@\t\r]/.test(text)) {
+        if (text !== '-' && /^[=+\-@\t\r]/.test(text)) {
           text = "'" + text;
         }
 
