@@ -421,17 +421,16 @@ function reportHtml(data, result) {
 
     /* QR në qendër horizontalisht, pa tekst. */
     .evidence-qr {
-      margin-top: 20px;
       padding: 0;
+      margin: 0;
       border: none;
-      text-align: left;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .evidence-qr-image {
       width: 30mm;
-      margin: 0 auto;
+      margin: 0 0 0 auto;
     }
 
     .evidence-qr-image svg {
@@ -535,18 +534,16 @@ function reportHtml(data, result) {
   }
 
   .evidence-qr {
-    margin-top: 20px;
+    margin: 0;
     padding: 0;
     border: none;
-    text-align: center;
-
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .evidence-qr-image {
     width: 30mm;
-    margin: 0 auto;
+    margin: 0 0 0 auto;
   }
 
   .evidence-qr-image svg {
@@ -1142,7 +1139,7 @@ function reportDefinition(data, result) {
             foreground: '#1a1a1a',
             background: '#ffffff',
             alignment: 'left',
-            margin: [20, 0, 0, 0]
+            margin: [40, 0, 0, 0]
           }
         ]
       }
