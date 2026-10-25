@@ -1479,6 +1479,7 @@ function setupSummaryCsvExport() {
           .replace(/Ë/g, 'E')
           .replace(/ç/g, 'c')
           .replace(/Ç/g, 'C')
+          .replace(/[–—−]/g, '-')
           .trim();
 
         // Parandalon interpretimin e tekstit si formulë në Excel.
