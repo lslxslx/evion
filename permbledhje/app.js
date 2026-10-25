@@ -1473,7 +1473,13 @@ function setupSummaryCsvExport() {
 
       // Thonjëzat mbrojnë ndarësit dhe rreshtat brenda tekstit.
       const csvCell = value => {
-        let text = String(value ?? '').trim();
+        let text = String(value ?? '')
+          .normalize('NFC')
+          .replace(/ë/g, 'e')
+          .replace(/Ë/g, 'E')
+          .replace(/ç/g, 'c')
+          .replace(/Ç/g, 'C')
+          .trim();
 
         // Parandalon interpretimin e tekstit si formulë në Excel.
         if (/^[=+\-@\t\r]/.test(text)) {
