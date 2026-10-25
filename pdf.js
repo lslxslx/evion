@@ -1139,7 +1139,7 @@ function reportDefinition(data, result) {
             foreground: '#1a1a1a',
             background: '#ffffff',
             alignment: 'left',
-            margin: [0, 20, 0, 0]
+            margin: [0, 10, 0, 0]
           }
         ]
       }
