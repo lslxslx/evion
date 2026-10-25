@@ -422,7 +422,7 @@ function reportHtml(data, result) {
 
     .evidence-qr {
       padding: 0;
-      margin: 33px 0 0;
+      margin: 0;
       border: none;
       break-inside: avoid;
       page-break-inside: avoid;
@@ -430,7 +430,7 @@ function reportHtml(data, result) {
 
     .evidence-qr-image {
       width: 30mm;
-      margin: 0 auto 0 0;
+      margin: 0 0 0 auto;
     }
 
     .evidence-qr-image svg {
@@ -531,7 +531,7 @@ function reportHtml(data, result) {
       }
 
       .evidence-qr {
-        margin: 33px 0 0;
+        margin: 0;
         padding: 0;
         border: none;
         break-inside: avoid;
@@ -540,7 +540,7 @@ function reportHtml(data, result) {
 
       .evidence-qr-image {
         width: 30mm;
-        margin: 0 auto 0 0;
+        margin: 0 0 0 auto;
       }
 
       .evidence-qr-image svg {
@@ -921,7 +921,7 @@ function reportDefinition(data, result) {
     Në pdfmake 0.2.20 një fit tepër i vogël mund
     të prodhojë katrorë me madhësi zero.
   */
-  const qrFit = 180;
+  const qrFit = 90;
   const qrPayload = evidenceQrText(data, result);
 
   const widths = [
