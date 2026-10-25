@@ -1491,7 +1491,7 @@ function setupSummaryCsvExport() {
       );
 
       // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
-      const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
+      const csv = 'sep=;\r\n' + rows.join('\r\n');
 
       const teacherName =
         teacherSelect.selectedOptions[0]?.textContent.trim() ||
