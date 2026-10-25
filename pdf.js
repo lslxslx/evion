@@ -124,7 +124,6 @@ function reportHtml(data, result) {
 
   const categorySummary = categoryNames
     .map((label, index) => {
-      // Kategoritë me zero kredite nuk shfaqen.
       if (number(data.credits[index]) <= 0) {
         return '';
       }
@@ -419,11 +418,11 @@ function reportHtml(data, result) {
       widows: 3;
     }
 
-    /* QR djathtas, pa tekst. */
+    /* QR poshtë deklaruesit, majtas. */
 
     .evidence-qr {
       padding: 0;
-      margin: 0;
+      margin: 33px 0 0;
       border: none;
       break-inside: avoid;
       page-break-inside: avoid;
@@ -431,7 +430,7 @@ function reportHtml(data, result) {
 
     .evidence-qr-image {
       width: 30mm;
-      margin: 0 0 0 auto;
+      margin: 0 auto 0 0;
     }
 
     .evidence-qr-image svg {
@@ -532,7 +531,7 @@ function reportHtml(data, result) {
       }
 
       .evidence-qr {
-        margin: 0;
+        margin: 33px 0 0;
         padding: 0;
         border: none;
         break-inside: avoid;
@@ -541,7 +540,7 @@ function reportHtml(data, result) {
 
       .evidence-qr-image {
         width: 30mm;
-        margin: 0 0 0 auto;
+        margin: 0 auto 0 0;
       }
 
       .evidence-qr-image svg {
@@ -666,16 +665,16 @@ function reportHtml(data, result) {
         pasqyrojnë ngarkesën mësimore të realizuar prej meje.
       </p>
 
+      ${notes ? `
+        <p class="notes">* ${escape(notes)}</p>
+      ` : ''}
+
       <div class="signature">
         DEKLARUES
         <p>${escape(data.teacher)}</p>
 
         ${evidenceQrHtml(data, result)}
       </div>
-
-      ${notes ? `
-        <p class="notes">* ${escape(notes)}</p>
-      ` : ''}
     </main>
   </div>
 </body>
@@ -909,6 +908,22 @@ function reportDefinition(data, result) {
   const margin = 31.18;
   const contentWidth = pageWidth - 2 * margin;
 
+  /*
+    Hapësira e rezervuar poshtë faqeve.
+
+    QR-ja vendoset vetëm në faqen e fundit.
+    Rezervimi mbron tabelën dhe firmat nga mbivendosja.
+  */
+  const bottomMargin = 230;
+
+  /*
+    Mos e zvogëlo fit nën dendësinë e QR-së.
+    Në pdfmake 0.2.20 një fit tepër i vogël mund
+    të prodhojë katrorë me madhësi zero.
+  */
+  const qrFit = 180;
+  const qrPayload = evidenceQrText(data, result);
+
   const widths = [
     5, 11, 6, 34, 7, 7, 7, 7, 7, 9
   ].map(percentage =>
@@ -959,7 +974,7 @@ function reportDefinition(data, result) {
       margin,
       margin,
       margin,
-      margin
+      bottomMargin
     ],
 
     info: {
@@ -972,6 +987,26 @@ function reportDefinition(data, result) {
       fontSize: 7,
       color: '#171717',
       lineHeight: 1.15
+    },
+
+    // QR vetëm poshtë majtas në faqen e fundit.
+    footer: function (currentPage, pageCount) {
+      if (currentPage !== pageCount) {
+        return {
+          text: ''
+        };
+      }
+
+      return {
+        qr: qrPayload,
+        eccLevel: 'M',
+        fit: qrFit,
+        padding: 4,
+        foreground: '#1a1a1a',
+        background: '#ffffff',
+        alignment: 'left',
+        margin: [margin, 10, margin, 0]
+      };
     },
 
     content: [
@@ -1079,17 +1114,18 @@ function reportDefinition(data, result) {
         }
       },
 
-      // Deklarata, QR-ja dhe firmat qëndrojnë së bashku.
+      // Deklarata dhe firmat qëndrojnë së bashku.
+      // QR-ja trajtohet veçmas nga footer-i.
       {
         unbreakable: true,
-        margin: [0, 23, 0, 0],
+        margin: [0, 23, 0, 33],
 
         stack: [
           {
             text:
               'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
               'pasqyrojnë ngarkesën mësimore të realizuar prej meje.',
-            margin: [0, 0, 0, 15]
+            margin: [0, 0, 0, 30]
           },
 
           {
@@ -1125,17 +1161,6 @@ function reportDefinition(data, result) {
                 ]
               }
             ]
-          },
-          // QR nën deklaruesin dhe drejtuesin e departamentit.
-          {
-            qr: evidenceQrText(data, result),
-            eccLevel: 'M',
-            fit: 100,
-            padding: 4,
-            foreground: '#1a1a1a',
-            background: '#ffffff',
-            alignment: 'left',
-            margin: [0, 30, 0, 0]
           }
         ]
       }
@@ -1149,7 +1174,7 @@ function reportDefinition(data, result) {
   if (notes) {
     definition.content.push({
       text: '* ' + notes,
-      margin: [0, 41, 0, 0]
+      margin: [0, 8, 0, 0]
     });
   }
 
