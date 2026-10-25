@@ -1448,3 +1448,93 @@ function initPage() {
   refreshFilters();
   render();
 }
+
+// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
+function setupSummaryCsvExport() {
+  const button = document.getElementById('export-csv');
+
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    try {
+      const teacherSelect = document.getElementById('teacher');
+      const summaryBody = document.getElementById('summary');
+      const table = summaryBody?.closest('table');
+
+      if (!teacherSelect?.value) {
+        throw new Error(
+          'Zgjidhni pedagogun përpara eksportimit.'
+        );
+      }
+
+      if (!table || !summaryBody.rows.length) {
+        throw new Error('Tabela e përmbledhjes është bosh.');
+      }
+
+      // Thonjëzat mbrojnë ndarësit dhe rreshtat brenda tekstit.
+      const csvCell = value => {
+        let text = String(value ?? '').trim();
+
+        // Parandalon interpretimin e tekstit si formulë në Excel.
+        if (/^[=+\-@\t\r]/.test(text)) {
+          text = "'" + text;
+        }
+
+        return '"' + text.replace(/"/g, '""') + '"';
+      };
+
+      const rows = Array.from(table.rows, row =>
+        Array.from(row.cells)
+          .slice(0, 5)
+          .map(cell => csvCell(cell.textContent))
+          .join(';')
+      );
+
+      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
+      const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
+
+      const teacherName =
+        teacherSelect.selectedOptions[0]?.textContent.trim() ||
+        teacherSelect.value;
+
+      const safeName = teacherName
+        .normalize('NFC')
+        .replace(/[^\p{L}\p{N}_-]+/gu, '_')
+        .replace(/^_+|_+$/g, '')
+        .slice(0, 100);
+
+      const filename = 'Permbledhje_' + safeName + '.csv';
+
+      const blob = new Blob(
+        [csv],
+        { type: 'text/csv;charset=utf-8;' }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+
+      link.href = url;
+      link.download = filename;
+      link.hidden = true;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Liron adresën pasi shfletuesi nis shkarkimin.
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (error) {
+      alert('Eksportimi nuk u krye: ' + error.message);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener(
+    'DOMContentLoaded',
+    setupSummaryCsvExport,
+    { once: true }
+  );
+} else {
+  setupSummaryCsvExport();
+}
