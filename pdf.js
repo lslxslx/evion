@@ -1092,18 +1092,6 @@ function reportDefinition(data, result) {
             margin: [0, 0, 0, 15]
           },
 
-          // QR mbi deklaruesin dhe drejtuesin e departamentit.
-          {
-            qr: evidenceQrText(data, result),
-            eccLevel: 'M',
-            fit: 100,
-            padding: 4,
-            foreground: '#1a1a1a',
-            background: '#ffffff',
-            alignment: 'left',
-            margin: [0, 0, 0, 20]
-          },
-
           {
             columns: [
               {
@@ -1137,6 +1125,17 @@ function reportDefinition(data, result) {
                 ]
               }
             ]
+          },
+          // QR nën deklaruesin dhe drejtuesin e departamentit.
+          {
+            qr: evidenceQrText(data, result),
+            eccLevel: 'M',
+            fit: 100,
+            padding: 4,
+            foreground: '#1a1a1a',
+            background: '#ffffff',
+            alignment: 'left',
+            margin: [0, 30, 0, 0]
           }
         ]
       }
