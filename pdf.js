@@ -1,5 +1,6 @@
-/* Raport narrativ HTML dhe PDF tabelor me pdfmake / Comfortaa. */
+/* Raport narrativ HTML dhe PDF me pdfmake / Comfortaa. (C) lslxslx */
 
+// Emri i PDF-së tabelore.
 function pdfFilename(data) {
   return (
     'Evidenca_' + data.subject + '_' + data.teacher
@@ -48,6 +49,11 @@ function reportHtml(data, result) {
     'Praktikë'
   ];
 
+  // Titulli i tabit dhe emri i sugjeruar gjatë ruajtjes.
+  const title = (
+    'Raport' + data.subject + data.teacher
+  ).replace(/[^\p{L}\p{N}]/gu, '');
+
   const regularFont = new URL(
     'fonts/Comfortaa-Regular.ttf',
     document.baseURI
@@ -58,7 +64,6 @@ function reportHtml(data, result) {
     document.baseURI
   ).href;
 
-  // Tabela përmbledhëse e krediteve.
   const creditRows = labels.map((label, index) => `
     <tr>
       <td>${label}</td>
@@ -67,7 +72,7 @@ function reportHtml(data, result) {
     </tr>
   `).join('');
 
-  // Datat renditen pa ndryshuar regjistrimet origjinale.
+  // Renditja nuk ndryshon regjistrimet origjinale.
   const sortedRows = [...data.rows].sort((a, b) =>
     a.date.localeCompare(b.date)
   );
@@ -86,10 +91,16 @@ function reportHtml(data, result) {
       Lënda <strong>${escape(data.subject)}</strong>
       është zhvilluar në
       <strong>${weeks.length} javë me regjistrime mësimore</strong>,
-      brenda intervalit nga <strong>${formatDate(first.date)}</strong> (java ${escape(first.week)})
+      brenda intervalit nga java
       <strong>${weeks[0]}</strong>
-      deri në <strong>${formatDate(last.date)}</strong> (java ${escape(last.week)}) 
+      deri në javën
       <strong>${weeks[weeks.length - 1]}</strong>.
+      Mësimi i parë i regjistruar është më
+      <strong>${formatDate(first.date)}</strong>
+      (java ${escape(first.week)}),
+      ndërsa i fundit më
+      <strong>${formatDate(last.date)}</strong>
+      (java ${escape(last.week)}).
     </p>
   ` : `
     <p>Nuk ka regjistrime mësimore.</p>
@@ -116,7 +127,7 @@ function reportHtml(data, result) {
     `)
     .join('');
 
-  // Mbledh të gjitha regjistrimet e së njëjtës datë.
+  // Bashkon orët e të gjitha regjistrimeve të së njëjtës datë.
   const hoursByDate = new Map();
 
   data.rows.forEach(row => {
@@ -179,8 +190,6 @@ function reportHtml(data, result) {
   const notes = String(data.notes || '')
     .trim()
     .replace(/^\*+\s*/, '');
-
-  const title = pdfFilename(data).replace(/\.pdf$/i, '');
 
   return `
 <!doctype html>
@@ -369,22 +378,19 @@ function reportHtml(data, result) {
       page-break-inside: avoid;
     }
 
+    .declaration {
+      margin-top: 25px;
+    }
+
     .signature {
       margin-top: 45px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
-    .signature td {
-      width: 50%;
-    }
-
     .signature p {
       margin-top: 10px;
-    }
-
-    .signature .head {
-      text-align: right;
+      overflow-wrap: anywhere;
     }
 
     .notes {
@@ -524,26 +530,15 @@ function reportHtml(data, result) {
         ${dailySummary}
       </section>
 
-      <p style="margin-top: 25px;">
+      <p class="declaration">
         Deklaroj se të dhënat e paraqitura në këtë evidencë
         pasqyrojnë ngarkesën mësimore të realizuar prej meje.
       </p>
 
-      <table class="signature">
-        <tbody>
-          <tr>
-            <td>
-              DEKLARUES
-              <p>${escape(data.teacher)}</p>
-            </td>
-
-            <td class="head">
-              DREJTUES DEPARTAMENTI
-              <p>${escape(data.head)}</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="signature">
+        DEKLARUES
+        <p>${escape(data.teacher)}</p>
+      </div>
 
       ${notes ? `
         <p class="notes">* ${escape(notes)}</p>
@@ -641,7 +636,7 @@ function printReport(data) {
 
 
 // =====================================================
-// PËRMBAJTJA E PDF-SË ME PDFMAKE
+// PËRMBAJTJA E PDF-SË TABELLORE ME PDFMAKE
 // =====================================================
 
 function reportDefinition(data, result) {
@@ -815,10 +810,9 @@ function reportDefinition(data, result) {
     pageOrientation: 'portrait',
     pageMargins: [margin, margin, margin, margin],
 
+    // Titulli i dokumentit PDF.
     info: {
-      title:
-        'Evidencë e ngarkesës mësimore — ' +
-        data.subject,
+      title: pdfFilename(data).replace(/\.pdf$/i, ''),
       author: data.teacher
     },
 
@@ -928,6 +922,7 @@ function reportDefinition(data, result) {
         }
       },
 
+      // PDF-ja tabelore ruan të dy emrat.
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
