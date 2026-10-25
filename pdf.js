@@ -124,7 +124,7 @@ function reportHtml(data, result) {
 
   const categorySummary = categoryNames
     .map((label, index) => {
-      // Zero kredite: fjalia nuk shfaqet.
+      // Kategoritë me zero kredite nuk shfaqen.
       if (number(data.credits[index]) <= 0) {
         return '';
       }
@@ -419,19 +419,19 @@ function reportHtml(data, result) {
       widows: 3;
     }
 
-    /* QR poshtë deklaruesit, majtas, pa tekst. */
+    /* QR në qendër horizontalisht, pa tekst. */
     .evidence-qr {
       margin-top: 10px;
       padding: 0;
       border: none;
-      text-align: left;
+      text-align: center;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .evidence-qr-image {
       width: 40mm;
-      margin: 0;
+      margin: 0 auto;
     }
 
     .evidence-qr-image svg {
@@ -598,7 +598,11 @@ function reportHtml(data, result) {
 function printReport(data) {
   const serialized = JSON.stringify(data);
 
-  if (!data || !serialized || serialized.length > 500000) {
+  if (
+    !data ||
+    !serialized ||
+    serialized.length > 500000
+  ) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -621,7 +625,10 @@ function printReport(data) {
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const storedKey = localStorage.key(i);
 
-      if (!storedKey || !storedKey.startsWith(prefix)) {
+      if (
+        !storedKey ||
+        !storedKey.startsWith(prefix)
+      ) {
         continue;
       }
 
@@ -743,7 +750,8 @@ function reportDefinition(data, result) {
   data.rows.forEach(row => {
     body.push([
       cell(
-        text(row.week) + (row.replacement ? ' *' : '')
+        text(row.week) +
+        (row.replacement ? ' *' : '')
       ),
 
       cell(
@@ -826,7 +834,9 @@ function reportDefinition(data, result) {
       {
         text: label
       },
+
       cell(data.credits[index] || 0),
+
       cell(data.groups[index])
     ]),
 
@@ -852,7 +862,13 @@ function reportDefinition(data, result) {
   const definition = {
     pageSize: 'A4',
     pageOrientation: 'portrait',
-    pageMargins: [margin, margin, margin, margin],
+
+    pageMargins: [
+      margin,
+      margin,
+      margin,
+      margin
+    ],
 
     info: {
       title: pdfFilename(data).replace(/\.pdf$/i, ''),
@@ -971,7 +987,7 @@ function reportDefinition(data, result) {
         }
       },
 
-      // Deklarata, emrat dhe QR-ja qëndrojnë së bashku.
+      // Deklarata, firmat dhe QR-ja qëndrojnë së bashku.
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
@@ -997,17 +1013,6 @@ function reportDefinition(data, result) {
                   {
                     text: data.teacher,
                     margin: [0, 5, 8, 0]
-                  },
-
-                  // QR e vogël, pa tekst, poshtë emrit.
-                  {
-                    qr: evidenceQrText(data, result),
-                    eccLevel: 'M',
-                    fit: 100,
-                    foreground: '#000000',
-                    background: '#ffffff',
-                    alignment: 'left',
-                    margin: [8, 12, 8, 8]
                   }
                 ]
               },
@@ -1028,6 +1033,17 @@ function reportDefinition(data, result) {
                 ]
               }
             ]
+          },
+
+          // QR në qendër të gjerësisë së faqes, pa tekst.
+          {
+            qr: evidenceQrText(data, result),
+            eccLevel: 'M',
+            fit: 100,
+            foreground: '#000000',
+            background: '#ffffff',
+            alignment: 'center',
+            margin: [8, 16, 8, 8]
           }
         ]
       }
@@ -1053,7 +1069,10 @@ function reportDefinition(data, result) {
 // =====================================================
 
 async function generatePdfBlob(data) {
-  if (!data || JSON.stringify(data).length > 500000) {
+  if (
+    !data ||
+    JSON.stringify(data).length > 500000
+  ) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -1224,7 +1243,7 @@ function evidenceQrHtml(data, result) {
 
   qr.make();
 
-  // Ruhet hapësira e bardhë rreth QR-së për skanimin.
+  // Hapësira e bardhë rreth QR-së ruhet për skanimin.
   const svg = qr.createSvgTag({
     cellSize: 2,
     margin: 8,
