@@ -1,6 +1,9 @@
 /* Raport narrativ HTML dhe PDF. (C) ルイス */
 
-// Emri i PDF-së tabelore.
+// =====================================================
+// EMRI I PDF-SË
+// =====================================================
+
 function pdfFilename(data) {
   return (
     'Evidence_' + data.subject + '_' + data.teacher
@@ -16,8 +19,8 @@ function pdfFilename(data) {
 // =====================================================
 
 function reportHtml(data, result) {
-  const escape = value => String(value ?? '')
-    .replace(/[&<>"']/g, character => ({
+  const escape = value =>
+    String(value ?? '').replace(/[&<>"']/g, character => ({
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;',
@@ -67,13 +70,19 @@ function reportHtml(data, result) {
     document.baseURI
   ).href;
 
-  const creditRows = labels.map((label, index) => `
-    <tr>
-      <td>${label}</td>
-      <td class="num">${escape(data.credits[index] || 0)}</td>
-      <td class="num">${escape(data.groups[index])}</td>
-    </tr>
-  `).join('');
+  const creditRows = labels
+    .map((label, index) => `
+      <tr>
+        <td>${label}</td>
+        <td class="num">
+          ${escape(data.credits[index] || 0)}
+        </td>
+        <td class="num">
+          ${escape(data.groups[index])}
+        </td>
+      </tr>
+    `)
+    .join('');
 
   // Renditja nuk ndryshon regjistrimet origjinale.
   const sortedRows = [...data.rows].sort((a, b) =>
@@ -81,25 +90,29 @@ function reportHtml(data, result) {
   );
 
   const weeks = [
-    ...new Set(data.rows.map(row => number(row.week)))
+    ...new Set(
+      data.rows.map(row => number(row.week))
+    )
   ].sort((a, b) => a - b);
 
   const first = sortedRows[0];
   const last = sortedRows[sortedRows.length - 1];
 
-  const introduction = first ? `
-    <p>
-      Lënda <strong>${escape(data.subject)}</strong>
-      është zhvilluar në
-      <strong>${weeks.length} javë regjistrime mësimore</strong>,
-      nga java <strong>${escape(first.week)}</strong>
-      më <strong>${formatDate(first.date)}</strong>
-      deri në javën <strong>${escape(last.week)}</strong>
-      më <strong>${formatDate(last.date)}</strong>.
-    </p>
-  ` : `
-    <p>Nuk ka regjistrime mësimore.</p>
-  `;
+  const introduction = first
+    ? `
+      <p>
+        Lënda <strong>${escape(data.subject)}</strong>
+        është zhvilluar në
+        <strong>${weeks.length} javë regjistrime mësimore</strong>,
+        nga java <strong>${escape(first.week)}</strong>
+        më <strong>${formatDate(first.date)}</strong>
+        deri në javën <strong>${escape(last.week)}</strong>
+        më <strong>${formatDate(last.date)}</strong>.
+      </p>
+    `
+    : `
+      <p>Nuk ka regjistrime mësimore.</p>
+    `;
 
   const categoryNames = [
     'Leksionet',
@@ -129,11 +142,13 @@ function reportHtml(data, result) {
     })
     .join('');
 
-  // Bashkon orët e të gjitha regjistrimeve të së njëjtës datë.
+  // Bashkon orët e regjistrimeve të së njëjtës datë.
   const hoursByDate = new Map();
 
   data.rows.forEach(row => {
-    const hours = hoursByDate.get(row.date) || [0, 0, 0, 0, 0];
+    const hours = hoursByDate.get(row.date) || [
+      0, 0, 0, 0, 0
+    ];
 
     row.hours.forEach((value, index) => {
       hours[index] = sum([hours[index], value]);
@@ -151,33 +166,38 @@ function reportHtml(data, result) {
   ];
 
   const overEight = [...hoursByDate.entries()]
-    .sort(([dateA], [dateB]) => dateA.localeCompare(dateB))
+    .sort(([dateA], [dateB]) =>
+      dateA.localeCompare(dateB)
+    )
     .filter(([, hours]) => sum(hours) > 8);
 
   const dailySummary = overEight.length
-    ? overEight.map(([date, hours]) => {
-        const parts = hours
-          .map((value, index) =>
-            value > 0
-              ? `${formatNumber(value)} orë ${dailyNames[index]}`
-              : ''
-          )
-          .filter(Boolean);
+    ? overEight
+        .map(([date, hours]) => {
+          const parts = hours
+            .map((value, index) =>
+              value > 0
+                ? `${formatNumber(value)} orë ${dailyNames[index]}`
+                : ''
+            )
+            .filter(Boolean);
 
-        const detail = parts.length > 1
-          ? parts.slice(0, -1).join(', ') +
-            ' dhe ' + parts[parts.length - 1]
-          : parts[0];
+          const detail = parts.length > 1
+            ? parts.slice(0, -1).join(', ') +
+              ' dhe ' +
+              parts[parts.length - 1]
+            : parts[0];
 
-        return `
-          <p class="over-eight">
-            Në datën <strong>${formatDate(date)}</strong>
-            janë zhvilluar ${escape(detail)},
-            me një total prej
-            <strong>${formatNumber(sum(hours))} orësh</strong>.
-          </p>
-        `;
-      }).join('')
+          return `
+            <p class="over-eight">
+              Në datën <strong>${formatDate(date)}</strong>
+              janë zhvilluar ${escape(detail)},
+              me një total prej
+              <strong>${formatNumber(sum(hours))} orësh</strong>.
+            </p>
+          `;
+        })
+        .join('')
     : `
       <p>
         Nuk ka data me më shumë se 8 orë mësimore
@@ -194,6 +214,7 @@ function reportHtml(data, result) {
 <html lang="sq">
 <head>
   <meta charset="utf-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1"
@@ -398,6 +419,32 @@ function reportHtml(data, result) {
       widows: 3;
     }
 
+    .evidence-qr {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #dddddd;
+      text-align: center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .evidence-qr-image {
+      width: 70mm;
+      margin: 0 auto 8px;
+    }
+
+    .evidence-qr-image svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .evidence-qr p {
+      margin: 4px 0;
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
     @media print {
       html,
       body {
@@ -540,6 +587,8 @@ function reportHtml(data, result) {
       ${notes ? `
         <p class="notes">* ${escape(notes)}</p>
       ` : ''}
+
+      ${evidenceQrHtml(data, result)}
     </main>
   </div>
 </body>
@@ -554,7 +603,11 @@ function reportHtml(data, result) {
 function printReport(data) {
   const serialized = JSON.stringify(data);
 
-  if (!data || !serialized || serialized.length > 500000) {
+  if (
+    !data ||
+    !serialized ||
+    serialized.length > 500000
+  ) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -577,12 +630,17 @@ function printReport(data) {
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const storedKey = localStorage.key(i);
 
-      if (!storedKey || !storedKey.startsWith(prefix)) {
+      if (
+        !storedKey ||
+        !storedKey.startsWith(prefix)
+      ) {
         continue;
       }
 
       try {
-        const item = JSON.parse(localStorage.getItem(storedKey));
+        const item = JSON.parse(
+          localStorage.getItem(storedKey)
+        );
 
         if (
           !item ||
@@ -610,10 +668,15 @@ function printReport(data) {
     );
   }
 
-  const reportUrl = new URL('raporti.html', document.baseURI);
+  const reportUrl = new URL(
+    'raporti.html',
+    document.baseURI
+  );
+
   reportUrl.hash = id;
 
   const link = document.createElement('a');
+
   link.href = reportUrl.href;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
@@ -647,7 +710,8 @@ function reportDefinition(data, result) {
     'Praktikë'
   ];
 
-  const text = value => String(value == null ? '' : value);
+  const text = value =>
+    String(value == null ? '' : value);
 
   const cell = (value, extra = {}) => ({
     text: text(value),
@@ -675,6 +739,7 @@ function reportDefinition(data, result) {
       {},
       head('')
     ],
+
     [
       'Java',
       'Data',
@@ -689,12 +754,28 @@ function reportDefinition(data, result) {
 
   data.rows.forEach(row => {
     body.push([
-      cell(text(row.week) + (row.replacement ? ' *' : '')),
-      cell(row.date.split('-').reverse().join('.')),
+      cell(
+        text(row.week) +
+        (row.replacement ? ' *' : '')
+      ),
+
+      cell(
+        row.date.split('-').reverse().join('.')
+      ),
+
       cell(row.students),
-      { text: row.topic },
-      ...row.hours.map(value => cell(num(value) || '')),
-      cell(sum(row.hours), { bold: true })
+
+      {
+        text: row.topic
+      },
+
+      ...row.hours.map(value =>
+        cell(num(value) || '')
+      ),
+
+      cell(sum(row.hours), {
+        bold: true
+      })
     ]);
   });
 
@@ -709,8 +790,14 @@ function reportDefinition(data, result) {
     {},
     {},
     {},
-    ...result.actual.map(value => cell(value, { bold: true })),
-    cell(sum(result.actual), { bold: true })
+
+    ...result.actual.map(value =>
+      cell(value, { bold: true })
+    ),
+
+    cell(sum(result.actual), {
+      bold: true
+    })
   ]);
 
   body.push([
@@ -723,7 +810,11 @@ function reportDefinition(data, result) {
     {},
     {},
     {},
-    ...result.expected.map(value => cell(value)),
+
+    ...result.expected.map(value =>
+      cell(value)
+    ),
+
     cell(sum(result.expected))
   ]);
 
@@ -731,10 +822,11 @@ function reportDefinition(data, result) {
   const margin = 31.18;
   const contentWidth = pageWidth - 2 * margin;
 
-  const widths = [5, 11, 6, 34, 7, 7, 7, 7, 7, 9]
-    .map(percentage =>
-      (contentWidth - 40) * percentage / 100
-    );
+  const widths = [
+    5, 11, 6, 34, 7, 7, 7, 7, 7, 9
+  ].map(percentage =>
+    (contentWidth - 40) * percentage / 100
+  );
 
   const plan = [
     [
@@ -744,7 +836,9 @@ function reportDefinition(data, result) {
     ],
 
     ...labels.map((label, index) => [
-      { text: label },
+      {
+        text: label
+      },
       cell(data.credits[index] || 0),
       cell(data.groups[index])
     ]),
@@ -755,10 +849,12 @@ function reportDefinition(data, result) {
         bold: true,
         fillColor: '#f2f2f2'
       },
+
       cell(result.totalCredits, {
         bold: true,
         fillColor: '#f2f2f2'
       }),
+
       {
         text: '',
         fillColor: '#f2f2f2'
@@ -769,7 +865,12 @@ function reportDefinition(data, result) {
   const definition = {
     pageSize: 'A4',
     pageOrientation: 'portrait',
-    pageMargins: [margin, margin, margin, margin],
+    pageMargins: [
+      margin,
+      margin,
+      margin,
+      margin
+    ],
 
     info: {
       title: pdfFilename(data).replace(/\.pdf$/i, ''),
@@ -788,50 +889,64 @@ function reportDefinition(data, result) {
         text: data.university,
         margin: [0, 0, 0, 4]
       },
+
       {
         text: data.faculty,
         margin: [0, 0, 0, 4]
       },
+
       {
         text: data.department,
         margin: [0, 0, 0, 4]
       },
+
       {
-        text: 'EVIDENCË E NGARKESËS MËSIMORE ' + data.year,
+        text:
+          'EVIDENCË E NGARKESËS MËSIMORE ' +
+          data.year,
         fontSize: 11,
         bold: true,
         margin: [0, 16, 0, 10]
       },
+
       {
         columns: [
           {
             width: '66%',
+
             stack: [
               {
                 text: 'LËNDA: ' + data.subject,
                 margin: [0, 0, 0, 5]
               },
+
               {
                 text: 'PROGRAMI: ' + data.program,
                 margin: [0, 0, 0, 5]
               },
+
               {
                 text: 'CIKLI: ' + data.cycle,
                 margin: [0, 0, 0, 5]
               },
+
               {
-                text: 'SEMESTRI: ' +
+                text:
+                  'SEMESTRI: ' +
                   String(data.semester).toUpperCase()
               }
             ]
           },
+
           {
             width: '34%',
+
             table: {
               headerRows: 1,
               widths: ['46%', '27%', '27%'],
               body: plan
             },
+
             layout: {
               hLineWidth: () => 0,
               vLineWidth: () => 0,
@@ -843,8 +958,10 @@ function reportDefinition(data, result) {
           }
         ]
       },
+
       {
         margin: [0, 14, 0, 0],
+
         table: {
           headerRows: 2,
           keepWithHeaderRows: 1,
@@ -852,15 +969,21 @@ function reportDefinition(data, result) {
           widths,
           body
         },
+
         layout: {
-          hLineWidth: index => index >= 2 ? 0.4 : 0,
+          hLineWidth: index =>
+            index >= 2 ? 0.4 : 0,
+
           vLineWidth: () => 0,
+
           hLineColor: index =>
             index === 2 ? '#999999' : '#e3e3e3',
+
           paddingLeft: () => 2,
           paddingRight: () => 2,
           paddingTop: () => 4,
           paddingBottom: () => 4,
+
           fillColor: index =>
             index === totalIndex ? '#eeeeee' : null
         }
@@ -870,6 +993,7 @@ function reportDefinition(data, result) {
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
+
         stack: [
           {
             text:
@@ -877,27 +1001,33 @@ function reportDefinition(data, result) {
               'pasqyrojnë ngarkesën mësimore të realizuar prej meje.',
             margin: [0, 0, 0, 30]
           },
+
           {
             columns: [
               {
                 width: '50%',
+
                 stack: [
                   {
                     text: 'DEKLARUES'
                   },
+
                   {
                     text: data.teacher,
                     margin: [0, 5, 8, 0]
                   }
                 ]
               },
+
               {
                 width: '50%',
                 alignment: 'right',
+
                 stack: [
                   {
                     text: 'DREJTUES DEPARTAMENTI'
                   },
+
                   {
                     text: data.head,
                     margin: [0, 5, 0, 0]
@@ -922,6 +1052,41 @@ function reportDefinition(data, result) {
     });
   }
 
+  // QR në fund të evidencës PDF.
+  definition.content.push({
+    unbreakable: true,
+    margin: [0, 24, 0, 0],
+
+    stack: [
+      {
+        text: 'QR · Përmbledhja e evidencës',
+        alignment: 'center',
+        fontSize: 8,
+        bold: true,
+        margin: [0, 0, 0, 10]
+      },
+
+      {
+        qr: evidenceQrText(data, result),
+        eccLevel: 'M',
+        fit: 180,
+        foreground: '#000000',
+        background: '#ffffff',
+        alignment: 'center',
+        margin: [12, 12, 12, 12]
+      },
+
+      {
+        text:
+          'Për importimin e studentëve, grupeve dhe orëve ' +
+          'në tabelën përmbledhëse.',
+        alignment: 'center',
+        fontSize: 7,
+        margin: [0, 10, 0, 0]
+      }
+    ]
+  });
+
   return definition;
 }
 
@@ -930,7 +1095,10 @@ function reportDefinition(data, result) {
 // =====================================================
 
 async function generatePdfBlob(data) {
-  if (!data || JSON.stringify(data).length > 500000) {
+  if (
+    !data ||
+    JSON.stringify(data).length > 500000
+  ) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -968,7 +1136,9 @@ async function generatePdfBlob(data) {
           resolve(
             new Blob(
               [bytes],
-              { type: 'application/pdf' }
+              {
+                type: 'application/pdf'
+              }
             )
           );
         });
@@ -977,4 +1147,153 @@ async function generatePdfBlob(data) {
       reject(error);
     }
   });
+}
+
+// =====================================================
+// QR — TË DHËNAT PËRMBLEDHËSE TË EVIDENCËS
+// =====================================================
+
+function evidenceQrData(data, result) {
+  const number = value =>
+    Number(
+      String(value ?? 0).trim().replace(',', '.')
+    );
+
+  const round = value =>
+    Math.round(value * 1000000) / 1000000;
+
+  const cleanText = value =>
+    String(value ?? '').trim().normalize('NFC');
+
+  // Maksimumi merret një herë nga e gjithë evidenca.
+  const students = Math.max(
+    0,
+    ...data.rows.map(row => number(row.students))
+  );
+
+  const categoryCodes = [
+    'leksione',
+    'seminare',
+    'laboratore',
+    'detyra',
+    'praktika'
+  ];
+
+  const categories = [];
+
+  categoryCodes.forEach((code, index) => {
+    const credits = number(data.credits[index]);
+
+    // Kategoritë me zero kredite nuk përfshihen.
+    if (!(credits > 0)) return;
+
+    categories.push({
+      code,
+      credits: round(credits),
+      students,
+      groups: number(data.groups[index]),
+
+      // Nuk shumëzohen përsëri me grupet.
+      hours: round(result.actual[index])
+    });
+  });
+
+  return {
+    type: 'evion-summary',
+    version: 1,
+
+    teacher: cleanText(data.teacher),
+    subject: cleanText(data.subject),
+    program: cleanText(data.program),
+
+    year: cleanText(data.year),
+    semester: cleanText(data.semester).toUpperCase(),
+    cycle: number(data.cycle),
+
+    students,
+    categories
+  };
+}
+
+// =====================================================
+// QR — SERIALIZIMI NË JSON
+// =====================================================
+
+function evidenceQrText(data, result) {
+  const summary = evidenceQrData(data, result);
+
+  /*
+    Përdorim karaktere ASCII brenda QR-së.
+    Shkronjat shqipe kodohen si escape Unicode
+    dhe rikthehen normalisht nga JSON.parse().
+  */
+  const serialized = JSON.stringify(summary).replace(
+    /[\u007f-\uffff]/g,
+    character =>
+      '\\u' +
+      character
+        .charCodeAt(0)
+        .toString(16)
+        .padStart(4, '0')
+  );
+
+  /*
+    Kufiri konservativ për QR me korrigjim M.
+    Nuk shkurtojmë ose humbasim të dhëna.
+  */
+  if (serialized.length > 2200) {
+    throw new Error(
+      'Përmbledhja është tepër e gjatë për QR-në. ' +
+      'Shkurtoni emërtimet e gjata të lëndës, programit ' +
+      'ose pedagogut dhe provoni përsëri.'
+    );
+  }
+
+  return serialized;
+}
+
+// =====================================================
+// QR — PARAQITJA NË RAPORTIN HTML
+// =====================================================
+
+function evidenceQrHtml(data, result) {
+  if (typeof qrcode !== 'function') {
+    throw new Error(
+      'Biblioteka QR nuk u ngarkua. Kontrolloni ' +
+      'skriptin qrcode-generator te raporti.html.'
+    );
+  }
+
+  const qr = qrcode(0, 'M');
+
+  qr.addData(
+    evidenceQrText(data, result),
+    'Byte'
+  );
+
+  qr.make();
+
+  // SVG ruan qartësinë gjatë printimit.
+  const svg = qr.createSvgTag({
+    cellSize: 2,
+    margin: 8,
+    scalable: true
+  });
+
+  return `
+    <section class="evidence-qr">
+      <div class="evidence-qr-image">
+        ${svg}
+      </div>
+
+      <p>
+        QR · Përmbledhja e evidencës
+      </p>
+
+      <p>
+        Për importimin e studentëve, grupeve dhe orëve
+        në tabelën përmbledhëse.
+      </p>
+    </section>
+  `;
 }
