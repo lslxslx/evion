@@ -55,7 +55,6 @@ function updateActionButtons() {
 
   if (printPdfButton) {
     printPdfButton.disabled = !verified || pdfBusy;
-
     printPdfButton.textContent = pdfBusy
       ? 'Po gjenerohet PDF…'
       : 'PDF / Print';
@@ -201,18 +200,18 @@ function hasPractice() {
   return numericValue($('c4').value) > 0;
 }
 
+// Shfaq ose fsheh kolonat Lab. dhe Praktikë.
+// Orët e regjistruara nuk fshihen.
 function updatePracticeVisibility() {
   const labVisible = numericValue($('c2').value) > 0;
   const practiceVisible = hasPractice();
 
-  // Laboratori.
   $('lessons')
     .querySelectorAll('[data-lab]')
     .forEach(cell => {
       cell.hidden = !labVisible;
     });
 
-  // Praktika.
   $('lessons')
     .querySelectorAll('[data-practice]')
     .forEach(cell => {
@@ -255,8 +254,10 @@ function updatePracticeVisibility() {
 
   const warning = $('practice-warning');
 
-  warning.hidden = messages.length === 0;
-  warning.textContent = messages.join(' ');
+  if (warning) {
+    warning.hidden = messages.length === 0;
+    warning.textContent = messages.join(' ');
+  }
 }
 
 function updateWeek(tr) {
@@ -320,7 +321,10 @@ function addRow(data = {}) {
     </td>
 
     ${labels.map((label, index) => `
-      <td ${index === 2 ? 'data-lab' : ''} ${index === 4 ? 'data-practice' : ''}>
+      <td
+        ${index === 2 ? 'data-lab' : ''}
+        ${index === 4 ? 'data-practice' : ''}
+      >
         <input
           data-h="${index}"
           type="number"
@@ -388,15 +392,12 @@ function addRow(data = {}) {
 function readForm() {
   const data = {
     ...institution,
-
     credits: labels.map((_, index) =>
       $('c' + index).value
     ),
-
     groups: labels.map((_, index) =>
       $('g' + index).value
     ),
-
     notes: $('notes').value,
     rows: []
   };
@@ -413,7 +414,6 @@ function readForm() {
       const row = {
         hours: [...tr.querySelectorAll('[data-h]')]
           .map(element => element.value),
-
         manual: tr.dataset.manual === '1'
       };
 
@@ -543,19 +543,19 @@ function validationErrors(result) {
   });
 
   if (numericValue($('c2').value) <= 0) {
-  const hasLabHours = [
-    ...$('lessons').querySelectorAll('[data-h="2"]')
-  ].some(input =>
-    numericValue(input.value) !== 0
-  );
-
-  if (hasLabHours) {
-    errors.push(
-      'Ka orë laboratori me zero kredite. ' +
-      'Rivendosni kreditet te seksioni 02 për t’i korrigjuar.'
+    const hasLabHours = [
+      ...$('lessons').querySelectorAll('[data-h="2"]')
+    ].some(input =>
+      numericValue(input.value) !== 0
     );
+
+    if (hasLabHours) {
+      errors.push(
+        'Ka orë laboratori me zero kredite. ' +
+        'Rivendosni kreditet te seksioni 02 për t’i korrigjuar.'
+      );
+    }
   }
-}
 
   if (!hasPractice()) {
     const hasHours = [
@@ -728,7 +728,7 @@ reportButton.onclick = event => {
   }
 };
 
-// Hap PDF-në e gjeneruar me pdfmake.
+// Hap PDF-në dhe, sipas zgjedhjes, kërkon shkarkimin.
 if (printPdfButton) {
   printPdfButton.onclick = async event => {
     event.preventDefault();
@@ -737,6 +737,8 @@ if (printPdfButton) {
 
     let pdfTab = null;
     let pdfUrl = null;
+    let pdfOpened = false;
+
     const revisionAtStart = formRevision;
 
     try {
@@ -755,7 +757,16 @@ if (printPdfButton) {
         );
       }
 
-      // Hapet gjatë klikimit, përpara gjenerimit.
+      // Emri fillestar për shkarkimin.
+      const defaultFilename = (
+        'Evidence_' + data.subject + '_' + data.teacher
+      )
+        .replace(/[^\p{L}\p{N}_-]/gu, '_')
+        .replace(/_+/g, '_')
+        .slice(0, 130)
+        .replace(/_+$/, '') + '.pdf';
+
+      // Hapet menjëherë gjatë klikimit, përpara prompt/await.
       pdfTab = window.open('about:blank', '_blank');
 
       if (!pdfTab) {
@@ -766,21 +777,58 @@ if (printPdfButton) {
       }
 
       pdfTab.opener = null;
+      pdfTab.document.title = defaultFilename;
+
+      const loading = pdfTab.document.createElement('p');
+      loading.textContent = 'Po përgatitet PDF-ja…';
+      pdfTab.document.body.append(loading);
 
       pdfBusy = true;
       updateActionButtons();
 
-      // Përdor një kopje të të dhënave në çastin e klikimit.
+      const requestedFilename = window.prompt(
+        'Emri i PDF-së për shkarkim.\n' +
+        'Me “OK”, PDF-ja hapet dhe kërkohet shkarkimi.\n' +
+        'Me “Anulo”, PDF-ja hapet vetëm në skedë.',
+        defaultFilename
+      );
+
+      let downloadFilename = null;
+
+      if (requestedFilename !== null) {
+        const cleanName = requestedFilename
+          .trim()
+          .replace(/\.pdf$/i, '')
+          .replace(/[<>:"/\\|?*\u0000-\u001F]/g, '_')
+          .slice(0, 130)
+          .replace(/[. ]+$/, '');
+
+        downloadFilename = (
+          cleanName ||
+          defaultFilename.replace(/\.pdf$/i, '')
+        ) + '.pdf';
+      }
+
+      // Gjenerohet nga të dhënat në momentin e klikimit.
       const blob = await generatePdfBlob(data);
 
+      if (!(blob instanceof Blob) || blob.size === 0) {
+        throw new Error(
+          'Gjenerimi nuk ktheu një skedar PDF të vlefshëm.'
+        );
+      }
+
       if (pdfTab.closed) {
-        throw new Error('Skeda e PDF-së u mbyll.');
+        throw new Error(
+          'Skeda e PDF-së u mbyll përpara përfundimit.'
+        );
       }
 
       pdfUrl = URL.createObjectURL(blob);
       pdfTab.location.replace(pdfUrl);
+      pdfOpened = true;
 
-      // Liron URL-në pasi mbyllet skeda e PDF-së.
+      // URL-ja mbahet aktive gjatë hapjes së skedës.
       const openedTab = pdfTab;
       const openedUrl = pdfUrl;
 
@@ -791,26 +839,50 @@ if (printPdfButton) {
         }
       }, 2000);
 
-      if (formRevision === revisionAtStart) {
-        showMessage(
-          'PDF-ja u hap. Mund ta printoni ose ta ruani ' +
-          'nga shikuesi i PDF-së.',
-          'success'
-        );
-      } else {
-        showMessage(
-          'PDF-ja u hap me të dhënat në momentin e klikimit. ' +
-          'Formulari ka ndryshime të mëvonshme; ' +
-          'verifikojeni përsëri për një raport të ri.'
-        );
-      }
-    } catch (error) {
-      if (pdfUrl) {
-        URL.revokeObjectURL(pdfUrl);
+      let message =
+        'PDF-ja u hap në skedë të re. ' +
+        'Mund ta printoni nga shikuesi i PDF-së.';
+
+      let messageKind = 'success';
+
+      if (downloadFilename !== null) {
+        try {
+          downloadBlob(blob, downloadFilename);
+
+          message +=
+            ' U kërkua edhe shkarkimi me emrin: ' +
+            downloadFilename;
+        } catch (error) {
+          // Një gabim shkarkimi nuk mbyll PDF-në e hapur.
+          message +=
+            ' Shkarkimi nuk u nis: ' + error.message +
+            ' Mund ta ruani nga skeda e PDF-së.';
+
+          messageKind = 'error';
+        }
       }
 
-      if (pdfTab && !pdfTab.closed) {
-        pdfTab.close();
+      if (formRevision !== revisionAtStart) {
+        message +=
+          ' Formulari ka ndryshime të mëvonshme. ' +
+          'Verifikojeni përsëri për një raport të ri.';
+
+        if (messageKind === 'success') {
+          messageKind = '';
+        }
+      }
+
+      showMessage(message, messageKind);
+    } catch (error) {
+      // Mbyllet vetëm skeda që nuk arriti të hapë PDF-në.
+      if (!pdfOpened) {
+        if (pdfUrl) {
+          URL.revokeObjectURL(pdfUrl);
+        }
+
+        if (pdfTab && !pdfTab.closed) {
+          pdfTab.close();
+        }
       }
 
       showMessage(error.message, 'error');
@@ -821,37 +893,52 @@ if (printPdfButton) {
   };
 }
 
-// Shkarkimi i draftit JSON.
+// Shkarkimi përdoret për PDF-në dhe draftin JSON.
 function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
 
   link.href = url;
   link.download = filename;
+  link.hidden = true;
 
-  document.body.append(link);
-  link.click();
-  link.remove();
+  try {
+    document.body.append(link);
+    link.click();
+  } finally {
+    link.remove();
 
-  setTimeout(() => URL.revokeObjectURL(url), 60000);
+    // Pastrim i URL-së; nuk është vonesë për printimin.
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 60000);
+  }
 }
 
+// Ruaj draftin.
 $('save').onclick = event => {
   event.preventDefault();
 
-  const draft = {
-    version: 1,
-    dateFormat: 'yyyy-MM-dd',
-    data: readForm()
-  };
+  try {
+    const draft = {
+      version: 1,
+      dateFormat: 'yyyy-MM-dd',
+      data: readForm()
+    };
 
-  const blob = new Blob(
-    [JSON.stringify(draft, null, 2)],
-    { type: 'application/json' }
-  );
+    const blob = new Blob(
+      [JSON.stringify(draft, null, 2)],
+      { type: 'application/json' }
+    );
 
-  downloadBlob(blob, 'Evidenca-draft.json');
-  dirty = false;
+    downloadBlob(blob, 'Evidenca-draft.json');
+    dirty = false;
+  } catch (error) {
+    showMessage(
+      'Shkarkimi i draftit nuk u nis: ' + error.message,
+      'error'
+    );
+  }
 };
 
 $('load').onclick = event => {
