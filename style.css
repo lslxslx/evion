@@ -4,6 +4,7 @@
   font-weight: 300 500;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Comfortaa";
   src: url("fonts/Comfortaa-Bold.ttf") format("truetype");
@@ -11,408 +12,409 @@
   font-display: swap;
 }
 
-    :root {
-      --primary: #4a5281;
-      --primary-dark: #563b6b;
-      --primary-light: #eee6f4;
-      --page-bg: #f6f3f8;
-      --text: #382e40;
-      --muted: #776981;
-      --border: #ded3e6;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    [hidden] {
-      display: none !important;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Comfortaa", sans-serif;
-      font-optical-sizing: auto;
-      color: var(--text);
-      background: var(--page-bg);
-    }
-
-    .comfortaa-400 {
-      font-family: "Comfortaa", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    /* Header */
-
-    header {
-      padding: 38px 24px 32px;
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      border-bottom: 4px solid #cdbbdc;
-      box-shadow: 0 5px 18px rgba(69, 42, 89, 0.12);
-    }
-
-    header .inner,
-    main {
-      max-width: 1260px;
-      margin: auto;
-    }
-
-    .institution-university {
-      letter-spacing: 1px;
-      line-height: 1.5;
-    }
-
-    .institution-faculty {
-      line-height: 1.5;
-    }
-
-    .institution-department {
-      color: #ffcdcd;
-      letter-spacing: 0.4px;
-      line-height: 1.7;
-    }
-
-    .header-divider {
-      width: 80px;
-      height: 3px;
-      margin: 22px auto;
-      background: #d8c3e8;
-      border-radius: 3px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    header p {
-      margin: 0;
-      color: #eee5f4;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Përmbajtja */
-
-    main {
-      padding: 26px 16px;
-    }
-
-    section {
-      margin-bottom: 22px;
-      padding: 26px;
-      background: white;
-      border: 1px solid #e5ddeb;
-      border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(69, 42, 89, 0.04);
-    }
-
-    h2 {
-      margin: 0 0 20px;
-      color: var(--primary);
-      font-size: 19px;
-    }
-
-    /* 01 · Të dhënat e evidencës */
-
-    #metadata {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px 28px;
-      align-items: start;
-    }
-
-    label,
-    .cycle-field {
-      display: block;
-      min-width: 0;
-      color: #63536e;
-      font-size: 13px;
-    }
-
-    #metadata>label,
-    #metadata>.cycle-field {
-      font-weight: 600;
-    }
-
-    /* Fushat e formularit */
-
-    input,
-    textarea {
-      display: block;
-      width: 100%;
-      margin-top: 7px;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: white;
-      color: var(--text);
-      font: inherit;
-    }
-
-    #metadata input:not([type="radio"]):not([type="hidden"]) {
-      height: 46px;
-      margin-top: 8px;
-      padding: 11px 13px;
-      font-size: 14px;
-      font-weight: normal;
-    }
-
-    textarea {
-      min-height: 64px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: 2px solid #9470af;
-      outline-offset: 1px;
-      border-color: #9470af;
-    }
-
-    /* Datat — kalendari i shfletuesit */
-
-    input[type="date"] {
-      -webkit-appearance: none;
-      appearance: none;
-      color-scheme: light;
-
-      width: 100%;
-      min-width: 0;
-      max-width: 100%;
-      min-inline-size: 0;
-
-      height: 46px;
-      min-height: 46px;
-      font-size: 16px;
-      line-height: normal;
-    }
-
-    #metadata input[type="date"] {
-      font-size: 16px;
-    }
-
-    input[type="date"]::-webkit-date-and-time-value {
-      min-width: 0;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-    }
-
-    /* Përzgjedhja e ciklit */
-
-    .cycle-options {
-      display: flex;
-      gap: 12px;
-      margin-top: 8px;
-      min-height: 46px;
-    }
-
-    .cycle-options label {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 46px;
-      padding: 9px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #faf8fc;
-      font-size: 14px;
-      font-weight: normal;
-      cursor: pointer;
-    }
-
-    .cycle-options label:has(input:checked) {
-      border-color: var(--primary);
-      background: #eee4f5;
-      color: var(--primary);
-    }
-
-    .cycle-options input[type="radio"] {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
-      margin: 0;
-      padding: 0;
-      accent-color: var(--primary);
-    }
-
-    /* Tabelat */
-
-    .scroll {
-      max-width: 100%;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    th {
-      padding: 12px 8px;
-      background: #e9edf4;
-      color: #594368;
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    td {
-      padding: 8px;
-      border-bottom: 1px solid #ece5f0;
-    }
-
-    td input,
-    td textarea {
-      margin: 0;
-    }
-
-    /* 02 · Kreditet */
-
-    #credits input {
-      max-width: 130px;
-    }
-
-    /* 03 · Regjistrimet e mësimit */
-
-    #lessons {
-      min-width: 1120px;
-    }
-
-    #lessons.no-practice {
-      min-width: 1040px;
-    }
-
-    #lessons th {
-      white-space: nowrap;
-    }
-
-    #lessons input {
-      width: 74px;
-      padding: 8px;
-    }
-
-    #lessons th:nth-child(2),
-    #lessons td:nth-child(2) {
-      width: 161px;
-      min-width: 161px;
-    }
-
-    /* Lartësi e njëjtë për datën dhe fushat numerike */
-    #lessons input[type="number"],
-    #lessons input[data-k="date"] {
-      height: 36px;
-      min-height: 36px;
-      padding: 8px;
-      font-size: 13px;
-      line-height: normal;
-    }
-
-    #lessons input[data-k="date"] {
-      width: 145px;
-      min-width: 145px;
-      max-width: 145px;
-    }
-
-    #lessons textarea {
-      min-width: 230px;
-    }
-
-    #lessons input[type="checkbox"] {
-      width: 18px;
-      accent-color: var(--primary);
-    }
-
-    #lessons [data-total] {
-      text-align: center;
-      font-weight: bold;
-      color: var(--primary);
-    }
-
-    /* Butonat */
-
-    button,
-    .download {
-      display: inline-block;
-      padding: 12px 18px;
-      border: 0;
-      border-radius: 9px;
-      background: var(--primary);
-      color: white;
-      font: inherit;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(69, 42, 89, 0.12);
-      transition: background-color 0.2s, box-shadow 0.2s;
-    }
-
-    button:not(:disabled):hover,
-    .download:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 4px 10px rgba(69, 42, 89, 0.18);
-    }
-
-    button:focus-visible,
-    .download:focus-visible {
-      outline: 3px solid #b99bce;
-      outline-offset: 3px;
-    }
-
-    button.secondary {
-      background: var(--primary-light);
-      color: var(--primary);
-      box-shadow: none;
-    }
-
-    button.secondary:not(:disabled):hover {
-      background: #e0d2eb;
-      box-shadow: none;
-    }
-
-    button.remove {
-      padding: 8px;
-      background: #f5eaf0;
-      color: #934b6c;
-      box-shadow: none;
-    }
-
-    button.remove:not(:disabled):hover {
-      background: #ecd7e2;
-      box-shadow: none;
-    }
-
-    button:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Tekstet ndihmëse dhe mesazhet */
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .status {
+:root {
+  --primary: #4a5281;
+  --primary-dark: #563b6b;
+  --primary-light: #eee6f4;
+  --page-bg: #f6f3f8;
+  --text: #382e40;
+  --muted: #776981;
+  --border: #ded3e6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  color: var(--text);
+  background: var(--page-bg);
+}
+
+.comfortaa-400 {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Header */
+
+header {
+  padding: 38px 24px 32px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  border-bottom: 4px solid #cdbbdc;
+  box-shadow: 0 5px 18px rgba(69, 42, 89, 0.12);
+}
+
+header .inner,
+main {
+  max-width: 1260px;
+  margin: auto;
+}
+
+.institution-university {
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.institution-faculty {
+  line-height: 1.5;
+}
+
+.institution-department {
+  color: #ffcdcd;
+  letter-spacing: 0.4px;
+  line-height: 1.7;
+}
+
+.header-divider {
+  width: 80px;
+  height: 3px;
+  margin: 22px auto;
+  background: #d8c3e8;
+  border-radius: 3px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+header p {
+  margin: 0;
+  color: #eee5f4;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Përmbajtja */
+
+main {
+  padding: 26px 16px;
+}
+
+section {
+  margin-bottom: 22px;
+  padding: 26px;
+  background: white;
+  border: 1px solid #e5ddeb;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(69, 42, 89, 0.04);
+}
+
+h2 {
+  margin: 0 0 20px;
+  color: var(--primary);
+  font-size: 19px;
+}
+
+/* 01 · Të dhënat e evidencës */
+
+#metadata {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+  align-items: start;
+}
+
+label,
+.cycle-field {
+  display: block;
+  min-width: 0;
+  color: #63536e;
+  font-size: 13px;
+}
+
+#metadata > label,
+#metadata > .cycle-field {
+  font-weight: 600;
+}
+
+/* Fushat e formularit */
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+}
+
+#metadata input:not([type="radio"]):not([type="hidden"]) {
+  height: 46px;
+  margin-top: 8px;
+  padding: 11px 13px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+textarea {
+  min-height: 64px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #9470af;
+  outline-offset: 1px;
+  border-color: #9470af;
+}
+
+/* Datat — kalendari i shfletuesit */
+
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  color-scheme: light;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-inline-size: 0;
+
+  height: 46px;
+  min-height: 46px;
+  font-size: 16px;
+  line-height: normal;
+}
+
+#metadata input[type="date"] {
+  font-size: 16px;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Përzgjedhja e ciklit */
+
+.cycle-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  min-height: 46px;
+}
+
+.cycle-options label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #faf8fc;
+  font-size: 14px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.cycle-options label:has(input:checked) {
+  border-color: var(--primary);
+  background: #eee4f5;
+  color: var(--primary);
+}
+
+.cycle-options input[type="radio"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--primary);
+}
+
+/* Tabelat */
+
+.scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th {
+  padding: 12px 8px;
+  background: #e9edf4;
+  color: #594368;
+  text-align: left;
+  vertical-align: middle;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ece5f0;
+}
+
+td input,
+td textarea {
+  margin: 0;
+}
+
+/* 02 · Kreditet */
+
+#credits input {
+  max-width: 130px;
+}
+
+/* 03 · Regjistrimet e mësimit */
+
+#lessons {
+  min-width: 1120px;
+}
+
+#lessons.no-practice {
+  min-width: 1040px;
+}
+
+#lessons th {
+  white-space: nowrap;
+}
+
+#lessons input {
+  width: 74px;
+  padding: 8px;
+}
+
+#lessons th:nth-child(2),
+#lessons td:nth-child(2) {
+  width: 161px;
+  min-width: 161px;
+}
+
+/* Lartësi e njëjtë për datën dhe fushat numerike */
+
+#lessons input[type="number"],
+#lessons input[data-k="date"] {
+  height: 36px;
+  min-height: 36px;
+  padding: 8px;
+  font-size: 13px;
+  line-height: normal;
+}
+
+#lessons input[data-k="date"] {
+  width: 145px;
+  min-width: 145px;
+  max-width: 145px;
+}
+
+#lessons textarea {
+  min-width: 230px;
+}
+
+#lessons input[type="checkbox"] {
+  width: 18px;
+  accent-color: var(--primary);
+}
+
+#lessons [data-total] {
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Butonat */
+
+button,
+.download {
+  display: inline-block;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--primary);
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(69, 42, 89, 0.12);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button:not(:disabled):hover,
+.download:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 10px rgba(69, 42, 89, 0.18);
+}
+
+button:focus-visible,
+.download:focus-visible {
+  outline: 3px solid #b99bce;
+  outline-offset: 3px;
+}
+
+button.secondary {
+  background: var(--primary-light);
+  color: var(--primary);
+  box-shadow: none;
+}
+
+button.secondary:not(:disabled):hover {
+  background: #e0d2eb;
+  box-shadow: none;
+}
+
+button.remove {
+  padding: 8px;
+  background: #f5eaf0;
+  color: #934b6c;
+  box-shadow: none;
+}
+
+button.remove:not(:disabled):hover {
+  background: #ecd7e2;
+  box-shadow: none;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Tekstet ndihmëse dhe mesazhet */
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.status {
   box-sizing: border-box;
   min-width: 0;
   max-width: 100%;
@@ -432,58 +434,78 @@
   line-height: 1.5;
 }
 
-    .status.error {
-      background: #fff0ed;
-      color: #943c2d;
-    }
+.status.error {
+  background: #fff0ed;
+  color: #943c2d;
+}
 
-    .status.success {
-      background: #e5f4eb;
-      color: #1e6040;
-    }
+.status.success {
+  background: #e5f4eb;
+  color: #1e6040;
+}
 
-    .bad {
-      color: #b34b32;
-      font-weight: bold;
-    }
+.bad {
+  color: #b34b32;
+  font-weight: bold;
+}
 
-    footer {
-      padding: 12px 0 28px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
+footer {
+  padding: 12px 0 28px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
 
-    /* Paraqitja në ekranet e vogla */
+/* Paraqitja në ekranet e vogla */
 
-    @media (max-width: 760px) {
-      #metadata {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
+@media (max-width: 760px) {
+  #metadata {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 
-      section {
-        padding: 17px;
-      }
+  section {
+    padding: 17px;
+  }
 
-      header {
-        padding: 28px 18px;
-      }
+  header {
+    padding: 28px 18px;
+  }
 
-      .institution-university {
-        font-size: 18px;
-      }
+  .institution-university {
+    font-size: 18px;
+  }
 
-      .institution-faculty {
-        font-size: 13px;
-      }
+  .institution-faculty {
+    font-size: 13px;
+  }
 
-      .institution-department {
-        font-size: 11px;
-      }
+  .institution-department {
+    font-size: 11px;
+  }
 
-      h1 {
-        font-size: 23px;
-      }
-    }
-  
+  h1 {
+    font-size: 23px;
+  }
+}
+
+/* Lidhja drejt përmbledhjes */
+
+.summary-link {
+  display: inline-block;
+  margin: 8px 0;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.summary-link:hover {
+  text-decoration: underline;
+}
+
+.summary-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
