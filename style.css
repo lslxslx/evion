@@ -413,15 +413,24 @@
     }
 
     .status {
-      margin: 16px 0;
-      padding: 16px;
-      border-radius: 8px;
-      background: #f2edf6;
-      color: #594368;
-      white-space: pre-line;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 8px;
+
+  background: #f2edf6;
+  color: #594368;
+
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  word-break: normal;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
 
     .status.error {
       background: #fff0ed;
