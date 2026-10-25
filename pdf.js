@@ -124,7 +124,7 @@ function reportHtml(data, result) {
 
   const categorySummary = categoryNames
     .map((label, index) => {
-      // Kategoritë me zero kredite nuk shfaqen në përmbledhje.
+      // Zero kredite: fjalia nuk shfaqet.
       if (number(data.credits[index]) <= 0) {
         return '';
       }
@@ -419,30 +419,25 @@ function reportHtml(data, result) {
       widows: 3;
     }
 
+    /* QR poshtë deklaruesit, majtas, pa tekst. */
     .evidence-qr {
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 1px solid #dddddd;
-      text-align: center;
+      margin-top: 10px;
+      padding: 0;
+      border: none;
+      text-align: left;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .evidence-qr-image {
-      width: 70mm;
-      margin: 0 auto 8px;
+      width: 40mm;
+      margin: 0;
     }
 
     .evidence-qr-image svg {
       display: block;
       width: 100%;
       height: auto;
-    }
-
-    .evidence-qr p {
-      margin: 4px 0;
-      font-size: 8px;
-      line-height: 1.5;
     }
 
     @media print {
@@ -582,13 +577,13 @@ function reportHtml(data, result) {
       <div class="signature">
         DEKLARUES
         <p>${escape(data.teacher)}</p>
+
+        ${evidenceQrHtml(data, result)}
       </div>
 
       ${notes ? `
         <p class="notes">* ${escape(notes)}</p>
       ` : ''}
-
-      ${evidenceQrHtml(data, result)}
     </main>
   </div>
 </body>
@@ -603,11 +598,7 @@ function reportHtml(data, result) {
 function printReport(data) {
   const serialized = JSON.stringify(data);
 
-  if (
-    !data ||
-    !serialized ||
-    serialized.length > 500000
-  ) {
+  if (!data || !serialized || serialized.length > 500000) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -630,10 +621,7 @@ function printReport(data) {
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const storedKey = localStorage.key(i);
 
-      if (
-        !storedKey ||
-        !storedKey.startsWith(prefix)
-      ) {
+      if (!storedKey || !storedKey.startsWith(prefix)) {
         continue;
       }
 
@@ -755,8 +743,7 @@ function reportDefinition(data, result) {
   data.rows.forEach(row => {
     body.push([
       cell(
-        text(row.week) +
-        (row.replacement ? ' *' : '')
+        text(row.week) + (row.replacement ? ' *' : '')
       ),
 
       cell(
@@ -865,12 +852,7 @@ function reportDefinition(data, result) {
   const definition = {
     pageSize: 'A4',
     pageOrientation: 'portrait',
-    pageMargins: [
-      margin,
-      margin,
-      margin,
-      margin
-    ],
+    pageMargins: [margin, margin, margin, margin],
 
     info: {
       title: pdfFilename(data).replace(/\.pdf$/i, ''),
@@ -989,7 +971,7 @@ function reportDefinition(data, result) {
         }
       },
 
-      // PDF-ja tabelore ruan deklaruesin dhe drejtuesin.
+      // Deklarata, emrat dhe QR-ja qëndrojnë së bashku.
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
@@ -1015,6 +997,17 @@ function reportDefinition(data, result) {
                   {
                     text: data.teacher,
                     margin: [0, 5, 8, 0]
+                  },
+
+                  // QR e vogël, pa tekst, poshtë emrit.
+                  {
+                    qr: evidenceQrText(data, result),
+                    eccLevel: 'M',
+                    fit: 100,
+                    foreground: '#000000',
+                    background: '#ffffff',
+                    alignment: 'left',
+                    margin: [8, 12, 8, 8]
                   }
                 ]
               },
@@ -1052,41 +1045,6 @@ function reportDefinition(data, result) {
     });
   }
 
-  // QR në fund të evidencës PDF.
-  definition.content.push({
-    unbreakable: true,
-    margin: [0, 24, 0, 0],
-
-    stack: [
-      {
-        text: 'QR · Përmbledhja e evidencës',
-        alignment: 'center',
-        fontSize: 8,
-        bold: true,
-        margin: [0, 0, 0, 10]
-      },
-
-      {
-        qr: evidenceQrText(data, result),
-        eccLevel: 'M',
-        fit: 180,
-        foreground: '#000000',
-        background: '#ffffff',
-        alignment: 'center',
-        margin: [12, 12, 12, 12]
-      },
-
-      {
-        text:
-          'Për importimin e studentëve, grupeve dhe orëve ' +
-          'në tabelën përmbledhëse.',
-        alignment: 'center',
-        fontSize: 7,
-        margin: [0, 10, 0, 0]
-      }
-    ]
-  });
-
   return definition;
 }
 
@@ -1095,10 +1053,7 @@ function reportDefinition(data, result) {
 // =====================================================
 
 async function generatePdfBlob(data) {
-  if (
-    !data ||
-    JSON.stringify(data).length > 500000
-  ) {
+  if (!data || JSON.stringify(data).length > 500000) {
     throw new Error(
       'Formulari mungon ose është shumë i madh.'
     );
@@ -1193,7 +1148,7 @@ function evidenceQrData(data, result) {
       students,
       groups: number(data.groups[index]),
 
-      // Nuk shumëzohen përsëri me grupet.
+      // Orët faktike nuk shumëzohen përsëri me grupet.
       hours: round(result.actual[index])
     });
   });
@@ -1224,8 +1179,7 @@ function evidenceQrText(data, result) {
 
   /*
     Përdorim karaktere ASCII brenda QR-së.
-    Shkronjat shqipe kodohen si escape Unicode
-    dhe rikthehen normalisht nga JSON.parse().
+    Shkronjat shqipe rikthehen nga JSON.parse().
   */
   const serialized = JSON.stringify(summary).replace(
     /[\u007f-\uffff]/g,
@@ -1237,10 +1191,7 @@ function evidenceQrText(data, result) {
         .padStart(4, '0')
   );
 
-  /*
-    Kufiri konservativ për QR me korrigjim M.
-    Nuk shkurtojmë ose humbasim të dhëna.
-  */
+  // Nuk shkurtojmë ose humbasim të dhëna.
   if (serialized.length > 2200) {
     throw new Error(
       'Përmbledhja është tepër e gjatë për QR-në. ' +
@@ -1260,7 +1211,7 @@ function evidenceQrHtml(data, result) {
   if (typeof qrcode !== 'function') {
     throw new Error(
       'Biblioteka QR nuk u ngarkua. Kontrolloni ' +
-      'skriptin qrcode-generator te raporti.html.'
+      'lidhjen e qrcode.js te raporti.html.'
     );
   }
 
@@ -1273,7 +1224,7 @@ function evidenceQrHtml(data, result) {
 
   qr.make();
 
-  // SVG ruan qartësinë gjatë printimit.
+  // Ruhet hapësira e bardhë rreth QR-së për skanimin.
   const svg = qr.createSvgTag({
     cellSize: 2,
     margin: 8,
@@ -1281,19 +1232,10 @@ function evidenceQrHtml(data, result) {
   });
 
   return `
-    <section class="evidence-qr">
+    <div class="evidence-qr">
       <div class="evidence-qr-image">
         ${svg}
       </div>
-
-      <p>
-        QR · Përmbledhja e evidencës
-      </p>
-
-      <p>
-        Për importimin e studentëve, grupeve dhe orëve
-        në tabelën përmbledhëse.
-      </p>
-    </section>
+    </div>
   `;
 }
