@@ -90,7 +90,7 @@ if (typeof document !== 'undefined') initPage();
 
 function initPage() {
   const $ = id => document.getElementById(id);
-  let records = [], queue = [], scanner = null, running = false, scanBusy = false, handled = false;
+  let records = [], queue = [], running = false, scanBusy = false;
   const message = (text, kind = '') => { $('status').textContent = text; $('status').className = kind; };
   const hours = n => n.toFixed(2);
   function loadRecords() {
@@ -231,52 +231,161 @@ function initPage() {
     finally{$('json-file').value='';}
   };
 
-  function getScanner() {
-    if(typeof Html5Qrcode!=='function')throw new Error('Biblioteka e skanimit nuk u ngarkua. Kontrolloni internetin dhe rifreskoni faqen. Ngarkimi JSON mund të përdoret veçmas.');
-    if(!scanner)scanner=new Html5Qrcode('reader',{formatsToSupport:[Html5QrcodeSupportedFormats.QR_CODE],verbose:false});
-    return scanner;
+  const video = $('camera-video');
+  let stream = null, cameraToken = 0, scanTimer = null, cancelFile = false;
+  const pause = () => new Promise(resolve => setTimeout(resolve, 0));
+  function requireDecoder() {
+    if (typeof jsQR !== 'function') throw new Error('Nuk u ngarkua vendor/jsQR.js. Kontrolloni që folderi vendor është publikuar.');
   }
-  function scanControls(){
-    $('scan').disabled=scanBusy||running;
-    $('photo').disabled=scanBusy||running;
-    $('stop').disabled=scanBusy||!running;
+  function scanControls() {
+    $('scan').disabled = scanBusy || running;
+    $('photo').disabled = scanBusy || running;
+    $('pdf').disabled = scanBusy || running;
+    $('stop').disabled = !scanBusy && !running;
+    $('stop').textContent = scanBusy && !running ? 'Anulo' : 'Ndalo kamerën';
   }
-  async function stopCamera(){
-    if(running){await scanner.stop();running=false;}
-    if(scanner)scanner.clear();
+  function stopCamera() {
+    cameraToken++;
+    clearTimeout(scanTimer);
+    if (stream) stream.getTracks().forEach(track => track.stop());
+    stream = null; running = false;
+    video.pause(); video.srcObject = null;
+    $('reader').hidden = true;
     scanControls();
   }
-  $('scan').onclick=async()=>{
+  // Lexon një rajon pa deformim dhe ruan kufirin e bardhë të QR-së.
+  function decodeRegion(source, x, y, w, h, maxSide = 1800) {
+    const scale = Math.min(1, maxSide / Math.max(w, h));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(w * scale));
+    canvas.height = Math.max(1, Math.round(h * scale));
+    const context = canvas.getContext('2d', {willReadFrequently:true});
+    context.fillStyle = '#fff'; context.fillRect(0,0,canvas.width,canvas.height);
+    context.drawImage(source,x,y,w,h,0,0,canvas.width,canvas.height);
+    const pixels = context.getImageData(0,0,canvas.width,canvas.height);
+    const code = jsQR(pixels.data,pixels.width,pixels.height,{inversionAttempts:'attemptBoth'});
+    canvas.width=canvas.height=1;
+    return code ? code.data : null;
+  }
+  async function scanSurface(source, width, height) {
+    requireDecoder();
+    // E gjithë faqja, pastaj pjesë të mbivendosura në rezolucion më të lartë.
+    const regions = [[0,0,width,height,1800],[0,0,width,height,3000]];
+    for (const y of [0.5,0.25,0]) {
+      regions.push([0,height*y,width,height*0.5,2200]);
+    }
+    for (const y of [0.5,0.25,0]) for (const x of [0,0.25,0.5]) {
+      regions.push([width*x,height*y,width*0.5,height*0.5,1800]);
+    }
+    let invalid = null;
+    for (const region of regions) {
+      if(cancelFile) throw new Error('Leximi u anulua.');
+      await pause();
+      const text = decodeRegion(source,...region);
+      if(text) {
+        try { return parseImport(text); } catch(e) { invalid=e; }
+      }
+    }
+    if(invalid)throw invalid;
+    return null;
+  }
+  $('scan').onclick = async () => {
     if(scanBusy||running)return;
-    scanBusy=true;handled=false;scanControls();
+    scanBusy=true;cancelFile=false;scanControls();
+    const token=++cameraToken;
     try {
-      if(!window.isSecureContext)throw new Error('Hapeni faqen përmes HTTPS për të përdorur kamerën.');
-      const qr=getScanner();qr.clear();
-      await qr.start({facingMode:'environment'},{fps:8},async text=>{
-        if(handled||!running)return;
-        handled=true;
-        try{await stopCamera();stage(parseImport(text));message('QR-ja u lexua. Kontrolloni evidencën.','success');}
-        catch(e){message(e.message,'error');}
-      },()=>{});
+      requireDecoder();
+      if(!window.isSecureContext || !navigator.mediaDevices?.getUserMedia)throw new Error('Kamera kërkon HTTPS dhe lejen e shfletuesit.');
+      $('reader').hidden=false;
+      video.muted=true;video.autoplay=true;video.playsInline=true;
+      video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');
+      const acquired=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}}});
+      if(token!==cameraToken){acquired.getTracks().forEach(t=>t.stop());return;}
+      stream=acquired;video.srcObject=stream;
+      await video.play();
+      if(token!==cameraToken)return;
       running=true;
-      message('Drejtoni kamerën te QR-ja. Mbajeni dokumentin të palëvizshëm.');
-    }catch(e){message('Kamera nuk u hap: '+(e.message||String(e))+'. Mund të përdorni “Ngarko foto QR”.','error');}
-    finally{scanBusy=false;scanControls();}
+      message('Kamera është aktive. Afrojeni QR-në, mbajeni të plotë në pamje dhe prisni fokusimin.');
+      function tick(){
+        if(!running||token!==cameraToken)return;
+        try {
+          if(video.readyState>=2 && video.videoWidth){
+            const w=video.videoWidth,h=video.videoHeight;
+            const text=decodeRegion(video,0,0,w,h,1600);
+            if(text){
+              const items=parseImport(text);stopCamera();stage(items);
+              message('QR-ja u lexua. Kontrolloni të dhënat.','success');return;
+            }
+          }
+        }catch(e){stopCamera();message(e.message,'error');return;}
+        scanTimer=setTimeout(tick,200);
+      }
+      tick();
+    }catch(e){
+      if(token===cameraToken){stopCamera();message('Kamera nuk u hap: '+(e.message||String(e))+'. Provoni ngarkimin e fotos ose PDF-së.','error');}
+    }finally{scanBusy=false;scanControls();}
   };
-  $('stop').onclick=async()=>{try{await stopCamera();message('Kamera u ndal.');}catch(e){message('Kamera nuk u ndal: '+e.message,'error');}};
+  $('stop').onclick=()=>{cancelFile=true;stopCamera();message('Leximi u ndal.');};
   $('photo').onclick=()=>$('photo-file').click();
   $('photo-file').onchange=async()=>{
     const file=$('photo-file').files[0];if(!file)return;
-    scanBusy=true;scanControls();
+    stopCamera();scanBusy=true;cancelFile=false;scanControls();
+    const url=URL.createObjectURL(file);
     try{
       if(file.size>20000000)throw new Error('Fotoja duhet të jetë më e vogël se 20 MB.');
-      await stopCamera();
-      const text=await getScanner().scanFile(file,true);
-      stage(parseImport(text));message('QR-ja u lexua nga fotografia.','success');
-    }catch(e){message('Fotoja nuk u lexua: '+(e.message||String(e))+'. Provoni një pamje të qartë të të gjithë QR-së.','error');}
-    finally{scanBusy=false;scanControls();$('photo-file').value='';}
+      message('Po lexohet fotografia…');
+      const image=new Image();
+      await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Formati i fotos nuk u hap. Provoni JPEG ose PNG.'));image.src=url;});
+      const items=await scanSurface(image,image.naturalWidth,image.naturalHeight);
+      if(!items)throw new Error('Nuk u gjet QR e lexueshme. Provoni screenshot më të qartë ose ngarkoni PDF-në origjinale.');
+      stage(items);message('QR-ja u lexua nga fotografia.','success');
+    }catch(e){message(e.message||String(e),'error');}
+    finally{URL.revokeObjectURL(url);scanBusy=false;scanControls();$('photo-file').value='';}
   };
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)stopCamera().catch(()=>{});});
+  $('pdf').onclick=()=>$('pdf-file').click();
+  $('pdf-file').onchange=async()=>{
+    const file=$('pdf-file').files[0];if(!file)return;
+    stopCamera();scanBusy=true;cancelFile=false;scanControls();
+    let task=null, doc=null;
+    const canvas=document.createElement('canvas');
+    try{
+      requireDecoder();
+      if(file.size>30000000)throw new Error('PDF-ja duhet të jetë më e vogël se 30 MB.');
+      message('Po hapet PDF-ja…');
+      const pdfjs=await import('./vendor/pdf.mjs');
+      pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdf.worker.mjs',document.baseURI).href;
+      task=pdfjs.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false});
+      task.onPassword=()=>{task.destroy();};
+      doc=await task.promise;
+      if(doc.numPages>100)throw new Error('Lejohen PDF deri në 100 faqe.');
+      const found=new Map();let invalidPages=0;
+      for(let pageNo=1;pageNo<=doc.numPages;pageNo++){
+        if(cancelFile)throw new Error('Leximi u anulua.');
+        message(`Po kërkohet QR në faqen ${pageNo} nga ${doc.numPages}…`);
+        const page=await doc.getPage(pageNo);
+        const base=page.getViewport({scale:1});
+        const scale=Math.min(3,3200/Math.max(base.width,base.height));
+        const viewport=page.getViewport({scale});
+        canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+        const context=canvas.getContext('2d',{willReadFrequently:true});
+        await page.render({canvasContext:context,viewport,background:'rgb(255,255,255)'}).promise;
+        try{
+          const items=await scanSurface(canvas,canvas.width,canvas.height);
+          if(items)for(const item of items)found.set(JSON.stringify(item),item);
+        }catch(e){if(cancelFile)throw e;invalidPages++;}
+        page.cleanup();canvas.width=canvas.height=1;
+      }
+      if(!found.size)throw new Error(invalidPages?'U gjet QR, por nuk përmban përmbledhje EVION të vlefshme.':'Nuk u gjet QR e lexueshme. Përdorni PDF-në origjinale me QR, jo një fotografi të paqartë.');
+      stage([...found.values()]);message(`U lexuan ${found.size} përmbledhje nga PDF-ja. Kontrollojini përpara shtimit.`+(invalidPages?' Disa faqe kishin QR me të dhëna të pavlefshme.':''),'success');
+    }catch(e){message('PDF-ja nuk u importua: '+(e.message||String(e)),'error');}
+    finally{
+      canvas.width=canvas.height=1;
+      if(task)await task.destroy().catch(()=>{});
+      scanBusy=false;scanControls();$('pdf-file').value='';
+    }
+  };
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelFile=true;stopCamera();}});
+  window.addEventListener('pagehide',stopCamera);
   window.addEventListener('storage',event=>{
     if(event.key!==STORE_KEY)return;
     try{records=loadRecords();refreshFilters();render();renderPreview();}catch(e){message(e.message,'error');}
