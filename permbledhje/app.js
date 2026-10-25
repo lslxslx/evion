@@ -1491,7 +1491,7 @@ function setupSummaryCsvExport() {
       );
 
       // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
-      const csv = 'sep=;\r\n' + rows.join('\r\n');
+      const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
 
       const teacherName =
         teacherSelect.selectedOptions[0]?.textContent.trim() ||
@@ -1505,18 +1505,9 @@ function setupSummaryCsvExport() {
 
       const filename = 'Permbledhje_' + safeName + '.csv';
 
-      const buffer = new ArrayBuffer(2 + csv.length * 2);
-      const view = new DataView(buffer);
-
-      // BOM për UTF-16 LE.
-      view.setUint16(0, 0xFEFF, true);
-      for (let i = 0; i < csv.length; i++) {
-        view.setUint16(2 + i * 2, csv.charCodeAt(i), true);
-      }
-
       const blob = new Blob(
-        [buffer],
-        { type: 'text/csv;charset=utf-16le;' }
+        [csv],
+        { type: 'text/csv;charset=utf-8;' }
       );
 
       const url = URL.createObjectURL(blob);
