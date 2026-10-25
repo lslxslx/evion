@@ -1,11 +1,13 @@
-/* Raport narrativ HTML dhe PDF me pdfmake / Comfortaa. (C) ルイス */
+/* Raport narrativ HTML dhe PDF. (C) ルイス */
 
 // Emri i PDF-së tabelore.
 function pdfFilename(data) {
   return (
-    'Evidenca_' + data.subject + '_' + data.teacher
+    'Evidence_' + data.subject + '_' + data.teacher
   )
     .replace(/[^\p{L}\p{N}_-]/gu, '_')
+    .replace(/_+/g, '_')
+    .replace(/_+$/, '')
     .slice(0, 130) + '.pdf';
 }
 
@@ -51,8 +53,11 @@ function reportHtml(data, result) {
 
   // Titulli i tabit dhe emri i sugjeruar gjatë ruajtjes.
   const title = (
-    'Raport' + data.subject + data.teacher
-  ).replace(/[^\p{L}\p{N}]/gu, '');
+    'Raport_' + data.subject + '_' + data.teacher
+  )
+    .replace(/[^\p{L}\p{N}_-]/gu, '_')
+    .replace(/_+/g, '_')
+    .replace(/_+$/, '');
 
   const regularFont = new URL(
     'fonts/Comfortaa-Regular.ttf',
@@ -122,7 +127,7 @@ function reportHtml(data, result) {
         <strong>${formatNumber(result.actual[index])} orë</strong>
         nga
         <strong>${formatNumber(result.expected[index])} orë</strong>
-        të parashikuara.
+        të përcaktuara sipas krediteve.
       </p>
     `)
     .join('');
@@ -522,7 +527,7 @@ function reportHtml(data, result) {
           <strong>${formatNumber(sum(result.actual))} orë</strong>
           nga
           <strong>${formatNumber(sum(result.expected))} orë</strong>
-          të parashikuara sipas krediteve dhe grupeve.
+          të përcaktuara sipas krediteve dhe grupeve.
         </p>
 
         <h2>Datat me më shumë se 8 orë mësimore</h2>
@@ -531,7 +536,7 @@ function reportHtml(data, result) {
       </section>
 
       <p class="declaration">
-        Deklaroj se të dhënat e paraqitura në këtë evidencë
+        Deklaroj se të dhënat e paraqitura në këtë raport
         pasqyrojnë ngarkesën mësimore të realizuar prej meje.
       </p>
 
