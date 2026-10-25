@@ -419,7 +419,8 @@ function reportHtml(data, result) {
       widows: 3;
     }
 
-    /* QR në qendër horizontalisht, pa tekst. */
+    /* QR djathtas, pa tekst. */
+
     .evidence-qr {
       padding: 0;
       margin: 0;
@@ -440,134 +441,129 @@ function reportHtml(data, result) {
     }
 
     @media print {
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    background: #fff;
-  }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
 
-  body {
-    font-size: 9px;
-    line-height: 1.3;
+      body {
+        font-size: 9px;
+        line-height: 1.3;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
 
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+      .toolbar {
+        display: none !important;
+      }
 
-  .toolbar {
-    display: none !important;
-  }
+      .preview {
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+      }
 
-  .preview {
-    overflow: visible;
-    margin: 0;
-    padding: 0;
-  }
+      .sheet {
+        width: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
 
-  .sheet {
-    width: auto;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-  }
+      p {
+        margin: 0 0 3px;
+      }
 
-  p {
-    margin: 0 0 3px;
-  }
+      h1 {
+        margin: 12px 0 8px;
+        font-size: 13px;
+        line-height: 1.3;
+      }
 
-  h1 {
-    margin: 12px 0 8px;
-    font-size: 13px;
-    line-height: 1.3;
-  }
+      .top {
+        margin-bottom: 10px;
+      }
 
-  .top {
-    margin-bottom: 10px;
-  }
+      .plan td,
+      .plan th {
+        padding: 2px 3px;
+      }
 
-  .plan td,
-  .plan th {
-    padding: 2px 3px;
-  }
+      .narrative {
+        margin-top: 12px;
+        font-size: 9px;
+        line-height: 1.4;
+      }
 
-  .narrative {
-    margin-top: 12px;
-    font-size: 9px;
-    line-height: 1.4;
-  }
+      .narrative h2 {
+        margin: 10px 0 5px;
+        font-size: 10px;
+        line-height: 1.3;
+        break-after: avoid;
+        page-break-after: avoid;
+      }
 
-  .narrative h2 {
-    margin: 10px 0 5px;
-    font-size: 10px;
-    line-height: 1.3;
+      .narrative p {
+        margin: 0 0 5px;
+        orphans: 2;
+        widows: 2;
+      }
 
-    break-after: avoid;
-    page-break-after: avoid;
-  }
+      .narrative .total {
+        padding-top: 6px;
+      }
 
-  .narrative p {
-    margin: 0 0 5px;
-    orphans: 2;
-    widows: 2;
-  }
+      .declaration {
+        margin-top: 12px;
+        line-height: 1.4;
+      }
 
-  .narrative .total {
-    padding-top: 6px;
-  }
+      .signature {
+        margin-top: 18px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
 
-  .declaration {
-    margin-top: 12px;
-    line-height: 1.4;
-  }
+      .signature p {
+        margin: 5px 0 0;
+      }
 
-  .signature {
-    margin-top: 18px;
+      .evidence-qr {
+        margin: 0;
+        padding: 0;
+        border: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
 
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
+      .evidence-qr-image {
+        width: 30mm;
+        margin: 0 0 0 auto;
+      }
 
-  .signature p {
-    margin: 5px 0 0;
-  }
+      .evidence-qr-image svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
 
-  .evidence-qr {
-    margin: 0;
-    padding: 0;
-    border: none;
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
+      .notes {
+        margin-top: 12px;
+        font-size: 8px;
+        line-height: 1.35;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
 
-  .evidence-qr-image {
-    width: 30mm;
-    margin: 0 0 0 auto;
-  }
-
-  .evidence-qr-image svg {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .notes {
-    margin-top: 12px;
-    font-size: 8px;
-    line-height: 1.35;
-
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-
-  .over-eight {
-    color: #b91c1c !important;
-
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-}
+      .over-eight {
+        color: #b91c1c !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
   </style>
 </head>
 
@@ -1083,7 +1079,7 @@ function reportDefinition(data, result) {
         }
       },
 
-      // Deklarata, firmat dhe QR-ja qëndrojnë së bashku.
+      // Deklarata, QR-ja dhe firmat qëndrojnë së bashku.
       {
         unbreakable: true,
         margin: [0, 23, 0, 0],
@@ -1093,7 +1089,19 @@ function reportDefinition(data, result) {
             text:
               'Deklaroj se të dhënat e paraqitura në këtë evidencë ' +
               'pasqyrojnë ngarkesën mësimore të realizuar prej meje.',
-            margin: [0, 0, 0, 30]
+            margin: [0, 0, 0, 15]
+          },
+
+          // QR mbi deklaruesin dhe drejtuesin e departamentit.
+          {
+            qr: evidenceQrText(data, result),
+            eccLevel: 'M',
+            fit: 100,
+            padding: 4,
+            foreground: '#1a1a1a',
+            background: '#ffffff',
+            alignment: 'left',
+            margin: [0, 0, 0, 20]
           },
 
           {
@@ -1129,17 +1137,6 @@ function reportDefinition(data, result) {
                 ]
               }
             ]
-          },
-
-          // QR në qendër të gjerësisë së faqes, pa tekst.
-          {
-            qr: evidenceQrText(data, result),
-            eccLevel: 'M',
-            fit: 90,
-            foreground: '#1a1a1a',
-            background: '#ffffff',
-            alignment: 'left',
-            margin: [0, 10, 0, 0]
           }
         ]
       }
