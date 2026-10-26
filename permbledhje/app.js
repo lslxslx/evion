@@ -483,7 +483,6 @@ function initPage() {
 
     const sum2 = totals.praktika.hours;
 
-    // Pesë kolona, pa kolonën e vjetër "Lloji".
     const subtotal = (label, value, cls = 'total') => `
       <tr class="${cls}">
         <td></td>
@@ -920,6 +919,7 @@ function initPage() {
     });
 
     context.fillStyle = '#fff';
+
     context.fillRect(
       0,
       0,
@@ -1073,6 +1073,32 @@ function initPage() {
 
       await video.play();
 
+      if (token !== cameraToken) return;
+
+      // Fokusim i vazhdueshëm, vetëm kur mbështetet.
+      const track = stream.getVideoTracks()[0];
+
+      try {
+        const capabilities = track?.getCapabilities?.();
+
+        if (
+          capabilities?.focusMode?.includes('continuous')
+        ) {
+          await track.applyConstraints({
+            advanced: [
+              {
+                focusMode: 'continuous'
+              }
+            ]
+          });
+        }
+      } catch {
+        // Kamera vazhdon me cilësimet ekzistuese
+        // nëse shfletuesi nuk pranon fokusimin.
+      }
+
+      // Përdoruesi mund ta ketë ndalur kamerën
+      // gjatë zbatimit të cilësimeve.
       if (token !== cameraToken) return;
 
       running = true;
@@ -1449,7 +1475,10 @@ function initPage() {
   render();
 }
 
-// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
+// =====================================================
+// EKSPORTIMI CSV I TABELËS 03
+// =====================================================
+
 function setupSummaryCsvExport() {
   const button = document.getElementById('export-csv');
 
@@ -1497,7 +1526,7 @@ function setupSummaryCsvExport() {
           .join(';')
       );
 
-      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
+      // UTF-8 me BOM; sep=; i tregon Excel-it ndarësin.
       const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
 
       const teacherName =
@@ -1528,7 +1557,6 @@ function setupSummaryCsvExport() {
       link.click();
       link.remove();
 
-      // Liron adresën pasi shfletuesi nis shkarkimin.
       setTimeout(() => URL.revokeObjectURL(url), 60000);
     } catch (error) {
       alert('Eksportimi nuk u krye: ' + error.message);
