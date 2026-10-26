@@ -1101,7 +1101,7 @@ function initPage() {
               0,
               video.videoWidth,
               video.videoHeight,
-              3600
+              2400
             );
 
             if (text) {
