@@ -1,15 +1,15 @@
 'use strict';
 
 // =====================================================
-// KONFIGURIMI DHE KATEGORITË
+// KONFIGURIMI DHE KATEGORITÃ‹
 // =====================================================
 
 const CATEGORIES = [
   ['leksione', 'Leksione'],
   ['seminare', 'Seminare/ushtrime'],
-  ['laboratore', 'Laboratorë'],
+  ['laboratore', 'LaboratorÃ«'],
   ['detyra', 'Projekt / Detyra kursi'],
-  ['praktika', 'Praktika mësimore']
+  ['praktika', 'Praktika mÃ«simore']
 ];
 
 const STORE_KEY = 'evion-summary-register-v1';
@@ -26,7 +26,7 @@ const normalized = value =>
     .toLowerCase();
 
 // =====================================================
-// KONTROLLI I JSON-IT TË EVIDENCËS
+// KONTROLLI I JSON-IT TÃ‹ EVIDENCÃ‹S
 // =====================================================
 
 function validateEvidence(raw) {
@@ -36,7 +36,7 @@ function validateEvidence(raw) {
     raw.version !== 1
   ) {
     throw new Error(
-      'Ky nuk është JSON përmbledhës i evidencës ' +
+      'Ky nuk Ã«shtÃ« JSON pÃ«rmbledhÃ«s i evidencÃ«s ' +
       '(evion-summary, version 1).'
     );
   }
@@ -47,7 +47,7 @@ function validateEvidence(raw) {
       !raw[key].trim() ||
       raw[key].length > 300
     ) {
-      throw new Error('Fushë e pavlefshme: ' + key);
+      throw new Error('FushÃ« e pavlefshme: ' + key);
     }
 
     return raw[key]
@@ -64,7 +64,7 @@ function validateEvidence(raw) {
       value > max ||
       (integer && !Number.isInteger(value))
     ) {
-      throw new Error('Vlerë e pavlefshme: ' + name);
+      throw new Error('VlerÃ« e pavlefshme: ' + name);
     }
 
     return round(value);
@@ -81,13 +81,13 @@ function validateEvidence(raw) {
     semester: text('semester').toUpperCase(),
 
     cycle: num(raw.cycle, 'cikli', 2, true),
-    students: num(raw.students, 'studentët', 10000, true),
+    students: num(raw.students, 'studentÃ«t', 10000, true),
 
     categories: []
   };
 
   if (![1, 2].includes(item.cycle)) {
-    throw new Error('Cikli duhet të jetë 1 ose 2.');
+    throw new Error('Cikli duhet tÃ« jetÃ« 1 ose 2.');
   }
 
   const year = item.year.match(
@@ -98,7 +98,7 @@ function validateEvidence(raw) {
     !year ||
     Number(year[2]) !== Number(year[1]) + 1
   ) {
-    throw new Error('Viti akademik është i pavlefshëm.');
+    throw new Error('Viti akademik Ã«shtÃ« i pavlefshÃ«m.');
   }
 
   item.year = year[1] + '-' + year[2];
@@ -108,7 +108,7 @@ function validateEvidence(raw) {
     !raw.categories.length ||
     raw.categories.length > 5
   ) {
-    throw new Error('Kategoritë janë të pavlefshme.');
+    throw new Error('KategoritÃ« janÃ« tÃ« pavlefshme.');
   }
 
   const seen = new Set();
@@ -120,7 +120,7 @@ function validateEvidence(raw) {
       seen.has(category.code)
     ) {
       throw new Error(
-        'Kategori e panjohur ose e përsëritur.'
+        'Kategori e panjohur ose e pÃ«rsÃ«ritur.'
       );
     }
 
@@ -137,7 +137,7 @@ function validateEvidence(raw) {
 
       students: num(
         category.students,
-        'studentët e kategorisë',
+        'studentÃ«t e kategorisÃ«',
         10000,
         true
       ),
@@ -151,7 +151,7 @@ function validateEvidence(raw) {
 
       hours: num(
         category.hours,
-        'orët',
+        'orÃ«t',
         10000
       )
     };
@@ -162,8 +162,8 @@ function validateEvidence(raw) {
       checked.students !== item.students
     ) {
       throw new Error(
-        'Kreditet, grupet ose maksimumi i studentëve ' +
-        'nuk përputhen.'
+        'Kreditet, grupet ose maksimumi i studentÃ«ve ' +
+        'nuk pÃ«rputhen.'
       );
     }
 
@@ -178,7 +178,7 @@ function validateEvidence(raw) {
   return item;
 }
 
-// Identifikon evidencën sipas pedagogut, lëndës dhe periudhës.
+// Identifikon evidencÃ«n sipas pedagogut, lÃ«ndÃ«s dhe periudhÃ«s.
 function evidenceKey(item) {
   return JSON.stringify([
     item.teacher,
@@ -200,7 +200,7 @@ function sameEvidence(a, b) {
 
 function parseImport(text) {
   if (text.length > 5000000) {
-    throw new Error('JSON-i është shumë i madh.');
+    throw new Error('JSON-i Ã«shtÃ« shumÃ« i madh.');
   }
 
   let raw;
@@ -208,7 +208,7 @@ function parseImport(text) {
   try {
     raw = JSON.parse(text);
   } catch {
-    throw new Error('Teksti nuk është JSON i vlefshëm.');
+    throw new Error('Teksti nuk Ã«shtÃ« JSON i vlefshÃ«m.');
   }
 
   if (
@@ -221,7 +221,7 @@ function parseImport(text) {
       raw.evidences.length > MAX_RECORDS
     ) {
       throw new Error(
-        'Lista e evidencave është e pavlefshme.'
+        'Lista e evidencave Ã«shtÃ« e pavlefshme.'
       );
     }
 
@@ -266,7 +266,7 @@ if (typeof document !== 'undefined') {
 }
 
 // =====================================================
-// NDËRFAQJA
+// NDÃ‹RFAQJA
 // =====================================================
 
 function initPage() {
@@ -298,7 +298,7 @@ function initPage() {
 
       if (keys.has(key)) {
         throw new Error(
-          'Ruajtja përmban evidenca të dyfishta.'
+          'Ruajtja pÃ«rmban evidenca tÃ« dyfishta.'
         );
       }
 
@@ -311,11 +311,11 @@ function initPage() {
   function saveRecords(next) {
     if (next.length > MAX_RECORDS) {
       throw new Error(
-        'Lejohen deri në ' + MAX_RECORDS + ' evidenca.'
+        'Lejohen deri nÃ« ' + MAX_RECORDS + ' evidenca.'
       );
     }
 
-    // Gjendja ndryshon vetëm pasi ruajtja përfundon.
+    // Gjendja ndryshon vetÃ«m pasi ruajtja pÃ«rfundon.
     localStorage.setItem(
       STORE_KEY,
       JSON.stringify({
@@ -404,7 +404,7 @@ function initPage() {
         .sort()
         .reverse()
         .map(value => [value, value]),
-      'Të gjitha vitet'
+      'TÃ« gjitha vitet'
     );
 
     const inYear = own.filter(item =>
@@ -417,7 +417,7 @@ function initPage() {
       [...new Set(inYear.map(item => item.semester))]
         .sort()
         .map(value => [value, value]),
-      'Të gjithë semestrat'
+      'TÃ« gjithÃ« semestrat'
     );
   }
 
@@ -470,9 +470,9 @@ function initPage() {
 
     $('selection').textContent = selected.length
       ? selected[0].teacher +
-        ' · ' + selected.length +
-        ' evidenca të përfshira'
-      : 'Nuk ka evidenca për këtë përzgjedhje.';
+        ' Â· ' + selected.length +
+        ' evidenca tÃ« pÃ«rfshira'
+      : 'Nuk ka evidenca pÃ«r kÃ«tÃ« pÃ«rzgjedhje.';
 
     const sum1 = round(
       CATEGORIES.slice(0, 4).reduce(
@@ -483,7 +483,7 @@ function initPage() {
 
     const sum2 = totals.praktika.hours;
 
-    // Pesë kolona, pa kolonën e vjetër "Lloji".
+    // PesÃ« kolona, pa kolonÃ«n e vjetÃ«r "Lloji".
     const subtotal = (label, value, cls = 'total') => `
       <tr class="${cls}">
         <td></td>
@@ -506,32 +506,32 @@ function initPage() {
       .join('');
 
     rows += subtotal(
-      'Shuma e orëve në auditor',
+      'Shuma e orÃ«ve nÃ« auditor',
       sum1
     );
 
     rows += `
       <tr>
         <td>5</td>
-        <td>Praktika mësimore</td>
+        <td>Praktika mÃ«simore</td>
         ${rowCells(totals.praktika)}
       </tr>
     `;
 
     [
-      'Udhëheqje Diplome Bachelor',
-      'Udhëheqje Diplome Master',
-      'Udhëheqje Doktorature',
-      'Oponencë Doktorature',
+      'UdhÃ«heqje Diplome Bachelor',
+      'UdhÃ«heqje Diplome Master',
+      'UdhÃ«heqje Doktorature',
+      'OponencÃ« Doktorature',
       'Juri Doktorature'
     ].forEach((label, index) => {
       rows += `
         <tr>
           <td>${index + 6}</td>
           <td>${label}</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
+          <td>â€”</td>
+          <td>â€”</td>
+          <td>â€”</td>
         </tr>
       `;
     });
@@ -539,7 +539,7 @@ function initPage() {
     $('summary').innerHTML =
       rows +
       subtotal(
-        'Shuma e orëve mbështetëse',
+        'Shuma e orÃ«ve mbÃ«shtetÃ«se',
         sum2
       ) +
       subtotal(
@@ -548,7 +548,7 @@ function initPage() {
         'grand'
       );
 
-    // 04 · Evidencat e përfshira.
+    // 04 Â· Evidencat e pÃ«rfshira.
     $('details').replaceChildren();
 
     for (const item of selected) {
@@ -556,8 +556,8 @@ function initPage() {
       const title = document.createElement('summary');
 
       title.textContent =
-        `${item.subject} · ${item.program} · ` +
-        `${item.year} · Semestri ${item.semester} · ` +
+        `${item.subject} Â· ${item.program} Â· ` +
+        `${item.year} Â· Semestri ${item.semester} Â· ` +
         `Cikli ${item.cycle}`;
 
       detail.append(title);
@@ -570,9 +570,9 @@ function initPage() {
           <thead>
             <tr>
               <th>Kategoria</th>
-              <th>Studentë</th>
+              <th>StudentÃ«</th>
               <th>Grupe</th>
-              <th>Orë</th>
+              <th>OrÃ«</th>
             </tr>
           </thead>
           <tbody>
@@ -598,11 +598,11 @@ function initPage() {
       const remove = document.createElement('button');
       remove.type = 'button';
       remove.className = 'danger';
-      remove.textContent = 'Hiq evidencën';
+      remove.textContent = 'Hiq evidencÃ«n';
 
       remove.onclick = () => {
         if (!confirm(
-          'Të hiqet evidenca e lëndës ' + item.subject + '?'
+          'TÃ« hiqet evidenca e lÃ«ndÃ«s ' + item.subject + '?'
         )) {
           return;
         }
@@ -633,14 +633,14 @@ function initPage() {
 
     if (!selected.length) {
       $('details').textContent =
-        'Evidencat e importuara do të shfaqen këtu.';
+        'Evidencat e importuara do tÃ« shfaqen kÃ«tu.';
     }
 
     $('export').disabled = !records.length;
   }
 
   // ---------------------------------------------------
-  // Kontrolli përpara importimit
+  // Kontrolli pÃ«rpara importimit
   // ---------------------------------------------------
 
   function renderPreview() {
@@ -651,12 +651,12 @@ function initPage() {
     if (!item) return;
 
     $('queue-count').textContent =
-      queue.length + ' evidenca në pritje për kontroll.';
+      queue.length + ' evidenca nÃ« pritje pÃ«r kontroll.';
 
     $('preview-meta').textContent =
-      `${item.teacher} · ${item.subject} · ` +
-      `${item.program} · ${item.year} · ` +
-      `Semestri ${item.semester} · Cikli ${item.cycle}`;
+      `${item.teacher} Â· ${item.subject} Â· ` +
+      `${item.program} Â· ${item.year} Â· ` +
+      `Semestri ${item.semester} Â· Cikli ${item.cycle}`;
 
     $('preview-rows').innerHTML = categoryRows(item);
 
@@ -669,21 +669,21 @@ function initPage() {
     $('add').disabled = Boolean(duplicate);
 
     $('add').textContent = old && !duplicate
-      ? 'Zëvendëso evidencën'
-      : 'Shto në përmbledhje';
+      ? 'ZÃ«vendÃ«so evidencÃ«n'
+      : 'Shto nÃ« pÃ«rmbledhje';
 
     $('duplicate-note').textContent = duplicate
-      ? 'Kjo evidencë është importuar më parë. Nuk do të dyfishohet.'
+      ? 'Kjo evidencÃ« Ã«shtÃ« importuar mÃ« parÃ«. Nuk do tÃ« dyfishohet.'
       : old
-        ? 'Ekziston një evidencë për këtë pedagog, lëndë, program, ' +
-          'cikël, vit dhe semestër. Të dhënat ndryshojnë; ' +
-          'mund ta zëvendësoni.'
+        ? 'Ekziston njÃ« evidencÃ« pÃ«r kÃ«tÃ« pedagog, lÃ«ndÃ«, program, ' +
+          'cikÃ«l, vit dhe semestÃ«r. TÃ« dhÃ«nat ndryshojnÃ«; ' +
+          'mund ta zÃ«vendÃ«soni.'
         : '';
   }
 
   function stage(items) {
     if (queue.length + items.length > MAX_RECORDS) {
-      throw new Error('Shumë evidenca në pritje.');
+      throw new Error('ShumÃ« evidenca nÃ« pritje.');
     }
 
     queue.push(...items);
@@ -714,15 +714,15 @@ function initPage() {
           renderPreview();
 
           message(
-            'Kjo evidencë është importuar më parë.'
+            'Kjo evidencÃ« Ã«shtÃ« importuar mÃ« parÃ«.'
           );
 
           return;
         }
 
         if (!confirm(
-          'Të zëvendësohet evidenca ekzistuese? ' +
-          'Totalet e vjetra do të zëvendësohen me të rejat.'
+          'TÃ« zÃ«vendÃ«sohet evidenca ekzistuese? ' +
+          'Totalet e vjetra do tÃ« zÃ«vendÃ«sohen me tÃ« rejat.'
         )) {
           return;
         }
@@ -743,7 +743,7 @@ function initPage() {
       renderPreview();
 
       message(
-        'Evidenca u ruajt dhe totalet u përditësuan.',
+        'Evidenca u ruajt dhe totalet u pÃ«rditÃ«suan.',
         'success'
       );
     } catch (error) {
@@ -801,7 +801,7 @@ function initPage() {
     try {
       if (files.length > 100) {
         throw new Error(
-          'Zgjidhni deri në 100 skedarë njëherësh.'
+          'Zgjidhni deri nÃ« 100 skedarÃ« njÃ«herÃ«sh.'
         );
       }
 
@@ -810,7 +810,7 @@ function initPage() {
       for (const file of files) {
         if (file.size > 5000000) {
           throw new Error(
-            file.name + ': skedari është shumë i madh.'
+            file.name + ': skedari Ã«shtÃ« shumÃ« i madh.'
           );
         }
 
@@ -828,7 +828,7 @@ function initPage() {
       stage(incoming);
 
       message(
-        'Të dhënat u lexuan. Kontrollojini përpara shtimit.'
+        'TÃ« dhÃ«nat u lexuan. Kontrollojini pÃ«rpara shtimit.'
       );
     } catch (error) {
       message(error.message, 'error');
@@ -855,7 +855,7 @@ function initPage() {
     if (typeof jsQR !== 'function') {
       throw new Error(
         'Nuk u ngarkua vendor/jsQR.js. ' +
-        'Kontrolloni që folderi vendor është publikuar.'
+        'Kontrolloni qÃ« folderi vendor Ã«shtÃ« publikuar.'
       );
     }
   }
@@ -869,7 +869,7 @@ function initPage() {
 
     $('stop').textContent = scanBusy && !running
       ? 'Anulo'
-      : 'Ndalo kamerën';
+      : 'Ndalo kamerÃ«n';
   }
 
   function stopCamera() {
@@ -1033,7 +1033,7 @@ function initPage() {
         !navigator.mediaDevices?.getUserMedia
       ) {
         throw new Error(
-          'Kamera kërkon HTTPS dhe lejen e shfletuesit.'
+          'Kamera kÃ«rkon HTTPS dhe lejen e shfletuesit.'
         );
       }
 
@@ -1078,8 +1078,8 @@ function initPage() {
       running = true;
 
       message(
-        'Kamera është aktive. Afrojeni QR-në, ' +
-        'mbajeni të plotë në pamje dhe prisni fokusimin.'
+        'Kamera Ã«shtÃ« aktive. Afrojeni QR-nÃ«, ' +
+        'mbajeni tÃ« plotÃ« nÃ« pamje dhe prisni fokusimin.'
       );
 
       function tick() {
@@ -1101,7 +1101,7 @@ function initPage() {
               0,
               video.videoWidth,
               video.videoHeight,
-              1200
+              3600
             );
 
             if (text) {
@@ -1111,7 +1111,7 @@ function initPage() {
               stage(items);
 
               message(
-                'QR-ja u lexua. Kontrolloni të dhënat.',
+                'QR-ja u lexua. Kontrolloni tÃ« dhÃ«nat.',
                 'success'
               );
 
@@ -1135,7 +1135,7 @@ function initPage() {
         message(
           'Kamera nuk u hap: ' +
           (error.message || String(error)) +
-          '. Provoni ngarkimin e fotos ose PDF-së.',
+          '. Provoni ngarkimin e fotos ose PDF-sÃ«.',
           'error'
         );
       }
@@ -1175,11 +1175,11 @@ function initPage() {
     try {
       if (file.size > 20000000) {
         throw new Error(
-          'Fotoja duhet të jetë më e vogël se 20 MB.'
+          'Fotoja duhet tÃ« jetÃ« mÃ« e vogÃ«l se 20 MB.'
         );
       }
 
-      message('Po lexohet fotografia…');
+      message('Po lexohet fotografiaâ€¦');
 
       const image = new Image();
 
@@ -1204,7 +1204,7 @@ function initPage() {
       if (!items) {
         throw new Error(
           'Nuk u gjet QR e lexueshme. Provoni screenshot ' +
-          'më të qartë ose ngarkoni PDF-në origjinale.'
+          'mÃ« tÃ« qartÃ« ose ngarkoni PDF-nÃ« origjinale.'
         );
       }
 
@@ -1230,7 +1230,7 @@ function initPage() {
   };
 
   // ===================================================
-  // NGARKIMI I PDF-SË
+  // NGARKIMI I PDF-SÃ‹
   // ===================================================
 
   $('pdf').onclick = () => {
@@ -1258,11 +1258,11 @@ function initPage() {
 
       if (file.size > 30000000) {
         throw new Error(
-          'PDF-ja duhet të jetë më e vogël se 30 MB.'
+          'PDF-ja duhet tÃ« jetÃ« mÃ« e vogÃ«l se 30 MB.'
         );
       }
 
-      message('Po hapet PDF-ja…');
+      message('Po hapet PDF-jaâ€¦');
 
       const pdfjs = await import('./vendor/pdf.mjs');
 
@@ -1286,7 +1286,7 @@ function initPage() {
 
       if (doc.numPages > 100) {
         throw new Error(
-          'Lejohen PDF deri në 100 faqe.'
+          'Lejohen PDF deri nÃ« 100 faqe.'
         );
       }
 
@@ -1303,8 +1303,8 @@ function initPage() {
         }
 
         message(
-          `Po kërkohet QR në faqen ${pageNo} ` +
-          `nga ${doc.numPages}…`
+          `Po kÃ«rkohet QR nÃ« faqen ${pageNo} ` +
+          `nga ${doc.numPages}â€¦`
         );
 
         const page = await doc.getPage(pageNo);
@@ -1364,20 +1364,20 @@ function initPage() {
       if (!found.size) {
         throw new Error(
           invalidPages
-            ? 'U gjet QR, por nuk përmban përmbledhje EVION të vlefshme.'
-            : 'Nuk u gjet QR e lexueshme. Përdorni PDF-në origjinale ' +
-              'me QR, jo një fotografi të paqartë.'
+            ? 'U gjet QR, por nuk pÃ«rmban pÃ«rmbledhje EVION tÃ« vlefshme.'
+            : 'Nuk u gjet QR e lexueshme. PÃ«rdorni PDF-nÃ« origjinale ' +
+              'me QR, jo njÃ« fotografi tÃ« paqartÃ«.'
         );
       }
 
       stage([...found.values()]);
 
       message(
-        `U lexuan ${found.size} përmbledhje nga PDF-ja. ` +
-        'Kontrollojini përpara shtimit.' +
+        `U lexuan ${found.size} pÃ«rmbledhje nga PDF-ja. ` +
+        'Kontrollojini pÃ«rpara shtimit.' +
         (
           invalidPages
-            ? ' Disa faqe kishin QR me të dhëna të pavlefshme.'
+            ? ' Disa faqe kishin QR me tÃ« dhÃ«na tÃ« pavlefshme.'
             : ''
         ),
         'success'
@@ -1404,7 +1404,7 @@ function initPage() {
   };
 
   // ---------------------------------------------------
-  // Mbyllja e kamerës dhe përditësimi mes skedave
+  // Mbyllja e kamerÃ«s dhe pÃ«rditÃ«simi mes skedave
   // ---------------------------------------------------
 
   document.addEventListener('visibilitychange', () => {
@@ -1438,9 +1438,9 @@ function initPage() {
     records = loadRecords();
   } catch (error) {
     message(
-      'Të dhënat e ruajtura nuk u lexuan: ' +
+      'TÃ« dhÃ«nat e ruajtura nuk u lexuan: ' +
       error.message +
-      ' Nuk janë fshirë.',
+      ' Nuk janÃ« fshirÃ«.',
       'error'
     );
   }
@@ -1449,7 +1449,7 @@ function initPage() {
   render();
 }
 
-// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
+// Eksporton vetÃ«m tabelÃ«n 03, sipas filtrave aktualÃ«.
 function setupSummaryCsvExport() {
   const button = document.getElementById('export-csv');
 
@@ -1463,26 +1463,26 @@ function setupSummaryCsvExport() {
 
       if (!teacherSelect?.value) {
         throw new Error(
-          'Zgjidhni pedagogun përpara eksportimit.'
+          'Zgjidhni pedagogun pÃ«rpara eksportimit.'
         );
       }
 
       if (!table || !summaryBody.rows.length) {
-        throw new Error('Tabela e përmbledhjes është bosh.');
+        throw new Error('Tabela e pÃ«rmbledhjes Ã«shtÃ« bosh.');
       }
 
-      // Thonjëzat mbrojnë ndarësit dhe rreshtat brenda tekstit.
+      // ThonjÃ«zat mbrojnÃ« ndarÃ«sit dhe rreshtat brenda tekstit.
       const csvCell = value => {
         let text = String(value ?? '')
           .normalize('NFC')
-          .replace(/ë/g, 'e')
-          .replace(/Ë/g, 'E')
-          .replace(/ç/g, 'c')
-          .replace(/Ç/g, 'C')
-          .replace(/[–—−]/g, '-')
+          .replace(/Ã«/g, 'e')
+          .replace(/Ã‹/g, 'E')
+          .replace(/Ã§/g, 'c')
+          .replace(/Ã‡/g, 'C')
+          .replace(/[â€“â€”âˆ’]/g, '-')
           .trim();
 
-        // Parandalon interpretimin e tekstit si formulë në Excel.
+        // Parandalon interpretimin e tekstit si formulÃ« nÃ« Excel.
         if (text !== '-' && /^[=+\-@\t\r]/.test(text)) {
           text = "'" + text;
         }
@@ -1497,7 +1497,7 @@ function setupSummaryCsvExport() {
           .join(';')
       );
 
-      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
+      // BOM ruan Ã«/Ã§; sep=; i tregon Excel-it ndarÃ«sin.
       const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
 
       const teacherName =
@@ -1528,7 +1528,7 @@ function setupSummaryCsvExport() {
       link.click();
       link.remove();
 
-      // Liron adresën pasi shfletuesi nis shkarkimin.
+      // Liron adresÃ«n pasi shfletuesi nis shkarkimin.
       setTimeout(() => URL.revokeObjectURL(url), 60000);
     } catch (error) {
       alert('Eksportimi nuk u krye: ' + error.message);
