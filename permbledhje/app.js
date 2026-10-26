@@ -920,6 +920,7 @@ function initPage() {
     });
 
     context.fillStyle = '#fff';
+
     context.fillRect(
       0,
       0,
@@ -961,6 +962,7 @@ function initPage() {
     return code ? code.data : null;
   }
 
+  // Leximi nga fotoja ose nga një faqe PDF.
   async function scanSurface(source, width, height) {
     requireDecoder();
 
@@ -1093,16 +1095,38 @@ function initPage() {
         try {
           if (
             video.readyState >= 2 &&
-            video.videoWidth
+            video.videoWidth > 0 &&
+            video.videoHeight > 0
           ) {
-            const text = decodeRegion(
+            const width = video.videoWidth;
+            const height = video.videoHeight;
+
+            // Kontrollon fillimisht qendrën e pamjes.
+            const side = Math.floor(
+              Math.min(width, height) * 0.85
+            );
+
+            let text = decodeRegion(
               video,
-              0,
-              0,
-              video.videoWidth,
-              video.videoHeight,
+              Math.floor((width - side) / 2),
+              Math.floor((height - side) / 2),
+              side,
+              side,
               2400
             );
+
+            // Nëse nuk gjen QR në qendër,
+            // kontrollon pamjen e plotë.
+            if (!text) {
+              text = decodeRegion(
+                video,
+                0,
+                0,
+                width,
+                height,
+                2400
+              );
+            }
 
             if (text) {
               const items = parseImport(text);
@@ -1449,7 +1473,10 @@ function initPage() {
   render();
 }
 
-// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
+// =====================================================
+// EKSPORTIMI CSV I TABELËS 03
+// =====================================================
+
 function setupSummaryCsvExport() {
   const button = document.getElementById('export-csv');
 
@@ -1497,7 +1524,7 @@ function setupSummaryCsvExport() {
           .join(';')
       );
 
-      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
+      // UTF-8 me BOM; sep=; i tregon Excel-it ndarësin.
       const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
 
       const teacherName =
