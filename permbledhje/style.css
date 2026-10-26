@@ -235,16 +235,6 @@ td.number {
   border-radius: 8px;
 }
 
-@media (max-width: 650px) and (orientation: portrait) {
-  #reader {
-    min-height: 220px;
-  }
-
-  #reader video {
-    max-height: 320px;
-  }
-}
-
 /* Evidencat e përfshira */
 
 details {
