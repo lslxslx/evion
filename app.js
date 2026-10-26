@@ -143,6 +143,10 @@ fields.forEach(([id, title, value]) => {
   input.type = id === 'start' ? 'date' : 'text';
   input.value = value;
 
+  if (id === 'head') {
+    input.readOnly = true;
+  }
+
   if (id !== 'start') {
     input.maxLength = 300;
   }
@@ -875,7 +879,9 @@ $('file').onchange = async () => {
     }
 
     fields.forEach(([id, , defaultValue]) => {
-      const value = data[id] ?? defaultValue;
+      const value = id === 'head'
+        ? defaultValue
+        : (data[id] ?? defaultValue);
 
       $(id).value = id === 'start'
         ? internalDate(value)
