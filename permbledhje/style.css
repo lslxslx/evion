@@ -1,5 +1,5 @@
 :root {
-  font-family: Arial, sans-serif;
+  font-family: "Comfortaa", sans-serif;
   color: #25202a;
   background: #f5f2f7;
 
@@ -339,4 +339,10 @@ details .actions {
   td {
     white-space: normal;
   }
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
