@@ -32,7 +32,7 @@ body {
 }
 
 header {
-  background: var(--purple);
+  background: var(--stellar);
   color: white;
   padding: 28px 0;
 }
@@ -87,11 +87,11 @@ button {
   font: inherit;
   font-weight: 600;
 
-  background: var(--purple);
+  background: var(--stellar);
   color: white;
 
   padding: 11px 16px;
-  border: 1px solid var(--purple);
+  border: 1px solid var(--stellar);
   border-radius: 8px;
 
   cursor: pointer;
@@ -99,7 +99,7 @@ button {
 
 button.secondary {
   background: white;
-  color: var(--purple);
+  color: var(--stellar);
 }
 
 button:disabled {
