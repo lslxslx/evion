@@ -512,11 +512,11 @@ function reportHtml(data, result) {
       }
 
       p {
-        margin: 0 0 3px;
+        margin: 0 0 5px;
       }
 
       h1 {
-        margin: 12px 0 8px;
+        margin: 12px 0 10px;
         font-size: 13px;
         line-height: 1.3;
       }
@@ -555,18 +555,18 @@ function reportHtml(data, result) {
       }
 
       .declaration {
-        margin-top: 12px;
+        margin-top: 25px;
         line-height: 1.4;
       }
 
       .signature {
-        margin-top: 18px;
+        margin-top: 20px;
         break-inside: avoid;
         page-break-inside: avoid;
       }
 
       .signature p {
-        margin: 5px 0 0;
+        margin: 10px 0 0;
       }
 
       .evidence-qr {
