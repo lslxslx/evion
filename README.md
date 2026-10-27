@@ -1,4 +1,4 @@
-# `Evidencat` dhe përmbledhja e ngarkesës mësimore `online`
+# `Evi`dencat dhe përmbledhja e ngarkesës mësimore `online`
 
 Aplikacion për plotësimin e evidencave mësimore, verifikimin e orëve, gjenerimin e dokumenteve dhe përmbledhjen e ngarkesës së pedagogëve hapet pa identifikim dhe punon në shfletues.
 
