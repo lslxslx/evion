@@ -291,6 +291,4 @@ Rishikimi dhe përditësimi bëhet në përputhje me rregulloret e Universitetit
 
 Ky aplikacion shërben si një ndërfaqe për lehtësimin e procesit të vetëdeklarimit të ngarkesës mësimore, nga plotësimi dhe verifikimi i formularit deri te gjenerimi i raporteve dhe eksportimi i të dhënave përfundimtare.
 
-### Rrjedha e procesit
-
 **Plotëso formularin → Verifiko → Shkarko evidencën / Gjenero raportin → Lexo QR-në te Përmbledhja → Kontrollo dhe shto evidencën → Eksporto totalet.**
