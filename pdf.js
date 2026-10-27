@@ -1149,7 +1149,7 @@ function reportDefinition(data, result) {
   if (notes) {
     definition.content.push({
       text: '* ' + notes,
-      margin: [0, 41, 0, 0]
+      margin: [0, 33, 0, 0]
     });
   }
 
