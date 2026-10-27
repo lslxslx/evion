@@ -1,533 +1,268 @@
 'use strict';
-
-// =====================================================
-// KONFIGURIMI DHE KATEGORITË
-// =====================================================
-
-const CATEGORIES = [
-  ['leksione', 'Leksione'],
-  ['seminare', 'Seminare/ushtrime'],
-  ['laboratore', 'Laboratorë'],
-  ['detyra', 'Projekt / Detyra kursi'],
-  ['praktika', 'Praktika mësimore']
-];
-
+var _0xf_0x38f = (931903 ^ 931895) + (137247 ^ 137241);
+const CATEGORIES = [["\u006C\u0065\u006B\u0073\u0069\u006F\u006E\u0065", "\u004C\u0065\u006B\u0073\u0069\u006F\u006E\u0065"], ['seminare', "\u0053\u0065\u006D\u0069\u006E\u0061\u0072\u0065\u002F\u0075\u0073\u0068\u0074\u0072\u0069\u006D\u0065"], ['laboratore', "\u004C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u00EB"], ["\u0064\u0065\u0074\u0079\u0072\u0061", "\u0050\u0072\u006F\u006A\u0065\u006B\u0074\u0020\u002F\u0020\u0044\u0065\u0074\u0079\u0072\u0061\u0020\u006B\u0075\u0072\u0073\u0069"], ["\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061", 'Praktika mësimore']];
+_0xf_0x38f = '\u0067\u0064\u0064\u0071\u0061\u0065';
 const STORE_KEY = 'evion-summary-register-v1';
-const MAX_RECORDS = 2000;
-
-const round = value =>
-  Math.round(value * 1000000) / 1000000;
-
-const normalized = value =>
-  value
-    .normalize('NFC')
-    .trim()
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-
-// =====================================================
-// KONTROLLI I JSON-IT TË EVIDENCËS
-// =====================================================
-
+const MAX_RECORDS = 306468 ^ 305908;
+const round = value => Math['\u0072\u006F\u0075\u006E\u0064'](value * 1000000) / 1000000;
+let _0x54edg;
+const normalized = value => value['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']('NFC')['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp("\\s+", '\u0067'), "\u0020")['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']();
+_0x54edg = (921356 ^ 921357) + (418452 ^ 418454);
 function validateEvidence(raw) {
-  if (
-    !raw ||
-    raw.type !== 'evion-summary' ||
-    raw.version !== 1
-  ) {
-    throw new Error(
-      'Ky nuk është JSON përmbledhës i evidencës ' +
-      '(evion-summary, version 1).'
-    );
+  if (!raw || raw['\u0074\u0079\u0070\u0065'] !== 'evion-summary' || raw['\u0076\u0065\u0072\u0073\u0069\u006F\u006E'] !== (560291 ^ 560290)) {
+    throw new Error("\u004B\u0079\u0020\u006E\u0075\u006B\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u004A\u0053\u004F\u004E\u0020\u0070\u00EB\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u00EB\u0073\u0020\u0069\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u0073\u0020" + "\u0028\u0065\u0076\u0069\u006F\u006E\u002D\u0073\u0075\u006D\u006D\u0061\u0072\u0079\u002C\u0020\u0076\u0065\u0072\u0073\u0069\u006F\u006E\u0020\u0031\u0029\u002E");
   }
-
-  function text(key) {
-    if (
-      typeof raw[key] !== 'string' ||
-      !raw[key].trim() ||
-      raw[key].length > 300
-    ) {
-      throw new Error('Fushë e pavlefshme: ' + key);
+  function _0xa3ga(key) {
+    if (typeof raw[key] !== 'string' || !raw[key]['\u0074\u0072\u0069\u006D']() || raw[key]['\u006C\u0065\u006E\u0067\u0074\u0068'] > (697270 ^ 696986)) {
+      throw new Error("\u0046\u0075\u0073\u0068\u00EB\u0020\u0065\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u003A\u0020" + key);
     }
-
-    return raw[key]
-      .normalize('NFC')
-      .trim()
-      .replace(/\s+/g, ' ');
+    return raw[key]['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']('NFC')['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp("\\s+", '\u0067'), "\u0020");
   }
-
-  function num(value, name, max, integer = false) {
-    if (
-      typeof value !== 'number' ||
-      !Number.isFinite(value) ||
-      value < 0 ||
-      value > max ||
-      (integer && !Number.isInteger(value))
-    ) {
+  function _0x6a_0x9a3(value, name, max, integer = false) {
+    if (typeof value !== 'number' || !Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value) || value < (650691 ^ 650691) || value > max || integer && !Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](value)) {
       throw new Error('Vlerë e pavlefshme: ' + name);
     }
-
     return round(value);
   }
-
-  const item = {
-    type: 'evion-summary',
-    version: 1,
-
-    teacher: text('teacher'),
-    subject: text('subject'),
-    program: text('program'),
-    year: text('year'),
-    semester: text('semester').toUpperCase(),
-
-    cycle: num(raw.cycle, 'cikli', 2, true),
-    students: num(raw.students, 'studentët', 10000, true),
-
-    categories: []
+  var _0x1387f = (540816 ^ 540822) + (258986 ^ 258988);
+  const _0x5_0x914 = {
+    '\u0074\u0079\u0070\u0065': "\u0065\u0076\u0069\u006F\u006E\u002D\u0073\u0075\u006D\u006D\u0061\u0072\u0079",
+    "version": 1,
+    "teacher": _0xa3ga("\u0074\u0065\u0061\u0063\u0068\u0065\u0072"),
+    '\u0073\u0075\u0062\u006A\u0065\u0063\u0074': _0xa3ga('subject'),
+    "program": _0xa3ga('program'),
+    "year": _0xa3ga("\u0079\u0065\u0061\u0072"),
+    "semester": _0xa3ga("\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072")['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065'](),
+    "cycle": _0x6a_0x9a3(raw['\u0063\u0079\u0063\u006C\u0065'], "\u0063\u0069\u006B\u006C\u0069", 131963 ^ 131961, !![]),
+    "students": _0x6a_0x9a3(raw['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'], "\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u00EB\u0074", 197243 ^ 206187, !![]),
+    "categories": []
   };
-
-  if (![1, 2].includes(item.cycle)) {
-    throw new Error('Cikli duhet të jetë 1 ose 2.');
+  _0x1387f = 368586 ^ 368587;
+  if (![699735 ^ 699734, 324876 ^ 324878]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x5_0x914['\u0063\u0079\u0063\u006C\u0065'])) {
+    throw new Error("\u0043\u0069\u006B\u006C\u0069\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u0031\u0020\u006F\u0073\u0065\u0020\u0032\u002E");
   }
-
-  const year = item.year.match(
-    /^(\d{4})\s*-\s*(\d{4})$/
-  );
-
-  if (
-    !year ||
-    Number(year[2]) !== Number(year[1]) + 1
-  ) {
-    throw new Error('Viti akademik është i pavlefshëm.');
+  const _0xb4367a = _0x5_0x914['\u0079\u0065\u0061\u0072']['\u006D\u0061\u0074\u0063\u0068'](new RegExp('\u005E\u0028\u005C\u0064\u007B\u0034\u007D\u0029\u005C\u0073\u002A\u002D\u005C\u0073\u002A\u0028\u005C\u0064\u007B\u0034\u007D\u0029\u0024', ""));
+  if (!_0xb4367a || Number(_0xb4367a[338919 ^ 338917]) !== Number(_0xb4367a[565373 ^ 565372]) + (171066 ^ 171067)) {
+    throw new Error("\u0056\u0069\u0074\u0069\u0020\u0061\u006B\u0061\u0064\u0065\u006D\u0069\u006B\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0069\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u00EB\u006D\u002E");
   }
-
-  item.year = year[1] + '-' + year[2];
-
-  if (
-    !Array.isArray(raw.categories) ||
-    !raw.categories.length ||
-    raw.categories.length > 5
-  ) {
-    throw new Error('Kategoritë janë të pavlefshme.');
+  _0x5_0x914['\u0079\u0065\u0061\u0072'] = _0xb4367a[149432 ^ 149433] + "\u002D" + _0xb4367a[811657 ^ 811659];
+  if (!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']) || !raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] || raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] > (878391 ^ 878386)) {
+    throw new Error("\u004B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0074\u00EB\u0020\u006A\u0061\u006E\u00EB\u0020\u0074\u00EB\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");
   }
-
-  const seen = new Set();
-
-  for (const category of raw.categories) {
-    if (
-      !category ||
-      !CATEGORIES.some(([code]) => code === category.code) ||
-      seen.has(category.code)
-    ) {
-      throw new Error(
-        'Kategori e panjohur ose e përsëritur.'
-      );
+  const _0xbc626f = new Set();
+  for (const _0x9dd of raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']) {
+    if (!_0x9dd || !CATEGORIES['\u0073\u006F\u006D\u0065'](([code]) => code === _0x9dd['\u0063\u006F\u0064\u0065']) || _0xbc626f['\u0068\u0061\u0073'](_0x9dd['\u0063\u006F\u0064\u0065'])) {
+      throw new Error('Kategori e panjohur ose e përsëritur.');
     }
-
-    seen.add(category.code);
-
-    const checked = {
-      code: category.code,
-
-      credits: num(
-        category.credits,
-        'kreditet',
-        60
-      ),
-
-      students: num(
-        category.students,
-        'studentët e kategorisë',
-        10000,
-        true
-      ),
-
-      groups: num(
-        category.groups,
-        'grupet',
-        6,
-        true
-      ),
-
-      hours: num(
-        category.hours,
-        'orët',
-        10000
-      )
+    _0xbc626f['\u0061\u0064\u0064'](_0x9dd['\u0063\u006F\u0064\u0065']);
+    let _0x44dcce;
+    const _0x69e7f = {
+      '\u0063\u006F\u0064\u0065': _0x9dd['\u0063\u006F\u0064\u0065'],
+      '\u0063\u0072\u0065\u0064\u0069\u0074\u0073': _0x6a_0x9a3(_0x9dd['\u0063\u0072\u0065\u0064\u0069\u0074\u0073'], "\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074", 608735 ^ 608739),
+      "students": _0x6a_0x9a3(_0x9dd['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'], "\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u00EB\u0074\u0020\u0065\u0020\u006B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0073\u00EB", 809532 ^ 818476, !![]),
+      "groups": _0x6a_0x9a3(_0x9dd['\u0067\u0072\u006F\u0075\u0070\u0073'], 'grupet', 466466 ^ 466468, !![]),
+      "hours": _0x6a_0x9a3(_0x9dd['\u0068\u006F\u0075\u0072\u0073'], "\u006F\u0072\u00EB\u0074", 984778 ^ 991706)
     };
-
-    if (
-      checked.credits <= 0 ||
-      checked.groups < 1 ||
-      checked.students !== item.students
-    ) {
-      throw new Error(
-        'Kreditet, grupet ose maksimumi i studentëve ' +
-        'nuk përputhen.'
-      );
+    _0x44dcce = 752675 ^ 752675;
+    if (_0x69e7f['\u0063\u0072\u0065\u0064\u0069\u0074\u0073'] <= (142274 ^ 142274) || _0x69e7f['\u0067\u0072\u006F\u0075\u0070\u0073'] < (845553 ^ 845552) || _0x69e7f['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'] !== _0x5_0x914['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']) {
+      throw new Error('Kreditet, grupet ose maksimumi i studentëve ' + 'nuk përputhen.');
     }
-
-    item.categories.push(checked);
+    _0x5_0x914['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u0070\u0075\u0073\u0068'](_0x69e7f);
   }
-
-  item.categories.sort((a, b) =>
-    CATEGORIES.findIndex(([code]) => code === a.code) -
-    CATEGORIES.findIndex(([code]) => code === b.code)
-  );
-
-  return item;
+  _0x5_0x914['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u0073\u006F\u0072\u0074']((a, b) => CATEGORIES['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](([code]) => code === a['\u0063\u006F\u0064\u0065']) - CATEGORIES['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](([code]) => code === b['\u0063\u006F\u0064\u0065']));
+  return _0x5_0x914;
 }
-
-// Identifikon evidencën sipas pedagogut, lëndës dhe periudhës.
 function evidenceKey(item) {
-  return JSON.stringify([
-    item.teacher,
-    item.subject,
-    item.program,
-    item.year,
-    item.semester,
-    String(item.cycle)
-  ].map(normalized));
+  return JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079']([item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'], item['\u0073\u0075\u0062\u006A\u0065\u0063\u0074'], item['\u0070\u0072\u006F\u0067\u0072\u0061\u006D'], item['\u0079\u0065\u0061\u0072'], item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072'], String(item['\u0063\u0079\u0063\u006C\u0065'])]['\u006D\u0061\u0070'](normalized));
 }
-
 function sameEvidence(a, b) {
-  return (
-    evidenceKey(a) === evidenceKey(b) &&
-    a.students === b.students &&
-    JSON.stringify(a.categories) === JSON.stringify(b.categories)
-  );
+  return evidenceKey(a) === evidenceKey(b) && a['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'] === b['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'] && JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](a['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']) === JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](b['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']);
 }
-
 function parseImport(text) {
-  if (text.length > 5000000) {
+  if (text['\u006C\u0065\u006E\u0067\u0074\u0068'] > 5000000) {
     throw new Error('JSON-i është shumë i madh.');
   }
-
-  let raw;
-
+  var _0xd956d = (434375 ^ 434370) + (649550 ^ 649548);
+  let _0x6_0x2d9;
+  _0xd956d = 771225 ^ 771228;
   try {
-    raw = JSON.parse(text);
+    _0x6_0x2d9 = JSON['\u0070\u0061\u0072\u0073\u0065'](text);
   } catch {
     throw new Error('Teksti nuk është JSON i vlefshëm.');
   }
-
-  if (
-    raw &&
-    raw.type === 'evion-collection' &&
-    raw.version === 1
-  ) {
-    if (
-      !Array.isArray(raw.evidences) ||
-      raw.evidences.length > MAX_RECORDS
-    ) {
-      throw new Error(
-        'Lista e evidencave është e pavlefshme.'
-      );
+  if (_0x6_0x2d9 && _0x6_0x2d9['\u0074\u0079\u0070\u0065'] === "\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E" && _0x6_0x2d9['\u0076\u0065\u0072\u0073\u0069\u006F\u006E'] === (270132 ^ 270133)) {
+    if (!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](_0x6_0x2d9['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073']) || _0x6_0x2d9['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] > MAX_RECORDS) {
+      throw new Error("\u004C\u0069\u0073\u0074\u0061\u0020\u0065\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0076\u0065\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0065\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");
     }
-
-    return raw.evidences.map(validateEvidence);
+    return _0x6_0x2d9['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073']['\u006D\u0061\u0070'](validateEvidence);
   }
-
-  return [validateEvidence(raw)];
+  return [validateEvidence(_0x6_0x2d9)];
 }
-
-// =====================================================
-// LLOGARITJA E TOTALEVE
-// =====================================================
-
 function aggregate(items) {
-  const totals = Object.fromEntries(
-    CATEGORIES.map(([code]) => [
-      code,
-      {
-        students: 0,
-        groups: 0,
-        hours: 0
-      }
-    ])
-  );
-
-  for (const item of items) {
-    for (const category of item.categories) {
-      totals[category.code].students += category.students;
-      totals[category.code].groups += category.groups;
-
-      totals[category.code].hours = round(
-        totals[category.code].hours + category.hours
-      );
+  var _0xd_0xb85 = (526918 ^ 526919) + (173610 ^ 173611);
+  const _0xg129ba = Object['\u0066\u0072\u006F\u006D\u0045\u006E\u0074\u0072\u0069\u0065\u0073'](CATEGORIES['\u006D\u0061\u0070'](([code]) => [code, {
+    "students": 0,
+    '\u0067\u0072\u006F\u0075\u0070\u0073': 0,
+    '\u0068\u006F\u0075\u0072\u0073': 0
+  }]));
+  _0xd_0xb85 = (752773 ^ 752772) + (582737 ^ 582737);
+  for (const _0x6a3fbf of items) {
+    for (const _0xe2ff of _0x6a3fbf['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']) {
+      _0xg129ba[_0xe2ff['\u0063\u006F\u0064\u0065']]['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'] += _0xe2ff['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'];
+      _0xg129ba[_0xe2ff['\u0063\u006F\u0064\u0065']]['\u0067\u0072\u006F\u0075\u0070\u0073'] += _0xe2ff['\u0067\u0072\u006F\u0075\u0070\u0073'];
+      _0xg129ba[_0xe2ff['\u0063\u006F\u0064\u0065']]['\u0068\u006F\u0075\u0072\u0073'] = round(_0xg129ba[_0xe2ff['\u0063\u006F\u0064\u0065']]['\u0068\u006F\u0075\u0072\u0073'] + _0xe2ff['\u0068\u006F\u0075\u0072\u0073']);
     }
   }
-
-  return totals;
+  return _0xg129ba;
 }
-
-if (typeof document !== 'undefined') {
+if (typeof document !== "\u0075\u006E\u0064\u0065\u0066\u0069\u006E\u0065\u0064") {
   initPage();
 }
-
-// =====================================================
-// NDËRFAQJA
-// =====================================================
-
 function initPage() {
-  const $ = id => document.getElementById(id);
-  const hours = value => value.toFixed(2);
-
-  let records = [];
-  let queue = [];
-
-  let running = false;
-  let scanBusy = false;
-
-  function message(text, kind = '') {
-    $('status').textContent = text;
-    $('status').className = kind;
+  const $ = id => document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](id);
+  const _0x6e71fb = value => value['\u0074\u006F\u0046\u0069\u0078\u0065\u0064'](138539 ^ 138537);
+  var _0xe1b8a = (875116 ^ 875116) + (159025 ^ 159032);
+  let _0x57d91e = [];
+  _0xe1b8a = (825838 ^ 825838) + (433627 ^ 433626);
+  var _0xf8b = (423867 ^ 423866) + (676173 ^ 676173);
+  let _0x2efc3g = [];
+  _0xf8b = 162480 ^ 162481;
+  var _0xaa9a6d = (825900 ^ 825900) + (402053 ^ 402060);
+  let _0xe073eb = false;
+  _0xaa9a6d = (731152 ^ 731156) + (557789 ^ 557784);
+  let _0x83860b = false;
+  function _0xffcba(text, kind = '') {
+    $('status')['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = text;
+    $('status')['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065'] = kind;
   }
-
-  // ---------------------------------------------------
-  // Ruajtja
-  // ---------------------------------------------------
-
-  function loadRecords() {
-    const stored = localStorage.getItem(STORE_KEY);
-    const items = stored ? parseImport(stored) : [];
-    const keys = new Set();
-
-    for (const item of items) {
-      const key = evidenceKey(item);
-
-      if (keys.has(key)) {
-        throw new Error(
-          'Ruajtja përmban evidenca të dyfishta.'
-        );
+  function _0x073dae() {
+    var _0xeec69g = (329277 ^ 329274) + (753253 ^ 753261);
+    const _0x7_0xf28 = localStorage['\u0067\u0065\u0074\u0049\u0074\u0065\u006D'](STORE_KEY);
+    _0xeec69g = '\u0070\u0065\u0063\u0067\u0069\u006A';
+    const _0xe677b = _0x7_0xf28 ? parseImport(_0x7_0xf28) : [];
+    var _0x524ef = (110425 ^ 110430) + (631623 ^ 631616);
+    const _0x68f = new Set();
+    _0x524ef = '\u006B\u0067\u0070\u006C\u0069\u006D';
+    for (const _0xb55fa of _0xe677b) {
+      const _0x5bb78e = evidenceKey(_0xb55fa);
+      if (_0x68f['\u0068\u0061\u0073'](_0x5bb78e)) {
+        throw new Error('Ruajtja përmban evidenca të dyfishta.');
       }
-
-      keys.add(key);
+      _0x68f['\u0061\u0064\u0064'](_0x5bb78e);
     }
-
-    return items;
+    return _0xe677b;
   }
-
-  function saveRecords(next) {
-    if (next.length > MAX_RECORDS) {
-      throw new Error(
-        'Lejohen deri në ' + MAX_RECORDS + ' evidenca.'
-      );
+  function _0xf4g9f(next) {
+    if (next['\u006C\u0065\u006E\u0067\u0074\u0068'] > MAX_RECORDS) {
+      throw new Error("\u004C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020" + MAX_RECORDS + "\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u002E");
     }
-
-    // Gjendja ndryshon vetëm pasi ruajtja përfundon.
-    localStorage.setItem(
-      STORE_KEY,
-      JSON.stringify({
-        type: 'evion-collection',
-        version: 1,
-        evidences: next
-      })
-    );
-
-    records = next;
+    localStorage['\u0073\u0065\u0074\u0049\u0074\u0065\u006D'](STORE_KEY, JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079']({
+      '\u0074\u0079\u0070\u0065': "\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E",
+      '\u0076\u0065\u0072\u0073\u0069\u006F\u006E': 1,
+      "evidences": next
+    }));
+    _0x57d91e = next;
   }
-
-  function download(data, filename) {
-    const blob = new Blob(
-      [JSON.stringify(data, null, 2)],
-      { type: 'application/json' }
-    );
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-
-    link.href = url;
-    link.download = filename;
-
-    document.body.append(link);
-    link.click();
-    link.remove();
-
+  function _0x6f_0xbg7(data, filename) {
+    const _0xea_0x71f = new Blob([JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](data, null, 619209 ^ 619211)], {
+      "type": 'application/json'
+    });
+    const _0xfd31gb = URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0xea_0x71f);
+    const _0xbab2b = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0061");
+    _0xbab2b['\u0068\u0072\u0065\u0066'] = _0xfd31gb;
+    _0xbab2b['\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064'] = filename;
+    document['\u0062\u006F\u0064\u0079']['\u0061\u0070\u0070\u0065\u006E\u0064'](_0xbab2b);
+    _0xbab2b['\u0063\u006C\u0069\u0063\u006B']();
+    _0xbab2b['\u0072\u0065\u006D\u006F\u0076\u0065']();
     setTimeout(() => {
-      URL.revokeObjectURL(url);
-    }, 60000);
+      URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0xfd31gb);
+    }, 927324 ^ 969788);
   }
-
-  function filename(item) {
-    return (
-      'Permbledhje_' + item.subject + '_' + item.teacher
-    )
-      .replace(/[^\p{L}\p{N}_-]/gu, '_')
-      .slice(0, 130) + '.json';
+  function _0x9e9b(item) {
+    return ("\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u005F" + item['\u0073\u0075\u0062\u006A\u0065\u0063\u0074'] + "\u005F" + item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'])['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u005E\u005C\u0070\u007B\u004C\u007D\u005C\u0070\u007B\u004E\u007D\u005F\u002D\u005D', '\u0067\u0075'), "\u005F")['\u0073\u006C\u0069\u0063\u0065'](619185 ^ 619185, 624258 ^ 624128) + "\u002E\u006A\u0073\u006F\u006E";
   }
-
-  // ---------------------------------------------------
-  // Filtrat
-  // ---------------------------------------------------
-
-  function fillSelect(id, values, allLabel) {
-    const selected = $(id).value;
-
-    $(id).replaceChildren();
-
+  function _0xdfa4bb(id, values, allLabel) {
+    const _0xe6cc = $(id)['\u0076\u0061\u006C\u0075\u0065'];
+    $(id)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();
     if (allLabel) {
-      $(id).add(new Option(allLabel, ''));
+      $(id)['\u0061\u0064\u0064'](new Option(allLabel, ''));
     }
-
     for (const [value, label] of values) {
-      $(id).add(new Option(label, value));
+      $(id)['\u0061\u0064\u0064'](new Option(label, value));
     }
-
-    if (values.some(([value]) => value === selected)) {
-      $(id).value = selected;
+    if (values['\u0073\u006F\u006D\u0065'](([value]) => value === _0xe6cc)) {
+      $(id)['\u0076\u0061\u006C\u0075\u0065'] = _0xe6cc;
     }
   }
-
-  function refreshFilters() {
-    const teachers = new Map(
-      records.map(item => [
-        normalized(item.teacher),
-        item.teacher
-      ])
-    );
-
-    fillSelect(
-      'teacher',
-      [...teachers].sort((a, b) =>
-        a[1].localeCompare(b[1])
-      )
-    );
-
-    const own = records.filter(item =>
-      normalized(item.teacher) === $('teacher').value
-    );
-
-    fillSelect(
-      'year',
-      [...new Set(own.map(item => item.year))]
-        .sort()
-        .reverse()
-        .map(value => [value, value]),
-      'Të gjitha vitet'
-    );
-
-    const inYear = own.filter(item =>
-      !$('year').value ||
-      item.year === $('year').value
-    );
-
-    fillSelect(
-      'semester',
-      [...new Set(inYear.map(item => item.semester))]
-        .sort()
-        .map(value => [value, value]),
-      'Të gjithë semestrat'
-    );
+  function _0xg5c2d() {
+    const _0xdf275f = new Map(_0x57d91e['\u006D\u0061\u0070'](item => [normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']), item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']]));
+    _0xdfa4bb('teacher', [..._0xdf275f]['\u0073\u006F\u0072\u0074']((a, b) => a[455107 ^ 455106]['\u006C\u006F\u0063\u0061\u006C\u0065\u0043\u006F\u006D\u0070\u0061\u0072\u0065'](b[799434 ^ 799435])));
+    const _0xbc_0x950 = _0x57d91e['\u0066\u0069\u006C\u0074\u0065\u0072'](item => normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']) === $("\u0074\u0065\u0061\u0063\u0068\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065']);
+    _0xdfa4bb("\u0079\u0065\u0061\u0072", [...new Set(_0xbc_0x950['\u006D\u0061\u0070'](item => item['\u0079\u0065\u0061\u0072']))]['\u0073\u006F\u0072\u0074']()['\u0072\u0065\u0076\u0065\u0072\u0073\u0065']()['\u006D\u0061\u0070'](value => [value, value]), 'Të gjitha vitet');
+    const _0x485a = _0xbc_0x950['\u0066\u0069\u006C\u0074\u0065\u0072'](item => !$("\u0079\u0065\u0061\u0072")['\u0076\u0061\u006C\u0075\u0065'] || item['\u0079\u0065\u0061\u0072'] === $("\u0079\u0065\u0061\u0072")['\u0076\u0061\u006C\u0075\u0065']);
+    _0xdfa4bb("\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072", [...new Set(_0x485a['\u006D\u0061\u0070'](item => item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']))]['\u0073\u006F\u0072\u0074']()['\u006D\u0061\u0070'](value => [value, value]), "\u0054\u00EB\u0020\u0067\u006A\u0069\u0074\u0068\u00EB\u0020\u0073\u0065\u006D\u0065\u0073\u0074\u0072\u0061\u0074");
   }
-
-  function selectedRecords() {
-    return records.filter(item =>
-      normalized(item.teacher) === $('teacher').value &&
-      (
-        !$('year').value ||
-        item.year === $('year').value
-      ) &&
-      (
-        !$('semester').value ||
-        item.semester === $('semester').value
-      )
-    );
+  function _0x4afbc() {
+    return _0x57d91e['\u0066\u0069\u006C\u0074\u0065\u0072'](item => normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']) === $("\u0074\u0065\u0061\u0063\u0068\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065'] && (!$("\u0079\u0065\u0061\u0072")['\u0076\u0061\u006C\u0075\u0065'] || item['\u0079\u0065\u0061\u0072'] === $('year')['\u0076\u0061\u006C\u0075\u0065']) && (!$("\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065'] || item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072'] === $('semester')['\u0076\u0061\u006C\u0075\u0065']));
   }
-
-  // ---------------------------------------------------
-  // Tabelat
-  // ---------------------------------------------------
-
-  function rowCells(category) {
+  function _0x54fbf(category) {
     return `
-      <td class="number">${category.students}</td>
-      <td class="number">${category.groups}</td>
-      <td class="number">${hours(category.hours)}</td>
+      <td class="number">${category['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']}</td>
+      <td class="number">${category['\u0067\u0072\u006F\u0075\u0070\u0073']}</td>
+      <td class="number">${_0x6e71fb(category['\u0068\u006F\u0075\u0072\u0073'])}</td>
     `;
   }
-
-  function categoryRows(item) {
-    return item.categories
-      .map(category => {
-        const label = CATEGORIES.find(
-          ([code]) => code === category.code
-        )[1];
-
-        return `
+  function _0x831e(item) {
+    return item['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006D\u0061\u0070'](category => {
+      var _0xb947b = (285741 ^ 285742) + (647871 ^ 647869);
+      const _0x4f_0xd51 = CATEGORIES['\u0066\u0069\u006E\u0064'](([code]) => code === category['\u0063\u006F\u0064\u0065'])[890041 ^ 890040];
+      _0xb947b = (559123 ^ 559127) + (495655 ^ 495652);
+      return `
           <tr>
-            <td>${label}</td>
-            ${rowCells(category)}
+            <td>${_0x4f_0xd51}</td>
+            ${_0x54fbf(category)}
           </tr>
         `;
-      })
-      .join('');
+    })['\u006A\u006F\u0069\u006E']('');
   }
-
-  function render() {
-    const selected = selectedRecords();
-    const totals = aggregate(selected);
-
-    $('selection').textContent = selected.length
-      ? selected[0].teacher +
-        ' · ' + selected.length +
-        ' evidenca të përfshira'
-      : 'Nuk ka evidenca për këtë përzgjedhje.';
-
-    const sum1 = round(
-      CATEGORIES.slice(0, 4).reduce(
-        (sum, [code]) => sum + totals[code].hours,
-        0
-      )
-    );
-
-    const sum2 = totals.praktika.hours;
-
-    // Pesë kolona, pa kolonën e vjetër "Lloji".
-    const subtotal = (label, value, cls = 'total') => `
+  function _0xdfe2e() {
+    const _0x585b8c = _0x4afbc();
+    var _0x02894a = (342651 ^ 342649) + (965932 ^ 965930);
+    const _0x31a23b = aggregate(_0x585b8c);
+    _0x02894a = (984928 ^ 984932) + (764501 ^ 764509);
+    $("\u0073\u0065\u006C\u0065\u0063\u0074\u0069\u006F\u006E")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = _0x585b8c['\u006C\u0065\u006E\u0067\u0074\u0068'] ? _0x585b8c[860019 ^ 860019]['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'] + "\u0020\u00B7\u0020" + _0x585b8c['\u006C\u0065\u006E\u0067\u0074\u0068'] + ' evidenca të përfshira' : "\u004E\u0075\u006B\u0020\u006B\u0061\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0070\u00EB\u0072\u0020\u006B\u00EB\u0074\u00EB\u0020\u0070\u00EB\u0072\u007A\u0067\u006A\u0065\u0064\u0068\u006A\u0065\u002E";
+    var _0x_0x432 = (704602 ^ 704602) + (447155 ^ 447157);
+    const _0xb4f = round(CATEGORIES['\u0073\u006C\u0069\u0063\u0065'](899858 ^ 899858, 793889 ^ 793893)['\u0072\u0065\u0064\u0075\u0063\u0065']((sum, [code]) => sum + _0x31a23b[code]['\u0068\u006F\u0075\u0072\u0073'], 465014 ^ 465014));
+    _0x_0x432 = 982200 ^ 982193;
+    const _0x3579g = _0x31a23b['\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061']['\u0068\u006F\u0075\u0072\u0073'];
+    const _0xcb63ff = (label, value, cls = "\u0074\u006F\u0074\u0061\u006C") => `
       <tr class="${cls}">
         <td></td>
         <td>${label}</td>
         <td></td>
         <td></td>
-        <td class="number">${hours(value)}</td>
+        <td class="number">${_0x6e71fb(value)}</td>
       </tr>
     `;
-
-    let rows = CATEGORIES
-      .slice(0, 4)
-      .map(([code, label], index) => `
+    let _0xb5g7f = CATEGORIES['\u0073\u006C\u0069\u0063\u0065'](922991 ^ 922991, 923823 ^ 923819)['\u006D\u0061\u0070'](([code, label], index) => `
         <tr>
-          <td>${index + 1}</td>
+          <td>${index + (555284 ^ 555285)}</td>
           <td>${label}</td>
-          ${rowCells(totals[code])}
+          ${_0x54fbf(_0x31a23b[code])}
         </tr>
-      `)
-      .join('');
-
-    rows += subtotal(
-      'Shuma e orëve në auditor',
-      sum1
-    );
-
-    rows += `
+      `)['\u006A\u006F\u0069\u006E']('');
+    _0xb5g7f += _0xcb63ff("\u0053\u0068\u0075\u006D\u0061\u0020\u0065\u0020\u006F\u0072\u00EB\u0076\u0065\u0020\u006E\u00EB\u0020\u0061\u0075\u0064\u0069\u0074\u006F\u0072", _0xb4f);
+    _0xb5g7f += `
       <tr>
         <td>5</td>
         <td>Praktika mësimore</td>
-        ${rowCells(totals.praktika)}
+        ${_0x54fbf(_0x31a23b['\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061'])}
       </tr>
     `;
-
-    [
-      'Udhëheqje Diplome Bachelor',
-      'Udhëheqje Diplome Master',
-      'Udhëheqje Doktorature',
-      'Oponencë Doktorature',
-      'Juri Doktorature'
-    ].forEach((label, index) => {
-      rows += `
+    ['Udhëheqje Diplome Bachelor', 'Udhëheqje Diplome Master', "\u0055\u0064\u0068\u00EB\u0068\u0065\u0071\u006A\u0065\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065", "\u004F\u0070\u006F\u006E\u0065\u006E\u0063\u00EB\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065", "\u004A\u0075\u0072\u0069\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065"]['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((label, index) => {
+      _0xb5g7f += `
         <tr>
-          <td>${index + 6}</td>
+          <td>${index + (389086 ^ 389080)}</td>
           <td>${label}</td>
           <td>—</td>
           <td>—</td>
@@ -535,37 +270,18 @@ function initPage() {
         </tr>
       `;
     });
-
-    $('summary').innerHTML =
-      rows +
-      subtotal(
-        'Shuma e orëve mbështetëse',
-        sum2
-      ) +
-      subtotal(
-        'Shuma totale',
-        round(sum1 + sum2),
-        'grand'
-      );
-
-    // 04 · Evidencat e përfshira.
-    $('details').replaceChildren();
-
-    for (const item of selected) {
-      const detail = document.createElement('details');
-      const title = document.createElement('summary');
-
-      title.textContent =
-        `${item.subject} · ${item.program} · ` +
-        `${item.year} · Semestri ${item.semester} · ` +
-        `Cikli ${item.cycle}`;
-
-      detail.append(title);
-
-      const body = document.createElement('div');
-      body.className = 'scroll';
-
-      body.innerHTML = `
+    $("\u0073\u0075\u006D\u006D\u0061\u0072\u0079")['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C'] = _0xb5g7f + _0xcb63ff('Shuma e orëve mbështetëse', _0x3579g) + _0xcb63ff("\u0053\u0068\u0075\u006D\u0061\u0020\u0074\u006F\u0074\u0061\u006C\u0065", round(_0xb4f + _0x3579g), "\u0067\u0072\u0061\u006E\u0064");
+    $("\u0064\u0065\u0074\u0061\u0069\u006C\u0073")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();
+    for (const _0xgcba of _0x585b8c) {
+      const _0x8_0x29f = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0065\u0074\u0061\u0069\u006C\u0073");
+      var _0xcdc2e = (970206 ^ 970198) + (458897 ^ 458905);
+      const _0xb8e = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']('summary');
+      _0xcdc2e = (490155 ^ 490155) + (642222 ^ 642221);
+      _0xb8e['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = `${_0xgcba['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']} · ${_0xgcba['\u0070\u0072\u006F\u0067\u0072\u0061\u006D']} · ` + `${_0xgcba['\u0079\u0065\u0061\u0072']} · Semestri ${_0xgcba['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']} · ` + `Cikli ${_0xgcba['\u0063\u0079\u0063\u006C\u0065']}`;
+      _0x8_0x29f['\u0061\u0070\u0070\u0065\u006E\u0064'](_0xb8e);
+      const _0x47f3cg = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");
+      _0x47f3cg['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065'] = "\u0073\u0063\u0072\u006F\u006C\u006C";
+      _0x47f3cg['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C'] = `
         <table class="category-table">
           <thead>
             <tr>
@@ -576,972 +292,570 @@ function initPage() {
             </tr>
           </thead>
           <tbody>
-            ${categoryRows(item)}
+            ${_0x831e(_0xgcba)}
           </tbody>
         </table>
       `;
-
-      detail.append(body);
-
-      const actions = document.createElement('div');
-      actions.className = 'actions';
-
-      const out = document.createElement('button');
-      out.type = 'button';
-      out.className = 'secondary';
-      out.textContent = 'Shkarko JSON';
-
-      out.onclick = () => {
-        download(item, filename(item));
+      _0x8_0x29f['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x47f3cg);
+      const _0x8f_0x946 = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");
+      _0x8f_0x946['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065'] = 'actions';
+      var _0xe354f = (458449 ^ 458450) + (804370 ^ 804375);
+      const _0x0d373c = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']('button');
+      _0xe354f = "lldpqi";
+      _0x0d373c['\u0074\u0079\u0070\u0065'] = "\u0062\u0075\u0074\u0074\u006F\u006E";
+      _0x0d373c['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065'] = 'secondary';
+      _0x0d373c['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = "\u0053\u0068\u006B\u0061\u0072\u006B\u006F\u0020\u004A\u0053\u004F\u004E";
+      _0x0d373c['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+        _0x6f_0xbg7(_0xgcba, _0x9e9b(_0xgcba));
       };
-
-      const remove = document.createElement('button');
-      remove.type = 'button';
-      remove.className = 'danger';
-      remove.textContent = 'Hiq evidencën';
-
-      remove.onclick = () => {
-        if (!confirm(
-          'Të hiqet evidenca e lëndës ' + item.subject + '?'
-        )) {
+      var _0x88536a = (888145 ^ 888148) + (315511 ^ 315505);
+      const _0x6a4a0e = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0062\u0075\u0074\u0074\u006F\u006E");
+      _0x88536a = (675418 ^ 675411) + (455498 ^ 455502);
+      _0x6a4a0e['\u0074\u0079\u0070\u0065'] = "\u0062\u0075\u0074\u0074\u006F\u006E";
+      _0x6a4a0e['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065'] = "\u0064\u0061\u006E\u0067\u0065\u0072";
+      _0x6a4a0e['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = "\u0048\u0069\u0071\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u006E";
+      _0x6a4a0e['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+        if (!confirm("\u0054\u00EB\u0020\u0068\u0069\u0071\u0065\u0074\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0065\u0020\u006C\u00EB\u006E\u0064\u00EB\u0073\u0020" + _0xgcba['\u0073\u0075\u0062\u006A\u0065\u0063\u0074'] + "\u003F")) {
           return;
         }
-
         try {
-          const next = loadRecords().filter(record =>
-            evidenceKey(record) !== evidenceKey(item)
-          );
-
-          saveRecords(next);
-          refreshFilters();
-          render();
-          renderPreview();
-
-          message('Evidenca u hoq.');
+          let _0xfagb;
+          const _0x6d7d = _0x073dae()['\u0066\u0069\u006C\u0074\u0065\u0072'](record => evidenceKey(record) !== evidenceKey(_0xgcba));
+          _0xfagb = (542769 ^ 542770) + (809064 ^ 809068);
+          _0xf4g9f(_0x6d7d);
+          _0xg5c2d();
+          _0xdfe2e();
+          _0x3c06aa();
+          _0xffcba("\u0045\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0075\u0020\u0068\u006F\u0071\u002E");
         } catch (error) {
-          message(
-            'Nuk u ruajt ndryshimi: ' + error.message,
-            'error'
-          );
+          _0xffcba("\u004E\u0075\u006B\u0020\u0075\u0020\u0072\u0075\u0061\u006A\u0074\u0020\u006E\u0064\u0072\u0079\u0073\u0068\u0069\u006D\u0069\u003A\u0020" + error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], "\u0065\u0072\u0072\u006F\u0072");
         }
       };
-
-      actions.append(out, remove);
-      detail.append(actions);
-      $('details').append(detail);
+      _0x8f_0x946['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x0d373c, _0x6a4a0e);
+      _0x8_0x29f['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x8f_0x946);
+      $("\u0064\u0065\u0074\u0061\u0069\u006C\u0073")['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x8_0x29f);
     }
-
-    if (!selected.length) {
-      $('details').textContent =
-        'Evidencat e importuara do të shfaqen këtu.';
+    if (!_0x585b8c['\u006C\u0065\u006E\u0067\u0074\u0068']) {
+      $("\u0064\u0065\u0074\u0061\u0069\u006C\u0073")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = "\u0045\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0074\u0020\u0065\u0020\u0069\u006D\u0070\u006F\u0072\u0074\u0075\u0061\u0072\u0061\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u0073\u0068\u0066\u0061\u0071\u0065\u006E\u0020\u006B\u00EB\u0074\u0075\u002E";
     }
-
-    $('export').disabled = !records.length;
+    $("\u0065\u0078\u0070\u006F\u0072\u0074")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = !_0x57d91e['\u006C\u0065\u006E\u0067\u0074\u0068'];
   }
-
-  // ---------------------------------------------------
-  // Kontrolli përpara importimit
-  // ---------------------------------------------------
-
-  function renderPreview() {
-    const item = queue[0];
-
-    $('preview').hidden = !item;
-
-    if (!item) return;
-
-    $('queue-count').textContent =
-      queue.length + ' evidenca në pritje për kontroll.';
-
-    $('preview-meta').textContent =
-      `${item.teacher} · ${item.subject} · ` +
-      `${item.program} · ${item.year} · ` +
-      `Semestri ${item.semester} · Cikli ${item.cycle}`;
-
-    $('preview-rows').innerHTML = categoryRows(item);
-
-    const old = records.find(record =>
-      evidenceKey(record) === evidenceKey(item)
-    );
-
-    const duplicate = old && sameEvidence(old, item);
-
-    $('add').disabled = Boolean(duplicate);
-
-    $('add').textContent = old && !duplicate
-      ? 'Zëvendëso evidencën'
-      : 'Shto në përmbledhje';
-
-    $('duplicate-note').textContent = duplicate
-      ? 'Kjo evidencë është importuar më parë. Nuk do të dyfishohet.'
-      : old
-        ? 'Ekziston një evidencë për këtë pedagog, lëndë, program, ' +
-          'cikël, vit dhe semestër. Të dhënat ndryshojnë; ' +
-          'mund ta zëvendësoni.'
-        : '';
+  function _0x3c06aa() {
+    var _0xf3b6eb = (687582 ^ 687574) + (900721 ^ 900720);
+    const _0xa8454f = _0x2efc3g[278615 ^ 278615];
+    _0xf3b6eb = (142070 ^ 142078) + (381182 ^ 381183);
+    $('preview')['\u0068\u0069\u0064\u0064\u0065\u006E'] = !_0xa8454f;
+    if (!_0xa8454f) return;
+    $('queue-count')['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = _0x2efc3g['\u006C\u0065\u006E\u0067\u0074\u0068'] + "\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u006E\u00EB\u0020\u0070\u0072\u0069\u0074\u006A\u0065\u0020\u0070\u00EB\u0072\u0020\u006B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u002E";
+    $('preview-meta')['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = `${_0xa8454f['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']} · ${_0xa8454f['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']} · ` + `${_0xa8454f['\u0070\u0072\u006F\u0067\u0072\u0061\u006D']} · ${_0xa8454f['\u0079\u0065\u0061\u0072']} · ` + `Semestri ${_0xa8454f['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']} · Cikli ${_0xa8454f['\u0063\u0079\u0063\u006C\u0065']}`;
+    $("\u0070\u0072\u0065\u0076\u0069\u0065\u0077\u002D\u0072\u006F\u0077\u0073")['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C'] = _0x831e(_0xa8454f);
+    const _0xc5fd9a = _0x57d91e['\u0066\u0069\u006E\u0064'](record => evidenceKey(record) === evidenceKey(_0xa8454f));
+    const _0x44717b = _0xc5fd9a && sameEvidence(_0xc5fd9a, _0xa8454f);
+    $('add')['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = Boolean(_0x44717b);
+    $("\u0061\u0064\u0064")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = _0xc5fd9a && !_0x44717b ? "\u005A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u006E" : "\u0053\u0068\u0074\u006F\u0020\u006E\u00EB\u0020\u0070\u00EB\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065";
+    $("\u0064\u0075\u0070\u006C\u0069\u0063\u0061\u0074\u0065\u002D\u006E\u006F\u0074\u0065")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = _0x44717b ? "\u004B\u006A\u006F\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0069\u006D\u0070\u006F\u0072\u0074\u0075\u0061\u0072\u0020\u006D\u00EB\u0020\u0070\u0061\u0072\u00EB\u002E\u0020\u004E\u0075\u006B\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u0064\u0079\u0066\u0069\u0073\u0068\u006F\u0068\u0065\u0074\u002E" : _0xc5fd9a ? 'Ekziston një evidencë për këtë pedagog, lëndë, program, ' + 'cikël, vit dhe semestër. Të dhënat ndryshojnë; ' + 'mund ta zëvendësoni.' : '';
   }
-
-  function stage(items) {
-    if (queue.length + items.length > MAX_RECORDS) {
+  function _0xa8e49c(items) {
+    if (_0x2efc3g['\u006C\u0065\u006E\u0067\u0074\u0068'] + items['\u006C\u0065\u006E\u0067\u0074\u0068'] > MAX_RECORDS) {
       throw new Error('Shumë evidenca në pritje.');
     }
-
-    queue.push(...items);
-    renderPreview();
-
-    if (items.length) {
-      $('preview').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    _0x2efc3g['\u0070\u0075\u0073\u0068'](...items);
+    _0x3c06aa();
+    if (items['\u006C\u0065\u006E\u0067\u0074\u0068']) {
+      $("\u0070\u0072\u0065\u0076\u0069\u0065\u0077")['\u0073\u0063\u0072\u006F\u006C\u006C\u0049\u006E\u0074\u006F\u0056\u0069\u0065\u0077']({
+        "behavior": 'smooth',
+        "block": 'start'
       });
     }
   }
-
-  $('add').onclick = () => {
-    if (!queue.length) return;
-
+  $("\u0061\u0064\u0064")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    if (!_0x2efc3g['\u006C\u0065\u006E\u0067\u0074\u0068']) return;
     try {
-      const item = queue[0];
-      const next = loadRecords();
-
-      const index = next.findIndex(record =>
-        evidenceKey(record) === evidenceKey(item)
-      );
-
-      if (index >= 0) {
-        if (sameEvidence(next[index], item)) {
-          records = next;
-          renderPreview();
-
-          message(
-            'Kjo evidencë është importuar më parë.'
-          );
-
+      const item = _0x2efc3g[601415 ^ 601415];
+      const next = _0x073dae();
+      var _0x61f5ad = (569914 ^ 569917) + (754246 ^ 754243);
+      const _0x7def = next['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](record => evidenceKey(record) === evidenceKey(item));
+      _0x61f5ad = (740930 ^ 740928) + (197497 ^ 197499);
+      if (_0x7def >= (757739 ^ 757739)) {
+        if (sameEvidence(next[_0x7def], item)) {
+          _0x57d91e = next;
+          _0x3c06aa();
+          _0xffcba('Kjo evidencë është importuar më parë.');
           return;
         }
-
-        if (!confirm(
-          'Të zëvendësohet evidenca ekzistuese? ' +
-          'Totalet e vjetra do të zëvendësohen me të rejat.'
-        )) {
+        if (!confirm("\u0054\u00EB\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0068\u0065\u0074\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0065\u006B\u007A\u0069\u0073\u0074\u0075\u0065\u0073\u0065\u003F\u0020" + "\u0054\u006F\u0074\u0061\u006C\u0065\u0074\u0020\u0065\u0020\u0076\u006A\u0065\u0074\u0072\u0061\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0068\u0065\u006E\u0020\u006D\u0065\u0020\u0074\u00EB\u0020\u0072\u0065\u006A\u0061\u0074\u002E")) {
           return;
         }
-
-        next[index] = item;
+        next[_0x7def] = item;
       } else {
-        next.push(item);
+        next['\u0070\u0075\u0073\u0068'](item);
       }
-
-      saveRecords(next);
-      queue.shift();
-
-      refreshFilters();
-      $('teacher').value = normalized(item.teacher);
-      refreshFilters();
-
-      render();
-      renderPreview();
-
-      message(
-        'Evidenca u ruajt dhe totalet u përditësuan.',
-        'success'
-      );
+      _0xf4g9f(next);
+      _0x2efc3g['\u0073\u0068\u0069\u0066\u0074']();
+      _0xg5c2d();
+      $("\u0074\u0065\u0061\u0063\u0068\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065'] = normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']);
+      _0xg5c2d();
+      _0xdfe2e();
+      _0x3c06aa();
+      _0xffcba("\u0045\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0075\u0020\u0072\u0075\u0061\u006A\u0074\u0020\u0064\u0068\u0065\u0020\u0074\u006F\u0074\u0061\u006C\u0065\u0074\u0020\u0075\u0020\u0070\u00EB\u0072\u0064\u0069\u0074\u00EB\u0073\u0075\u0061\u006E\u002E", "\u0073\u0075\u0063\u0063\u0065\u0073\u0073");
     } catch (error) {
-      message(
-        'Nuk u shtua evidenca: ' + error.message,
-        'error'
-      );
+      _0xffcba('Nuk u shtua evidenca: ' + error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], "\u0065\u0072\u0072\u006F\u0072");
     }
   };
-
-  $('skip').onclick = () => {
-    queue.shift();
-    renderPreview();
+  $('skip')['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    _0x2efc3g['\u0073\u0068\u0069\u0066\u0074']();
+    _0x3c06aa();
   };
-
-  $('download').onclick = () => {
-    if (queue[0]) {
-      download(queue[0], filename(queue[0]));
+  $("\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    if (_0x2efc3g[252727 ^ 252727]) {
+      _0x6f_0xbg7(_0x2efc3g[499422 ^ 499422], _0x9e9b(_0x2efc3g[804246 ^ 804246]));
     }
   };
-
-  $('export').onclick = () => {
+  $("\u0065\u0078\u0070\u006F\u0072\u0074")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
     try {
-      download(
-        {
-          type: 'evion-collection',
-          version: 1,
-          evidences: loadRecords()
-        },
-        'Permbledhje-evidencat.json'
-      );
+      _0x6f_0xbg7({
+        "type": "\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E",
+        '\u0076\u0065\u0072\u0073\u0069\u006F\u006E': 1,
+        '\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073': _0x073dae()
+      }, "\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u002D\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0074\u002E\u006A\u0073\u006F\u006E");
     } catch (error) {
-      message(error.message, 'error');
+      _0xffcba(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], 'error');
     }
   };
-
-  for (const id of ['teacher', 'year', 'semester']) {
-    $(id).onchange = () => {
-      refreshFilters();
-      render();
+  for (const _0xf75e2b of ["\u0074\u0065\u0061\u0063\u0068\u0065\u0072", "\u0079\u0065\u0061\u0072", "\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072"]) {
+    $(_0xf75e2b)['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065'] = () => {
+      _0xg5c2d();
+      _0xdfe2e();
     };
   }
-
-  // ---------------------------------------------------
-  // Ngarkimi JSON
-  // ---------------------------------------------------
-
-  $('json').onclick = () => {
-    $('json-file').click();
+  $('json')['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    $("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();
   };
-
-  $('json-file').onchange = async () => {
-    const files = [...$('json-file').files];
-
+  $('json-file')['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065'] = async () => {
+    var _0xaa7dg = (463410 ^ 463413) + (716682 ^ 716682);
+    const _0x3geeb = [...$("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u0066\u0069\u006C\u0065\u0073']];
+    _0xaa7dg = (580341 ^ 580337) + (580717 ^ 580717);
     try {
-      if (files.length > 100) {
-        throw new Error(
-          'Zgjidhni deri në 100 skedarë njëherësh.'
-        );
+      if (_0x3geeb['\u006C\u0065\u006E\u0067\u0074\u0068'] > (445421 ^ 445321)) {
+        throw new Error('Zgjidhni deri në 100 skedarë njëherësh.');
       }
-
-      const incoming = [];
-
-      for (const file of files) {
-        if (file.size > 5000000) {
-          throw new Error(
-            file.name + ': skedari është shumë i madh.'
-          );
+      const _0x2g8f6e = [];
+      for (const file of _0x3geeb) {
+        if (file['\u0073\u0069\u007A\u0065'] > 5000000) {
+          throw new Error(file['\u006E\u0061\u006D\u0065'] + ': skedari është shumë i madh.');
         }
-
         try {
-          incoming.push(
-            ...parseImport(await file.text())
-          );
+          _0x2g8f6e['\u0070\u0075\u0073\u0068'](...parseImport(await file['\u0074\u0065\u0078\u0074']()));
         } catch (error) {
-          throw new Error(
-            file.name + ': ' + error.message
-          );
+          throw new Error(file['\u006E\u0061\u006D\u0065'] + "\u003A\u0020" + error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']);
         }
       }
-
-      stage(incoming);
-
-      message(
-        'Të dhënat u lexuan. Kontrollojini përpara shtimit.'
-      );
+      _0xa8e49c(_0x2g8f6e);
+      _0xffcba('Të dhënat u lexuan. Kontrollojini përpara shtimit.');
     } catch (error) {
-      message(error.message, 'error');
+      _0xffcba(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], "\u0065\u0072\u0072\u006F\u0072");
     } finally {
-      $('json-file').value = '';
+      $('json-file')['\u0076\u0061\u006C\u0075\u0065'] = '';
     }
   };
-
-  // ===================================================
-  // KAMERA DHE LEXIMI QR
-  // ===================================================
-
-  const video = $('camera-video');
-
-  let stream = null;
-  let cameraToken = 0;
-  let scanTimer = null;
-  let cancelFile = false;
-
-  const pause = () =>
-    new Promise(resolve => setTimeout(resolve, 0));
-
-  function requireDecoder() {
-    if (typeof jsQR !== 'function') {
-      throw new Error(
-        'Nuk u ngarkua vendor/jsQR.js. ' +
-        'Kontrolloni që folderi vendor është publikuar.'
-      );
+  var _0x9876g = (665607 ^ 665601) + (287122 ^ 287131);
+  const _0x7d6d = $("\u0063\u0061\u006D\u0065\u0072\u0061\u002D\u0076\u0069\u0064\u0065\u006F");
+  _0x9876g = 295094 ^ 295090;
+  var _0xg7168e = (187300 ^ 187298) + (672156 ^ 672152);
+  let _0x1c261d = null;
+  _0xg7168e = (659541 ^ 659542) + (722038 ^ 722038);
+  let _0xb_0xf6f;
+  let _0xc_0xd19 = 160109 ^ 160109;
+  _0xb_0xf6f = (466490 ^ 466495) + (495835 ^ 495838);
+  let _0x57e8f = null;
+  let _0xc8f91c = false;
+  var _0xb4e = (244507 ^ 244506) + (680354 ^ 680356);
+  const _0x9_0xe8c = () => new Promise(resolve => setTimeout(resolve, 564609 ^ 564609));
+  _0xb4e = '\u0064\u0068\u006D\u006C\u0061\u0069';
+  function _0xafbefa() {
+    if (typeof jsQR !== "\u0066\u0075\u006E\u0063\u0074\u0069\u006F\u006E") {
+      throw new Error("\u004E\u0075\u006B\u0020\u0075\u0020\u006E\u0067\u0061\u0072\u006B\u0075\u0061\u0020\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u006A\u0073\u0051\u0052\u002E\u006A\u0073\u002E\u0020" + 'Kontrolloni që folderi vendor është publikuar.');
     }
   }
-
-  function scanControls() {
-    $('scan').disabled = scanBusy || running;
-    $('photo').disabled = scanBusy || running;
-    $('pdf').disabled = scanBusy || running;
-
-    $('stop').disabled = !scanBusy && !running;
-
-    $('stop').textContent = scanBusy && !running
-      ? 'Anulo'
-      : 'Ndalo kamerën';
+  function _0xea849a() {
+    $('scan')['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = _0x83860b || _0xe073eb;
+    $('photo')['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = _0x83860b || _0xe073eb;
+    $("\u0070\u0064\u0066")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = _0x83860b || _0xe073eb;
+    $("\u0073\u0074\u006F\u0070")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064'] = !_0x83860b && !_0xe073eb;
+    $('stop')['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074'] = _0x83860b && !_0xe073eb ? 'Anulo' : "\u004E\u0064\u0061\u006C\u006F\u0020\u006B\u0061\u006D\u0065\u0072\u00EB\u006E";
   }
-
-  function stopCamera() {
-    cameraToken++;
-    clearTimeout(scanTimer);
-
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop());
+  function _0xf0gcga() {
+    _0xc_0xd19++;
+    clearTimeout(_0x57e8f);
+    if (_0x1c261d) {
+      _0x1c261d['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](track => track['\u0073\u0074\u006F\u0070']());
     }
-
-    stream = null;
-    running = false;
-
-    video.pause();
-    video.srcObject = null;
-
-    $('reader').hidden = true;
-    scanControls();
+    _0x1c261d = null;
+    _0xe073eb = false;
+    _0x7d6d['\u0070\u0061\u0075\u0073\u0065']();
+    _0x7d6d['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074'] = null;
+    $("\u0072\u0065\u0061\u0064\u0065\u0072")['\u0068\u0069\u0064\u0064\u0065\u006E'] = !![];
+    _0xea849a();
   }
-
-  function decodeRegion(
-    source,
-    x,
-    y,
-    width,
-    height,
-    maxSide = 1800
-  ) {
-    const scale = Math.min(
-      1,
-      maxSide / Math.max(width, height)
-    );
-
-    const canvas = document.createElement('canvas');
-
-    canvas.width = Math.max(
-      1,
-      Math.round(width * scale)
-    );
-
-    canvas.height = Math.max(
-      1,
-      Math.round(height * scale)
-    );
-
-    const context = canvas.getContext('2d', {
-      willReadFrequently: true
+  function _0x3_0xf59(source, x, y, width, height, maxSide = 221771 ^ 222531) {
+    let _0xa15f;
+    const _0x990ff = Math['\u006D\u0069\u006E'](202747 ^ 202746, maxSide / Math['\u006D\u0061\u0078'](width, height));
+    _0xa15f = (731634 ^ 731632) + (706488 ^ 706480);
+    var _0x686g = (458238 ^ 458237) + (931252 ^ 931253);
+    const _0x01056f = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0063\u0061\u006E\u0076\u0061\u0073");
+    _0x686g = 848688 ^ 848697;
+    _0x01056f['\u0077\u0069\u0064\u0074\u0068'] = Math['\u006D\u0061\u0078'](906862 ^ 906863, Math['\u0072\u006F\u0075\u006E\u0064'](width * _0x990ff));
+    _0x01056f['\u0068\u0065\u0069\u0067\u0068\u0074'] = Math['\u006D\u0061\u0078'](355353 ^ 355352, Math['\u0072\u006F\u0075\u006E\u0064'](height * _0x990ff));
+    const _0x1e62af = _0x01056f['\u0067\u0065\u0074\u0043\u006F\u006E\u0074\u0065\u0078\u0074']("\u0032\u0064", {
+      '\u0077\u0069\u006C\u006C\u0052\u0065\u0061\u0064\u0046\u0072\u0065\u0071\u0075\u0065\u006E\u0074\u006C\u0079': !![]
     });
-
-    context.fillStyle = '#fff';
-    context.fillRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    context.drawImage(
-      source,
-      x,
-      y,
-      width,
-      height,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    const pixels = context.getImageData(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    const code = jsQR(
-      pixels.data,
-      pixels.width,
-      pixels.height,
-      {
-        inversionAttempts: 'attemptBoth'
-      }
-    );
-
-    canvas.width = 1;
-    canvas.height = 1;
-
-    return code ? code.data : null;
+    _0x1e62af['\u0066\u0069\u006C\u006C\u0053\u0074\u0079\u006C\u0065'] = '#fff';
+    _0x1e62af['\u0066\u0069\u006C\u006C\u0052\u0065\u0063\u0074'](342159 ^ 342159, 982591 ^ 982591, _0x01056f['\u0077\u0069\u0064\u0074\u0068'], _0x01056f['\u0068\u0065\u0069\u0067\u0068\u0074']);
+    _0x1e62af['\u0064\u0072\u0061\u0077\u0049\u006D\u0061\u0067\u0065'](source, x, y, width, height, 605252 ^ 605252, 419413 ^ 419413, _0x01056f['\u0077\u0069\u0064\u0074\u0068'], _0x01056f['\u0068\u0065\u0069\u0067\u0068\u0074']);
+    const _0x48d10c = _0x1e62af['\u0067\u0065\u0074\u0049\u006D\u0061\u0067\u0065\u0044\u0061\u0074\u0061'](750359 ^ 750359, 773615 ^ 773615, _0x01056f['\u0077\u0069\u0064\u0074\u0068'], _0x01056f['\u0068\u0065\u0069\u0067\u0068\u0074']);
+    let _0x4e798d;
+    const _0x8226g = jsQR(_0x48d10c['\u0064\u0061\u0074\u0061'], _0x48d10c['\u0077\u0069\u0064\u0074\u0068'], _0x48d10c['\u0068\u0065\u0069\u0067\u0068\u0074'], {
+      "inversionAttempts": "\u0061\u0074\u0074\u0065\u006D\u0070\u0074\u0042\u006F\u0074\u0068"
+    });
+    _0x4e798d = '\u0063\u0061\u006B\u006C\u006D\u006D';
+    _0x01056f['\u0077\u0069\u0064\u0074\u0068'] = 762946 ^ 762947;
+    _0x01056f['\u0068\u0065\u0069\u0067\u0068\u0074'] = 815518 ^ 815519;
+    return _0x8226g ? _0x8226g['\u0064\u0061\u0074\u0061'] : null;
   }
-
-  async function scanSurface(source, width, height) {
-    requireDecoder();
-
-    const regions = [
-      [0, 0, width, height, 1800],
-      [0, 0, width, height, 3000]
-    ];
-
-    for (const y of [0.5, 0.25, 0]) {
-      regions.push([
-        0,
-        height * y,
-        width,
-        height * 0.5,
-        2200
-      ]);
+  async function _0x4_0x3d9(source, width, height) {
+    _0xafbefa();
+    let _0xe81a3c;
+    const _0x0acf = [[891455 ^ 891455, 532425 ^ 532425, width, height, 564336 ^ 564088], [718056 ^ 718056, 223967 ^ 223967, width, height, 414234 ^ 416162]];
+    _0xe81a3c = (724299 ^ 724290) + (603759 ^ 603756);
+    for (const y of [0.5, 0.25, 327166 ^ 327166]) {
+      _0x0acf['\u0070\u0075\u0073\u0068']([453830 ^ 453830, height * y, width, height * 0.5, 420379 ^ 418435]);
     }
-
-    for (const y of [0.5, 0.25, 0]) {
-      for (const x of [0, 0.25, 0.5]) {
-        regions.push([
-          width * x,
-          height * y,
-          width * 0.5,
-          height * 0.5,
-          1800
-        ]);
+    for (const y of [0.5, 0.25, 329201 ^ 329201]) {
+      for (const x of [664279 ^ 664279, 0.25, 0.5]) {
+        _0x0acf['\u0070\u0075\u0073\u0068']([width * x, height * y, width * 0.5, height * 0.5, 762662 ^ 762926]);
       }
     }
-
-    let invalid = null;
-
-    for (const region of regions) {
-      if (cancelFile) {
-        throw new Error('Leximi u anulua.');
+    var _0xcaab8f = (386042 ^ 386042) + (605420 ^ 605416);
+    let _0xg1bdcf = null;
+    _0xcaab8f = (169816 ^ 169823) + (622845 ^ 622836);
+    for (const _0xe4443d of _0x0acf) {
+      if (_0xc8f91c) {
+        throw new Error("\u004C\u0065\u0078\u0069\u006D\u0069\u0020\u0075\u0020\u0061\u006E\u0075\u006C\u0075\u0061\u002E");
       }
-
-      await pause();
-
-      const text = decodeRegion(source, ...region);
-
-      if (text) {
+      await _0x9_0xe8c();
+      const _0x44agf = _0x3_0xf59(source, ..._0xe4443d);
+      if (_0x44agf) {
         try {
-          return parseImport(text);
+          return parseImport(_0x44agf);
         } catch (error) {
-          invalid = error;
+          _0xg1bdcf = error;
         }
       }
     }
-
-    if (invalid) throw invalid;
-
+    if (_0xg1bdcf) throw _0xg1bdcf;
     return null;
   }
-
-  $('scan').onclick = async () => {
-    if (scanBusy || running) return;
-
-    scanBusy = true;
-    cancelFile = false;
-    scanControls();
-
-    const token = ++cameraToken;
-
+  $("\u0073\u0063\u0061\u006E")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = async () => {
+    if (_0x83860b || _0xe073eb) return;
+    _0x83860b = !![];
+    _0xc8f91c = false;
+    _0xea849a();
+    const _0x59bef = ++_0xc_0xd19;
     try {
-      requireDecoder();
-
-      if (
-        !window.isSecureContext ||
-        !navigator.mediaDevices?.getUserMedia
-      ) {
-        throw new Error(
-          'Kamera kërkon HTTPS dhe lejen e shfletuesit.'
-        );
+      _0xafbefa();
+      if (!window['\u0069\u0073\u0053\u0065\u0063\u0075\u0072\u0065\u0043\u006F\u006E\u0074\u0065\u0078\u0074'] || !navigator['\u006D\u0065\u0064\u0069\u0061\u0044\u0065\u0076\u0069\u0063\u0065\u0073']?.getUserMedia) {
+        throw new Error("\u004B\u0061\u006D\u0065\u0072\u0061\u0020\u006B\u00EB\u0072\u006B\u006F\u006E\u0020\u0048\u0054\u0054\u0050\u0053\u0020\u0064\u0068\u0065\u0020\u006C\u0065\u006A\u0065\u006E\u0020\u0065\u0020\u0073\u0068\u0066\u006C\u0065\u0074\u0075\u0065\u0073\u0069\u0074\u002E");
       }
-
-      $('reader').hidden = false;
-
-      video.muted = true;
-      video.autoplay = true;
-      video.playsInline = true;
-
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-
-      const acquired =
-        await navigator.mediaDevices.getUserMedia({
-          audio: false,
-
-          video: {
-            facingMode: {
-              ideal: 'environment'
-            },
-            width: {
-              ideal: 1920
-            },
-            height: {
-              ideal: 1080
-            }
+      $("\u0072\u0065\u0061\u0064\u0065\u0072")['\u0068\u0069\u0064\u0064\u0065\u006E'] = false;
+      _0x7d6d['\u006D\u0075\u0074\u0065\u0064'] = !![];
+      _0x7d6d['\u0061\u0075\u0074\u006F\u0070\u006C\u0061\u0079'] = !![];
+      _0x7d6d['\u0070\u006C\u0061\u0079\u0073\u0049\u006E\u006C\u0069\u006E\u0065'] = !![];
+      _0x7d6d['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("\u0070\u006C\u0061\u0079\u0073\u0069\u006E\u006C\u0069\u006E\u0065", '');
+      _0x7d6d['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("\u0077\u0065\u0062\u006B\u0069\u0074\u002D\u0070\u006C\u0061\u0079\u0073\u0069\u006E\u006C\u0069\u006E\u0065", '');
+      const _0x2ed5a = await navigator['\u006D\u0065\u0064\u0069\u0061\u0044\u0065\u0076\u0069\u0063\u0065\u0073']['\u0067\u0065\u0074\u0055\u0073\u0065\u0072\u004D\u0065\u0064\u0069\u0061']({
+        '\u0061\u0075\u0064\u0069\u006F': false,
+        "video": {
+          "facingMode": {
+            '\u0069\u0064\u0065\u0061\u006C': 'environment'
+          },
+          '\u0077\u0069\u0064\u0074\u0068': {
+            '\u0069\u0064\u0065\u0061\u006C': 1920
+          },
+          "height": {
+            "ideal": 1080
           }
-        });
-
-      if (token !== cameraToken) {
-        acquired.getTracks().forEach(track => track.stop());
+        }
+      });
+      if (_0x59bef !== _0xc_0xd19) {
+        _0x2ed5a['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](track => track['\u0073\u0074\u006F\u0070']());
         return;
       }
-
-      stream = acquired;
-      video.srcObject = stream;
-
-      await video.play();
-
-      if (token !== cameraToken) return;
-
-      running = true;
-
-      message(
-        'Kamera është aktive. Afrojeni QR-në, ' +
-        'mbajeni të plotë në pamje dhe prisni fokusimin.'
-      );
-
-      function tick() {
-        if (
-          !running ||
-          token !== cameraToken
-        ) {
+      _0x1c261d = _0x2ed5a;
+      _0x7d6d['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074'] = _0x1c261d;
+      await _0x7d6d['\u0070\u006C\u0061\u0079']();
+      if (_0x59bef !== _0xc_0xd19) return;
+      _0xe073eb = !![];
+      _0xffcba("\u004B\u0061\u006D\u0065\u0072\u0061\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0061\u006B\u0074\u0069\u0076\u0065\u002E\u0020\u0041\u0066\u0072\u006F\u006A\u0065\u006E\u0069\u0020\u0051\u0052\u002D\u006E\u00EB\u002C\u0020" + 'mbajeni të plotë në pamje dhe prisni fokusimin.');
+      function _0x66c1a() {
+        if (!_0xe073eb || _0x59bef !== _0xc_0xd19) {
           return;
         }
-
         try {
-          if (
-            video.readyState >= 2 &&
-            video.videoWidth
-          ) {
-            const text = decodeRegion(
-              video,
-              0,
-              0,
-              video.videoWidth,
-              video.videoHeight,
-              2400
-            );
-
-            if (text) {
-              const items = parseImport(text);
-
-              stopCamera();
-              stage(items);
-
-              message(
-                'QR-ja u lexua. Kontrolloni të dhënat.',
-                'success'
-              );
-
+          if (_0x7d6d['\u0072\u0065\u0061\u0064\u0079\u0053\u0074\u0061\u0074\u0065'] >= (397269 ^ 397271) && _0x7d6d['\u0076\u0069\u0064\u0065\u006F\u0057\u0069\u0064\u0074\u0068']) {
+            const _0x6a59cd = _0x3_0xf59(_0x7d6d, 450248 ^ 450248, 316217 ^ 316217, _0x7d6d['\u0076\u0069\u0064\u0065\u006F\u0057\u0069\u0064\u0074\u0068'], _0x7d6d['\u0076\u0069\u0064\u0065\u006F\u0048\u0065\u0069\u0067\u0068\u0074'], 740466 ^ 738578);
+            if (_0x6a59cd) {
+              var _0x31gd6b = (670912 ^ 670916) + (995410 ^ 995412);
+              const _0x1b5ca = parseImport(_0x6a59cd);
+              _0x31gd6b = "akcdgl";
+              _0xf0gcga();
+              _0xa8e49c(_0x1b5ca);
+              _0xffcba('QR-ja u lexua. Kontrolloni të dhënat.', "\u0073\u0075\u0063\u0063\u0065\u0073\u0073");
               return;
             }
           }
         } catch (error) {
-          stopCamera();
-          message(error.message, 'error');
+          _0xf0gcga();
+          _0xffcba(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], "\u0065\u0072\u0072\u006F\u0072");
           return;
         }
-
-        scanTimer = setTimeout(tick, 200);
+        _0x57e8f = setTimeout(_0x66c1a, 520607 ^ 520535);
       }
-
-      tick();
+      _0x66c1a();
     } catch (error) {
-      if (token === cameraToken) {
-        stopCamera();
-
-        message(
-          'Kamera nuk u hap: ' +
-          (error.message || String(error)) +
-          '. Provoni ngarkimin e fotos ose PDF-së.',
-          'error'
-        );
+      if (_0x59bef === _0xc_0xd19) {
+        _0xf0gcga();
+        _0xffcba("\u004B\u0061\u006D\u0065\u0072\u0061\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0068\u0061\u0070\u003A\u0020" + (error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'] || String(error)) + '. Provoni ngarkimin e fotos ose PDF-së.', "\u0065\u0072\u0072\u006F\u0072");
       }
     } finally {
-      scanBusy = false;
-      scanControls();
+      _0x83860b = false;
+      _0xea849a();
     }
   };
-
-  $('stop').onclick = () => {
-    cancelFile = true;
-    stopCamera();
-    message('Leximi u ndal.');
+  $('stop')['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    _0xc8f91c = !![];
+    _0xf0gcga();
+    _0xffcba('Leximi u ndal.');
   };
-
-  // ===================================================
-  // NGARKIMI I FOTOS
-  // ===================================================
-
-  $('photo').onclick = () => {
-    $('photo-file').click();
+  $('photo')['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    $("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();
   };
-
-  $('photo-file').onchange = async () => {
-    const file = $('photo-file').files[0];
-
+  $('photo-file')['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065'] = async () => {
+    const file = $("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u0066\u0069\u006C\u0065\u0073'][610900 ^ 610900];
     if (!file) return;
-
-    stopCamera();
-
-    scanBusy = true;
-    cancelFile = false;
-    scanControls();
-
-    const url = URL.createObjectURL(file);
-
+    _0xf0gcga();
+    _0x83860b = !![];
+    _0xc8f91c = false;
+    _0xea849a();
+    const url = URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](file);
     try {
-      if (file.size > 20000000) {
-        throw new Error(
-          'Fotoja duhet të jetë më e vogël se 20 MB.'
-        );
+      if (file['\u0073\u0069\u007A\u0065'] > 20000000) {
+        throw new Error('Fotoja duhet të jetë më e vogël se 20 MB.');
       }
-
-      message('Po lexohet fotografia…');
-
-      const image = new Image();
-
+      _0xffcba("\u0050\u006F\u0020\u006C\u0065\u0078\u006F\u0068\u0065\u0074\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0061\u2026");
+      const _0x75c = new Image();
       await new Promise((resolve, reject) => {
-        image.onload = resolve;
-
-        image.onerror = () => reject(
-          new Error(
-            'Formati i fotos nuk u hap. Provoni JPEG ose PNG.'
-          )
-        );
-
-        image.src = url;
+        _0x75c['\u006F\u006E\u006C\u006F\u0061\u0064'] = resolve;
+        _0x75c['\u006F\u006E\u0065\u0072\u0072\u006F\u0072'] = () => reject(new Error("\u0046\u006F\u0072\u006D\u0061\u0074\u0069\u0020\u0069\u0020\u0066\u006F\u0074\u006F\u0073\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0068\u0061\u0070\u002E\u0020\u0050\u0072\u006F\u0076\u006F\u006E\u0069\u0020\u004A\u0050\u0045\u0047\u0020\u006F\u0073\u0065\u0020\u0050\u004E\u0047\u002E"));
+        _0x75c['\u0073\u0072\u0063'] = url;
       });
-
-      const items = await scanSurface(
-        image,
-        image.naturalWidth,
-        image.naturalHeight
-      );
-
+      const items = await _0x4_0x3d9(_0x75c, _0x75c['\u006E\u0061\u0074\u0075\u0072\u0061\u006C\u0057\u0069\u0064\u0074\u0068'], _0x75c['\u006E\u0061\u0074\u0075\u0072\u0061\u006C\u0048\u0065\u0069\u0067\u0068\u0074']);
       if (!items) {
-        throw new Error(
-          'Nuk u gjet QR e lexueshme. Provoni screenshot ' +
-          'më të qartë ose ngarkoni PDF-në origjinale.'
-        );
+        throw new Error("\u004E\u0075\u006B\u0020\u0075\u0020\u0067\u006A\u0065\u0074\u0020\u0051\u0052\u0020\u0065\u0020\u006C\u0065\u0078\u0075\u0065\u0073\u0068\u006D\u0065\u002E\u0020\u0050\u0072\u006F\u0076\u006F\u006E\u0069\u0020\u0073\u0063\u0072\u0065\u0065\u006E\u0073\u0068\u006F\u0074\u0020" + "\u006D\u00EB\u0020\u0074\u00EB\u0020\u0071\u0061\u0072\u0074\u00EB\u0020\u006F\u0073\u0065\u0020\u006E\u0067\u0061\u0072\u006B\u006F\u006E\u0069\u0020\u0050\u0044\u0046\u002D\u006E\u00EB\u0020\u006F\u0072\u0069\u0067\u006A\u0069\u006E\u0061\u006C\u0065\u002E");
       }
-
-      stage(items);
-
-      message(
-        'QR-ja u lexua nga fotografia.',
-        'success'
-      );
+      _0xa8e49c(items);
+      _0xffcba("\u0051\u0052\u002D\u006A\u0061\u0020\u0075\u0020\u006C\u0065\u0078\u0075\u0061\u0020\u006E\u0067\u0061\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0061\u002E", 'success');
     } catch (error) {
-      message(
-        error.message || String(error),
-        'error'
-      );
+      _0xffcba(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'] || String(error), "\u0065\u0072\u0072\u006F\u0072");
     } finally {
-      URL.revokeObjectURL(url);
-
-      scanBusy = false;
-      scanControls();
-
-      $('photo-file').value = '';
+      URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](url);
+      _0x83860b = false;
+      _0xea849a();
+      $("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u0076\u0061\u006C\u0075\u0065'] = '';
     }
   };
-
-  // ===================================================
-  // NGARKIMI I PDF-SË
-  // ===================================================
-
-  $('pdf').onclick = () => {
-    $('pdf-file').click();
+  $("\u0070\u0064\u0066")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B'] = () => {
+    $('pdf-file')['\u0063\u006C\u0069\u0063\u006B']();
   };
-
-  $('pdf-file').onchange = async () => {
-    const file = $('pdf-file').files[0];
-
+  $("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065'] = async () => {
+    var _0x42fdc = (274389 ^ 274385) + (343641 ^ 343644);
+    const file = $("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u0066\u0069\u006C\u0065\u0073'][522875 ^ 522875];
+    _0x42fdc = (284722 ^ 284730) + (789534 ^ 789528);
     if (!file) return;
-
-    stopCamera();
-
-    scanBusy = true;
-    cancelFile = false;
-    scanControls();
-
-    let task = null;
-    let doc = null;
-
-    const canvas = document.createElement('canvas');
-
+    _0xf0gcga();
+    _0x83860b = !![];
+    _0xc8f91c = false;
+    _0xea849a();
+    var _0x546g = (854951 ^ 854947) + (278917 ^ 278915);
+    let _0xe556b = null;
+    _0x546g = (159948 ^ 159946) + (543713 ^ 543719);
+    var _0x9bacd = (746776 ^ 746780) + (678706 ^ 678711);
+    let _0x566gfe = null;
+    _0x9bacd = 297279 ^ 297279;
+    const canvas = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0063\u0061\u006E\u0076\u0061\u0073");
     try {
-      requireDecoder();
-
-      if (file.size > 30000000) {
-        throw new Error(
-          'PDF-ja duhet të jetë më e vogël se 30 MB.'
-        );
+      _0xafbefa();
+      if (file['\u0073\u0069\u007A\u0065'] > 30000000) {
+        throw new Error("\u0050\u0044\u0046\u002D\u006A\u0061\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u006D\u00EB\u0020\u0065\u0020\u0076\u006F\u0067\u00EB\u006C\u0020\u0073\u0065\u0020\u0033\u0030\u0020\u004D\u0042\u002E");
       }
-
-      message('Po hapet PDF-ja…');
-
-      const pdfjs = await import('./vendor/pdf.mjs');
-
-      pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-        './vendor/pdf.worker.mjs',
-        document.baseURI
-      ).href;
-
-      task = pdfjs.getDocument({
-        data: new Uint8Array(
-          await file.arrayBuffer()
-        ),
-        isEvalSupported: false
+      _0xffcba('Po hapet PDF-ja…');
+      const _0x0ge = await import('./vendor/pdf.mjs');
+      _0x0ge['\u0047\u006C\u006F\u0062\u0061\u006C\u0057\u006F\u0072\u006B\u0065\u0072\u004F\u0070\u0074\u0069\u006F\u006E\u0073']['\u0077\u006F\u0072\u006B\u0065\u0072\u0053\u0072\u0063'] = new URL("\u002E\u002F\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u0070\u0064\u0066\u002E\u0077\u006F\u0072\u006B\u0065\u0072\u002E\u006D\u006A\u0073", document['\u0062\u0061\u0073\u0065\u0055\u0052\u0049'])['\u0068\u0072\u0065\u0066'];
+      _0xe556b = _0x0ge['\u0067\u0065\u0074\u0044\u006F\u0063\u0075\u006D\u0065\u006E\u0074']({
+        "data": new Uint8Array(await file['\u0061\u0072\u0072\u0061\u0079\u0042\u0075\u0066\u0066\u0065\u0072']()),
+        '\u0069\u0073\u0045\u0076\u0061\u006C\u0053\u0075\u0070\u0070\u006F\u0072\u0074\u0065\u0064': false
       });
-
-      task.onPassword = () => {
-        task.destroy();
+      _0xe556b['\u006F\u006E\u0050\u0061\u0073\u0073\u0077\u006F\u0072\u0064'] = () => {
+        _0xe556b['\u0064\u0065\u0073\u0074\u0072\u006F\u0079']();
       };
-
-      doc = await task.promise;
-
-      if (doc.numPages > 100) {
-        throw new Error(
-          'Lejohen PDF deri në 100 faqe.'
-        );
+      _0x566gfe = await _0xe556b['\u0070\u0072\u006F\u006D\u0069\u0073\u0065'];
+      if (_0x566gfe['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073'] > (121544 ^ 121516)) {
+        throw new Error("\u004C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0050\u0044\u0046\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0031\u0030\u0030\u0020\u0066\u0061\u0071\u0065\u002E");
       }
-
-      const found = new Map();
-      let invalidPages = 0;
-
-      for (
-        let pageNo = 1;
-        pageNo <= doc.numPages;
-        pageNo++
-      ) {
-        if (cancelFile) {
+      const _0x03da1b = new Map();
+      var _0x0b_0x78d = (276808 ^ 276810) + (683462 ^ 683470);
+      let _0xf181da = 486265 ^ 486265;
+      _0x0b_0x78d = 220218 ^ 220216;
+      for (let _0xd8aa9d = 721894 ^ 721895; _0xd8aa9d <= _0x566gfe['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073']; _0xd8aa9d++) {
+        if (_0xc8f91c) {
           throw new Error('Leximi u anulua.');
         }
-
-        message(
-          `Po kërkohet QR në faqen ${pageNo} ` +
-          `nga ${doc.numPages}…`
-        );
-
-        const page = await doc.getPage(pageNo);
-
-        const base = page.getViewport({
-          scale: 1
+        _0xffcba(`Po kërkohet QR në faqen ${_0xd8aa9d} ` + `nga ${_0x566gfe['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073']}…`);
+        let _0x526d;
+        const _0x10_0xb86 = await _0x566gfe['\u0067\u0065\u0074\u0050\u0061\u0067\u0065'](_0xd8aa9d);
+        _0x526d = 158260 ^ 158260;
+        const _0xf0239b = _0x10_0xb86['\u0067\u0065\u0074\u0056\u0069\u0065\u0077\u0070\u006F\u0072\u0074']({
+          '\u0073\u0063\u0061\u006C\u0065': 1
         });
-
-        const scale = Math.min(
-          3,
-          3200 / Math.max(base.width, base.height)
-        );
-
-        const viewport = page.getViewport({
-          scale
+        const scale = Math['\u006D\u0069\u006E'](285128 ^ 285131, (486353 ^ 485201) / Math['\u006D\u0061\u0078'](_0xf0239b['\u0077\u0069\u0064\u0074\u0068'], _0xf0239b['\u0068\u0065\u0069\u0067\u0068\u0074']));
+        const _0x9f85c = _0x10_0xb86['\u0067\u0065\u0074\u0056\u0069\u0065\u0077\u0070\u006F\u0072\u0074']({
+          '\u0073\u0063\u0061\u006C\u0065': scale
         });
-
-        canvas.width = Math.ceil(viewport.width);
-        canvas.height = Math.ceil(viewport.height);
-
-        const context = canvas.getContext('2d', {
-          willReadFrequently: true
+        canvas['\u0077\u0069\u0064\u0074\u0068'] = Math['\u0063\u0065\u0069\u006C'](_0x9f85c['\u0077\u0069\u0064\u0074\u0068']);
+        canvas['\u0068\u0065\u0069\u0067\u0068\u0074'] = Math['\u0063\u0065\u0069\u006C'](_0x9f85c['\u0068\u0065\u0069\u0067\u0068\u0074']);
+        const context = canvas['\u0067\u0065\u0074\u0043\u006F\u006E\u0074\u0065\u0078\u0074']("\u0032\u0064", {
+          "willReadFrequently": !![]
         });
-
-        await page.render({
-          canvasContext: context,
-          viewport,
-          background: 'rgb(255,255,255)'
-        }).promise;
-
+        await _0x10_0xb86['\u0072\u0065\u006E\u0064\u0065\u0072']({
+          '\u0063\u0061\u006E\u0076\u0061\u0073\u0043\u006F\u006E\u0074\u0065\u0078\u0074': context,
+          '\u0076\u0069\u0065\u0077\u0070\u006F\u0072\u0074': _0x9f85c,
+          '\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064': "\u0072\u0067\u0062\u0028\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u0029"
+        })['\u0070\u0072\u006F\u006D\u0069\u0073\u0065'];
         try {
-          const items = await scanSurface(
-            canvas,
-            canvas.width,
-            canvas.height
-          );
-
+          const items = await _0x4_0x3d9(canvas, canvas['\u0077\u0069\u0064\u0074\u0068'], canvas['\u0068\u0065\u0069\u0067\u0068\u0074']);
           if (items) {
             for (const item of items) {
-              found.set(
-                JSON.stringify(item),
-                item
-              );
+              _0x03da1b['\u0073\u0065\u0074'](JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](item), item);
             }
           }
         } catch (error) {
-          if (cancelFile) throw error;
-          invalidPages++;
+          if (_0xc8f91c) throw error;
+          _0xf181da++;
         }
-
-        page.cleanup();
-
-        canvas.width = 1;
-        canvas.height = 1;
+        _0x10_0xb86['\u0063\u006C\u0065\u0061\u006E\u0075\u0070']();
+        canvas['\u0077\u0069\u0064\u0074\u0068'] = 993758 ^ 993759;
+        canvas['\u0068\u0065\u0069\u0067\u0068\u0074'] = 808460 ^ 808461;
       }
-
-      if (!found.size) {
-        throw new Error(
-          invalidPages
-            ? 'U gjet QR, por nuk përmban përmbledhje EVION të vlefshme.'
-            : 'Nuk u gjet QR e lexueshme. Përdorni PDF-në origjinale ' +
-              'me QR, jo një fotografi të paqartë.'
-        );
+      if (!_0x03da1b['\u0073\u0069\u007A\u0065']) {
+        throw new Error(_0xf181da ? "\u0055\u0020\u0067\u006A\u0065\u0074\u0020\u0051\u0052\u002C\u0020\u0070\u006F\u0072\u0020\u006E\u0075\u006B\u0020\u0070\u00EB\u0072\u006D\u0062\u0061\u006E\u0020\u0070\u00EB\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u0020\u0045\u0056\u0049\u004F\u004E\u0020\u0074\u00EB\u0020\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E" : "\u004E\u0075\u006B\u0020\u0075\u0020\u0067\u006A\u0065\u0074\u0020\u0051\u0052\u0020\u0065\u0020\u006C\u0065\u0078\u0075\u0065\u0073\u0068\u006D\u0065\u002E\u0020\u0050\u00EB\u0072\u0064\u006F\u0072\u006E\u0069\u0020\u0050\u0044\u0046\u002D\u006E\u00EB\u0020\u006F\u0072\u0069\u0067\u006A\u0069\u006E\u0061\u006C\u0065\u0020" + "\u006D\u0065\u0020\u0051\u0052\u002C\u0020\u006A\u006F\u0020\u006E\u006A\u00EB\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0020\u0074\u00EB\u0020\u0070\u0061\u0071\u0061\u0072\u0074\u00EB\u002E");
       }
-
-      stage([...found.values()]);
-
-      message(
-        `U lexuan ${found.size} përmbledhje nga PDF-ja. ` +
-        'Kontrollojini përpara shtimit.' +
-        (
-          invalidPages
-            ? ' Disa faqe kishin QR me të dhëna të pavlefshme.'
-            : ''
-        ),
-        'success'
-      );
+      _0xa8e49c([..._0x03da1b['\u0076\u0061\u006C\u0075\u0065\u0073']()]);
+      _0xffcba(`U lexuan ${_0x03da1b['\u0073\u0069\u007A\u0065']} përmbledhje nga PDF-ja. ` + 'Kontrollojini përpara shtimit.' + (_0xf181da ? ' Disa faqe kishin QR me të dhëna të pavlefshme.' : ''), 'success');
     } catch (error) {
-      message(
-        'PDF-ja nuk u importua: ' +
-        (error.message || String(error)),
-        'error'
-      );
+      _0xffcba("\u0050\u0044\u0046\u002D\u006A\u0061\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0069\u006D\u0070\u006F\u0072\u0074\u0075\u0061\u003A\u0020" + (error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'] || String(error)), "\u0065\u0072\u0072\u006F\u0072");
     } finally {
-      canvas.width = 1;
-      canvas.height = 1;
-
-      if (task) {
-        await task.destroy().catch(() => {});
+      canvas['\u0077\u0069\u0064\u0074\u0068'] = 808430 ^ 808431;
+      canvas['\u0068\u0065\u0069\u0067\u0068\u0074'] = 329565 ^ 329564;
+      if (_0xe556b) {
+        await _0xe556b['\u0064\u0065\u0073\u0074\u0072\u006F\u0079']()['\u0063\u0061\u0074\u0063\u0068'](() => {});
       }
-
-      scanBusy = false;
-      scanControls();
-
-      $('pdf-file').value = '';
+      _0x83860b = false;
+      _0xea849a();
+      $("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u0076\u0061\u006C\u0075\u0065'] = '';
     }
   };
-
-  // ---------------------------------------------------
-  // Mbyllja e kamerës dhe përditësimi mes skedave
-  // ---------------------------------------------------
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelFile = true;
-      stopCamera();
+  document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']('visibilitychange', () => {
+    if (document['\u0068\u0069\u0064\u0064\u0065\u006E']) {
+      _0xc8f91c = !![];
+      _0xf0gcga();
     }
   });
-
-  window.addEventListener('pagehide', stopCamera);
-
-  window.addEventListener('storage', event => {
-    if (event.key !== STORE_KEY) return;
-
+  window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0070\u0061\u0067\u0065\u0068\u0069\u0064\u0065", _0xf0gcga);
+  window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']('storage', event => {
+    if (event['\u006B\u0065\u0079'] !== STORE_KEY) return;
     try {
-      records = loadRecords();
-
-      refreshFilters();
-      render();
-      renderPreview();
+      _0x57d91e = _0x073dae();
+      _0xg5c2d();
+      _0xdfe2e();
+      _0x3c06aa();
     } catch (error) {
-      message(error.message, 'error');
+      _0xffcba(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'], 'error');
     }
   });
-
-  // ---------------------------------------------------
-  // Nisja e faqes
-  // ---------------------------------------------------
-
   try {
-    records = loadRecords();
+    _0x57d91e = _0x073dae();
   } catch (error) {
-    message(
-      'Të dhënat e ruajtura nuk u lexuan: ' +
-      error.message +
-      ' Nuk janë fshirë.',
-      'error'
-    );
+    _0xffcba("\u0054\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0074\u0020\u0065\u0020\u0072\u0075\u0061\u006A\u0074\u0075\u0072\u0061\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u006C\u0065\u0078\u0075\u0061\u006E\u003A\u0020" + error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'] + "\u0020\u004E\u0075\u006B\u0020\u006A\u0061\u006E\u00EB\u0020\u0066\u0073\u0068\u0069\u0072\u00EB\u002E", "\u0065\u0072\u0072\u006F\u0072");
   }
-
-  refreshFilters();
-  render();
+  _0xg5c2d();
+  _0xdfe2e();
 }
-
-// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
 function setupSummaryCsvExport() {
-  const button = document.getElementById('export-csv');
-
-  if (!button) return;
-
-  button.addEventListener('click', () => {
+  let _0xca2e8g;
+  const _0xbd31a = document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0065\u0078\u0070\u006F\u0072\u0074\u002D\u0063\u0073\u0076");
+  _0xca2e8g = "kghaoh";
+  if (!_0xbd31a) return;
+  _0xbd31a['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']('click', () => {
     try {
-      const teacherSelect = document.getElementById('teacher');
-      const summaryBody = document.getElementById('summary');
-      const table = summaryBody?.closest('table');
-
-      if (!teacherSelect?.value) {
-        throw new Error(
-          'Zgjidhni pedagogun përpara eksportimit.'
-        );
+      var _0x9ac = (307030 ^ 307038) + (395706 ^ 395698);
+      const _0xb2_0x12e = document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0074\u0065\u0061\u0063\u0068\u0065\u0072");
+      _0x9ac = '\u0067\u0065\u006D\u006C\u0068\u0064';
+      var _0xf5668b = (459834 ^ 459839) + (380158 ^ 380156);
+      const _0x9d27fc = document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0073\u0075\u006D\u006D\u0061\u0072\u0079");
+      _0xf5668b = (932666 ^ 932667) + (512620 ^ 512618);
+      const _0x8874b = _0x9d27fc?.closest('table');
+      if (!_0xb2_0x12e?.value) {
+        throw new Error("\u005A\u0067\u006A\u0069\u0064\u0068\u006E\u0069\u0020\u0070\u0065\u0064\u0061\u0067\u006F\u0067\u0075\u006E\u0020\u0070\u00EB\u0072\u0070\u0061\u0072\u0061\u0020\u0065\u006B\u0073\u0070\u006F\u0072\u0074\u0069\u006D\u0069\u0074\u002E");
       }
-
-      if (!table || !summaryBody.rows.length) {
+      if (!_0x8874b || !_0x9d27fc['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']) {
         throw new Error('Tabela e përmbledhjes është bosh.');
       }
-
-      // Thonjëzat mbrojnë ndarësit dhe rreshtat brenda tekstit.
-      const csvCell = value => {
-        let text = String(value ?? '')
-          .normalize('NFC')
-          .replace(/ë/g, 'e')
-          .replace(/Ë/g, 'E')
-          .replace(/ç/g, 'c')
-          .replace(/Ç/g, 'C')
-          .replace(/[–—−]/g, '-')
-          .trim();
-
-        // Parandalon interpretimin e tekstit si formulë në Excel.
-        if (text !== '-' && /^[=+\-@\t\r]/.test(text)) {
-          text = "'" + text;
+      var _0xdb854c = (732734 ^ 732726) + (733729 ^ 733730);
+      const _0x57bcab = value => {
+        let _0xe389c = String(value ?? '')['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("\u004E\u0046\u0043")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00EB', '\u0067'), "\u0065")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00CB', '\u0067'), "\u0045")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00E7', '\u0067'), "\u0063")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00C7', '\u0067'), "\u0043")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u2013\u2014\u2212\u005D', '\u0067'), "\u002D")['\u0074\u0072\u0069\u006D']();
+        if (_0xe389c !== "\u002D" && new RegExp("^[=+\\-@\\t\\r]", "")['\u0074\u0065\u0073\u0074'](_0xe389c)) {
+          _0xe389c = "\u0027" + _0xe389c;
         }
-
-        return '"' + text.replace(/"/g, '""') + '"';
+        return "\u0022" + _0xe389c['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u0022', '\u0067'), "\u0022\u0022") + "\u0022";
       };
-
-      const rows = Array.from(table.rows, row =>
-        Array.from(row.cells)
-          .slice(0, 5)
-          .map(cell => csvCell(cell.textContent))
-          .join(';')
-      );
-
-      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
-      const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
-
-      const teacherName =
-        teacherSelect.selectedOptions[0]?.textContent.trim() ||
-        teacherSelect.value;
-
-      const safeName = teacherName
-        .normalize('NFC')
-        .replace(/[^\p{L}\p{N}_-]+/gu, '_')
-        .replace(/^_+|_+$/g, '')
-        .slice(0, 100);
-
-      const filename = 'Permbledhje_' + safeName + '.csv';
-
-      const blob = new Blob(
-        [csv],
-        { type: 'text/csv;charset=utf-8;' }
-      );
-
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-
-      link.href = url;
-      link.download = filename;
-      link.hidden = true;
-
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      // Liron adresën pasi shfletuesi nis shkarkimin.
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      _0xdb854c = (927823 ^ 927815) + (331368 ^ 331373);
+      const _0xaddf8d = Array['\u0066\u0072\u006F\u006D'](_0x8874b['\u0072\u006F\u0077\u0073'], row => Array['\u0066\u0072\u006F\u006D'](row['\u0063\u0065\u006C\u006C\u0073'])['\u0073\u006C\u0069\u0063\u0065'](950123 ^ 950123, 715449 ^ 715452)['\u006D\u0061\u0070'](cell => _0x57bcab(cell['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']))['\u006A\u006F\u0069\u006E']("\u003B"));
+      let _0x8c9d4c;
+      const _0xfe8a = '\uFEFFsep=;\r\n' + _0xaddf8d['\u006A\u006F\u0069\u006E']('\r\n');
+      _0x8c9d4c = (523429 ^ 523437) + (618154 ^ 618157);
+      const _0x84739b = _0xb2_0x12e['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004F\u0070\u0074\u0069\u006F\u006E\u0073'][510787 ^ 510787]?.textContent.trim() || _0xb2_0x12e['\u0076\u0061\u006C\u0075\u0065'];
+      const _0xb3_0x165 = _0x84739b['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("\u004E\u0046\u0043")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u005E\u005C\u0070\u007B\u004C\u007D\u005C\u0070\u007B\u004E\u007D\u005F\u002D\u005D\u002B', '\u0067\u0075'), "\u005F")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005E\u005F\u002B\u007C\u005F\u002B\u0024', '\u0067'), '')['\u0073\u006C\u0069\u0063\u0065'](225949 ^ 225949, 159395 ^ 159431);
+      const _0x63dcb = "\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u005F" + _0xb3_0x165 + '.csv';
+      const _0xbc5d5b = new Blob([_0xfe8a], {
+        "type": "\u0074\u0065\u0078\u0074\u002F\u0063\u0073\u0076\u003B\u0063\u0068\u0061\u0072\u0073\u0065\u0074\u003D\u0075\u0074\u0066\u002D\u0038\u003B"
+      });
+      const _0xa64d = URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0xbc5d5b);
+      const _0x73c = document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0061");
+      _0x73c['\u0068\u0072\u0065\u0066'] = _0xa64d;
+      _0x73c['\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064'] = _0x63dcb;
+      _0x73c['\u0068\u0069\u0064\u0064\u0065\u006E'] = !![];
+      document['\u0062\u006F\u0064\u0079']['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x73c);
+      _0x73c['\u0063\u006C\u0069\u0063\u006B']();
+      _0x73c['\u0072\u0065\u006D\u006F\u0076\u0065']();
+      setTimeout(() => URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0xa64d), 855958 ^ 910838);
     } catch (error) {
-      alert('Eksportimi nuk u krye: ' + error.message);
+      alert("\u0045\u006B\u0073\u0070\u006F\u0072\u0074\u0069\u006D\u0069\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u006B\u0072\u0079\u0065\u003A\u0020" + error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']);
     }
   });
 }
-
-if (document.readyState === 'loading') {
-  document.addEventListener(
-    'DOMContentLoaded',
-    setupSummaryCsvExport,
-    { once: true }
-  );
+if (document['\u0072\u0065\u0061\u0064\u0079\u0053\u0074\u0061\u0074\u0065'] === "\u006C\u006F\u0061\u0064\u0069\u006E\u0067") {
+  document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0044\u004F\u004D\u0043\u006F\u006E\u0074\u0065\u006E\u0074\u004C\u006F\u0061\u0064\u0065\u0064", setupSummaryCsvExport, {
+    '\u006F\u006E\u0063\u0065': !![]
+  });
 } else {
   setupSummaryCsvExport();
 }
