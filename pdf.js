@@ -200,7 +200,7 @@ function reportHtml(data, result) {
         .join('')
     : `
       <p>
-        Nuk ka data me më shumë se 8 orë mësimore
+        Nuk ka data me më shumë se 8 orë mësimore / ditë
         të regjistruara.
       </p>
     `;
@@ -686,7 +686,7 @@ function reportHtml(data, result) {
           të përcaktuara sipas krediteve dhe grupeve.
         </p>
 
-        <h2>Datat me më shumë se 8 orë mësimore</h2>
+        <h2>Datat me më shumë se 8 orë mësimore / ditë</h2>
 
         ${dailySummary}
 
