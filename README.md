@@ -245,7 +245,7 @@ Zërat si udhëheqjet e diplomave dhe angazhimet e doktoraturës nuk plotësohen
 - **Eksporto JSON** te një evidencë: shkarkon vetëm atë evidencë.
 - **Eksporto CSV:** shkarkon vetëm tabelën përmbledhëse të seksionit 03, sipas paraqitjes aktuale.
 
-CSV-ja përdor ndarësin `;`. Për përputhshmëri me programet ku shfaqeshin probleme kodimi, shkronjat `ë` dhe `ç` zëvendësohen me `e` dhe `c`, ndërsa vizat tipografike zëvendësohen me `-`.
+CSV-ja përdor ndarësin `;`. Për përputhshmëri me programet ku shfaqen probleme kodimi, shkronjat `ë` dhe `ç` zëvendësohen me `e` dhe `c`, ndërsa vizat tipografike zëvendësohen me `-`.
 
 ## 6. Ruajtja e të dhënave
 
@@ -275,7 +275,7 @@ Cilësia e leximit varet nga madhësia dhe dendësia e QR-së, fokusi i kamerës
 
 Aplikacioni publikohet përmes GitHub Pages. Versioni aktual `2026.11.3l`.
 
-Raportet e hapura më parë mund të mbajnë përmbajtjen e vjetër.
+Rishikimi dhe përditësimi bëhet në përputhje me rregulloret e Universitetit Politeknik të Tiranës dhe legjislacionin në fuqi.
 
 ## 9. Kufizime të rëndësishme
 
@@ -288,5 +288,9 @@ Raportet e hapura më parë mund të mbajnë përmbajtjen e vjetër.
 - Nuk ka sinkronizim automatik ose arkiv të përbashkët ndërmjet përdoruesve.
 
 ## Rrjedha e përdorimit
+
+Ky aplikacion shërben si një ndërfaqe për lehtësimin e procesit të vetëdeklarimit të ngarkesës mësimore, nga plotësimi dhe verifikimi i formularit deri te gjenerimi i raporteve dhe eksportimi i të dhënave përfundimtare.
+
+### Rrjedha e procesit
 
 **Plotëso formularin → Verifiko → Shkarko evidencën / Gjenero raportin → Lexo QR-në te Përmbledhja → Kontrollo dhe shto evidencën → Eksporto totalet.**
