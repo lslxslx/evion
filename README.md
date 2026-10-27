@@ -277,8 +277,6 @@ Aplikacioni publikohet përmes GitHub Pages. Versioni aktual `2026.11.3l`.
 
 Raportet e hapura më parë mund të mbajnë përmbajtjen e vjetër.
 
-Për prova lokale përdorni një server lokal, jo hapjen e drejtpërdrejtë të skedarit `index.html` me `file://`.
-
 ## 9. Kufizime të rëndësishme
 
 - Lejohen 1–100 regjistrime mësimore për evidencë.
