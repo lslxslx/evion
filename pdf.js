@@ -205,9 +205,51 @@ function reportHtml(data, result) {
       </p>
     `;
 
+  // Shënimet paraqiten vetëm në raportin narrativ.
   const notes = String(data.notes || '')
     .trim()
     .replace(/^\*+\s*/, '');
+
+  // Datat e zëvendësimeve renditen dhe nuk përsëriten.
+  const replacementDates = [
+    ...new Set(
+      data.rows
+        .filter(row => row.replacement)
+        .map(row => row.date)
+    )
+  ].sort();
+
+  const replacementDatesText = replacementDates
+    .map(date => escape(formatDate(date)))
+    .join(', ');
+
+  const replacementSummary = replacementDates.length === 1
+    ? `
+      Në datën <strong>${replacementDatesText}</strong>
+      është bërë zëvendësim.
+    `
+    : replacementDates.length > 1
+      ? `
+        Në datat <strong>${replacementDatesText}</strong>
+        janë bërë zëvendësime.
+      `
+      : '';
+
+  // Kur fusha e shënimeve është bosh, shfaqet mesazhi
+  // i kërkuar, pavarësisht shenjave * në regjistrime.
+  const replacementSection = `
+    <h2>Shënime dhe referenca për zëvendësimet</h2>
+
+    ${notes ? `
+      ${replacementSummary ? `
+        <p>${replacementSummary}</p>
+      ` : ''}
+
+      <p class="replacement-notes">${escape(notes)}</p>
+    ` : `
+      <p>Nuk janë bërë zëvendësime.</p>
+    `}
+  `;
 
   return `
 <!doctype html>
@@ -390,6 +432,11 @@ function reportHtml(data, result) {
       border-top: 1px solid #ddd;
     }
 
+    .replacement-notes {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
     .over-eight {
       color: #b91c1c;
       break-inside: avoid;
@@ -409,14 +456,6 @@ function reportHtml(data, result) {
     .signature p {
       margin-top: 10px;
       overflow-wrap: anywhere;
-    }
-
-    .notes {
-      margin-top: 55px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      orphans: 3;
-      widows: 3;
     }
 
     /* QR djathtas, pa tekst. */
@@ -550,14 +589,6 @@ function reportHtml(data, result) {
         height: auto;
       }
 
-      .notes {
-        margin-top: 12px;
-        font-size: 8px;
-        line-height: 1.35;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-      }
-
       .over-eight {
         color: #b91c1c !important;
         break-inside: avoid;
@@ -659,6 +690,8 @@ function reportHtml(data, result) {
         <h2>Datat me më shumë se 8 orë mësimore</h2>
 
         ${dailySummary}
+
+        ${replacementSection}
       </section>
 
       <p class="declaration">
@@ -672,10 +705,6 @@ function reportHtml(data, result) {
 
         ${evidenceQrHtml(data, result)}
       </div>
-
-      ${notes ? `
-        <p class="notes">* ${escape(notes)}</p>
-      ` : ''}
     </main>
   </div>
 </body>
@@ -841,6 +870,7 @@ function reportDefinition(data, result) {
 
   data.rows.forEach(row => {
     body.push([
+      // Në evidencë ruhet simboli * për zëvendësimet.
       cell(
         text(row.week) +
         (row.replacement ? ' *' : '')
@@ -1126,6 +1156,7 @@ function reportDefinition(data, result) {
               }
             ]
           },
+
           // QR nën deklaruesin dhe drejtuesin e departamentit.
           {
             qr: evidenceQrText(data, result),
@@ -1142,17 +1173,7 @@ function reportDefinition(data, result) {
     ]
   };
 
-  const notes = text(data.notes)
-    .trim()
-    .replace(/^\*+\s*/, '');
-
-  if (notes) {
-    definition.content.push({
-      text: '* ' + notes,
-      margin: [0, 33, 0, 0]
-    });
-  }
-
+  // Shënimet nuk shtohen në PDF-në e evidencës.
   return definition;
 }
 
