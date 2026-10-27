@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Udhëzues
-permalink: /udhezues/
+permalink: /readme/
 ---
 
 # Evidencat dhe përmbledhja e ngarkesës mësimore `online`
