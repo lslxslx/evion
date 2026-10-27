@@ -951,11 +951,6 @@ function reportDefinition(data, result) {
     ]
   ];
 
-  // Shënimet vendosen vetëm në footer-in e faqes së fundit.
-  const notes = text(data.notes)
-    .trim()
-    .replace(/^\*+\s*/, '');
-
   const definition = {
     pageSize: 'A4',
     pageOrientation: 'portrait',
@@ -964,23 +959,8 @@ function reportDefinition(data, result) {
       margin,
       margin,
       margin,
-      notes ? 50 : margin
+      margin
     ],
-
-    footer: function (currentPage, pageCount) {
-      if (!notes || currentPage !== pageCount) {
-        return null;
-      }
-
-      return {
-        text: '* ' + notes,
-        font: 'Comfortaa',
-        fontSize: 6,
-        color: '#3e3e3e',
-        alignment: 'left',
-        margin: [margin, 8, margin, 0]
-      };
-    },
 
     info: {
       title: pdfFilename(data).replace(/\.pdf$/i, ''),
@@ -1146,7 +1126,6 @@ function reportDefinition(data, result) {
               }
             ]
           },
-
           // QR nën deklaruesin dhe drejtuesin e departamentit.
           {
             qr: evidenceQrText(data, result),
@@ -1162,6 +1141,17 @@ function reportDefinition(data, result) {
       }
     ]
   };
+
+  const notes = text(data.notes)
+    .trim()
+    .replace(/^\*+\s*/, '');
+
+  if (notes) {
+    definition.content.push({
+      text: '* ' + notes,
+      margin: [0, 41, 0, 0]
+    });
+  }
 
   return definition;
 }
