@@ -1,4 +1,4 @@
-# EVION — Evidenca dhe përmbledhja e ngarkesës mësimore
+# EVION — Evidenca dhe përmbledhja e ngarkesës mësimore `online`
 
 Aplikacion web për plotësimin e evidencave mësimore, verifikimin e orëve, gjenerimin e dokumenteve dhe përmbledhjen e ngarkesës së pedagogëve.
 
