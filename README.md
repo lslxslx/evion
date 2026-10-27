@@ -268,42 +268,15 @@ Nëse kamera nuk e lexon QR-në, provoni ngarkimin e fotografisë ose të PDF-s�
 
 Cilësia e leximit varet nga madhësia dhe dendësia e QR-së, fokusi i kamerës dhe cilësia e figurës.
 
-## 8. Skedarët kryesorë
+## 8. Publikimi dhe përditësimi
 
-| Skedari / dosja | Funksioni |
-| --- | --- |
-| `.` | Struktura e formularit kryesor dhe lidhja e skripteve |
-| `.` | Paraqitja e formularit dhe përshtatja për ekranet e vogla |
-| `.` | Ndërveprimi me formularin, regjistrimet, draftet dhe butonat |
-| `.` | Verifikimi, formulat, totalet dhe llogaritja e javës |
-| `.` | PDF-ja tabelore, raporti narrativ dhe të dhënat e QR-së |
-| `.` | Hapja dhe paraqitja e raportit në skedë të veçantë |
-| `.` | Fontet lokale Comfortaa |
-| `.` | Bibliotekat për gjenerimin e PDF-së dhe fontet për pdfmake |
-| `.` | Faqja e skanimit, importimit dhe përmbledhjes së evidencave |
-
-### Funksionet kryesore në `pdf.js`
-
-| Funksioni | Përgjegjësia |
-| -- | --- |
-| -- | Përgatit emrin e PDF-së |
-| -- | Gjeneron HTML-në e raportit narrativ |
-| -- | Transferon të dhënat dhe hap raportin |
-| -- | Ndërton përmbajtjen e PDF-së për pdfmake |
-| -- | Gjeneron skedarin PDF |
-| -- | Ndërton përmbledhjen për QR-në |
-| -- | Serializon përmbledhjen në JSON |
-| -- | Paraqet QR-në në raportin HTML |
-
-## 9. Publikimi dhe përditësimi
-
-Aplikacioni publikohet përmes GitHub Pages. Versioni aktual 2026.11.3l
+Aplikacioni publikohet përmes GitHub Pages. Versioni aktual `2026.11.3l`.
 
 Raportet e hapura më parë mund të mbajnë përmbajtjen e vjetër.
 
 Për prova lokale përdorni një server lokal, jo hapjen e drejtpërdrejtë të skedarit `index.html` me `file://`.
 
-## 10. Kufizime të rëndësishme
+## 9. Kufizime të rëndësishme
 
 - Lejohen 1–100 regjistrime mësimore për evidencë.
 - Gjenerimi i dokumenteve kërkon kalimin e verifikimit.
