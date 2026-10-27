@@ -964,7 +964,7 @@ function reportDefinition(data, result) {
       margin,
       margin,
       margin,
-      notes ? 80 : margin
+      notes ? 50 : margin
     ],
 
     footer: function (currentPage, pageCount) {
@@ -976,7 +976,7 @@ function reportDefinition(data, result) {
         text: '* ' + notes,
         font: 'Comfortaa',
         fontSize: 6,
-        color: '#171717',
+        color: '#3e3e3e',
         alignment: 'left',
         margin: [margin, 8, margin, 0]
       };
