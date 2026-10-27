@@ -8,7 +8,7 @@ permalink: /readme/
 
 Aplikacion për plotësimin e evidencave mësimore, verifikimin e orëve, gjenerimin e dokumenteve dhe përmbledhjen e ngarkesës së pedagogëve hapet pa identifikim dhe punon në shfletues.
 
-**Hap aplikacionin:** https://lslxslx.github.io/evion/
+[**Hap aplikacionin**](https://lslxslx.github.io/evion/)
 
 ## 1. Si përdoret formulari
 
