@@ -1,77 +1,129 @@
-/* Formulat dhe verifikimet e Core.gs; ekzekutohen ne shfletues. */
 function evaluate_(data) {
-  const names = ['Leksion', 'Seminar', 'Laborator', 'Detyrë/projekt', 'Praktikë'];
-  const errors = [], actual = [0, 0, 0, 0, 0];
-  const number = value => {
-    if (value === '' || value == null) return 0;
-    if (typeof value !== 'number' && typeof value !== 'string') return NaN;
-    return Number(String(value).trim().replace(',', '.'));
+  var _0x027b = (340398 ^ 340396) + (553164 ^ 553167);
+  const _0xdgbb = ["\u004C\u0065\u006B\u0073\u0069\u006F\u006E", "\u0053\u0065\u006D\u0069\u006E\u0061\u0072", 'Laborator', 'Detyrë/projekt', 'Praktikë'];
+  _0x027b = (223522 ^ 223523) + (318576 ^ 318580);
+  const _0x23ecc = [],
+    _0x68111f = [599457 ^ 599457, 933670 ^ 933670, 633972 ^ 633972, 301294 ^ 301294, 786300 ^ 786300];
+  var _0x5bc = (300398 ^ 300390) + (312028 ^ 312030);
+  const _0xc36c6e = value => {
+    if (value === '' || value == null) return 595471 ^ 595471;
+    if (typeof value !== 'number' && typeof value !== "\u0073\u0074\u0072\u0069\u006E\u0067") return NaN;
+    return Number(String(value)['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C", "\u002E"));
   };
-  const round = value => Math.round(value * 1000000) / 1000000;
-  const day = value => {
-    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return NaN;
-    const timestamp = Date.parse(value + 'T00:00:00Z');
-    return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0, 10) === value ? timestamp : NaN;
+  _0x5bc = (743754 ^ 743758) + (166386 ^ 166390);
+  var _0x49ceba = (642127 ^ 642125) + (618005 ^ 618006);
+  const _0x9bc = value => Math['\u0072\u006F\u0075\u006E\u0064'](value * 1000000) / 1000000;
+  _0x49ceba = 930716 ^ 930717;
+  var _0x14b = (215324 ^ 215317) + (245468 ^ 245466);
+  const _0x6e565f = value => {
+    if (typeof value !== "\u0073\u0074\u0072\u0069\u006E\u0067" || !new RegExp('\u005E\u005C\u0064\u007B\u0034\u007D\u002D\u005C\u0064\u007B\u0032\u007D\u002D\u005C\u0064\u007B\u0032\u007D\u0024', "")['\u0074\u0065\u0073\u0074'](value)) return NaN;
+    var _0xba9bdg = (322954 ^ 322954) + (874644 ^ 874646);
+    const _0x2_0x163 = Date['\u0070\u0061\u0072\u0073\u0065'](value + "\u0054\u0030\u0030\u003A\u0030\u0030\u003A\u0030\u0030\u005A");
+    _0xba9bdg = "qglndl";
+    return Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0x2_0x163) && new Date(_0x2_0x163)['\u0074\u006F\u0049\u0053\u004F\u0053\u0074\u0072\u0069\u006E\u0067']()['\u0073\u006C\u0069\u0063\u0065'](953685 ^ 953685, 475171 ^ 475177) === value ? _0x2_0x163 : NaN;
   };
-  if (!data || typeof data !== 'object' || !Array.isArray(data.rows) || !Array.isArray(data.credits) || !Array.isArray(data.groups)) throw new Error('Të dhëna të pavlefshme.');
-  if (data.credits.length !== 5 || data.groups.length !== 5) throw new Error('Tabela duhet të përmbajë 5 kategori kreditesh dhe grupesh.');
-  const required = {university:'Universiteti', faculty:'Fakulteti', department:'Departamenti', teacher:'Pedagog/e', head:'Drejtuesi i departamentit', year:'Viti akademik', semester:'Semestri', subject:'Lënda', program:'Programi i studimit'};
-  Object.keys(required).forEach(key => {
-    if (typeof data[key] !== 'string' || !data[key].trim() || data[key].length > 300) errors.push('Plotësoni: ' + required[key]);
+  _0x14b = '\u0063\u006D\u006B\u0064\u006F\u0062';
+  if (!data || typeof data !== "\u006F\u0062\u006A\u0065\u0063\u0074" || !Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](data['\u0072\u006F\u0077\u0073']) || !Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](data['\u0063\u0072\u0065\u0064\u0069\u0074\u0073']) || !Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](data['\u0067\u0072\u006F\u0075\u0070\u0073'])) throw new Error("\u0054\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0020\u0074\u00EB\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");
+  if (data['\u0063\u0072\u0065\u0064\u0069\u0074\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] !== (787749 ^ 787744) || data['\u0067\u0072\u006F\u0075\u0070\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] !== (529918 ^ 529915)) throw new Error('Tabela duhet të përmbajë 5 kategori kreditesh dhe grupesh.');
+  const _0x9721a = {
+    "university": 'Universiteti',
+    "faculty": "\u0046\u0061\u006B\u0075\u006C\u0074\u0065\u0074\u0069",
+    "department": "\u0044\u0065\u0070\u0061\u0072\u0074\u0061\u006D\u0065\u006E\u0074\u0069",
+    '\u0074\u0065\u0061\u0063\u0068\u0065\u0072': 'Pedagog/e',
+    '\u0068\u0065\u0061\u0064': "\u0044\u0072\u0065\u006A\u0074\u0075\u0065\u0073\u0069\u0020\u0069\u0020\u0064\u0065\u0070\u0061\u0072\u0074\u0061\u006D\u0065\u006E\u0074\u0069\u0074",
+    '\u0079\u0065\u0061\u0072': "\u0056\u0069\u0074\u0069\u0020\u0061\u006B\u0061\u0064\u0065\u006D\u0069\u006B",
+    '\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072': 'Semestri',
+    "subject": "\u004C\u00EB\u006E\u0064\u0061",
+    "program": "\u0050\u0072\u006F\u0067\u0072\u0061\u006D\u0069\u0020\u0069\u0020\u0073\u0074\u0075\u0064\u0069\u006D\u0069\u0074"
+  };
+  Object['\u006B\u0065\u0079\u0073'](_0x9721a)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](key => {
+    if (typeof data[key] !== "\u0073\u0074\u0072\u0069\u006E\u0067" || !data[key]['\u0074\u0072\u0069\u006D']() || data[key]['\u006C\u0065\u006E\u0067\u0074\u0068'] > (559705 ^ 559989)) _0x23ecc['\u0070\u0075\u0073\u0068']('Plotësoni: ' + _0x9721a[key]);
   });
-  const cycle = number(data.cycle);
-  if (![1,2].includes(cycle)) errors.push('Zgjidhni ciklin 1 ose 2.');
-  const yearMatch = (typeof data.year === 'string' ? data.year.trim() : '').match(/^(\d{4})\s*-\s*(\d{4})$/);
-  if (!yearMatch || Number(yearMatch[2]) !== Number(yearMatch[1]) + 1) errors.push('Viti akademik duhet të jetë p.sh. 2026-2027.');
-  const semesterStart = day(data.start);
-  if (!Number.isFinite(semesterStart)) errors.push('Vendosni datën e fillimit të semestrit.');
-  const credits = data.credits.map(number), groups = data.groups.map(number);
-  credits.forEach((value,index) => {
-    if (!Number.isFinite(value) || value < 0 || value > 60) errors.push('Kredite të pavlefshme për ' + names[index] + '. Vendosni një vlerë nga 0 deri në 60.');
+  var _0x123g = (501445 ^ 501447) + (886308 ^ 886308);
+  const _0x644c = _0xc36c6e(data['\u0063\u0079\u0063\u006C\u0065']);
+  _0x123g = (777402 ^ 777400) + (623410 ^ 623414);
+  if (![785912 ^ 785913, 475675 ^ 475673]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x644c)) _0x23ecc['\u0070\u0075\u0073\u0068']('Zgjidhni ciklin 1 ose 2.');
+  const _0xe84g8c = (typeof data['\u0079\u0065\u0061\u0072'] === "\u0073\u0074\u0072\u0069\u006E\u0067" ? data['\u0079\u0065\u0061\u0072']['\u0074\u0072\u0069\u006D']() : '')['\u006D\u0061\u0074\u0063\u0068'](new RegExp("^(\\d{4})\\s*-\\s*(\\d{4})$", ""));
+  if (!_0xe84g8c || Number(_0xe84g8c[553569 ^ 553571]) !== Number(_0xe84g8c[500762 ^ 500763]) + (251148 ^ 251149)) _0x23ecc['\u0070\u0075\u0073\u0068']("\u0056\u0069\u0074\u0069\u0020\u0061\u006B\u0061\u0064\u0065\u006D\u0069\u006B\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u0070\u002E\u0073\u0068\u002E\u0020\u0032\u0030\u0032\u0036\u002D\u0032\u0030\u0032\u0037\u002E");
+  let _0xc1cbfd;
+  const _0xd3e = _0x6e565f(data['\u0073\u0074\u0061\u0072\u0074']);
+  _0xc1cbfd = (155734 ^ 155742) + (658617 ^ 658608);
+  if (!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xd3e)) _0x23ecc['\u0070\u0075\u0073\u0068']('Vendosni datën e fillimit të semestrit.');
+  const _0x3_0x95f = data['\u0063\u0072\u0065\u0064\u0069\u0074\u0073']['\u006D\u0061\u0070'](_0xc36c6e),
+    _0x83198f = data['\u0067\u0072\u006F\u0075\u0070\u0073']['\u006D\u0061\u0070'](_0xc36c6e);
+  _0x3_0x95f['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((value, index) => {
+    if (!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value) || value < (652154 ^ 652154) || value > (758373 ^ 758361)) _0x23ecc['\u0070\u0075\u0073\u0068']("\u004B\u0072\u0065\u0064\u0069\u0074\u0065\u0020\u0074\u00EB\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u0020\u0070\u00EB\u0072\u0020" + _0xdgbb[index] + "\u002E\u0020\u0056\u0065\u006E\u0064\u006F\u0073\u006E\u0069\u0020\u006E\u006A\u00EB\u0020\u0076\u006C\u0065\u0072\u00EB\u0020\u006E\u0067\u0061\u0020\u0030\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0036\u0030\u002E");
   });
-  groups.forEach((value,index) => {
-    if (!Number.isInteger(value) || value < 0 || value > 6 || (credits[index] > 0 && value < 1)) errors.push('Numër grupesh i pavlefshëm për ' + names[index] + '. Lejohen 1–6 grupe kur ka kredite, ose 0 kur nuk ka.');
+  _0x83198f['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((value, index) => {
+    if (!Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](value) || value < (884961 ^ 884961) || value > (632075 ^ 632077) || _0x3_0x95f[index] > (451958 ^ 451958) && value < (561877 ^ 561876)) _0x23ecc['\u0070\u0075\u0073\u0068']("\u004E\u0075\u006D\u00EB\u0072\u0020\u0067\u0072\u0075\u0070\u0065\u0073\u0068\u0020\u0069\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u00EB\u006D\u0020\u0070\u00EB\u0072\u0020" + _0xdgbb[index] + '. Lejohen 1–6 grupe kur ka kredite, ose 0 kur nuk ka.');
   });
-  // Grupet shumëzojnë vetëm Leksionin, Seminarin dhe Laboratorin.
-  const rates = cycle === 1 ? [12,14,20,5,20] : [10,12,20,5,20];
-  const expected = credits.map((value,index) => round(value * rates[index] * (index < 3 ? groups[index] : 1)));
-  const totalCredits = round(credits.reduce((total,value) => total + value, 0));
-  if (!(totalCredits > 0)) errors.push('Plotësoni të paktën një kredit.');
-  if (data.rows.length < 1 || data.rows.length > 100) errors.push('Lejohen 1 deri në 100 regjistrime.');
-  data.rows.forEach((row,index) => {
-    const prefix = 'Rreshti ' + (index + 1) + ': ';
-    if (!row || typeof row !== 'object') { errors.push(prefix + 'regjistrim i pavlefshëm.'); return; }
-    const lessonDate = day(row.date);
-    if (!Number.isFinite(lessonDate)) errors.push(prefix + 'data është e pavlefshme.');
-    if (Number.isFinite(lessonDate) && Number.isFinite(semesterStart) && lessonDate < semesterStart) errors.push(prefix + 'data është para fillimit të semestrit.');
-    const week = number(row.week);
-    if (!Number.isInteger(week) || week < 1 || week > 60) errors.push(prefix + 'java duhet të jetë nga 1 deri në 60.');
-    const students = number(row.students);
-    if (row.students == null || String(row.students).trim() === '' || !Number.isInteger(students) || students < 0 || students > 10000) errors.push(prefix + 'numri i studentëve është i pavlefshëm.');
-    if (typeof row.topic !== 'string' || !row.topic.trim() || row.topic.length > 1000) errors.push(prefix + 'plotësoni temën (deri në 1000 karaktere).');
-    if (!Array.isArray(row.hours) || row.hours.length !== 5) { errors.push(prefix + 'duhen 5 kategori orësh.'); return; }
-    const hours = row.hours.map(number);
-    hours.forEach((value,category) => {
-      if (!Number.isFinite(value) || value < 0 || value > 100) errors.push(prefix + 'orë të pavlefshme për ' + names[category] + '.');
-      else actual[category] = round(actual[category] + value);
+  let _0x1fga3b;
+  const _0x106ebd = _0x644c === (765647 ^ 765646) ? [106405 ^ 106409, 827097 ^ 827095, 289981 ^ 289961, 904277 ^ 904272, 391596 ^ 391608] : [113152 ^ 113162, 188769 ^ 188781, 630257 ^ 630245, 690170 ^ 690175, 471316 ^ 471296];
+  _0x1fga3b = (242878 ^ 242879) + (724543 ^ 724543);
+  const _0xd4320f = _0x3_0x95f['\u006D\u0061\u0070']((value, index) => _0x9bc(value * _0x106ebd[index] * (index < (355121 ^ 355122) ? _0x83198f[index] : 868524 ^ 868525)));
+  var _0x_0xfa8 = (912052 ^ 912055) + (456836 ^ 456845);
+  const _0x95b = _0x9bc(_0x3_0x95f['\u0072\u0065\u0064\u0075\u0063\u0065']((total, value) => total + value, 569894 ^ 569894));
+  _0x_0xfa8 = (130525 ^ 130520) + (520646 ^ 520654);
+  if (!(_0x95b > (759690 ^ 759690))) _0x23ecc['\u0070\u0075\u0073\u0068']("\u0050\u006C\u006F\u0074\u00EB\u0073\u006F\u006E\u0069\u0020\u0074\u00EB\u0020\u0070\u0061\u006B\u0074\u00EB\u006E\u0020\u006E\u006A\u00EB\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u002E");
+  if (data['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] < (278032 ^ 278033) || data['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] > (889665 ^ 889637)) _0x23ecc['\u0070\u0075\u0073\u0068']("\u004C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0031\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0031\u0030\u0030\u0020\u0072\u0065\u0067\u006A\u0069\u0073\u0074\u0072\u0069\u006D\u0065\u002E");
+  data['\u0072\u006F\u0077\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((row, index) => {
+    var _0xe_0xc7e = (840890 ^ 840893) + (891403 ^ 891404);
+    const _0x1b99b = 'Rreshti ' + (index + (101227 ^ 101226)) + "\u003A\u0020";
+    _0xe_0xc7e = (648158 ^ 648153) + (645788 ^ 645785);
+    if (!row || typeof row !== 'object') {
+      _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + "\u0072\u0065\u0067\u006A\u0069\u0073\u0074\u0072\u0069\u006D\u0020\u0069\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u00EB\u006D\u002E");
+      return;
+    }
+    let _0xc35c;
+    const _0xd10c = _0x6e565f(row['\u0064\u0061\u0074\u0065']);
+    _0xc35c = (968561 ^ 968564) + (132091 ^ 132093);
+    if (!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xd10c)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + "\u0064\u0061\u0074\u0061\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0065\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");
+    if (Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xd10c) && Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xd3e) && _0xd10c < _0xd3e) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + 'data është para fillimit të semestrit.');
+    var _0x6f3ec = (607312 ^ 607319) + (839688 ^ 839694);
+    const _0x146b = _0xc36c6e(row['\u0077\u0065\u0065\u006B']);
+    _0x6f3ec = (257398 ^ 257398) + (529727 ^ 529718);
+    if (!Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](_0x146b) || _0x146b < (360583 ^ 360582) || _0x146b > (881070 ^ 881042)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + "\u006A\u0061\u0076\u0061\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u006E\u0067\u0061\u0020\u0031\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0036\u0030\u002E");
+    const _0xcbg2c = _0xc36c6e(row['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']);
+    if (row['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'] == null || String(row['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'])['\u0074\u0072\u0069\u006D']() === '' || !Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](_0xcbg2c) || _0xcbg2c < (432581 ^ 432581) || _0xcbg2c > (764039 ^ 757655)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + 'numri i studentëve është i pavlefshëm.');
+    if (typeof row['\u0074\u006F\u0070\u0069\u0063'] !== "\u0073\u0074\u0072\u0069\u006E\u0067" || !row['\u0074\u006F\u0070\u0069\u0063']['\u0074\u0072\u0069\u006D']() || row['\u0074\u006F\u0070\u0069\u0063']['\u006C\u0065\u006E\u0067\u0074\u0068'] > (677888 ^ 678888)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + "\u0070\u006C\u006F\u0074\u00EB\u0073\u006F\u006E\u0069\u0020\u0074\u0065\u006D\u00EB\u006E\u0020\u0028\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0031\u0030\u0030\u0030\u0020\u006B\u0061\u0072\u0061\u006B\u0074\u0065\u0072\u0065\u0029\u002E");
+    if (!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](row['\u0068\u006F\u0075\u0072\u0073']) || row['\u0068\u006F\u0075\u0072\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] !== (165154 ^ 165159)) {
+      _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + "\u0064\u0075\u0068\u0065\u006E\u0020\u0035\u0020\u006B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0020\u006F\u0072\u00EB\u0073\u0068\u002E");
+      return;
+    }
+    var _0xe1716d = (853966 ^ 853959) + (641470 ^ 641467);
+    const _0xc45db = row['\u0068\u006F\u0075\u0072\u0073']['\u006D\u0061\u0070'](_0xc36c6e);
+    _0xe1716d = (789639 ^ 789638) + (591702 ^ 591696);
+    _0xc45db['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((value, category) => {
+      if (!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value) || value < (825774 ^ 825774) || value > (683439 ^ 683467)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + 'orë të pavlefshme për ' + _0xdgbb[category] + "\u002E");else _0x68111f[category] = _0x9bc(_0x68111f[category] + value);
     });
-    if (hours.every(value => Number.isFinite(value) && value >= 0 && value <= 100) && hours.reduce((a,b) => a+b,0) <= 0) errors.push(prefix + 'vendosni të paktën një vlerë pozitive të orëve.');
-    if (credits[4] === 0 && Number.isFinite(hours[4]) && hours[4] > 0) errors.push(prefix + 'ka orë praktike, por kreditet e praktikës janë zero.');
+    if (_0xc45db['\u0065\u0076\u0065\u0072\u0079'](value => Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value) && value >= (928301 ^ 928301) && value <= (760452 ^ 760544)) && _0xc45db['\u0072\u0065\u0064\u0075\u0063\u0065']((a, b) => a + b, 381844 ^ 381844) <= (768075 ^ 768075)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + 'vendosni të paktën një vlerë pozitive të orëve.');
+    if (_0x3_0x95f[935588 ^ 935584] === (873813 ^ 873813) && Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xc45db[624090 ^ 624094]) && _0xc45db[427929 ^ 427933] > (563016 ^ 563016)) _0x23ecc['\u0070\u0075\u0073\u0068'](_0x1b99b + 'ka orë praktike, por kreditet e praktikës janë zero.');
   });
-  if (typeof data.notes !== 'string' || data.notes.length > 3000) errors.push('Shënimet duhet të jenë deri në 3000 karaktere.');
-  const differences = expected.map((value,index) => round(value - actual[index]));
-  differences.forEach((value,index) => {
-    if (Number.isFinite(value) && Math.abs(value) > 0.000001) errors.push(names[index] + ': ' + actual[index] + ' nga ' + expected[index] + ' orë; ' + (value > 0 ? 'mungojnë ' + value : 'janë tejkaluar ' + (-value)) + '.');
+  if (typeof data['\u006E\u006F\u0074\u0065\u0073'] !== "\u0073\u0074\u0072\u0069\u006E\u0067" || data['\u006E\u006F\u0074\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'] > (313320 ^ 314448)) _0x23ecc['\u0070\u0075\u0073\u0068']("\u0053\u0068\u00EB\u006E\u0069\u006D\u0065\u0074\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u006E\u00EB\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0033\u0030\u0030\u0030\u0020\u006B\u0061\u0072\u0061\u006B\u0074\u0065\u0072\u0065\u002E");
+  const _0x565d = _0xd4320f['\u006D\u0061\u0070']((value, index) => _0x9bc(value - _0x68111f[index]));
+  _0x565d['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((value, index) => {
+    if (Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value) && Math['\u0061\u0062\u0073'](value) > 0.000001) _0x23ecc['\u0070\u0075\u0073\u0068'](_0xdgbb[index] + "\u003A\u0020" + _0x68111f[index] + ' nga ' + _0xd4320f[index] + "\u0020\u006F\u0072\u00EB\u003B\u0020" + (value > (997967 ^ 997967) ? "\u006D\u0075\u006E\u0067\u006F\u006A\u006E\u00EB\u0020" + value : 'janë tejkaluar ' + -value) + "\u002E");
   });
-  return {errors:[...new Set(errors)],actual,expected,differences,totalCredits};
-}
-function week_(date,start) {
-  const parseDay = value => {
-    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return NaN;
-    const timestamp = Date.parse(value + 'T00:00:00Z');
-    return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0,10) === value ? timestamp : NaN;
+  return {
+    "errors": [...new Set(_0x23ecc)],
+    "actual": _0x68111f,
+    "expected": _0xd4320f,
+    '\u0064\u0069\u0066\u0066\u0065\u0072\u0065\u006E\u0063\u0065\u0073': _0x565d,
+    '\u0074\u006F\u0074\u0061\u006C\u0043\u0072\u0065\u0064\u0069\u0074\u0073': _0x95b
   };
-  const lessonDate = parseDay(date), semesterStart = parseDay(start);
-  if (!Number.isFinite(lessonDate) || !Number.isFinite(semesterStart) || lessonDate < semesterStart) return '';
-  return Math.floor((lessonDate - semesterStart) / 604800000) + 1;
+}
+function week_(date, start) {
+  var _0xf4c = (632849 ^ 632849) + (534712 ^ 534715);
+  const _0xe2fef = value => {
+    if (typeof value !== "\u0073\u0074\u0072\u0069\u006E\u0067" || !new RegExp("^\\d{4}-\\d{2}-\\d{2}$", "")['\u0074\u0065\u0073\u0074'](value)) return NaN;
+    var _0x8127b = (268837 ^ 268836) + (738145 ^ 738150);
+    const _0xg5bgc = Date['\u0070\u0061\u0072\u0073\u0065'](value + 'T00:00:00Z');
+    _0x8127b = "hlgadm";
+    return Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0xg5bgc) && new Date(_0xg5bgc)['\u0074\u006F\u0049\u0053\u004F\u0053\u0074\u0072\u0069\u006E\u0067']()['\u0073\u006C\u0069\u0063\u0065'](324129 ^ 324129, 389946 ^ 389936) === value ? _0xg5bgc : NaN;
+  };
+  _0xf4c = 156031 ^ 156030;
+  const _0x8c_0x63b = _0xe2fef(date),
+    _0x3c94be = _0xe2fef(start);
+  if (!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0x8c_0x63b) || !Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0x3c94be) || _0x8c_0x63b < _0x3c94be) return '';
+  return Math['\u0066\u006C\u006F\u006F\u0072']((_0x8c_0x63b - _0x3c94be) / 604800000) + (211451 ^ 211450);
 }
