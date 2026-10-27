@@ -1,13 +1,8 @@
 ---
 layout: default
-title: Udhëzuesi EVION
+title: Udhëzues
 permalink: /udhezues/
 ---
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Udhëzuesi i evidencës mësimore</title>
-</head>
 
 # Evidencat dhe përmbledhja e ngarkesës mësimore `online`
 
