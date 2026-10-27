@@ -1,8 +1,6 @@
-# Evidenca dhe përmbledhja e ngarkesës mësimore `online` [evion]
+# `Evidencat` dhe përmbledhja e ngarkesës mësimore `online`
 
-Aplikacion web për plotësimin e evidencave mësimore, verifikimin e orëve, gjenerimin e dokumenteve dhe përmbledhjen e ngarkesës së pedagogëve.
-
-Aplikacioni hapet pa identifikim dhe punon në shfletues.
+Aplikacion për plotësimin e evidencave mësimore, verifikimin e orëve, gjenerimin e dokumenteve dhe përmbledhjen e ngarkesës së pedagogëve hapet pa identifikim dhe punon në shfletues.
 
 **Hap aplikacionin:** https://lslxslx.github.io/evion/
 
