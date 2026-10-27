@@ -443,6 +443,7 @@ function reportHtml(data, result) {
 
     .declaration {
       margin-top: 33px;
+      font-style: italic;
     }
 
     .signature {
