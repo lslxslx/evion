@@ -235,20 +235,18 @@ function reportHtml(data, result) {
       `
       : '';
 
-  // Kur fusha e shënimeve është bosh, shfaqet mesazhi
-  // i kërkuar, pavarësisht shenjave * në regjistrime.
   const replacementSection = `
     <h2>Shënime dhe referenca për zëvendësimet</h2>
 
-    ${notes ? `
-      ${replacementSummary ? `
-        <p>${replacementSummary}</p>
-      ` : ''}
-
-      <p class="replacement-notes">${escape(notes)}</p>
+    ${replacementSummary ? `
+      <p>${replacementSummary}</p>
     ` : `
       <p>Nuk janë bërë zëvendësime.</p>
     `}
+
+    ${notes ? `
+      <p class="replacement-notes"><strong>Shënime:</strong> ${escape(notes)}</p>
+    ` : ''}
   `;
 
   return `
@@ -444,17 +442,17 @@ function reportHtml(data, result) {
     }
 
     .declaration {
-      margin-top: 25px;
+      margin-top: 33px;
     }
 
     .signature {
-      margin-top: 45px;
+      margin-top: 33px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .signature p {
-      margin-top: 10px;
+      margin-top: 20px;
       overflow-wrap: anywhere;
     }
 
