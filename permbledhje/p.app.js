@@ -271,7 +271,7 @@ if (typeof document !== 'undefined') {
 
 function initPage() {
   const $ = id => document.getElementById(id);
-  const hours = value => value.toFixed(2);
+  const hours = value => String(Number(value.toFixed(2)));
 
   let records = [];
   let queue = [];
