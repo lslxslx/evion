@@ -247,19 +247,45 @@ Zërat si udhëheqjet e diplomave dhe angazhimet e doktoraturës nuk plotësohen
 
 CSV-ja përdor ndarësin `;`. Për përputhshmëri me programet ku shfaqen probleme kodimi, shkronjat `ë` dhe `ç` zëvendësohen me `e` dhe `c`, ndërsa vizat tipografike zëvendësohen me `-`.
 
-## 6. Ruajtja e të dhënave
+## 6. Ruajtja e të dhënave dhe kalimi ndërmjet faqeve
 
-Aplikacioni nuk ka një databazë të përbashkët në server dhe nuk krijon llogari përdoruesish.
+Aplikacioni nuk ka llogari përdoruesish ose databazë të përbashkët në server. Formulari, raporti dhe përmbledhja i trajtojnë të dhënat në mënyra të ndryshme.
 
-- Drafti i formularit ruhet nga përdoruesi si skedar JSON.
-- Regjistri i përmbledhjes ruhet në `localStorage` të shfletuesit.
-- Raporti përdor një kopje të përkohshme në `localStorage` për hapjen e skedës së re dhe një kopje në `sessionStorage` të skedës së raportit.
+### Formulari i evidencës
 
-Regjistri i përmbledhjes nuk sinkronizohet automatikisht ndërmjet telefonit, kompjuterit ose shfletuesve të ndryshëm.
+Të dhënat mbeten në formular për sa kohë faqja qëndron e hapur. Formulari nuk ruhet automatikisht për t’u rikthyer pas mbylljes ose ringarkimit.
 
-Pastrimi i të dhënave të shfletuesit mund ta fshijë regjistrin lokal. Eksportoni evidencat në JSON për kopje rezervë dhe transferim.
+Lidhja **“Përmbledhja e ngarkesës mësimore”** hapet në një tab të ri, që formulari të mbetet i hapur dhe i plotësuar në tabin fillestar. Për të vazhduar plotësimin, kthehuni te dritarja ekzistuese e formularit.
 
-PDF-të dhe QR-të përmbajnë emra dhe të dhëna të ngarkesës mësimore. Kushdo që ka dokumentin mund të lexojë përmbledhjen e ruajtur në QR.
+Për ta ruajtur punën:
+
+- Klikoni **Shkarko draftin** për të marrë një skedar JSON me të gjitha të dhënat.
+- Përdorni **Hap draftin** për të rikthyer formularin më vonë ose në një pajisje tjetër.
+
+**Përpara mbylljes ose rifreskimit të formularit, shkarkoni draftin.** Mbajtja e tabit të hapur nuk zëvendëson një kopje rezervë.
+
+### Raporti i gjeneruar
+
+Raporti hapet në një tab të veçantë dhe merr një kopje të të dhënave të formularit.
+
+Për transferimin përdoret përkohësisht `localStorage`; pasi raporti hapet, kopja mbahet në `sessionStorage` të dritares së raportit. Kjo lejon rifreskimin dhe printimin e përsëritur të raportit gjatë përdorimit të asaj skede.
+
+Kjo kopje nuk ruan dhe nuk rikthen formularin origjinal. Ndryshimet e mëvonshme në formular shfaqen vetëm pasi të gjeneroni një raport të ri.
+
+### Përmbledhja e ngarkesës mësimore
+
+Evidencat që shtoni në përmbledhje ruhen në `localStorage`, pra në shfletuesin e pajisjes që po përdorni. Zakonisht ato mbeten edhe pasi e mbyllni dhe e hapni përsëri faqen.
+
+Megjithatë:
+
+- Nuk sinkronizohen automatikisht me pajisje ose shfletues të tjerë.
+- Mund të fshihen kur pastroni të dhënat e shfletuesit.
+- Në shfletim privat, ruajtja mund të jetë vetëm e përkohshme.
+- Në një pajisje të përbashkët, mund të shihen nga persona që përdorin të njëjtin profil të shfletuesit.
+
+Përdorni **Eksporto të gjitha evidencat** për kopje rezervë ose transferim të regjistrit.
+
+**Kujdes:** JSON-i i përmbledhjes përmban të dhënat përmbledhëse të evidencave. Ai nuk zëvendëson draftin JSON të formularit, i cili ruan edhe temat dhe regjistrimet ditore.
 
 ## 7. Kamera dhe skanimi
 
