@@ -724,7 +724,12 @@ if (printPdfButton) {
       }
 
       const filename = pdfFilename(data);
-      downloadBlob(blob, filename);
+      const downloadFile = new Blob(
+        [blob],
+        { type: 'application/octet-stream' }
+      );
+
+downloadBlob(downloadFile, filename);
 
       let message = 'PDF: ' + filename;
 
