@@ -1,41 +1,571 @@
-'use strict';var _0x34b9gc=(119961^119965)+(985538^985541);const CATEGORIES=[["\u006C\u0065\u006B\u0073\u0069\u006F\u006E\u0065","\u004C\u0065\u006B\u0073\u0069\u006F\u006E\u0065"],["\u0073\u0065\u006D\u0069\u006E\u0061\u0072\u0065","\u0053\u0065\u006D\u0069\u006E\u0061\u0072\u0065\u002F\u0075\u0073\u0068\u0074\u0072\u0069\u006D\u0065"],["\u006C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u0065","\u004C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u00EB"],["\u0064\u0065\u0074\u0079\u0072\u0061","\u0050\u0072\u006F\u006A\u0065\u006B\u0074\u0020\u002F\u0020\u0044\u0065\u0074\u0079\u0072\u0061\u0020\u006B\u0075\u0072\u0073\u0069"],["\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061","\u0050\u0072\u0061\u006B\u0074\u0069\u006B\u0061\u0020\u006D\u00EB\u0073\u0069\u006D\u006F\u0072\u0065"]];_0x34b9gc=(752490^752482)+(346925^346917);const STORE_KEY="\u0065\u0076\u0069\u006F\u006E\u002D\u0073\u0075\u006D\u006D\u0061\u0072\u0079\u002D\u0072\u0065\u0067\u0069\u0073\u0074\u0065\u0072\u002D\u0076\u0031";let _0xb_0x206;const MAX_RECORDS=301556^302628;_0xb_0x206=(939773^939764)+(332109^332108);const round=value=>Math['\u0072\u006F\u0075\u006E\u0064'](value*1000000)/1000000;const normalized=value=>value['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("\u004E\u0046\u0043")['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005C\u0073\u002B','\u0067'),"\u0020")['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']();function validateEvidence(raw,_0xb2_0x52a){if(!raw||raw['\u0074\u0079\u0070\u0065']!=="\u0065\u0076\u0069\u006F\u006E\u002D\u0073\u0075\u006D\u006D\u0061\u0072\u0079"||raw['\u0076\u0065\u0072\u0073\u0069\u006F\u006E']!==(625625^625624)){throw new Error("\u004B\u0079\u0020\u006E\u0075\u006B\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u004A\u0053\u004F\u004E\u0020\u0070\u00EB\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u00EB\u0073\u0020\u0069\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u0073\u0020"+"\u0028\u0065\u0076\u0069\u006F\u006E\u002D\u0073\u0075\u006D\u006D\u0061\u0072\u0079\u002C\u0020\u0076\u0065\u0072\u0073\u0069\u006F\u006E\u0020\u0031\u0029\u002E");}function _0xc3c(key){if(typeof raw[key]!=="gnirts".split("").reverse().join("")||!raw[key]['\u0074\u0072\u0069\u006D']()||raw[key]['\u006C\u0065\u006E\u0067\u0074\u0068']>(691816^692036)){throw new Error(" :emhsfelvap e \xEBhsuF".split("").reverse().join("")+key);}return raw[key]['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("CFN".split("").reverse().join(""))['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp("+s\\".split("").reverse().join(""),'\u0067'),"\u0020");}function _0xe5497b(value,name,max,integer=false){if(typeof value!=="\u006E\u0075\u006D\u0062\u0065\u0072"||!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](value)||value<(893962^893962)||value>max||integer&&!Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](value)){throw new Error(" :emhsfelvap e \xEBrelV".split("").reverse().join("")+name);}return round(value);}var _0x37b=(479264^479267)+(442806^442800);const _0xb14a={"type":'evion-summary','\u0076\u0065\u0072\u0073\u0069\u006F\u006E':1,"teacher":_0xc3c("\u0074\u0065\u0061\u0063\u0068\u0065\u0072"),"subject":_0xc3c("\u0073\u0075\u0062\u006A\u0065\u0063\u0074"),'\u0070\u0072\u006F\u0067\u0072\u0061\u006D':_0xc3c("\u0070\u0072\u006F\u0067\u0072\u0061\u006D"),'\u0079\u0065\u0061\u0072':_0xc3c("\u0079\u0065\u0061\u0072"),"semester":_0xc3c("\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072")['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065'](),'\u0063\u0079\u0063\u006C\u0065':_0xe5497b(raw['\u0063\u0079\u0063\u006C\u0065'],"\u0063\u0069\u006B\u006C\u0069",716824^716826,!![]),"students":_0xe5497b(raw['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'],"t\xEBtneduts".split("").reverse().join(""),578985^586425,!![]),"categories":[]};_0x37b=580758^580754;if(![193796^193797,427862^427860]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0xb14a['\u0063\u0079\u0063\u006C\u0065'])){throw new Error("\u0043\u0069\u006B\u006C\u0069\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u0031\u0020\u006F\u0073\u0065\u0020\u0032\u002E");}const _0x74a7f=_0xb14a['\u0079\u0065\u0061\u0072']['\u006D\u0061\u0074\u0063\u0068'](new RegExp("$)}4{d\\(*s\\-*s\\)}4{d\\(^".split("").reverse().join(""),""));if(!_0x74a7f||Number(_0x74a7f[853325^853327])!==Number(_0x74a7f[871360^871361])+(758407^758406)){throw new Error("\u0056\u0069\u0074\u0069\u0020\u0061\u006B\u0061\u0064\u0065\u006D\u0069\u006B\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0069\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u00EB\u006D\u002E");}_0xb14a['\u0079\u0065\u0061\u0072']=_0x74a7f[288808^288809]+"\u002D"+_0x74a7f[265931^265929];if(!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073'])||!raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']||raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>(788304^788309)){throw new Error("\u004B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0074\u00EB\u0020\u006A\u0061\u006E\u00EB\u0020\u0074\u00EB\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");}const _0x41a7c=new Set();_0xb2_0x52a=(594627^594634)+(756568^756575);for(const _0xf4dfc of raw['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']){if(!_0xf4dfc||!CATEGORIES['\u0073\u006F\u006D\u0065'](([code])=>code===_0xf4dfc['\u0063\u006F\u0064\u0065'])||_0x41a7c['\u0068\u0061\u0073'](_0xf4dfc['\u0063\u006F\u0064\u0065'])){throw new Error("\u004B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0020\u0065\u0020\u0070\u0061\u006E\u006A\u006F\u0068\u0075\u0072\u0020\u006F\u0073\u0065\u0020\u0065\u0020\u0070\u00EB\u0072\u0073\u00EB\u0072\u0069\u0074\u0075\u0072\u002E");}_0x41a7c['\u0061\u0064\u0064'](_0xf4dfc['\u0063\u006F\u0064\u0065']);const _0xac3ab={'\u0063\u006F\u0064\u0065':_0xf4dfc['\u0063\u006F\u0064\u0065'],'\u0063\u0072\u0065\u0064\u0069\u0074\u0073':_0xe5497b(_0xf4dfc['\u0063\u0072\u0065\u0064\u0069\u0074\u0073'],"\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074",588598^588554),'\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073':_0xe5497b(_0xf4dfc['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'],"\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u00EB\u0074\u0020\u0065\u0020\u006B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0073\u00EB",873137^882081,!![]),'\u0067\u0072\u006F\u0075\u0070\u0073':_0xe5497b(_0xf4dfc['\u0067\u0072\u006F\u0075\u0070\u0073'],"\u0067\u0072\u0075\u0070\u0065\u0074",195540^195538,!![]),'\u0068\u006F\u0075\u0072\u0073':_0xe5497b(_0xf4dfc['\u0068\u006F\u0075\u0072\u0073'],"\u006F\u0072\u00EB\u0074",205435^197995)};if(_0xac3ab['\u0063\u0072\u0065\u0064\u0069\u0074\u0073']<=(880137^880137)||_0xac3ab['\u0067\u0072\u006F\u0075\u0070\u0073']<(661863^661862)||_0xac3ab['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']!==_0xb14a['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']){throw new Error(" ev\xEBtneduts i imumiskam eso tepurg ,tetiderK".split("").reverse().join("")+".nehtupr\xEBp kun".split("").reverse().join(""));}_0xb14a['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u0070\u0075\u0073\u0068'](_0xac3ab);}_0xb14a['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u0073\u006F\u0072\u0074']((a,b)=>CATEGORIES['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](([code])=>code===a['\u0063\u006F\u0064\u0065'])-CATEGORIES['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](([code])=>code===b['\u0063\u006F\u0064\u0065']));return _0xb14a;}function evidenceKey(item){return JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079']([item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'],item['\u0073\u0075\u0062\u006A\u0065\u0063\u0074'],item['\u0070\u0072\u006F\u0067\u0072\u0061\u006D'],item['\u0079\u0065\u0061\u0072'],item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072'],String(item['\u0063\u0079\u0063\u006C\u0065'])]['\u006D\u0061\u0070'](normalized));}function sameEvidence(a,b){return evidenceKey(a)===evidenceKey(b)&&a['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']===b['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']&&JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](a['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073'])===JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](b['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']);}function parseImport(text,_0x7f_0xf84,_0x99c2b){if(text['\u006C\u0065\u006E\u0067\u0074\u0068']>5000000){throw new Error("\u004A\u0053\u004F\u004E\u002D\u0069\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0073\u0068\u0075\u006D\u00EB\u0020\u0069\u0020\u006D\u0061\u0064\u0068\u002E");}_0x7f_0xf84=(544331^544335)+(264205^264206);try{_0x99c2b=JSON['\u0070\u0061\u0072\u0073\u0065'](text);}catch{throw new Error("\u0054\u0065\u006B\u0073\u0074\u0069\u0020\u006E\u0075\u006B\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u004A\u0053\u004F\u004E\u0020\u0069\u0020\u0076\u006C\u0065\u0066\u0073\u0068\u00EB\u006D\u002E");}if(_0x99c2b&&_0x99c2b['\u0074\u0079\u0070\u0065']==="\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E"&&_0x99c2b['\u0076\u0065\u0072\u0073\u0069\u006F\u006E']===(737705^737704)){if(!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](_0x99c2b['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073'])||_0x99c2b['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>MAX_RECORDS){throw new Error(".emhsfelvap e \xEBths\xEB evacnedive e atsiL".split("").reverse().join(""));}return _0x99c2b['\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073']['\u006D\u0061\u0070'](validateEvidence);}return[validateEvidence(_0x99c2b)];}function aggregate(items){var _0x6f2c=(307799^307799)+(502797^502789);const _0x25ad4b=Object['\u0066\u0072\u006F\u006D\u0045\u006E\u0074\u0072\u0069\u0065\u0073'](CATEGORIES['\u006D\u0061\u0070'](([code])=>[code,{"students":0,'\u0067\u0072\u006F\u0075\u0070\u0073':0,'\u0068\u006F\u0075\u0072\u0073':0}]));_0x6f2c=(955562^955566)+(364077^364079);for(const _0x183a of items){for(const _0xb11egd of _0x183a['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']){_0x25ad4b[_0xb11egd['\u0063\u006F\u0064\u0065']]['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']+=_0xb11egd['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073'];_0x25ad4b[_0xb11egd['\u0063\u006F\u0064\u0065']]['\u0067\u0072\u006F\u0075\u0070\u0073']+=_0xb11egd['\u0067\u0072\u006F\u0075\u0070\u0073'];_0x25ad4b[_0xb11egd['\u0063\u006F\u0064\u0065']]['\u0068\u006F\u0075\u0072\u0073']=round(_0x25ad4b[_0xb11egd['\u0063\u006F\u0064\u0065']]['\u0068\u006F\u0075\u0072\u0073']+_0xb11egd['\u0068\u006F\u0075\u0072\u0073']);}}return _0x25ad4b;}if(typeof document!=="\u0075\u006E\u0064\u0065\u0066\u0069\u006E\u0065\u0064"){initPage();}function initPage(_0xb58a,_0xaa77ag,_0xdde9cc,_0xb4bb7f){const $=id=>document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](id);const _0xe8fd4e=value=>value['\u0074\u006F\u0046\u0069\u0078\u0065\u0064'](517601^517603);_0xb58a=(235396^235404)+(312871^312878);var _0xf73cbc=(362926^362922)+(363599^363593);let _0xc9991c=[];_0xf73cbc=513449^513449;let _0x363ag=[];let _0xe06d=false;let _0x4dfd=false;_0xaa77ag=(953074^953077)+(401975^401982);function _0xec11cd(text,kind=''){$("\u0073\u0074\u0061\u0074\u0075\u0073")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=text;$("\u0073\u0074\u0061\u0074\u0075\u0073")['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']=kind;}function _0x_0x41c(_0x22be5b){var _0xe66gfd=(492150^492150)+(282777^282769);const _0xb7e7gg=localStorage['\u0067\u0065\u0074\u0049\u0074\u0065\u006D'](STORE_KEY);_0xe66gfd=(962382^962377)+(434419^434419);const _0xa15fc=_0xb7e7gg?parseImport(_0xb7e7gg):[];const _0x8c_0x9d5=new Set();_0x22be5b=(228220^228218)+(486042^486041);for(const _0xbce56e of _0xa15fc){let _0xbcef5f;const _0x46f9aa=evidenceKey(_0xbce56e);_0xbcef5f=(598987^598989)+(613130^613135);if(_0x8c_0x9d5['\u0068\u0061\u0073'](_0x46f9aa)){throw new Error("\u0052\u0075\u0061\u006A\u0074\u006A\u0061\u0020\u0070\u00EB\u0072\u006D\u0062\u0061\u006E\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0074\u00EB\u0020\u0064\u0079\u0066\u0069\u0073\u0068\u0074\u0061\u002E");}_0x8c_0x9d5['\u0061\u0064\u0064'](_0x46f9aa);}return _0xa15fc;}function _0xef9f5g(next){if(next['\u006C\u0065\u006E\u0067\u0074\u0068']>MAX_RECORDS){throw new Error("\u004C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020"+MAX_RECORDS+".acnedive ".split("").reverse().join(""));}localStorage['\u0073\u0065\u0074\u0049\u0074\u0065\u006D'](STORE_KEY,JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079']({'\u0074\u0079\u0070\u0065':"\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E","version":1,'\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073':next}));_0xc9991c=next;}function _0x65b8da(data,filename){const _0xag_0x846=new Blob([JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](data,null,114919^114917)],{'\u0074\u0079\u0070\u0065':"\u0061\u0070\u0070\u006C\u0069\u0063\u0061\u0074\u0069\u006F\u006E\u002F\u006A\u0073\u006F\u006E"});const _0x5_0xb14=URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0xag_0x846);const _0x24b8f=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0061");_0x24b8f['\u0068\u0072\u0065\u0066']=_0x5_0xb14;_0x24b8f['\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064']=filename;document['\u0062\u006F\u0064\u0079']['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x24b8f);_0x24b8f['\u0063\u006C\u0069\u0063\u006B']();_0x24b8f['\u0072\u0065\u006D\u006F\u0076\u0065']();setTimeout(()=>{URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0x5_0xb14);},838438^794950);}function _0xdaa83a(item){return("\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u005F"+item['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']+"\u005F"+item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'])['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp("]-_}N{p\\}L{p\\^[".split("").reverse().join(""),'\u0067\u0075'),"\u005F")['\u0073\u006C\u0069\u0063\u0065'](267266^267266,952765^952639)+"nosj.".split("").reverse().join("");}function _0x72647e(id,values,allLabel){const _0x1fgc=$(id)['\u0076\u0061\u006C\u0075\u0065'];$(id)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();if(allLabel){$(id)['\u0061\u0064\u0064'](new Option(allLabel,''));}for(const[value,label]of values){$(id)['\u0061\u0064\u0064'](new Option(label,value));}if(values['\u0073\u006F\u006D\u0065'](([value])=>value===_0x1fgc)){$(id)['\u0076\u0061\u006C\u0075\u0065']=_0x1fgc;}}function _0x846c(){const _0x5ae75d=new Map(_0xc9991c['\u006D\u0061\u0070'](item=>[normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']),item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']]));_0x72647e("\u0074\u0065\u0061\u0063\u0068\u0065\u0072",[..._0x5ae75d]['\u0073\u006F\u0072\u0074']((a,b)=>a[829455^829454]['\u006C\u006F\u0063\u0061\u006C\u0065\u0043\u006F\u006D\u0070\u0061\u0072\u0065'](b[842793^842792])));var _0x059ga=(150095^150087)+(773332^773330);const _0xddbd=_0xc9991c['\u0066\u0069\u006C\u0074\u0065\u0072'](item=>normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'])===$("\u0074\u0065\u0061\u0063\u0068\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065']);_0x059ga=(827152^827159)+(967104^967105);_0x72647e("\u0079\u0065\u0061\u0072",[...new Set(_0xddbd['\u006D\u0061\u0070'](item=>item['\u0079\u0065\u0061\u0072']))]['\u0073\u006F\u0072\u0074']()['\u0072\u0065\u0076\u0065\u0072\u0073\u0065']()['\u006D\u0061\u0070'](value=>[value,value]),"tetiv ahtijg \xEBT".split("").reverse().join(""));var _0xa_0x667=(981740^981740)+(262349^262347);const _0x9b8adc=_0xddbd['\u0066\u0069\u006C\u0074\u0065\u0072'](item=>!$("\u0079\u0065\u0061\u0072")['\u0076\u0061\u006C\u0075\u0065']||item['\u0079\u0065\u0061\u0072']===$("raey".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']);_0xa_0x667=(123193^123196)+(578705^578707);_0x72647e("retsemes".split("").reverse().join(""),[...new Set(_0x9b8adc['\u006D\u0061\u0070'](item=>item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']))]['\u0073\u006F\u0072\u0074']()['\u006D\u0061\u0070'](value=>[value,value]),"tartsemes \xEBhtijg \xEBT".split("").reverse().join(""));}function _0xe1a(){return _0xc9991c['\u0066\u0069\u006C\u0074\u0065\u0072'](item=>normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072'])===$("rehcaet".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']&&(!$("raey".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']||item['\u0079\u0065\u0061\u0072']===$("\u0079\u0065\u0061\u0072")['\u0076\u0061\u006C\u0075\u0065'])&&(!$("retsemes".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']||item['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']===$("retsemes".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']));}function _0xc3b(category){return`
-      <td class="number">${category['\u0073\u0074\u0075\u0064\u0065\u006E\u0074\u0073']}</td>
-      <td class="number">${category['\u0067\u0072\u006F\u0075\u0070\u0073']}</td>
-      <td class="number">${_0xe8fd4e(category['\u0068\u006F\u0075\u0072\u0073'])}</td>
-    `;}function _0xe81a(item){return item['\u0063\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0065\u0073']['\u006D\u0061\u0070'](category=>{let _0x3d04ga;const _0x7e6c9b=CATEGORIES['\u0066\u0069\u006E\u0064'](([code])=>code===category['\u0063\u006F\u0064\u0065'])[520794^520795];_0x3d04ga=(955236^955245)+(814571^814569);return`
+'use strict';
+
+// =====================================================
+// KONFIGURIMI DHE KATEGORITË
+// =====================================================
+
+const CATEGORIES = [
+  ['leksione', 'Leksione'],
+  ['seminare', 'Seminare/ushtrime'],
+  ['laboratore', 'Laboratorë'],
+  ['detyra', 'Projekt / Detyra kursi'],
+  ['praktika', 'Praktika mësimore']
+];
+
+const STORE_KEY = 'evion-summary-register-v1';
+const MAX_RECORDS = 2000;
+
+const round = value =>
+  Math.round(value * 1000000) / 1000000;
+
+const normalized = value =>
+  value
+    .normalize('NFC')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+
+// =====================================================
+// KONTROLLI I JSON-IT TË EVIDENCËS
+// =====================================================
+
+function validateEvidence(raw) {
+  if (
+    !raw ||
+    raw.type !== 'evion-summary' ||
+    raw.version !== 1
+  ) {
+    throw new Error(
+      'Ky nuk është JSON përmbledhës i evidencës ' +
+      '(evion-summary, version 1).'
+    );
+  }
+
+  function text(key) {
+    if (
+      typeof raw[key] !== 'string' ||
+      !raw[key].trim() ||
+      raw[key].length > 300
+    ) {
+      throw new Error('Fushë e pavlefshme: ' + key);
+    }
+
+    return raw[key]
+      .normalize('NFC')
+      .trim()
+      .replace(/\s+/g, ' ');
+  }
+
+  function num(value, name, max, integer = false) {
+    if (
+      typeof value !== 'number' ||
+      !Number.isFinite(value) ||
+      value < 0 ||
+      value > max ||
+      (integer && !Number.isInteger(value))
+    ) {
+      throw new Error('Vlerë e pavlefshme: ' + name);
+    }
+
+    return round(value);
+  }
+
+  const item = {
+    type: 'evion-summary',
+    version: 1,
+
+    teacher: text('teacher'),
+    subject: text('subject'),
+    program: text('program'),
+    year: text('year'),
+    semester: text('semester').toUpperCase(),
+
+    cycle: num(raw.cycle, 'cikli', 2, true),
+    students: num(raw.students, 'studentët', 10000, true),
+
+    categories: []
+  };
+
+  if (![1, 2].includes(item.cycle)) {
+    throw new Error('Cikli duhet të jetë 1 ose 2.');
+  }
+
+  const year = item.year.match(
+    /^(\d{4})\s*-\s*(\d{4})$/
+  );
+
+  if (
+    !year ||
+    Number(year[2]) !== Number(year[1]) + 1
+  ) {
+    throw new Error('Viti akademik është i pavlefshëm.');
+  }
+
+  item.year = year[1] + '-' + year[2];
+
+  if (
+    !Array.isArray(raw.categories) ||
+    !raw.categories.length ||
+    raw.categories.length > 5
+  ) {
+    throw new Error('Kategoritë janë të pavlefshme.');
+  }
+
+  const seen = new Set();
+
+  for (const category of raw.categories) {
+    if (
+      !category ||
+      !CATEGORIES.some(([code]) => code === category.code) ||
+      seen.has(category.code)
+    ) {
+      throw new Error(
+        'Kategori e panjohur ose e përsëritur.'
+      );
+    }
+
+    seen.add(category.code);
+
+    const checked = {
+      code: category.code,
+
+      credits: num(
+        category.credits,
+        'kreditet',
+        60
+      ),
+
+      students: num(
+        category.students,
+        'studentët e kategorisë',
+        10000,
+        true
+      ),
+
+      groups: num(
+        category.groups,
+        'grupet',
+        6,
+        true
+      ),
+
+      hours: num(
+        category.hours,
+        'orët',
+        10000
+      )
+    };
+
+    if (
+      checked.credits <= 0 ||
+      checked.groups < 1 ||
+      checked.students !== item.students
+    ) {
+      throw new Error(
+        'Kreditet, grupet ose maksimumi i studentëve ' +
+        'nuk përputhen.'
+      );
+    }
+
+    item.categories.push(checked);
+  }
+
+  item.categories.sort((a, b) =>
+    CATEGORIES.findIndex(([code]) => code === a.code) -
+    CATEGORIES.findIndex(([code]) => code === b.code)
+  );
+
+  return item;
+}
+
+// Identifikon evidencën sipas pedagogut, lëndës dhe periudhës.
+function evidenceKey(item) {
+  return JSON.stringify([
+    item.teacher,
+    item.subject,
+    item.program,
+    item.year,
+    item.semester,
+    String(item.cycle)
+  ].map(normalized));
+}
+
+function sameEvidence(a, b) {
+  return (
+    evidenceKey(a) === evidenceKey(b) &&
+    a.students === b.students &&
+    JSON.stringify(a.categories) === JSON.stringify(b.categories)
+  );
+}
+
+function parseImport(text) {
+  if (text.length > 5000000) {
+    throw new Error('JSON-i është shumë i madh.');
+  }
+
+  let raw;
+
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    throw new Error('Teksti nuk është JSON i vlefshëm.');
+  }
+
+  if (
+    raw &&
+    raw.type === 'evion-collection' &&
+    raw.version === 1
+  ) {
+    if (
+      !Array.isArray(raw.evidences) ||
+      raw.evidences.length > MAX_RECORDS
+    ) {
+      throw new Error(
+        'Lista e evidencave është e pavlefshme.'
+      );
+    }
+
+    return raw.evidences.map(validateEvidence);
+  }
+
+  return [validateEvidence(raw)];
+}
+
+// =====================================================
+// LLOGARITJA E TOTALEVE
+// =====================================================
+
+function aggregate(items) {
+  const totals = Object.fromEntries(
+    CATEGORIES.map(([code]) => [
+      code,
+      {
+        students: 0,
+        groups: 0,
+        hours: 0
+      }
+    ])
+  );
+
+  for (const item of items) {
+    for (const category of item.categories) {
+      totals[category.code].students += category.students;
+      totals[category.code].groups += category.groups;
+
+      totals[category.code].hours = round(
+        totals[category.code].hours + category.hours
+      );
+    }
+  }
+
+  return totals;
+}
+
+if (typeof document !== 'undefined') {
+  initPage();
+}
+
+// =====================================================
+// NDËRFAQJA
+// =====================================================
+
+function initPage() {
+  const $ = id => document.getElementById(id);
+  const hours = value => value.toFixed(2);
+
+  let records = [];
+  let queue = [];
+
+  let running = false;
+  let scanBusy = false;
+
+  function message(text, kind = '') {
+    $('status').textContent = text;
+    $('status').className = kind;
+  }
+
+  // ---------------------------------------------------
+  // Ruajtja
+  // ---------------------------------------------------
+
+  function loadRecords() {
+    const stored = localStorage.getItem(STORE_KEY);
+    const items = stored ? parseImport(stored) : [];
+    const keys = new Set();
+
+    for (const item of items) {
+      const key = evidenceKey(item);
+
+      if (keys.has(key)) {
+        throw new Error(
+          'Ruajtja përmban evidenca të dyfishta.'
+        );
+      }
+
+      keys.add(key);
+    }
+
+    return items;
+  }
+
+  function saveRecords(next) {
+    if (next.length > MAX_RECORDS) {
+      throw new Error(
+        'Lejohen deri në ' + MAX_RECORDS + ' evidenca.'
+      );
+    }
+
+    // Gjendja ndryshon vetëm pasi ruajtja përfundon.
+    localStorage.setItem(
+      STORE_KEY,
+      JSON.stringify({
+        type: 'evion-collection',
+        version: 1,
+        evidences: next
+      })
+    );
+
+    records = next;
+  }
+
+  function download(data, filename) {
+    const blob = new Blob(
+      [JSON.stringify(data, null, 2)],
+      { type: 'application/json' }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = filename;
+
+    document.body.append(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 60000);
+  }
+
+  function filename(item) {
+    return (
+      'Permbledhje_' + item.subject + '_' + item.teacher
+    )
+      .replace(/[^\p{L}\p{N}_-]/gu, '_')
+      .slice(0, 130) + '.json';
+  }
+
+  // ---------------------------------------------------
+  // Filtrat
+  // ---------------------------------------------------
+
+  function fillSelect(id, values, allLabel) {
+    const selected = $(id).value;
+
+    $(id).replaceChildren();
+
+    if (allLabel) {
+      $(id).add(new Option(allLabel, ''));
+    }
+
+    for (const [value, label] of values) {
+      $(id).add(new Option(label, value));
+    }
+
+    if (values.some(([value]) => value === selected)) {
+      $(id).value = selected;
+    }
+  }
+
+  function refreshFilters() {
+    const teachers = new Map(
+      records.map(item => [
+        normalized(item.teacher),
+        item.teacher
+      ])
+    );
+
+    fillSelect(
+      'teacher',
+      [...teachers].sort((a, b) =>
+        a[1].localeCompare(b[1])
+      )
+    );
+
+    const own = records.filter(item =>
+      normalized(item.teacher) === $('teacher').value
+    );
+
+    fillSelect(
+      'year',
+      [...new Set(own.map(item => item.year))]
+        .sort()
+        .reverse()
+        .map(value => [value, value]),
+      'Të gjitha vitet'
+    );
+
+    const inYear = own.filter(item =>
+      !$('year').value ||
+      item.year === $('year').value
+    );
+
+    fillSelect(
+      'semester',
+      [...new Set(inYear.map(item => item.semester))]
+        .sort()
+        .map(value => [value, value]),
+      'Të gjithë semestrat'
+    );
+  }
+
+  function selectedRecords() {
+    return records.filter(item =>
+      normalized(item.teacher) === $('teacher').value &&
+      (
+        !$('year').value ||
+        item.year === $('year').value
+      ) &&
+      (
+        !$('semester').value ||
+        item.semester === $('semester').value
+      )
+    );
+  }
+
+  // ---------------------------------------------------
+  // Tabelat
+  // ---------------------------------------------------
+
+  function rowCells(category) {
+    return `
+      <td class="number">${category.students}</td>
+      <td class="number">${category.groups}</td>
+      <td class="number">${hours(category.hours)}</td>
+    `;
+  }
+
+  function categoryRows(item) {
+    return item.categories
+      .map(category => {
+        const label = CATEGORIES.find(
+          ([code]) => code === category.code
+        )[1];
+
+        return `
           <tr>
-            <td>${_0x7e6c9b}</td>
-            ${_0xc3b(category)}
+            <td>${label}</td>
+            ${rowCells(category)}
           </tr>
-        `;})['\u006A\u006F\u0069\u006E']('');}function _0x5e274c(_0xfg35bg){const _0x174ba=_0xe1a();const _0x4c7b=aggregate(_0x174ba);$("noitceles".split("").reverse().join(""))['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0x174ba['\u006C\u0065\u006E\u0067\u0074\u0068']?_0x174ba[563569^563569]['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']+"\u0020\u00B7\u0020"+_0x174ba['\u006C\u0065\u006E\u0067\u0074\u0068']+"arihsfr\xEBp \xEBt acnedive ".split("").reverse().join(""):"\u004E\u0075\u006B\u0020\u006B\u0061\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0070\u00EB\u0072\u0020\u006B\u00EB\u0074\u00EB\u0020\u0070\u00EB\u0072\u007A\u0067\u006A\u0065\u0064\u0068\u006A\u0065\u002E";const _0x38b99c=round(CATEGORIES['\u0073\u006C\u0069\u0063\u0065'](930428^930428,466088^466092)['\u0072\u0065\u0064\u0075\u0063\u0065']((sum,[code])=>sum+_0x4c7b[code]['\u0068\u006F\u0075\u0072\u0073'],977899^977899));_0xfg35bg=(129062^129058)+(236551^236551);var _0x2f202e=(769969^769976)+(815142^815136);const _0xcdbg3a=_0x4c7b['\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061']['\u0068\u006F\u0075\u0072\u0073'];_0x2f202e=(234218^234216)+(447135^447126);const _0x3baac=(label,value,cls="latot".split("").reverse().join(""))=>`
+        `;
+      })
+      .join('');
+  }
+
+  function render() {
+    const selected = selectedRecords();
+    const totals = aggregate(selected);
+
+    $('selection').textContent = selected.length
+      ? selected[0].teacher +
+        ' · ' + selected.length +
+        ' evidenca të përfshira'
+      : 'Nuk ka evidenca për këtë përzgjedhje.';
+
+    const sum1 = round(
+      CATEGORIES.slice(0, 4).reduce(
+        (sum, [code]) => sum + totals[code].hours,
+        0
+      )
+    );
+
+    const sum2 = totals.praktika.hours;
+
+    // Pesë kolona, pa kolonën e vjetër "Lloji".
+    const subtotal = (label, value, cls = 'total') => `
       <tr class="${cls}">
         <td></td>
         <td>${label}</td>
         <td></td>
         <td></td>
-        <td class="number">${_0xe8fd4e(value)}</td>
+        <td class="number">${hours(value)}</td>
       </tr>
-    `;let _0x542ef=CATEGORIES['\u0073\u006C\u0069\u0063\u0065'](219883^219883,806646^806642)['\u006D\u0061\u0070'](([code,label],index)=>`
+    `;
+
+    let rows = CATEGORIES
+      .slice(0, 4)
+      .map(([code, label], index) => `
         <tr>
-          <td>${index+(716328^716329)}</td>
+          <td>${index + 1}</td>
           <td>${label}</td>
-          ${_0xc3b(_0x4c7b[code])}
+          ${rowCells(totals[code])}
         </tr>
-      `)['\u006A\u006F\u0069\u006E']('');_0x542ef+=_0x3baac("rotidua \xEBn ev\xEBro e amuhS".split("").reverse().join(""),_0x38b99c);_0x542ef+=`
+      `)
+      .join('');
+
+    rows += subtotal(
+      'Shuma e orëve në auditor',
+      sum1
+    );
+
+    rows += `
       <tr>
         <td>5</td>
         <td>Praktika mësimore</td>
-        ${_0xc3b(_0x4c7b['\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0061'])}
+        ${rowCells(totals.praktika)}
       </tr>
-    `;["rolehcaB emolpiD ejqeh\xEBhdU".split("").reverse().join(""),"retsaM emolpiD ejqeh\xEBhdU".split("").reverse().join(""),"\u0055\u0064\u0068\u00EB\u0068\u0065\u0071\u006A\u0065\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065","\u004F\u0070\u006F\u006E\u0065\u006E\u0063\u00EB\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065","\u004A\u0075\u0072\u0069\u0020\u0044\u006F\u006B\u0074\u006F\u0072\u0061\u0074\u0075\u0072\u0065"]['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((label,index)=>{_0x542ef+=`
+    `;
+
+    [
+      'Udhëheqje Diplome Bachelor',
+      'Udhëheqje Diplome Master',
+      'Udhëheqje Doktorature',
+      'Oponencë Doktorature',
+      'Juri Doktorature'
+    ].forEach((label, index) => {
+      rows += `
         <tr>
-          <td>${index+(415172^415170)}</td>
+          <td>${index + 6}</td>
           <td>${label}</td>
           <td>—</td>
           <td>—</td>
           <td>—</td>
         </tr>
-      `;});$("\u0073\u0075\u006D\u006D\u0061\u0072\u0079")['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=_0x542ef+_0x3baac("es\xEBteths\xEBbm ev\xEBro e amuhS".split("").reverse().join(""),_0xcdbg3a)+_0x3baac("\u0053\u0068\u0075\u006D\u0061\u0020\u0074\u006F\u0074\u0061\u006C\u0065",round(_0x38b99c+_0xcdbg3a),"\u0067\u0072\u0061\u006E\u0064");$("sliated".split("").reverse().join(""))['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();for(const _0x61ab of _0x174ba){var _0x590afc=(998691^998691)+(541535^541527);const _0x2g116c=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("sliated".split("").reverse().join(""));_0x590afc="emplij".split("").reverse().join("");const _0x697ad=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("yrammus".split("").reverse().join(""));_0x697ad['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=`${_0x61ab['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']} · ${_0x61ab['\u0070\u0072\u006F\u0067\u0072\u0061\u006D']} · `+`${_0x61ab['\u0079\u0065\u0061\u0072']} · Semestri ${_0x61ab['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']} · `+`Cikli ${_0x61ab['\u0063\u0079\u0063\u006C\u0065']}`;_0x2g116c['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x697ad);const _0x3612bc=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x3612bc['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0073\u0063\u0072\u006F\u006C\u006C";_0x3612bc['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+      `;
+    });
+
+    $('summary').innerHTML =
+      rows +
+      subtotal(
+        'Shuma e orëve mbështetëse',
+        sum2
+      ) +
+      subtotal(
+        'Shuma totale',
+        round(sum1 + sum2),
+        'grand'
+      );
+
+    // 04 · Evidencat e përfshira.
+    $('details').replaceChildren();
+
+    for (const item of selected) {
+      const detail = document.createElement('details');
+      const title = document.createElement('summary');
+
+      title.textContent =
+        `${item.subject} · ${item.program} · ` +
+        `${item.year} · Semestri ${item.semester} · ` +
+        `Cikli ${item.cycle}`;
+
+      detail.append(title);
+
+      const body = document.createElement('div');
+      body.className = 'scroll';
+
+      body.innerHTML = `
         <table class="category-table">
           <thead>
             <tr>
@@ -46,7 +576,972 @@
             </tr>
           </thead>
           <tbody>
-            ${_0xe81a(_0x61ab)}
+            ${categoryRows(item)}
           </tbody>
         </table>
-      `;_0x2g116c['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x3612bc);let _0x3559g;const _0x2ec16c=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0x3559g=(760313^760317)+(124271^124267);_0x2ec16c['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="snoitca".split("").reverse().join("");const _0x721ccf=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0062\u0075\u0074\u0074\u006F\u006E");_0x721ccf['\u0074\u0079\u0070\u0065']="\u0062\u0075\u0074\u0074\u006F\u006E";_0x721ccf['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="yradnoces".split("").reverse().join("");_0x721ccf['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0053\u0068\u006B\u0061\u0072\u006B\u006F\u0020\u004A\u0053\u004F\u004E";_0x721ccf['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{_0x65b8da(_0x61ab,_0xdaa83a(_0x61ab));};const _0xa871ff=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("nottub".split("").reverse().join(""));_0xa871ff['\u0074\u0079\u0070\u0065']="nottub".split("").reverse().join("");_0xa871ff['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0064\u0061\u006E\u0067\u0065\u0072";_0xa871ff['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0048\u0069\u0071\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u006E";_0xa871ff['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(!confirm("\u0054\u00EB\u0020\u0068\u0069\u0071\u0065\u0074\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0065\u0020\u006C\u00EB\u006E\u0064\u00EB\u0073\u0020"+_0x61ab['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']+"\u003F")){return;}try{const _0xdfb=_0x_0x41c()['\u0066\u0069\u006C\u0074\u0065\u0072'](record=>evidenceKey(record)!==evidenceKey(_0x61ab));_0xef9f5g(_0xdfb);_0x846c();_0x5e274c();_0x2619be();_0xec11cd("\u0045\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0075\u0020\u0068\u006F\u0071\u002E");}catch(error){_0xec11cd(" :imihsyrdn tjaur u kuN".split("").reverse().join("")+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"\u0065\u0072\u0072\u006F\u0072");}};_0x2ec16c['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x721ccf,_0xa871ff);_0x2g116c['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x2ec16c);$("\u0064\u0065\u0074\u0061\u0069\u006C\u0073")['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x2g116c);}if(!_0x174ba['\u006C\u0065\u006E\u0067\u0074\u0068']){$("\u0064\u0065\u0074\u0061\u0069\u006C\u0073")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=".ut\xEBk neqafhs \xEBt od arautropmi e tacnedivE".split("").reverse().join("");}$("tropxe".split("").reverse().join(""))['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!_0xc9991c['\u006C\u0065\u006E\u0067\u0074\u0068'];}function _0x2619be(_0x7e50e){var _0x96477f=(200662^200671)+(261484^261486);const _0x577dg=_0x363ag[945822^945822];_0x96477f=(528132^528134)+(663938^663946);$("weiverp".split("").reverse().join(""))['\u0068\u0069\u0064\u0064\u0065\u006E']=!_0x577dg;if(!_0x577dg)return;$("\u0071\u0075\u0065\u0075\u0065\u002D\u0063\u006F\u0075\u006E\u0074")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0x363ag['\u006C\u0065\u006E\u0067\u0074\u0068']+"\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u006E\u00EB\u0020\u0070\u0072\u0069\u0074\u006A\u0065\u0020\u0070\u00EB\u0072\u0020\u006B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u002E";$("atem-weiverp".split("").reverse().join(""))['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=`${_0x577dg['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']} · ${_0x577dg['\u0073\u0075\u0062\u006A\u0065\u0063\u0074']} · `+`${_0x577dg['\u0070\u0072\u006F\u0067\u0072\u0061\u006D']} · ${_0x577dg['\u0079\u0065\u0061\u0072']} · `+`Semestri ${_0x577dg['\u0073\u0065\u006D\u0065\u0073\u0074\u0065\u0072']} · Cikli ${_0x577dg['\u0063\u0079\u0063\u006C\u0065']}`;$("swor-weiverp".split("").reverse().join(""))['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=_0xe81a(_0x577dg);var _0x2e8g=(620417^620418)+(507181^507178);const _0xd82e1d=_0xc9991c['\u0066\u0069\u006E\u0064'](record=>evidenceKey(record)===evidenceKey(_0x577dg));_0x2e8g="kpfqnj".split("").reverse().join("");const _0xd1e87d=_0xd82e1d&&sameEvidence(_0xd82e1d,_0x577dg);_0x7e50e='\u0066\u0069\u006C\u0064\u006E\u006A';$("\u0061\u0064\u0064")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=Boolean(_0xd1e87d);$("\u0061\u0064\u0064")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0xd82e1d&&!_0xd1e87d?"\u005A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u006E":"ejhdelbmr\xEBp \xEBn othS".split("").reverse().join("");$("\u0064\u0075\u0070\u006C\u0069\u0063\u0061\u0074\u0065\u002D\u006E\u006F\u0074\u0065")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0xd1e87d?"\u004B\u006A\u006F\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u00EB\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0069\u006D\u0070\u006F\u0072\u0074\u0075\u0061\u0072\u0020\u006D\u00EB\u0020\u0070\u0061\u0072\u00EB\u002E\u0020\u004E\u0075\u006B\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u0064\u0079\u0066\u0069\u0073\u0068\u006F\u0068\u0065\u0074\u002E":_0xd82e1d?" ,margorp ,\xEBdn\xEBl ,gogadep \xEBt\xEBk r\xEBp \xEBcnedive \xEBjn notsizkE".split("").reverse().join("")+"\u0063\u0069\u006B\u00EB\u006C\u002C\u0020\u0076\u0069\u0074\u0020\u0064\u0068\u0065\u0020\u0073\u0065\u006D\u0065\u0073\u0074\u00EB\u0072\u002E\u0020\u0054\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0074\u0020\u006E\u0064\u0072\u0079\u0073\u0068\u006F\u006A\u006E\u00EB\u003B\u0020"+"\u006D\u0075\u006E\u0064\u0020\u0074\u0061\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u006E\u0069\u002E":'';}function _0x389cfb(items){if(_0x363ag['\u006C\u0065\u006E\u0067\u0074\u0068']+items['\u006C\u0065\u006E\u0067\u0074\u0068']>MAX_RECORDS){throw new Error("\u0053\u0068\u0075\u006D\u00EB\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u006E\u00EB\u0020\u0070\u0072\u0069\u0074\u006A\u0065\u002E");}_0x363ag['\u0070\u0075\u0073\u0068'](...items);_0x2619be();if(items['\u006C\u0065\u006E\u0067\u0074\u0068']){$("\u0070\u0072\u0065\u0076\u0069\u0065\u0077")['\u0073\u0063\u0072\u006F\u006C\u006C\u0049\u006E\u0074\u006F\u0056\u0069\u0065\u0077']({"behavior":"\u0073\u006D\u006F\u006F\u0074\u0068","block":'start'});}}$("\u0061\u0064\u0064")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(!_0x363ag['\u006C\u0065\u006E\u0067\u0074\u0068'])return;try{const item=_0x363ag[556820^556820];let _0xd5c73d;const next=_0x_0x41c();_0xd5c73d=(802601^802605)+(704362^704361);let _0x7c3abc;const _0x55b4f=next['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](record=>evidenceKey(record)===evidenceKey(item));_0x7c3abc=595127^595124;if(_0x55b4f>=(242975^242975)){if(sameEvidence(next[_0x55b4f],item)){_0xc9991c=next;_0x2619be();_0xec11cd(".\xEBrap \xEBm rautropmi \xEBths\xEB \xEBcnedive ojK".split("").reverse().join(""));return;}if(!confirm("\u0054\u00EB\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0068\u0065\u0074\u0020\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0065\u006B\u007A\u0069\u0073\u0074\u0075\u0065\u0073\u0065\u003F\u0020"+"\u0054\u006F\u0074\u0061\u006C\u0065\u0074\u0020\u0065\u0020\u0076\u006A\u0065\u0074\u0072\u0061\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0068\u0065\u006E\u0020\u006D\u0065\u0020\u0074\u00EB\u0020\u0072\u0065\u006A\u0061\u0074\u002E")){return;}next[_0x55b4f]=item;}else{next['\u0070\u0075\u0073\u0068'](item);}_0xef9f5g(next);_0x363ag['\u0073\u0068\u0069\u0066\u0074']();_0x846c();$("\u0074\u0065\u0061\u0063\u0068\u0065\u0072")['\u0076\u0061\u006C\u0075\u0065']=normalized(item['\u0074\u0065\u0061\u0063\u0068\u0065\u0072']);_0x846c();_0x5e274c();_0x2619be();_0xec11cd("\u0045\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0020\u0075\u0020\u0072\u0075\u0061\u006A\u0074\u0020\u0064\u0068\u0065\u0020\u0074\u006F\u0074\u0061\u006C\u0065\u0074\u0020\u0075\u0020\u0070\u00EB\u0072\u0064\u0069\u0074\u00EB\u0073\u0075\u0061\u006E\u002E","sseccus".split("").reverse().join(""));}catch(error){_0xec11cd(" :acnedive auths u kuN".split("").reverse().join("")+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"\u0065\u0072\u0072\u006F\u0072");}};$("\u0073\u006B\u0069\u0070")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{_0x363ag['\u0073\u0068\u0069\u0066\u0074']();_0x2619be();};$("daolnwod".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(_0x363ag[179492^179492]){_0x65b8da(_0x363ag[930031^930031],_0xdaa83a(_0x363ag[439761^439761]));}};$("tropxe".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{try{_0x65b8da({'\u0074\u0079\u0070\u0065':"\u0065\u0076\u0069\u006F\u006E\u002D\u0063\u006F\u006C\u006C\u0065\u0063\u0074\u0069\u006F\u006E",'\u0076\u0065\u0072\u0073\u0069\u006F\u006E':1,'\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0065\u0073':_0x_0x41c()},"\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u002D\u0065\u0076\u0069\u0064\u0065\u006E\u0063\u0061\u0074\u002E\u006A\u0073\u006F\u006E");}catch(error){_0xec11cd(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"rorre".split("").reverse().join(""));}};for(const _0x6g_0xab7 of["rehcaet".split("").reverse().join(""),"raey".split("").reverse().join(""),"retsemes".split("").reverse().join("")]){$(_0x6g_0xab7)['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=()=>{_0x846c();_0x5e274c();};}$("nosj".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{$("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();};$("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=async()=>{const _0x3_0xfdg=[...$("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u0066\u0069\u006C\u0065\u0073']];try{if(_0x3_0xfdg['\u006C\u0065\u006E\u0067\u0074\u0068']>(820603^820511)){throw new Error("\u005A\u0067\u006A\u0069\u0064\u0068\u006E\u0069\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0031\u0030\u0030\u0020\u0073\u006B\u0065\u0064\u0061\u0072\u00EB\u0020\u006E\u006A\u00EB\u0068\u0065\u0072\u00EB\u0073\u0068\u002E");}const _0x5e_0xb2e=[];for(const file of _0x3_0xfdg){if(file['\u0073\u0069\u007A\u0065']>5000000){throw new Error(file['\u006E\u0061\u006D\u0065']+"\u003A\u0020\u0073\u006B\u0065\u0064\u0061\u0072\u0069\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0073\u0068\u0075\u006D\u00EB\u0020\u0069\u0020\u006D\u0061\u0064\u0068\u002E");}try{_0x5e_0xb2e['\u0070\u0075\u0073\u0068'](...parseImport(await file['\u0074\u0065\u0078\u0074']()));}catch(error){throw new Error(file['\u006E\u0061\u006D\u0065']+"\u003A\u0020"+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']);}}_0x389cfb(_0x5e_0xb2e);_0xec11cd("\u0054\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0074\u0020\u0075\u0020\u006C\u0065\u0078\u0075\u0061\u006E\u002E\u0020\u004B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u006F\u006A\u0069\u006E\u0069\u0020\u0070\u00EB\u0072\u0070\u0061\u0072\u0061\u0020\u0073\u0068\u0074\u0069\u006D\u0069\u0074\u002E");}catch(error){_0xec11cd(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"rorre".split("").reverse().join(""));}finally{$("\u006A\u0073\u006F\u006E\u002D\u0066\u0069\u006C\u0065")['\u0076\u0061\u006C\u0075\u0065']='';}};var _0x9c3g4d=(884445^884445)+(545084^545076);const _0xb2b=$("oediv-aremac".split("").reverse().join(""));_0x9c3g4d=967332^967334;var _0xagf2bb=(408007^408005)+(575890^575893);let _0x51b1gc=null;_0xagf2bb=(124024^124024)+(766036^766032);_0xdde9cc=695615^695615;let _0xb5404b=null;_0xb4bb7f=715464^715466;let _0xbff=false;const _0x86c92f=()=>new Promise(resolve=>setTimeout(resolve,338206^338206));function _0xc_0x119(){if(typeof jsQR!=="\u0066\u0075\u006E\u0063\u0074\u0069\u006F\u006E"){throw new Error("\u004E\u0075\u006B\u0020\u0075\u0020\u006E\u0067\u0061\u0072\u006B\u0075\u0061\u0020\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u006A\u0073\u0051\u0052\u002E\u006A\u0073\u002E\u0020"+"\u004B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u006F\u006E\u0069\u0020\u0071\u00EB\u0020\u0066\u006F\u006C\u0064\u0065\u0072\u0069\u0020\u0076\u0065\u006E\u0064\u006F\u0072\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0070\u0075\u0062\u006C\u0069\u006B\u0075\u0061\u0072\u002E");}}function _0x3eg(){$("nacs".split("").reverse().join(""))['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=_0x4dfd||_0xe06d;$("\u0070\u0068\u006F\u0074\u006F")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=_0x4dfd||_0xe06d;$("\u0070\u0064\u0066")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=_0x4dfd||_0xe06d;$("\u0073\u0074\u006F\u0070")['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!_0x4dfd&&!_0xe06d;$("\u0073\u0074\u006F\u0070")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0x4dfd&&!_0xe06d?"\u0041\u006E\u0075\u006C\u006F":"n\xEBremak oladN".split("").reverse().join("");}function _0x0f_0x2cb(){_0xdde9cc++;clearTimeout(_0xb5404b);if(_0x51b1gc){_0x51b1gc['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](track=>track['\u0073\u0074\u006F\u0070']());}_0x51b1gc=null;_0xe06d=false;_0xb2b['\u0070\u0061\u0075\u0073\u0065']();_0xb2b['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074']=null;$("redaer".split("").reverse().join(""))['\u0068\u0069\u0064\u0064\u0065\u006E']=!![];_0x3eg();}function _0x1939bg(source,x,y,width,height,maxSide=533179^533939,_0xe9a9b,_0x2c189c){const _0xcdd6g=Math['\u006D\u0069\u006E'](292301^292300,maxSide/Math['\u006D\u0061\u0078'](width,height));var _0x665c4b=(776457^776461)+(220439^220436);const _0xbcea=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0063\u0061\u006E\u0076\u0061\u0073");_0x665c4b=(967221^967220)+(922040^922044);_0xbcea['\u0077\u0069\u0064\u0074\u0068']=Math['\u006D\u0061\u0078'](297284^297285,Math['\u0072\u006F\u0075\u006E\u0064'](width*_0xcdd6g));_0xbcea['\u0068\u0065\u0069\u0067\u0068\u0074']=Math['\u006D\u0061\u0078'](105486^105487,Math['\u0072\u006F\u0075\u006E\u0064'](height*_0xcdd6g));const _0xb3746d=_0xbcea['\u0067\u0065\u0074\u0043\u006F\u006E\u0074\u0065\u0078\u0074']("d2".split("").reverse().join(""),{'\u0077\u0069\u006C\u006C\u0052\u0065\u0061\u0064\u0046\u0072\u0065\u0071\u0075\u0065\u006E\u0074\u006C\u0079':!![]});_0xe9a9b="dimljp".split("").reverse().join("");_0xb3746d['\u0066\u0069\u006C\u006C\u0053\u0074\u0079\u006C\u0065']="fff#".split("").reverse().join("");_0xb3746d['\u0066\u0069\u006C\u006C\u0052\u0065\u0063\u0074'](272016^272016,214544^214544,_0xbcea['\u0077\u0069\u0064\u0074\u0068'],_0xbcea['\u0068\u0065\u0069\u0067\u0068\u0074']);_0xb3746d['\u0064\u0072\u0061\u0077\u0049\u006D\u0061\u0067\u0065'](source,x,y,width,height,595191^595191,549450^549450,_0xbcea['\u0077\u0069\u0064\u0074\u0068'],_0xbcea['\u0068\u0065\u0069\u0067\u0068\u0074']);var _0x77acg=(965640^965646)+(551463^551458);const _0x61b6g=_0xb3746d['\u0067\u0065\u0074\u0049\u006D\u0061\u0067\u0065\u0044\u0061\u0074\u0061'](198889^198889,470216^470216,_0xbcea['\u0077\u0069\u0064\u0074\u0068'],_0xbcea['\u0068\u0065\u0069\u0067\u0068\u0074']);_0x77acg=942488^942491;const _0x288e2b=jsQR(_0x61b6g['\u0064\u0061\u0074\u0061'],_0x61b6g['\u0077\u0069\u0064\u0074\u0068'],_0x61b6g['\u0068\u0065\u0069\u0067\u0068\u0074'],{'\u0069\u006E\u0076\u0065\u0072\u0073\u0069\u006F\u006E\u0041\u0074\u0074\u0065\u006D\u0070\u0074\u0073':"\u0061\u0074\u0074\u0065\u006D\u0070\u0074\u0042\u006F\u0074\u0068"});_0x2c189c="olfoom".split("").reverse().join("");_0xbcea['\u0077\u0069\u0064\u0074\u0068']=785808^785809;_0xbcea['\u0068\u0065\u0069\u0067\u0068\u0074']=504037^504036;return _0x288e2b?_0x288e2b['\u0064\u0061\u0074\u0061']:null;}async function _0xdb_0xa4a(source,width,height){_0xc_0x119();const _0xfgaedb=[[149472^149472,137423^137423,width,height,829826^831114],[419963^419963,994824^994824,width,height,595664^597352]];for(const y of[0.5,0.25,706313^706313]){_0xfgaedb['\u0070\u0075\u0073\u0068']([205383^205383,height*y,width,height*0.5,118387^116459]);}for(const y of[0.5,0.25,664127^664127]){for(const x of[292992^292992,0.25,0.5]){_0xfgaedb['\u0070\u0075\u0073\u0068']([width*x,height*y,width*0.5,height*0.5,997520^999320]);}}let _0x61129d=null;for(const _0xe242c of _0xfgaedb){if(_0xbff){throw new Error("\u004C\u0065\u0078\u0069\u006D\u0069\u0020\u0075\u0020\u0061\u006E\u0075\u006C\u0075\u0061\u002E");}await _0x86c92f();let _0x7fd9bg;const _0xefcfe=_0x1939bg(source,..._0xe242c);_0x7fd9bg="pljble".split("").reverse().join("");if(_0xefcfe){try{return parseImport(_0xefcfe);}catch(error){_0x61129d=error;}}}if(_0x61129d)throw _0x61129d;return null;}$("\u0073\u0063\u0061\u006E")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=async()=>{if(_0x4dfd||_0xe06d)return;_0x4dfd=!![];_0xbff=false;_0x3eg();var _0x0g6dg=(887783^887791)+(417411^417411);const _0x9g7d=++_0xdde9cc;_0x0g6dg=(401216^401223)+(291949^291951);try{_0xc_0x119();if(!window['\u0069\u0073\u0053\u0065\u0063\u0075\u0072\u0065\u0043\u006F\u006E\u0074\u0065\u0078\u0074']||!navigator['\u006D\u0065\u0064\u0069\u0061\u0044\u0065\u0076\u0069\u0063\u0065\u0073']?.getUserMedia){throw new Error(".tiseutelfhs e nejel ehd SPTTH nokr\xEBk aremaK".split("").reverse().join(""));}$("\u0072\u0065\u0061\u0064\u0065\u0072")['\u0068\u0069\u0064\u0064\u0065\u006E']=false;_0xb2b['\u006D\u0075\u0074\u0065\u0064']=!![];_0xb2b['\u0061\u0075\u0074\u006F\u0070\u006C\u0061\u0079']=!![];_0xb2b['\u0070\u006C\u0061\u0079\u0073\u0049\u006E\u006C\u0069\u006E\u0065']=!![];_0xb2b['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("enilnisyalp".split("").reverse().join(""),'');_0xb2b['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("enilnisyalp-tikbew".split("").reverse().join(""),'');var _0x9cd40e=(760900^760896)+(501451^501453);const _0x1f_0x078=await navigator['\u006D\u0065\u0064\u0069\u0061\u0044\u0065\u0076\u0069\u0063\u0065\u0073']['\u0067\u0065\u0074\u0055\u0073\u0065\u0072\u004D\u0065\u0064\u0069\u0061']({'\u0061\u0075\u0064\u0069\u006F':false,"video":{'\u0066\u0061\u0063\u0069\u006E\u0067\u004D\u006F\u0064\u0065':{'\u0069\u0064\u0065\u0061\u006C':'environment'},"width":{'\u0069\u0064\u0065\u0061\u006C':1920},'\u0068\u0065\u0069\u0067\u0068\u0074':{'\u0069\u0064\u0065\u0061\u006C':1080}}});_0x9cd40e=(219052^219045)+(158654^158655);if(_0x9g7d!==_0xdde9cc){_0x1f_0x078['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](track=>track['\u0073\u0074\u006F\u0070']());return;}_0x51b1gc=_0x1f_0x078;_0xb2b['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074']=_0x51b1gc;await _0xb2b['\u0070\u006C\u0061\u0079']();if(_0x9g7d!==_0xdde9cc)return;_0xe06d=!![];_0xec11cd("\u004B\u0061\u006D\u0065\u0072\u0061\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0061\u006B\u0074\u0069\u0076\u0065\u002E\u0020\u0041\u0066\u0072\u006F\u006A\u0065\u006E\u0069\u0020\u0051\u0052\u002D\u006E\u00EB\u002C\u0020"+".nimisukof insirp ehd ejmap \xEBn \xEBtolp \xEBt inejabm".split("").reverse().join(""));function _0x6eb5e(){if(!_0xe06d||_0x9g7d!==_0xdde9cc){return;}try{if(_0xb2b['\u0072\u0065\u0061\u0064\u0079\u0053\u0074\u0061\u0074\u0065']>=(544101^544103)&&_0xb2b['\u0076\u0069\u0064\u0065\u006F\u0057\u0069\u0064\u0074\u0068']){const _0xbad83d=_0x1939bg(_0xb2b,603417^603417,852601^852601,_0xb2b['\u0076\u0069\u0064\u0065\u006F\u0057\u0069\u0064\u0074\u0068'],_0xb2b['\u0076\u0069\u0064\u0065\u006F\u0048\u0065\u0069\u0067\u0068\u0074'],731666^729970);if(_0xbad83d){const _0x2fa9b=parseImport(_0xbad83d);_0x0f_0x2cb();_0x389cfb(_0x2fa9b);_0xec11cd("\u0051\u0052\u002D\u006A\u0061\u0020\u0075\u0020\u006C\u0065\u0078\u0075\u0061\u002E\u0020\u004B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u006F\u006E\u0069\u0020\u0074\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0074\u002E","sseccus".split("").reverse().join(""));return;}}}catch(error){_0x0f_0x2cb();_0xec11cd(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"rorre".split("").reverse().join(""));return;}_0xb5404b=setTimeout(_0x6eb5e,135242^135298);}_0x6eb5e();}catch(error){if(_0x9g7d===_0xdde9cc){_0x0f_0x2cb();_0xec11cd("\u004B\u0061\u006D\u0065\u0072\u0061\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0068\u0061\u0070\u003A\u0020"+(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']||String(error))+"\u002E\u0020\u0050\u0072\u006F\u0076\u006F\u006E\u0069\u0020\u006E\u0067\u0061\u0072\u006B\u0069\u006D\u0069\u006E\u0020\u0065\u0020\u0066\u006F\u0074\u006F\u0073\u0020\u006F\u0073\u0065\u0020\u0050\u0044\u0046\u002D\u0073\u00EB\u002E","\u0065\u0072\u0072\u006F\u0072");}}finally{_0x4dfd=false;_0x3eg();}};$("\u0073\u0074\u006F\u0070")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{_0xbff=!![];_0x0f_0x2cb();_0xec11cd("\u004C\u0065\u0078\u0069\u006D\u0069\u0020\u0075\u0020\u006E\u0064\u0061\u006C\u002E");};$("otohp".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{$("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();};$("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=async()=>{let _0x7fbd9b;const file=$("elif-otohp".split("").reverse().join(""))['\u0066\u0069\u006C\u0065\u0073'][361138^361138];_0x7fbd9b=639811^639818;if(!file)return;_0x0f_0x2cb();_0x4dfd=!![];_0xbff=false;_0x3eg();const url=URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](file);try{if(file['\u0073\u0069\u007A\u0065']>20000000){throw new Error("\u0046\u006F\u0074\u006F\u006A\u0061\u0020\u0064\u0075\u0068\u0065\u0074\u0020\u0074\u00EB\u0020\u006A\u0065\u0074\u00EB\u0020\u006D\u00EB\u0020\u0065\u0020\u0076\u006F\u0067\u00EB\u006C\u0020\u0073\u0065\u0020\u0032\u0030\u0020\u004D\u0042\u002E");}_0xec11cd("\u0050\u006F\u0020\u006C\u0065\u0078\u006F\u0068\u0065\u0074\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0061\u2026");var _0x5d35cg=(324225^324225)+(333467^333459);const _0xbdee=new Image();_0x5d35cg=(252845^252845)+(467226^467219);await new Promise((resolve,reject)=>{_0xbdee['\u006F\u006E\u006C\u006F\u0061\u0064']=resolve;_0xbdee['\u006F\u006E\u0065\u0072\u0072\u006F\u0072']=()=>reject(new Error("\u0046\u006F\u0072\u006D\u0061\u0074\u0069\u0020\u0069\u0020\u0066\u006F\u0074\u006F\u0073\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0068\u0061\u0070\u002E\u0020\u0050\u0072\u006F\u0076\u006F\u006E\u0069\u0020\u004A\u0050\u0045\u0047\u0020\u006F\u0073\u0065\u0020\u0050\u004E\u0047\u002E"));_0xbdee['\u0073\u0072\u0063']=url;});const items=await _0xdb_0xa4a(_0xbdee,_0xbdee['\u006E\u0061\u0074\u0075\u0072\u0061\u006C\u0057\u0069\u0064\u0074\u0068'],_0xbdee['\u006E\u0061\u0074\u0075\u0072\u0061\u006C\u0048\u0065\u0069\u0067\u0068\u0074']);if(!items){throw new Error(" tohsneercs inovorP .emhseuxel e RQ tejg u kuN".split("").reverse().join("")+"\u006D\u00EB\u0020\u0074\u00EB\u0020\u0071\u0061\u0072\u0074\u00EB\u0020\u006F\u0073\u0065\u0020\u006E\u0067\u0061\u0072\u006B\u006F\u006E\u0069\u0020\u0050\u0044\u0046\u002D\u006E\u00EB\u0020\u006F\u0072\u0069\u0067\u006A\u0069\u006E\u0061\u006C\u0065\u002E");}_0x389cfb(items);_0xec11cd("\u0051\u0052\u002D\u006A\u0061\u0020\u0075\u0020\u006C\u0065\u0078\u0075\u0061\u0020\u006E\u0067\u0061\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0061\u002E","\u0073\u0075\u0063\u0063\u0065\u0073\u0073");}catch(error){_0xec11cd(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']||String(error),"rorre".split("").reverse().join(""));}finally{URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](url);_0x4dfd=false;_0x3eg();$("\u0070\u0068\u006F\u0074\u006F\u002D\u0066\u0069\u006C\u0065")['\u0076\u0061\u006C\u0075\u0065']='';}};$("fdp".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{$("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();};$("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=async()=>{const file=$("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u0066\u0069\u006C\u0065\u0073'][445330^445330];if(!file)return;_0x0f_0x2cb();_0x4dfd=!![];_0xbff=false;_0x3eg();var _0x1c_0x1e7=(797417^797419)+(973932^973935);let _0xfa_0xf42=null;_0x1c_0x1e7="eicalf".split("").reverse().join("");let _0xe9b3e=null;const canvas=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0063\u0061\u006E\u0076\u0061\u0073");try{_0xc_0x119();if(file['\u0073\u0069\u007A\u0065']>30000000){throw new Error(".BM 03 es l\xEBgov e \xEBm \xEBtej \xEBt tehud aj-FDP".split("").reverse().join(""));}_0xec11cd("\u0050\u006F\u0020\u0068\u0061\u0070\u0065\u0074\u0020\u0050\u0044\u0046\u002D\u006A\u0061\u2026");const _0x7g3d=await import("\u002E\u002F\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u0070\u0064\u0066\u002E\u006D\u006A\u0073");_0x7g3d['\u0047\u006C\u006F\u0062\u0061\u006C\u0057\u006F\u0072\u006B\u0065\u0072\u004F\u0070\u0074\u0069\u006F\u006E\u0073']['\u0077\u006F\u0072\u006B\u0065\u0072\u0053\u0072\u0063']=new URL("\u002E\u002F\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u0070\u0064\u0066\u002E\u0077\u006F\u0072\u006B\u0065\u0072\u002E\u006D\u006A\u0073",document['\u0062\u0061\u0073\u0065\u0055\u0052\u0049'])['\u0068\u0072\u0065\u0066'];_0xfa_0xf42=_0x7g3d['\u0067\u0065\u0074\u0044\u006F\u0063\u0075\u006D\u0065\u006E\u0074']({"data":new Uint8Array(await file['\u0061\u0072\u0072\u0061\u0079\u0042\u0075\u0066\u0066\u0065\u0072']()),'\u0069\u0073\u0045\u0076\u0061\u006C\u0053\u0075\u0070\u0070\u006F\u0072\u0074\u0065\u0064':false});_0xfa_0xf42['\u006F\u006E\u0050\u0061\u0073\u0073\u0077\u006F\u0072\u0064']=()=>{_0xfa_0xf42['\u0064\u0065\u0073\u0074\u0072\u006F\u0079']();};_0xe9b3e=await _0xfa_0xf42['\u0070\u0072\u006F\u006D\u0069\u0073\u0065'];if(_0xe9b3e['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073']>(934725^934689)){throw new Error("\u004C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0050\u0044\u0046\u0020\u0064\u0065\u0072\u0069\u0020\u006E\u00EB\u0020\u0031\u0030\u0030\u0020\u0066\u0061\u0071\u0065\u002E");}const _0xgb077e=new Map();let _0x2e6eca=958856^958856;for(let _0xf78e=806875^806874;_0xf78e<=_0xe9b3e['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073'];_0xf78e++){if(_0xbff){throw new Error("\u004C\u0065\u0078\u0069\u006D\u0069\u0020\u0075\u0020\u0061\u006E\u0075\u006C\u0075\u0061\u002E");}_0xec11cd(`Po kërkohet QR në faqen ${_0xf78e} `+`nga ${_0xe9b3e['\u006E\u0075\u006D\u0050\u0061\u0067\u0065\u0073']}…`);const _0xaf58d=await _0xe9b3e['\u0067\u0065\u0074\u0050\u0061\u0067\u0065'](_0xf78e);const _0x2373fe=_0xaf58d['\u0067\u0065\u0074\u0056\u0069\u0065\u0077\u0070\u006F\u0072\u0074']({'\u0073\u0063\u0061\u006C\u0065':1});var _0x2dd=(199147^199139)+(964141^964138);const scale=Math['\u006D\u0069\u006E'](289618^289617,(294405^291461)/Math['\u006D\u0061\u0078'](_0x2373fe['\u0077\u0069\u0064\u0074\u0068'],_0x2373fe['\u0068\u0065\u0069\u0067\u0068\u0074']));_0x2dd=(407110^407118)+(283758^283751);const _0x7ffd=_0xaf58d['\u0067\u0065\u0074\u0056\u0069\u0065\u0077\u0070\u006F\u0072\u0074']({'\u0073\u0063\u0061\u006C\u0065':scale});canvas['\u0077\u0069\u0064\u0074\u0068']=Math['\u0063\u0065\u0069\u006C'](_0x7ffd['\u0077\u0069\u0064\u0074\u0068']);canvas['\u0068\u0065\u0069\u0067\u0068\u0074']=Math['\u0063\u0065\u0069\u006C'](_0x7ffd['\u0068\u0065\u0069\u0067\u0068\u0074']);const context=canvas['\u0067\u0065\u0074\u0043\u006F\u006E\u0074\u0065\u0078\u0074']("d2".split("").reverse().join(""),{'\u0077\u0069\u006C\u006C\u0052\u0065\u0061\u0064\u0046\u0072\u0065\u0071\u0075\u0065\u006E\u0074\u006C\u0079':!![]});await _0xaf58d['\u0072\u0065\u006E\u0064\u0065\u0072']({'\u0063\u0061\u006E\u0076\u0061\u0073\u0043\u006F\u006E\u0074\u0065\u0078\u0074':context,'\u0076\u0069\u0065\u0077\u0070\u006F\u0072\u0074':_0x7ffd,"background":"\u0072\u0067\u0062\u0028\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u0029"})['\u0070\u0072\u006F\u006D\u0069\u0073\u0065'];try{var _0xd5f1d=(676126^676118)+(904194^904194);const items=await _0xdb_0xa4a(canvas,canvas['\u0077\u0069\u0064\u0074\u0068'],canvas['\u0068\u0065\u0069\u0067\u0068\u0074']);_0xd5f1d=(402244^402242)+(254808^254815);if(items){for(const item of items){_0xgb077e['\u0073\u0065\u0074'](JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](item),item);}}}catch(error){if(_0xbff)throw error;_0x2e6eca++;}_0xaf58d['\u0063\u006C\u0065\u0061\u006E\u0075\u0070']();canvas['\u0077\u0069\u0064\u0074\u0068']=798422^798423;canvas['\u0068\u0065\u0069\u0067\u0068\u0074']=435444^435445;}if(!_0xgb077e['\u0073\u0069\u007A\u0065']){throw new Error(_0x2e6eca?".emhsfelv \xEBt NOIVE ejhdelbmr\xEBp nabmr\xEBp kun rop ,RQ tejg U".split("").reverse().join(""):"\u004E\u0075\u006B\u0020\u0075\u0020\u0067\u006A\u0065\u0074\u0020\u0051\u0052\u0020\u0065\u0020\u006C\u0065\u0078\u0075\u0065\u0073\u0068\u006D\u0065\u002E\u0020\u0050\u00EB\u0072\u0064\u006F\u0072\u006E\u0069\u0020\u0050\u0044\u0046\u002D\u006E\u00EB\u0020\u006F\u0072\u0069\u0067\u006A\u0069\u006E\u0061\u006C\u0065\u0020"+"\u006D\u0065\u0020\u0051\u0052\u002C\u0020\u006A\u006F\u0020\u006E\u006A\u00EB\u0020\u0066\u006F\u0074\u006F\u0067\u0072\u0061\u0066\u0069\u0020\u0074\u00EB\u0020\u0070\u0061\u0071\u0061\u0072\u0074\u00EB\u002E");}_0x389cfb([..._0xgb077e['\u0076\u0061\u006C\u0075\u0065\u0073']()]);_0xec11cd(`U lexuan ${_0xgb077e['\u0073\u0069\u007A\u0065']} përmbledhje nga PDF-ja. `+".timiths arapr\xEBp inijollortnoK".split("").reverse().join("")+(_0x2e6eca?"\u0020\u0044\u0069\u0073\u0061\u0020\u0066\u0061\u0071\u0065\u0020\u006B\u0069\u0073\u0068\u0069\u006E\u0020\u0051\u0052\u0020\u006D\u0065\u0020\u0074\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0020\u0074\u00EB\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E":''),"\u0073\u0075\u0063\u0063\u0065\u0073\u0073");}catch(error){_0xec11cd("\u0050\u0044\u0046\u002D\u006A\u0061\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0069\u006D\u0070\u006F\u0072\u0074\u0075\u0061\u003A\u0020"+(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']||String(error)),"\u0065\u0072\u0072\u006F\u0072");}finally{canvas['\u0077\u0069\u0064\u0074\u0068']=614618^614619;canvas['\u0068\u0065\u0069\u0067\u0068\u0074']=512631^512630;if(_0xfa_0xf42){await _0xfa_0xf42['\u0064\u0065\u0073\u0074\u0072\u006F\u0079']()['\u0063\u0061\u0074\u0063\u0068'](()=>{});}_0x4dfd=false;_0x3eg();$("\u0070\u0064\u0066\u002D\u0066\u0069\u006C\u0065")['\u0076\u0061\u006C\u0075\u0065']='';}};document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0076\u0069\u0073\u0069\u0062\u0069\u006C\u0069\u0074\u0079\u0063\u0068\u0061\u006E\u0067\u0065",()=>{if(document['\u0068\u0069\u0064\u0064\u0065\u006E']){_0xbff=!![];_0x0f_0x2cb();}});window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0070\u0061\u0067\u0065\u0068\u0069\u0064\u0065",_0x0f_0x2cb);window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0073\u0074\u006F\u0072\u0061\u0067\u0065",event=>{if(event['\u006B\u0065\u0079']!==STORE_KEY)return;try{_0xc9991c=_0x_0x41c();_0x846c();_0x5e274c();_0x2619be();}catch(error){_0xec11cd(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"\u0065\u0072\u0072\u006F\u0072");}});try{_0xc9991c=_0x_0x41c();}catch(error){_0xec11cd(" :nauxel u kun arutjaur e tan\xEBhd \xEBT".split("").reverse().join("")+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']+".\xEBrihsf \xEBnaj kuN ".split("").reverse().join(""),"\u0065\u0072\u0072\u006F\u0072");}_0x846c();_0x5e274c();}function setupSummaryCsvExport(){var _0xc1b7ad=(625937^625942)+(306698^306697);const _0x5b8dag=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0065\u0078\u0070\u006F\u0072\u0074\u002D\u0063\u0073\u0076");_0xc1b7ad=(195125^195124)+(601072^601073);if(!_0x5b8dag)return;_0x5b8dag['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0063\u006C\u0069\u0063\u006B",()=>{try{var _0x32930f=(767957^767956)+(171542^171536);const _0xfc67f=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0074\u0065\u0061\u0063\u0068\u0065\u0072");_0x32930f="hbmkcb".split("").reverse().join("");var _0x4188bd=(875373^875371)+(653374^653367);const _0x5b_0xc1c=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("yrammus".split("").reverse().join(""));_0x4188bd='\u0068\u006E\u0070\u0066\u0071\u0061';let _0x7e8b7e;const _0xafe94f=_0x5b_0xc1c?.closest("\u0074\u0061\u0062\u006C\u0065");_0x7e8b7e="hhdbhk".split("").reverse().join("");if(!_0xfc67f?.value){throw new Error(".timitropske arapr\xEBp nugogadep inhdijgZ".split("").reverse().join(""));}if(!_0xafe94f||!_0x5b_0xc1c['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']){throw new Error(".hsob \xEBths\xEB sejhdelbmr\xEBp e alebaT".split("").reverse().join(""));}var _0xd_0x3c7=(630917^630924)+(135411^135410);const _0x4c8d9e=value=>{let _0xcd_0xa17=String(value??'')['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("CFN".split("").reverse().join(""))['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00EB','\u0067'),"\u0065")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00CB','\u0067'),"\u0045")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00E7','\u0067'),"\u0063")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u00C7','\u0067'),"\u0043")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u2013\u2014\u2212\u005D','\u0067'),"\u002D")['\u0074\u0072\u0069\u006D']();if(_0xcd_0xa17!=="\u002D"&&new RegExp('\u005E\u005B\u003D\u002B\u005C\u002D\u0040\u005C\u0074\u005C\u0072\u005D',"")['\u0074\u0065\u0073\u0074'](_0xcd_0xa17)){_0xcd_0xa17="\u0027"+_0xcd_0xa17;}return"\u0022"+_0xcd_0xa17['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u0022','\u0067'),"\u0022\u0022")+"\u0022";};_0xd_0x3c7=(907351^907344)+(447888^447893);let _0x5b75eg;const _0xdaa=Array['\u0066\u0072\u006F\u006D'](_0xafe94f['\u0072\u006F\u0077\u0073'],row=>Array['\u0066\u0072\u006F\u006D'](row['\u0063\u0065\u006C\u006C\u0073'])['\u0073\u006C\u0069\u0063\u0065'](944598^944598,687404^687401)['\u006D\u0061\u0070'](cell=>_0x4c8d9e(cell['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']))['\u006A\u006F\u0069\u006E']("\u003B"));_0x5b75eg="bgnkep".split("").reverse().join("");var _0xef_0x3c0=(182217^182220)+(184431^184427);const _0xf7771g='\uFEFFsep=;\r\n'+_0xdaa['\u006A\u006F\u0069\u006E']("\u000D\u000A");_0xef_0x3c0=(262954^262957)+(150660^150656);var _0x9dg97a=(305633^305641)+(274479^274477);const _0xd4ba5d=_0xfc67f['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004F\u0070\u0074\u0069\u006F\u006E\u0073'][657957^657957]?.textContent.trim()||_0xfc67f['\u0076\u0061\u006C\u0075\u0065'];_0x9dg97a=682294^682295;var _0xa84a=(943626^943631)+(456387^456389);const _0xgf0b=_0xd4ba5d['\u006E\u006F\u0072\u006D\u0061\u006C\u0069\u007A\u0065']("\u004E\u0046\u0043")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u005E\u005C\u0070\u007B\u004C\u007D\u005C\u0070\u007B\u004E\u007D\u005F\u002D\u005D\u002B',"ug".split("").reverse().join("")),"\u005F")['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005E\u005F\u002B\u007C\u005F\u002B\u0024','\u0067'),'')['\u0073\u006C\u0069\u0063\u0065'](882631^882631,537198^537098);_0xa84a="nngjeq".split("").reverse().join("");var _0x9gd=(564352^564352)+(224517^224512);const _0x7_0xd13="\u0050\u0065\u0072\u006D\u0062\u006C\u0065\u0064\u0068\u006A\u0065\u005F"+_0xgf0b+"\u002E\u0063\u0073\u0076";_0x9gd=726917^726914;let _0xc83a;const _0x74ae=new Blob([_0xf7771g],{"type":'text/csv;charset=utf-8;'});_0xc83a=(337942^337951)+(332387^332387);const _0x33f53f=URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0x74ae);const _0x3dc7ab=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0061");_0x3dc7ab['\u0068\u0072\u0065\u0066']=_0x33f53f;_0x3dc7ab['\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064']=_0x7_0xd13;_0x3dc7ab['\u0068\u0069\u0064\u0064\u0065\u006E']=!![];document['\u0062\u006F\u0064\u0079']['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x3dc7ab);_0x3dc7ab['\u0063\u006C\u0069\u0063\u006B']();_0x3dc7ab['\u0072\u0065\u006D\u006F\u0076\u0065']();setTimeout(()=>URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0x33f53f),959644^937724);}catch(error){alert(" :eyrk u kun imitropskE".split("").reverse().join("")+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']);}});}if(document['\u0072\u0065\u0061\u0064\u0079\u0053\u0074\u0061\u0074\u0065']==="gnidaol".split("").reverse().join("")){document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("dedaoLtnetnoCMOD".split("").reverse().join(""),setupSummaryCsvExport,{'\u006F\u006E\u0063\u0065':!![]});}else{setupSummaryCsvExport();}
+      `;
+
+      detail.append(body);
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const out = document.createElement('button');
+      out.type = 'button';
+      out.className = 'secondary';
+      out.textContent = 'Shkarko JSON';
+
+      out.onclick = () => {
+        download(item, filename(item));
+      };
+
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'danger';
+      remove.textContent = 'Hiq evidencën';
+
+      remove.onclick = () => {
+        if (!confirm(
+          'Të hiqet evidenca e lëndës ' + item.subject + '?'
+        )) {
+          return;
+        }
+
+        try {
+          const next = loadRecords().filter(record =>
+            evidenceKey(record) !== evidenceKey(item)
+          );
+
+          saveRecords(next);
+          refreshFilters();
+          render();
+          renderPreview();
+
+          message('Evidenca u hoq.');
+        } catch (error) {
+          message(
+            'Nuk u ruajt ndryshimi: ' + error.message,
+            'error'
+          );
+        }
+      };
+
+      actions.append(out, remove);
+      detail.append(actions);
+      $('details').append(detail);
+    }
+
+    if (!selected.length) {
+      $('details').textContent =
+        'Evidencat e importuara do të shfaqen këtu.';
+    }
+
+    $('export').disabled = !records.length;
+  }
+
+  // ---------------------------------------------------
+  // Kontrolli përpara importimit
+  // ---------------------------------------------------
+
+  function renderPreview() {
+    const item = queue[0];
+
+    $('preview').hidden = !item;
+
+    if (!item) return;
+
+    $('queue-count').textContent =
+      queue.length + ' evidenca në pritje për kontroll.';
+
+    $('preview-meta').textContent =
+      `${item.teacher} · ${item.subject} · ` +
+      `${item.program} · ${item.year} · ` +
+      `Semestri ${item.semester} · Cikli ${item.cycle}`;
+
+    $('preview-rows').innerHTML = categoryRows(item);
+
+    const old = records.find(record =>
+      evidenceKey(record) === evidenceKey(item)
+    );
+
+    const duplicate = old && sameEvidence(old, item);
+
+    $('add').disabled = Boolean(duplicate);
+
+    $('add').textContent = old && !duplicate
+      ? 'Zëvendëso evidencën'
+      : 'Shto në përmbledhje';
+
+    $('duplicate-note').textContent = duplicate
+      ? 'Kjo evidencë është importuar më parë. Nuk do të dyfishohet.'
+      : old
+        ? 'Ekziston një evidencë për këtë pedagog, lëndë, program, ' +
+          'cikël, vit dhe semestër. Të dhënat ndryshojnë; ' +
+          'mund ta zëvendësoni.'
+        : '';
+  }
+
+  function stage(items) {
+    if (queue.length + items.length > MAX_RECORDS) {
+      throw new Error('Shumë evidenca në pritje.');
+    }
+
+    queue.push(...items);
+    renderPreview();
+
+    if (items.length) {
+      $('preview').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  $('add').onclick = () => {
+    if (!queue.length) return;
+
+    try {
+      const item = queue[0];
+      const next = loadRecords();
+
+      const index = next.findIndex(record =>
+        evidenceKey(record) === evidenceKey(item)
+      );
+
+      if (index >= 0) {
+        if (sameEvidence(next[index], item)) {
+          records = next;
+          renderPreview();
+
+          message(
+            'Kjo evidencë është importuar më parë.'
+          );
+
+          return;
+        }
+
+        if (!confirm(
+          'Të zëvendësohet evidenca ekzistuese? ' +
+          'Totalet e vjetra do të zëvendësohen me të rejat.'
+        )) {
+          return;
+        }
+
+        next[index] = item;
+      } else {
+        next.push(item);
+      }
+
+      saveRecords(next);
+      queue.shift();
+
+      refreshFilters();
+      $('teacher').value = normalized(item.teacher);
+      refreshFilters();
+
+      render();
+      renderPreview();
+
+      message(
+        'Evidenca u ruajt dhe totalet u përditësuan.',
+        'success'
+      );
+    } catch (error) {
+      message(
+        'Nuk u shtua evidenca: ' + error.message,
+        'error'
+      );
+    }
+  };
+
+  $('skip').onclick = () => {
+    queue.shift();
+    renderPreview();
+  };
+
+  $('download').onclick = () => {
+    if (queue[0]) {
+      download(queue[0], filename(queue[0]));
+    }
+  };
+
+  $('export').onclick = () => {
+    try {
+      download(
+        {
+          type: 'evion-collection',
+          version: 1,
+          evidences: loadRecords()
+        },
+        'Permbledhje-evidencat.json'
+      );
+    } catch (error) {
+      message(error.message, 'error');
+    }
+  };
+
+  for (const id of ['teacher', 'year', 'semester']) {
+    $(id).onchange = () => {
+      refreshFilters();
+      render();
+    };
+  }
+
+  // ---------------------------------------------------
+  // Ngarkimi JSON
+  // ---------------------------------------------------
+
+  $('json').onclick = () => {
+    $('json-file').click();
+  };
+
+  $('json-file').onchange = async () => {
+    const files = [...$('json-file').files];
+
+    try {
+      if (files.length > 100) {
+        throw new Error(
+          'Zgjidhni deri në 100 skedarë njëherësh.'
+        );
+      }
+
+      const incoming = [];
+
+      for (const file of files) {
+        if (file.size > 5000000) {
+          throw new Error(
+            file.name + ': skedari është shumë i madh.'
+          );
+        }
+
+        try {
+          incoming.push(
+            ...parseImport(await file.text())
+          );
+        } catch (error) {
+          throw new Error(
+            file.name + ': ' + error.message
+          );
+        }
+      }
+
+      stage(incoming);
+
+      message(
+        'Të dhënat u lexuan. Kontrollojini përpara shtimit.'
+      );
+    } catch (error) {
+      message(error.message, 'error');
+    } finally {
+      $('json-file').value = '';
+    }
+  };
+
+  // ===================================================
+  // KAMERA DHE LEXIMI QR
+  // ===================================================
+
+  const video = $('camera-video');
+
+  let stream = null;
+  let cameraToken = 0;
+  let scanTimer = null;
+  let cancelFile = false;
+
+  const pause = () =>
+    new Promise(resolve => setTimeout(resolve, 0));
+
+  function requireDecoder() {
+    if (typeof jsQR !== 'function') {
+      throw new Error(
+        'Nuk u ngarkua vendor/jsQR.js. ' +
+        'Kontrolloni që folderi vendor është publikuar.'
+      );
+    }
+  }
+
+  function scanControls() {
+    $('scan').disabled = scanBusy || running;
+    $('photo').disabled = scanBusy || running;
+    $('pdf').disabled = scanBusy || running;
+
+    $('stop').disabled = !scanBusy && !running;
+
+    $('stop').textContent = scanBusy && !running
+      ? 'Anulo'
+      : 'Ndalo kamerën';
+  }
+
+  function stopCamera() {
+    cameraToken++;
+    clearTimeout(scanTimer);
+
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    stream = null;
+    running = false;
+
+    video.pause();
+    video.srcObject = null;
+
+    $('reader').hidden = true;
+    scanControls();
+  }
+
+  function decodeRegion(
+    source,
+    x,
+    y,
+    width,
+    height,
+    maxSide = 1800
+  ) {
+    const scale = Math.min(
+      1,
+      maxSide / Math.max(width, height)
+    );
+
+    const canvas = document.createElement('canvas');
+
+    canvas.width = Math.max(
+      1,
+      Math.round(width * scale)
+    );
+
+    canvas.height = Math.max(
+      1,
+      Math.round(height * scale)
+    );
+
+    const context = canvas.getContext('2d', {
+      willReadFrequently: true
+    });
+
+    context.fillStyle = '#fff';
+    context.fillRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    context.drawImage(
+      source,
+      x,
+      y,
+      width,
+      height,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    const pixels = context.getImageData(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    const code = jsQR(
+      pixels.data,
+      pixels.width,
+      pixels.height,
+      {
+        inversionAttempts: 'attemptBoth'
+      }
+    );
+
+    canvas.width = 1;
+    canvas.height = 1;
+
+    return code ? code.data : null;
+  }
+
+  async function scanSurface(source, width, height) {
+    requireDecoder();
+
+    const regions = [
+      [0, 0, width, height, 1800],
+      [0, 0, width, height, 3000]
+    ];
+
+    for (const y of [0.5, 0.25, 0]) {
+      regions.push([
+        0,
+        height * y,
+        width,
+        height * 0.5,
+        2200
+      ]);
+    }
+
+    for (const y of [0.5, 0.25, 0]) {
+      for (const x of [0, 0.25, 0.5]) {
+        regions.push([
+          width * x,
+          height * y,
+          width * 0.5,
+          height * 0.5,
+          1800
+        ]);
+      }
+    }
+
+    let invalid = null;
+
+    for (const region of regions) {
+      if (cancelFile) {
+        throw new Error('Leximi u anulua.');
+      }
+
+      await pause();
+
+      const text = decodeRegion(source, ...region);
+
+      if (text) {
+        try {
+          return parseImport(text);
+        } catch (error) {
+          invalid = error;
+        }
+      }
+    }
+
+    if (invalid) throw invalid;
+
+    return null;
+  }
+
+  $('scan').onclick = async () => {
+    if (scanBusy || running) return;
+
+    scanBusy = true;
+    cancelFile = false;
+    scanControls();
+
+    const token = ++cameraToken;
+
+    try {
+      requireDecoder();
+
+      if (
+        !window.isSecureContext ||
+        !navigator.mediaDevices?.getUserMedia
+      ) {
+        throw new Error(
+          'Kamera kërkon HTTPS dhe lejen e shfletuesit.'
+        );
+      }
+
+      $('reader').hidden = false;
+
+      video.muted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+
+      const acquired =
+        await navigator.mediaDevices.getUserMedia({
+          audio: false,
+
+          video: {
+            facingMode: {
+              ideal: 'environment'
+            },
+            width: {
+              ideal: 1920
+            },
+            height: {
+              ideal: 1080
+            }
+          }
+        });
+
+      if (token !== cameraToken) {
+        acquired.getTracks().forEach(track => track.stop());
+        return;
+      }
+
+      stream = acquired;
+      video.srcObject = stream;
+
+      await video.play();
+
+      if (token !== cameraToken) return;
+
+      running = true;
+
+      message(
+        'Kamera është aktive. Afrojeni QR-në, ' +
+        'mbajeni të plotë në pamje dhe prisni fokusimin.'
+      );
+
+      function tick() {
+        if (
+          !running ||
+          token !== cameraToken
+        ) {
+          return;
+        }
+
+        try {
+          if (
+            video.readyState >= 2 &&
+            video.videoWidth
+          ) {
+            const text = decodeRegion(
+              video,
+              0,
+              0,
+              video.videoWidth,
+              video.videoHeight,
+              2400
+            );
+
+            if (text) {
+              const items = parseImport(text);
+
+              stopCamera();
+              stage(items);
+
+              message(
+                'QR-ja u lexua. Kontrolloni të dhënat.',
+                'success'
+              );
+
+              return;
+            }
+          }
+        } catch (error) {
+          stopCamera();
+          message(error.message, 'error');
+          return;
+        }
+
+        scanTimer = setTimeout(tick, 200);
+      }
+
+      tick();
+    } catch (error) {
+      if (token === cameraToken) {
+        stopCamera();
+
+        message(
+          'Kamera nuk u hap: ' +
+          (error.message || String(error)) +
+          '. Provoni ngarkimin e fotos ose PDF-së.',
+          'error'
+        );
+      }
+    } finally {
+      scanBusy = false;
+      scanControls();
+    }
+  };
+
+  $('stop').onclick = () => {
+    cancelFile = true;
+    stopCamera();
+    message('Leximi u ndal.');
+  };
+
+  // ===================================================
+  // NGARKIMI I FOTOS
+  // ===================================================
+
+  $('photo').onclick = () => {
+    $('photo-file').click();
+  };
+
+  $('photo-file').onchange = async () => {
+    const file = $('photo-file').files[0];
+
+    if (!file) return;
+
+    stopCamera();
+
+    scanBusy = true;
+    cancelFile = false;
+    scanControls();
+
+    const url = URL.createObjectURL(file);
+
+    try {
+      if (file.size > 20000000) {
+        throw new Error(
+          'Fotoja duhet të jetë më e vogël se 20 MB.'
+        );
+      }
+
+      message('Po lexohet fotografia…');
+
+      const image = new Image();
+
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+
+        image.onerror = () => reject(
+          new Error(
+            'Formati i fotos nuk u hap. Provoni JPEG ose PNG.'
+          )
+        );
+
+        image.src = url;
+      });
+
+      const items = await scanSurface(
+        image,
+        image.naturalWidth,
+        image.naturalHeight
+      );
+
+      if (!items) {
+        throw new Error(
+          'Nuk u gjet QR e lexueshme. Provoni screenshot ' +
+          'më të qartë ose ngarkoni PDF-në origjinale.'
+        );
+      }
+
+      stage(items);
+
+      message(
+        'QR-ja u lexua nga fotografia.',
+        'success'
+      );
+    } catch (error) {
+      message(
+        error.message || String(error),
+        'error'
+      );
+    } finally {
+      URL.revokeObjectURL(url);
+
+      scanBusy = false;
+      scanControls();
+
+      $('photo-file').value = '';
+    }
+  };
+
+  // ===================================================
+  // NGARKIMI I PDF-SË
+  // ===================================================
+
+  $('pdf').onclick = () => {
+    $('pdf-file').click();
+  };
+
+  $('pdf-file').onchange = async () => {
+    const file = $('pdf-file').files[0];
+
+    if (!file) return;
+
+    stopCamera();
+
+    scanBusy = true;
+    cancelFile = false;
+    scanControls();
+
+    let task = null;
+    let doc = null;
+
+    const canvas = document.createElement('canvas');
+
+    try {
+      requireDecoder();
+
+      if (file.size > 30000000) {
+        throw new Error(
+          'PDF-ja duhet të jetë më e vogël se 30 MB.'
+        );
+      }
+
+      message('Po hapet PDF-ja…');
+
+      const pdfjs = await import('./vendor/pdf.mjs');
+
+      pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+        './vendor/pdf.worker.mjs',
+        document.baseURI
+      ).href;
+
+      task = pdfjs.getDocument({
+        data: new Uint8Array(
+          await file.arrayBuffer()
+        ),
+        isEvalSupported: false
+      });
+
+      task.onPassword = () => {
+        task.destroy();
+      };
+
+      doc = await task.promise;
+
+      if (doc.numPages > 100) {
+        throw new Error(
+          'Lejohen PDF deri në 100 faqe.'
+        );
+      }
+
+      const found = new Map();
+      let invalidPages = 0;
+
+      for (
+        let pageNo = 1;
+        pageNo <= doc.numPages;
+        pageNo++
+      ) {
+        if (cancelFile) {
+          throw new Error('Leximi u anulua.');
+        }
+
+        message(
+          `Po kërkohet QR në faqen ${pageNo} ` +
+          `nga ${doc.numPages}…`
+        );
+
+        const page = await doc.getPage(pageNo);
+
+        const base = page.getViewport({
+          scale: 1
+        });
+
+        const scale = Math.min(
+          3,
+          3200 / Math.max(base.width, base.height)
+        );
+
+        const viewport = page.getViewport({
+          scale
+        });
+
+        canvas.width = Math.ceil(viewport.width);
+        canvas.height = Math.ceil(viewport.height);
+
+        const context = canvas.getContext('2d', {
+          willReadFrequently: true
+        });
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+          background: 'rgb(255,255,255)'
+        }).promise;
+
+        try {
+          const items = await scanSurface(
+            canvas,
+            canvas.width,
+            canvas.height
+          );
+
+          if (items) {
+            for (const item of items) {
+              found.set(
+                JSON.stringify(item),
+                item
+              );
+            }
+          }
+        } catch (error) {
+          if (cancelFile) throw error;
+          invalidPages++;
+        }
+
+        page.cleanup();
+
+        canvas.width = 1;
+        canvas.height = 1;
+      }
+
+      if (!found.size) {
+        throw new Error(
+          invalidPages
+            ? 'U gjet QR, por nuk përmban përmbledhje EVION të vlefshme.'
+            : 'Nuk u gjet QR e lexueshme. Përdorni PDF-në origjinale ' +
+              'me QR, jo një fotografi të paqartë.'
+        );
+      }
+
+      stage([...found.values()]);
+
+      message(
+        `U lexuan ${found.size} përmbledhje nga PDF-ja. ` +
+        'Kontrollojini përpara shtimit.' +
+        (
+          invalidPages
+            ? ' Disa faqe kishin QR me të dhëna të pavlefshme.'
+            : ''
+        ),
+        'success'
+      );
+    } catch (error) {
+      message(
+        'PDF-ja nuk u importua: ' +
+        (error.message || String(error)),
+        'error'
+      );
+    } finally {
+      canvas.width = 1;
+      canvas.height = 1;
+
+      if (task) {
+        await task.destroy().catch(() => {});
+      }
+
+      scanBusy = false;
+      scanControls();
+
+      $('pdf-file').value = '';
+    }
+  };
+
+  // ---------------------------------------------------
+  // Mbyllja e kamerës dhe përditësimi mes skedave
+  // ---------------------------------------------------
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelFile = true;
+      stopCamera();
+    }
+  });
+
+  window.addEventListener('pagehide', stopCamera);
+
+  window.addEventListener('storage', event => {
+    if (event.key !== STORE_KEY) return;
+
+    try {
+      records = loadRecords();
+
+      refreshFilters();
+      render();
+      renderPreview();
+    } catch (error) {
+      message(error.message, 'error');
+    }
+  });
+
+  // ---------------------------------------------------
+  // Nisja e faqes
+  // ---------------------------------------------------
+
+  try {
+    records = loadRecords();
+  } catch (error) {
+    message(
+      'Të dhënat e ruajtura nuk u lexuan: ' +
+      error.message +
+      ' Nuk janë fshirë.',
+      'error'
+    );
+  }
+
+  refreshFilters();
+  render();
+}
+
+// Eksporton vetëm tabelën 03, sipas filtrave aktualë.
+function setupSummaryCsvExport() {
+  const button = document.getElementById('export-csv');
+
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    try {
+      const teacherSelect = document.getElementById('teacher');
+      const summaryBody = document.getElementById('summary');
+      const table = summaryBody?.closest('table');
+
+      if (!teacherSelect?.value) {
+        throw new Error(
+          'Zgjidhni pedagogun përpara eksportimit.'
+        );
+      }
+
+      if (!table || !summaryBody.rows.length) {
+        throw new Error('Tabela e përmbledhjes është bosh.');
+      }
+
+      // Thonjëzat mbrojnë ndarësit dhe rreshtat brenda tekstit.
+      const csvCell = value => {
+        let text = String(value ?? '')
+          .normalize('NFC')
+          .replace(/ë/g, 'e')
+          .replace(/Ë/g, 'E')
+          .replace(/ç/g, 'c')
+          .replace(/Ç/g, 'C')
+          .replace(/[–—−]/g, '-')
+          .trim();
+
+        // Parandalon interpretimin e tekstit si formulë në Excel.
+        if (text !== '-' && /^[=+\-@\t\r]/.test(text)) {
+          text = "'" + text;
+        }
+
+        return '"' + text.replace(/"/g, '""') + '"';
+      };
+
+      const rows = Array.from(table.rows, row =>
+        Array.from(row.cells)
+          .slice(0, 5)
+          .map(cell => csvCell(cell.textContent))
+          .join(';')
+      );
+
+      // BOM ruan ë/ç; sep=; i tregon Excel-it ndarësin.
+      const csv = '\uFEFFsep=;\r\n' + rows.join('\r\n');
+
+      const teacherName =
+        teacherSelect.selectedOptions[0]?.textContent.trim() ||
+        teacherSelect.value;
+
+      const safeName = teacherName
+        .normalize('NFC')
+        .replace(/[^\p{L}\p{N}_-]+/gu, '_')
+        .replace(/^_+|_+$/g, '')
+        .slice(0, 100);
+
+      const filename = 'Permbledhje_' + safeName + '.csv';
+
+      const blob = new Blob(
+        [csv],
+        { type: 'text/csv;charset=utf-8;' }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+
+      link.href = url;
+      link.download = filename;
+      link.hidden = true;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Liron adresën pasi shfletuesi nis shkarkimin.
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (error) {
+      alert('Eksportimi nuk u krye: ' + error.message);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener(
+    'DOMContentLoaded',
+    setupSummaryCsvExport,
+    { once: true }
+  );
+} else {
+  setupSummaryCsvExport();
+}
