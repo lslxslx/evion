@@ -42,6 +42,14 @@ function evaluate_(data) {
     const prefix = 'Rreshti ' + (index + 1) + ': ';
     if (!row || typeof row !== 'object') { errors.push(prefix + 'regjistrim i pavlefshëm.'); return; }
     const lessonDate = day(row.date);
+    if (Number.isFinite(lessonDate) && new Date(lessonDate).getUTCDay() === 0) {
+      errors.push(
+        prefix +
+        'data ' +
+        row.date.split('-').reverse().join('.') +
+        ' bie të dielën. Zgjidhni një datë tjetër.'
+      );
+    }
     if (!Number.isFinite(lessonDate)) errors.push(prefix + 'data është e pavlefshme.');
     if (Number.isFinite(lessonDate) && Number.isFinite(semesterStart) && lessonDate < semesterStart) errors.push(prefix + 'data është para fillimit të semestrit.');
     const week = number(row.week);
