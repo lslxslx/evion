@@ -62,6 +62,10 @@ Për çdo regjistrim plotësohen:
 
 Java propozohet automatikisht sipas intervaleve 7-ditore nga fillimi i semestrit. Ajo mund të korrigjohet manualisht. Fshirja e vlerës rikthen llogaritjen automatike.
 
+Datat e mësimit nuk lejohen të bien të dielën. Nëse një regjistrim ka një datë të tillë, verifikimi shfaq gabim dhe dokumentet nuk gjenerohen derisa data të korrigjohet. Kontrolli zbatohet edhe për regjistrimet e ngarkuara nga drafti JSON.
+
+Festat zyrtare nuk kontrollohen automatikisht.
+
 Kolonat e laboratorit dhe të praktikës shfaqen kur kategoritë përkatëse kanë kredite.
 
 Kolona “Shuma / dt.” mbledh orët e atij regjistrimi. Nëse ka disa regjistrime për të njëjtën datë, raporti narrativ i bashkon për kontrollin e totalit ditor.
