@@ -1080,6 +1080,7 @@ function reportDefinition(data, result) {
 
       {
         margin: [0, 14, 0, 0],
+        fontSize: 6.5,
 
         table: {
           headerRows: 2,
