@@ -362,3 +362,35 @@ select,
 textarea {
   font-family: inherit;
 }
+
+/* 05 · Shkresa: stilet vlejnë vetëm për këtë seksion. */
+#letter-section .letter-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+#letter-section input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+#letter-section input:focus-visible {
+  outline: 3px solid #ba96d6;
+  outline-offset: 2px;
+}
+#letter-preview, #letter-message {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+#letter-message { color: #b42318; }
+@media (max-width: 650px) {
+  #letter-section .letter-fields { grid-template-columns: 1fr; }
+}
+@media print {
+  #letter-section { display: none !important; }
+}

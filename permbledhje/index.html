@@ -213,6 +213,37 @@
 
       <div id="details"></div>
     </section>
+
+    <section class="card" id="letter-section">
+      <h2>05 · Shkresa e realizimit të ngarkesës mësimore</h2>
+      <p class="hint">Shkresa përdor evidencat e përzgjedhura te pika 03.
+        Përzgjidhni një vit akademik dhe të gjithë semestrat.</p>
+      <div class="letter-fields">
+        <label>Statusi i pedagogut
+          <select id="letter-status">
+            <option value="">Zgjidhni statusin</option>
+            <option value="brendshëm">I brendshëm</option>
+            <option value="jashtëm">I jashtëm</option>
+          </select>
+        </label>
+        <label>Grupi mësimor
+          <select id="letter-group">
+            <option value="">Zgjidhni grupin</option>
+            <option value="Gjeoinformatikës">Gjeoinformatikës</option>
+            <option value="Gjeologjisë së zbatuar">Gjeologjisë së zbatuar</option>
+          </select>
+        </label>
+        <label>Norma mësimore (orë)
+          <input id="letter-norm" type="text" inputmode="decimal"
+            maxlength="20" placeholder="P.sh. 90">
+        </label>
+      </div>
+      <p id="letter-preview" class="hint"></p>
+      <p id="letter-message" role="status" aria-live="polite"></p>
+      <div class="actions">
+        <button id="generate-letter" type="button">Gjenero shkresën</button>
+      </div>
+    </section>
   </main>
 </body>
 </html>
