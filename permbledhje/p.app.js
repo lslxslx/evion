@@ -1636,7 +1636,7 @@ function workloadLetterHtml(data) {
   const title = ('Shkresa_' + data.teacher + '_' + data.year)
     .replace(/[^\p{L}\p{N}_-]/gu, '_').replace(/_+/g, '_');
   const payment = excess > 0
-    ? `Për ngarkesën e realizuar prej <strong>${fmt(excess)}</strong> orë,
+    ? `Për ngarkesën e realizuar <strong>${fmt(excess)}</strong> orë,
        mbi normën <strong>${fmt(data.norm)}</strong> orë, të bëhet pagesa
        sipas Udhëzimit nr. 29 dt. 10.09.2018.`
     : `Ngarkesa e realizuar nuk e tejkalon normën prej
@@ -1697,7 +1697,7 @@ Zgjidhni A4 vertikal. Shkresa përfshin vetëm evidencat e ngarkuara dhe të pë
   <div class="protocol"><span>Nr. _____ Prot.</span><span>Tiranë, më ____.____.________</span></div>
   <p><strong>Lënda:</strong> Realizimi i ngarkesës mësimore për vitin akademik ${esc(data.year)}</p>
   <p class="recipient">ADMINISTRATORIT TË FAKULTETIT TË GJEOLOGJISË DHE MINIERAVE<br>Z. SELAM AGA</p>
-  <p><strong>${esc(data.teacher)}</strong> ka dhënë mësim si pedagog i
+  <p><strong>${esc(data.teacher)}</strong> ka dhënë mësim si
     <strong>${esc(data.status)}</strong>, pranë grupit mësimor të
     <strong>${esc(data.group)}</strong> gjatë vitit akademik
     <strong>${esc(data.year)}</strong> dhe ka realizuar ngarkesën mësimore
