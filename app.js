@@ -1,4 +1,106 @@
-var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](id);_0x5g_0xb13='\u006B\u006D\u0068\u0065\u0068\u006D';const labels=["noiskeL".split("").reverse().join(""),"ranimeS".split("").reverse().join(""),"\u004C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072","tkejorp/\xEBryteD".split("").reverse().join(""),"\u0050\u0072\u0061\u006B\u0074\u0069\u006B\u00EB"];var _0x3f30f=(157574^157583)+(837986^837985);const institution={'\u0075\u006E\u0069\u0076\u0065\u0072\u0073\u0069\u0074\u0079':'UNIVERSITETI POLITEKNIK I TIRANËS',"faculty":'FAKULTETI I GJEOLOGJISË DHE I MINIERAVE','\u0064\u0065\u0070\u0061\u0072\u0074\u006D\u0065\u006E\u0074':'DEPARTAMENTI I GJEOLOGJISË SË ZBATUAR DHE I GJEOINFORMATIKËS'};_0x3f30f=(639517^639514)+(662105^662096);const fields=[["\u0074\u0065\u0061\u0063\u0068\u0065\u0072",")irme ehd adarg/illutit( e/gogadeP".split("").reverse().join(""),''],["daeh".split("").reverse().join(""),"\u0044\u0072\u0065\u006A\u0074\u0075\u0065\u0073\u0069\u0020\u0069\u0020\u0064\u0065\u0070\u0061\u0072\u0074\u0061\u006D\u0065\u006E\u0074\u0069\u0074","inamaL siuL .rD .cosA .forP".split("").reverse().join("")],["\u0073\u0075\u0062\u006A\u0065\u0063\u0074","\u004C\u00EB\u006E\u0064\u0061",''],["margorp".split("").reverse().join(""),"\u0050\u0072\u006F\u0067\u0072\u0061\u006D\u0069\u0020\u0069\u0020\u0073\u0074\u0075\u0064\u0069\u006D\u0069\u0074",''],["\u0079\u0065\u0061\u0072","\u0056\u0069\u0074\u0069\u0020\u0061\u006B\u0061\u0064\u0065\u006D\u0069\u006B","7202-6202".split("").reverse().join("")],["retsemes".split("").reverse().join(""),"\u0053\u0065\u006D\u0065\u0073\u0074\u0072\u0069","\u0049\u002F\u0049\u0049"],["\u0063\u0079\u0063\u006C\u0065","ilkiC".split("").reverse().join(""),"\u0031"],["\u0073\u0074\u0061\u0072\u0074","\u0044\u0061\u0074\u0061\u0020\u0065\u0020\u0066\u0069\u006C\u006C\u0069\u006D\u0069\u0074\u0020\u0074\u00EB\u0020\u0073\u0065\u006D\u0065\u0073\u0074\u0072\u0069\u0074",'']];var _0xdac12b=(793410^793410)+(817661^817652);const MAX_ROWS=429310^429210;_0xdac12b=(702287^702284)+(884399^884398);var _0xcc901c=(372653^372651)+(591091^591094);const reportButton=$("\u0070\u0064\u0066");_0xcc901c=396435^396442;var _0xa429c=(526779^526782)+(914695^914695);const printPdfButton=$("fdp-tnirp".split("").reverse().join(""));_0xa429c=206589^206587;let _0x6dd34e;let dirty=false;_0x6dd34e=724667^724665;let verified=false;let pdfBusy=false;let formRevision=919212^919212;reportButton['\u0074\u0079\u0070\u0065']="\u0062\u0075\u0074\u0074\u006F\u006E";reportButton['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0047\u006A\u0065\u006E\u0065\u0072\u006F\u0020\u0072\u0061\u0070\u006F\u0072\u0074";if(printPdfButton){printPdfButton['\u0074\u0079\u0070\u0065']="\u0062\u0075\u0074\u0074\u006F\u006E";printPdfButton['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0050\u0044\u0046\u0020\u002F\u0020\u0050\u0072\u0069\u006E\u0074";}function updateActionButtons(){reportButton['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!verified;if(printPdfButton){printPdfButton['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!verified||pdfBusy;printPdfButton['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=pdfBusy?"\u2026FDP tehorenejg oP".split("").reverse().join(""):"\u0050\u0044\u0046\u0020\u002F\u0020\u0050\u0072\u0069\u006E\u0074";}}updateActionButtons();function numericValue(value){return Number(String(value||613298^613298)['\u0074\u0072\u0069\u006D']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C","\u002E"));}function round(value){return Math['\u0072\u006F\u0075\u006E\u0064'](value*1000000)/1000000;}function internalDate(value,_0x8c533c){const _0x83ffed=String(value||'')['\u0074\u0072\u0069\u006D']();_0x8c533c='';if(new RegExp('\u005E\u005C\u0064\u007B\u0034\u007D\u002D\u005C\u0064\u007B\u0032\u007D\u002D\u005C\u0064\u007B\u0032\u007D\u0024',"")['\u0074\u0065\u0073\u0074'](_0x83ffed)){_0x8c533c=_0x83ffed;}else{const _0xa26efa=_0x83ffed['\u006D\u0061\u0074\u0063\u0068'](new RegExp('\u005E\u0028\u005C\u0064\u007B\u0032\u007D\u0029\u005C\u002E\u0028\u005C\u0064\u007B\u0032\u007D\u0029\u005C\u002E\u0028\u005C\u0064\u007B\u0034\u007D\u0029\u0024',""));if(!_0xa26efa)return'';_0x8c533c=`${_0xa26efa[936237^936238]}-${_0xa26efa[478766^478764]}-${_0xa26efa[616079^616078]}`;}const _0x1142c=new Date(_0x8c533c+"\u0054\u0030\u0030\u003A\u0030\u0030\u003A\u0030\u0030\u005A");if(!Number['\u0069\u0073\u0046\u0069\u006E\u0069\u0074\u0065'](_0x1142c['\u0067\u0065\u0074\u0054\u0069\u006D\u0065']())||_0x1142c['\u0074\u006F\u0049\u0053\u004F\u0053\u0074\u0072\u0069\u006E\u0067']()['\u0073\u006C\u0069\u0063\u0065'](451610^451610,687057^687067)!==_0x8c533c){return'';}return _0x8c533c;}fields['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](([id,title,value])=>{if(id==="elcyc".split("").reverse().join("")){var _0xcfafgb=(561621^561620)+(896161^896169);const container=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xcfafgb=139898^139898;container['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="dleif-elcyc".split("").reverse().join("");container['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+/* (C) ルイス */
+
+const $ = id => document.getElementById(id);
+
+const labels = [
+  'Leksion',
+  'Seminar',
+  'Laborator',
+  'Detyrë/projekt',
+  'Praktikë'
+];
+
+const institution = {
+  university: 'UNIVERSITETI POLITEKNIK I TIRANËS',
+  faculty: 'FAKULTETI I GJEOLOGJISË DHE I MINIERAVE',
+  department:
+    'DEPARTAMENTI I GJEOLOGJISË SË ZBATUAR DHE I GJEOINFORMATIKËS'
+};
+
+const fields = [
+  ['teacher', 'Pedagog/e (titulli/grada dhe emri)', ''],
+  ['head', 'Drejtuesi i departamentit', 'Prof. Asoc. Dr. Luis Lamani'],
+  ['subject', 'Lënda', ''],
+  ['program', 'Programi i studimit', ''],
+  ['year', 'Viti akademik', '2026-2027'],
+  ['semester', 'Semestri', 'I/II'],
+  ['cycle', 'Cikli', '1'],
+  ['start', 'Data e fillimit të semestrit', '']
+];
+
+const MAX_ROWS = 100;
+
+const reportButton = $('pdf');
+const printPdfButton = $('print-pdf');
+
+let dirty = false;
+let verified = false;
+let pdfBusy = false;
+let formRevision = 0;
+
+reportButton.type = 'button';
+reportButton.textContent = 'Gjenero raport';
+
+if (printPdfButton) {
+  printPdfButton.type = 'button';
+  printPdfButton.textContent = 'PDF / Print';
+}
+
+function updateActionButtons() {
+  reportButton.disabled = !verified;
+
+  if (printPdfButton) {
+    printPdfButton.disabled = !verified || pdfBusy;
+    printPdfButton.textContent = pdfBusy
+      ? 'Po gjenerohet PDF…'
+      : 'PDF / Print';
+  }
+}
+
+updateActionButtons();
+
+function numericValue(value) {
+  return Number(String(value || 0).trim().replace(',', '.'));
+}
+
+function round(value) {
+  return Math.round(value * 1000000) / 1000000;
+}
+
+// Pranon yyyy-MM-dd dhe dd.MM.yyyy.
+function internalDate(value) {
+  const text = String(value || '').trim();
+  let iso = '';
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    iso = text;
+  } else {
+    const match = text.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+
+    if (!match) return '';
+
+    iso = `${match[3]}-${match[2]}-${match[1]}`;
+  }
+
+  const date = new Date(iso + 'T00:00:00Z');
+
+  if (
+    !Number.isFinite(date.getTime()) ||
+    date.toISOString().slice(0, 10) !== iso
+  ) {
+    return '';
+  }
+
+  return iso;
+}
+
+// 01 · Të dhënat e evidencës.
+fields.forEach(([id, title, value]) => {
+  if (id === 'cycle') {
+    const container = document.createElement('div');
+    container.className = 'cycle-field';
+
+    container.innerHTML = `
       <span id="cycle-title">Cikli</span>
 
       <div
@@ -27,7 +129,37 @@ var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u00
       </div>
 
       <input type="hidden" id="cycle" value="1">
-    `;$("atadatem".split("").reverse().join(""))['\u0061\u0070\u0070\u0065\u006E\u0064'](container);return;}const label=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("lebal".split("").reverse().join(""));label['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=title;const input=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0069\u006E\u0070\u0075\u0074");input['\u0069\u0064']=id;input['\u0074\u0079\u0070\u0065']=id==="\u0073\u0074\u0061\u0072\u0074"?"\u0064\u0061\u0074\u0065":"\u0074\u0065\u0078\u0074";input['\u0076\u0061\u006C\u0075\u0065']=value;if(id==="daeh".split("").reverse().join("")){input['\u0072\u0065\u0061\u0064\u004F\u006E\u006C\u0079']=!![];}if(id!=="\u0073\u0074\u0061\u0072\u0074"){input['\u006D\u0061\u0078\u004C\u0065\u006E\u0067\u0074\u0068']=464326^464106;}label['\u0061\u0070\u0070\u0065\u006E\u0064'](input);$("\u006D\u0065\u0074\u0061\u0064\u0061\u0074\u0061")['\u0061\u0070\u0070\u0065\u006E\u0064'](label);});labels['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((label,index)=>{const tr=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0074\u0072");tr['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+    `;
+
+    $('metadata').append(container);
+    return;
+  }
+
+  const label = document.createElement('label');
+  label.textContent = title;
+
+  const input = document.createElement('input');
+  input.id = id;
+  input.type = id === 'start' ? 'date' : 'text';
+  input.value = value;
+
+  if (id === 'head') {
+    input.readOnly = true;
+  }
+
+  if (id !== 'start') {
+    input.maxLength = 300;
+  }
+
+  label.append(input);
+  $('metadata').append(label);
+});
+
+// 02 · Kreditet dhe grupet.
+labels.forEach((label, index) => {
+  const tr = document.createElement('tr');
+
+  tr.innerHTML = `
     <td>${label}</td>
 
     <td>
@@ -55,7 +187,83 @@ var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u00
     </td>
 
     <td id="expected${index}">0</td>
-  `;$("stiderc".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][267823^267823]['\u0061\u0070\u0070\u0065\u006E\u0064'](tr);});function hasPractice(){return numericValue($("\u0063\u0034")['\u0076\u0061\u006C\u0075\u0065'])>(501980^501980);}function updatePracticeVisibility(_0x45a8a){const _0x8d6b2e=numericValue($("\u0063\u0032")['\u0076\u0061\u006C\u0075\u0065'])>(205333^205333);_0x45a8a=852732^852731;const _0x486ea=hasPractice();$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u006C\u0061\u0062\u005D")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](cell=>{cell['\u0068\u0069\u0064\u0064\u0065\u006E']=!_0x8d6b2e;});$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("]ecitcarp-atad[".split("").reverse().join(""))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](cell=>{cell['\u0068\u0069\u0064\u0064\u0065\u006E']=!_0x486ea;});$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("\u006E\u006F\u002D\u0070\u0072\u0061\u0063\u0074\u0069\u0063\u0065",!_0x486ea);var _0x56ea1c=(733491^733495)+(764646^764643);const _0x423e=index=>[...$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C'](`[data-h="${index}"]`)]['\u0073\u006F\u006D\u0065'](input=>input['\u0076\u0061\u006C\u0075\u0065']!==''&&numericValue(input['\u0076\u0061\u006C\u0075\u0065'])!==(719303^719303));_0x56ea1c=(109250^109250)+(280815^280808);const _0x_0x99b=[];if(!_0x8d6b2e&&_0x423e(925783^925781)){_0x_0x99b['\u0070\u0075\u0073\u0068']("\u004B\u0061\u0020\u006F\u0072\u00EB\u0020\u006C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u0069\u0020\u0074\u00EB\u0020\u0072\u0065\u0067\u006A\u0069\u0073\u0074\u0072\u0075\u0061\u0072\u0061\u002C\u0020\u0070\u006F\u0072\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074\u0020"+"\u0065\u0020\u006C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u0069\u0074\u0020\u006A\u0061\u006E\u00EB\u0020\u007A\u0065\u0072\u006F\u002E\u0020\u004F\u0072\u00EB\u0074\u0020\u006A\u0061\u006E\u00EB\u0020\u0072\u0075\u0061\u006A\u0074\u0075\u0072\u002E\u0020"+"\u0052\u0069\u0076\u0065\u006E\u0064\u006F\u0073\u006E\u0069\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074\u0020\u0074\u0065\u0020\u0073\u0065\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0030\u0032\u0020\u0070\u00EB\u0072\u0020\u0074\u2019\u0069\u0020\u0070\u0061\u0072\u00EB\u0020"+"\u0064\u0068\u0065\u0020\u006B\u006F\u0072\u0072\u0069\u0067\u006A\u0075\u0061\u0072\u002E");}if(!_0x486ea&&_0x423e(337696^337700)){_0x_0x99b['\u0070\u0075\u0073\u0068'](" tetiderk rop ,araurtsijger \xEBt ekitkarp \xEBro aK".split("").reverse().join("")+"\u0065\u0020\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u00EB\u0073\u0020\u006A\u0061\u006E\u00EB\u0020\u007A\u0065\u0072\u006F\u002E\u0020\u004F\u0072\u00EB\u0074\u0020\u006A\u0061\u006E\u00EB\u0020\u0072\u0075\u0061\u006A\u0074\u0075\u0072\u002E\u0020"+"\u0052\u0069\u0076\u0065\u006E\u0064\u006F\u0073\u006E\u0069\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074\u0020\u0074\u0065\u0020\u0073\u0065\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0030\u0032\u0020\u0070\u00EB\u0072\u0020\u0074\u2019\u0069\u0020\u0070\u0061\u0072\u00EB\u0020"+"\u0064\u0068\u0065\u0020\u006B\u006F\u0072\u0072\u0069\u0067\u006A\u0075\u0061\u0072\u002E");}const _0xa9c4f=$("\u0070\u0072\u0061\u0063\u0074\u0069\u0063\u0065\u002D\u0077\u0061\u0072\u006E\u0069\u006E\u0067");if(_0xa9c4f){_0xa9c4f['\u0068\u0069\u0064\u0064\u0065\u006E']=_0x_0x99b['\u006C\u0065\u006E\u0067\u0074\u0068']===(141155^141155);_0xa9c4f['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0x_0x99b['\u006A\u006F\u0069\u006E']("\u0020");}}function updateWeek(tr){if(tr['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006D\u0061\u006E\u0075\u0061\u006C']==="\u0031")return;tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u005B\u0064\u0061\u0074\u0061\u002D\u006B\u003D\u0022\u0077\u0065\u0065\u006B\u0022\u005D")['\u0076\u0061\u006C\u0075\u0065']=week_(internalDate(tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u005B\u0064\u0061\u0074\u0061\u002D\u006B\u003D\u0022\u0064\u0061\u0074\u0065\u0022\u005D")['\u0076\u0061\u006C\u0075\u0065']),internalDate($("\u0073\u0074\u0061\u0072\u0074")['\u0076\u0061\u006C\u0075\u0065']));}function refreshWeeks(){$("snossel".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][636815^636815]['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("rt".split("").reverse().join(""))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](updateWeek);}function addRow(data={}){var _0x7cg98c=(759147^759151)+(932498^932503);const _0x2_0x96c=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("rt".split("").reverse().join(""));_0x7cg98c=(544071^544064)+(569851^569842);_0x2_0x96c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+  `;
+
+  $('credits').tBodies[0].append(tr);
+});
+
+function hasPractice() {
+  return numericValue($('c4').value) > 0;
+}
+
+// Fsheh ose shfaq Lab. dhe Praktikë.
+// Orët e regjistruara nuk fshihen.
+function updatePracticeVisibility() {
+  const labVisible = numericValue($('c2').value) > 0;
+  const practiceVisible = hasPractice();
+
+  $('lessons').querySelectorAll('[data-lab]').forEach(cell => {
+    cell.hidden = !labVisible;
+  });
+
+  $('lessons').querySelectorAll('[data-practice]').forEach(cell => {
+    cell.hidden = !practiceVisible;
+  });
+
+  $('lessons').classList.toggle('no-practice', !practiceVisible);
+
+  const hasStoredHours = index => [
+    ...$('lessons').querySelectorAll(`[data-h="${index}"]`)
+  ].some(input =>
+    input.value !== '' && numericValue(input.value) !== 0
+  );
+
+  const messages = [];
+
+  if (!labVisible && hasStoredHours(2)) {
+    messages.push(
+      'Ka orë laboratori të regjistruara, por kreditet ' +
+      'e laboratorit janë zero. Orët janë ruajtur. ' +
+      'Rivendosni kreditet te seksioni 02 për t’i parë ' +
+      'dhe korrigjuar.'
+    );
+  }
+
+  if (!practiceVisible && hasStoredHours(4)) {
+    messages.push(
+      'Ka orë praktike të regjistruara, por kreditet ' +
+      'e praktikës janë zero. Orët janë ruajtur. ' +
+      'Rivendosni kreditet te seksioni 02 për t’i parë ' +
+      'dhe korrigjuar.'
+    );
+  }
+
+  const warning = $('practice-warning');
+
+  if (warning) {
+    warning.hidden = messages.length === 0;
+    warning.textContent = messages.join(' ');
+  }
+}
+
+function updateWeek(tr) {
+  if (tr.dataset.manual === '1') return;
+
+  tr.querySelector('[data-k="week"]').value = week_(
+    internalDate(tr.querySelector('[data-k="date"]').value),
+    internalDate($('start').value)
+  );
+}
+
+function refreshWeeks() {
+  $('lessons').tBodies[0].querySelectorAll('tr').forEach(updateWeek);
+}
+
+// 03 · Regjistrimet.
+function addRow(data = {}) {
+  const tr = document.createElement('tr');
+
+  tr.innerHTML = `
     <td>
       <input
         data-k="week"
@@ -94,10 +302,10 @@ var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u00
       ></textarea>
     </td>
 
-    ${labels['\u006D\u0061\u0070']((label,index)=>`
+    ${labels.map((label, index) => `
       <td
-        ${index===(501585^501587)?"\u0064\u0061\u0074\u0061\u002D\u006C\u0061\u0062":''}
-        ${index===(584501^584497)?"\u0064\u0061\u0074\u0061\u002D\u0070\u0072\u0061\u0063\u0074\u0069\u0063\u0065":''}
+        ${index === 2 ? 'data-lab' : ''}
+        ${index === 4 ? 'data-practice' : ''}
       >
         <input
           data-h="${index}"
@@ -108,7 +316,7 @@ var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u00
           aria-label="Orë ${label}"
         >
       </td>
-    `)['\u006A\u006F\u0069\u006E']('')}
+    `).join('')}
 
     <td data-total>0</td>
 
@@ -127,13 +335,638 @@ var _0x5g_0xb13=(877803^877807)+(782543^782539);const $=id=>document['\u0067\u00
         aria-label="Hiq regjistrimin"
       >×</button>
     </td>
-  `;_0x2_0x96c['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006D\u0061\u006E\u0075\u0061\u006C']=data['\u006D\u0061\u006E\u0075\u0061\u006C']?"\u0031":"\u0030";_0x2_0x96c['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u006B\u005D")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](element=>{const _0x3_0x8b9=element['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006B'];var _0x8d_0xe64=(492862^492858)+(236410^236409);const value=data[_0x3_0x8b9]??'';_0x8d_0xe64=(833451^833452)+(712326^712335);if(element['\u0074\u0079\u0070\u0065']==="\u0063\u0068\u0065\u0063\u006B\u0062\u006F\u0078"){element['\u0063\u0068\u0065\u0063\u006B\u0065\u0064']=!!data[_0x3_0x8b9];}else if(_0x3_0x8b9==="\u0064\u0061\u0074\u0065"){element['\u0076\u0061\u006C\u0075\u0065']=internalDate(value);}else if(element['\u0074\u0079\u0070\u0065']==="\u006E\u0075\u006D\u0062\u0065\u0072"){element['\u0076\u0061\u006C\u0075\u0065']=String(value)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C","\u002E");}else{element['\u0076\u0061\u006C\u0075\u0065']=value;}});_0x2_0x96c['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("]h-atad[".split("").reverse().join(""))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((element,index)=>{const value=(data['\u0068\u006F\u0075\u0072\u0073']||[])[index]??'';element['\u0076\u0061\u006C\u0075\u0065']=String(value)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C","\u002E");});_0x2_0x96c['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0062\u0075\u0074\u0074\u006F\u006E\u002E\u0072\u0065\u006D\u006F\u0076\u0065")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{_0x2_0x96c['\u0072\u0065\u006D\u006F\u0076\u0065']();changed();};$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][354892^354892]['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x2_0x96c);updateWeek(_0x2_0x96c);updatePracticeVisibility();}function readForm(){const _0x4_0xe75={...institution,'\u0063\u0072\u0065\u0064\u0069\u0074\u0073':labels['\u006D\u0061\u0070']((_,index)=>$("\u0063"+index)['\u0076\u0061\u006C\u0075\u0065']),"groups":labels['\u006D\u0061\u0070']((_,index)=>$("\u0067"+index)['\u0076\u0061\u006C\u0075\u0065']),'\u006E\u006F\u0074\u0065\u0073':$("\u006E\u006F\u0074\u0065\u0073")['\u0076\u0061\u006C\u0075\u0065'],"rows":[]};fields['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](([id])=>{_0x4_0xe75[id]=id==="\u0073\u0074\u0061\u0072\u0074"?internalDate($(id)['\u0076\u0061\u006C\u0075\u0065']):$(id)['\u0076\u0061\u006C\u0075\u0065']['\u0074\u0072\u0069\u006D']();});$("snossel".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][373278^373278]['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u0074\u0072")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](tr=>{const _0xg62c6c={'\u0068\u006F\u0075\u0072\u0073':[...tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u0068\u005D")]['\u006D\u0061\u0070'](element=>element['\u0076\u0061\u006C\u0075\u0065']),"manual":tr['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006D\u0061\u006E\u0075\u0061\u006C']==="\u0031"};tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u006B\u005D")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](element=>{const _0x31d19d=element['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006B'];if(element['\u0074\u0079\u0070\u0065']==="\u0063\u0068\u0065\u0063\u006B\u0062\u006F\u0078"){_0xg62c6c[_0x31d19d]=element['\u0063\u0068\u0065\u0063\u006B\u0065\u0064'];}else if(_0x31d19d==="\u0064\u0061\u0074\u0065"){_0xg62c6c[_0x31d19d]=internalDate(element['\u0076\u0061\u006C\u0075\u0065']);}else{_0xg62c6c[_0x31d19d]=element['\u0076\u0061\u006C\u0075\u0065'];}});_0x4_0xe75['\u0072\u006F\u0077\u0073']['\u0070\u0075\u0073\u0068'](_0xg62c6c);});return _0x4_0xe75;}function updateTotals(){const _0x8f78d=readForm();const _0xcd8f=evaluate_(_0x8f78d);$("\u0065\u0063\u0074\u0073")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0xcd8f['\u0074\u006F\u0074\u0061\u006C\u0043\u0072\u0065\u0064\u0069\u0074\u0073'];labels['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((_,index)=>{$("\u0065\u0078\u0070\u0065\u0063\u0074\u0065\u0064"+index)['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0xcd8f['\u0065\u0078\u0070\u0065\u0063\u0074\u0065\u0064'][index];});$("yrammus".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][107547^107547]['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=labels['\u006D\u0061\u0070']((label,index)=>`
+  `;
+
+  tr.dataset.manual = data.manual ? '1' : '0';
+
+  tr.querySelectorAll('[data-k]').forEach(element => {
+    const key = element.dataset.k;
+    const value = data[key] ?? '';
+
+    if (element.type === 'checkbox') {
+      element.checked = !!data[key];
+    } else if (key === 'date') {
+      element.value = internalDate(value);
+    } else if (element.type === 'number') {
+      element.value = String(value).replace(',', '.');
+    } else {
+      element.value = value;
+    }
+  });
+
+  tr.querySelectorAll('[data-h]').forEach((element, index) => {
+    const value = (data.hours || [])[index] ?? '';
+    element.value = String(value).replace(',', '.');
+  });
+
+  tr.querySelector('button.remove').onclick = () => {
+    tr.remove();
+    changed();
+  };
+
+  $('lessons').tBodies[0].append(tr);
+
+  updateWeek(tr);
+  updatePracticeVisibility();
+}
+
+function readForm() {
+  const data = {
+    ...institution,
+    credits: labels.map((_, index) => $('c' + index).value),
+    groups: labels.map((_, index) => $('g' + index).value),
+    notes: $('notes').value,
+    rows: []
+  };
+
+  fields.forEach(([id]) => {
+    data[id] = id === 'start'
+      ? internalDate($(id).value)
+      : $(id).value.trim();
+  });
+
+  $('lessons').tBodies[0].querySelectorAll('tr').forEach(tr => {
+    const row = {
+      hours: [...tr.querySelectorAll('[data-h]')]
+        .map(element => element.value),
+      manual: tr.dataset.manual === '1'
+    };
+
+    tr.querySelectorAll('[data-k]').forEach(element => {
+      const key = element.dataset.k;
+
+      if (element.type === 'checkbox') {
+        row[key] = element.checked;
+      } else if (key === 'date') {
+        row[key] = internalDate(element.value);
+      } else {
+        row[key] = element.value;
+      }
+    });
+
+    data.rows.push(row);
+  });
+
+  return data;
+}
+
+function updateTotals() {
+  const data = readForm();
+  const result = evaluate_(data);
+
+  $('ects').textContent = result.totalCredits;
+
+  labels.forEach((_, index) => {
+    $('expected' + index).textContent = result.expected[index];
+  });
+
+  $('summary').tBodies[0].innerHTML = labels
+    .map((label, index) => `
       <tr>
         <td>${label}</td>
-        <td>${_0xcd8f['\u0061\u0063\u0074\u0075\u0061\u006C'][index]}</td>
-        <td>${_0xcd8f['\u0065\u0078\u0070\u0065\u0063\u0074\u0065\u0064'][index]}</td>
-        <td class="${_0xcd8f['\u0064\u0069\u0066\u0066\u0065\u0072\u0065\u006E\u0063\u0065\u0073'][index]?"dab".split("").reverse().join(""):''}">
-          ${_0xcd8f['\u0064\u0069\u0066\u0066\u0065\u0072\u0065\u006E\u0063\u0065\u0073'][index]}
+        <td>${result.actual[index]}</td>
+        <td>${result.expected[index]}</td>
+        <td class="${result.differences[index] ? 'bad' : ''}">
+          ${result.differences[index]}
         </td>
       </tr>
-    `)['\u006A\u006F\u0069\u006E']('');[...$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][221240^221240]['\u0072\u006F\u0077\u0073']]['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((tr,index)=>{var _0x6beb6e=(458404^458413)+(454863^454863);const _0x5_0x579=_0x8f78d['\u0072\u006F\u0077\u0073'][index]['\u0068\u006F\u0075\u0072\u0073']['\u0072\u0065\u0064\u0075\u0063\u0065']((sum,value)=>sum+numericValue(value),136395^136395);_0x6beb6e=(803427^803425)+(320477^320479);tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u005B\u0064\u0061\u0074\u0061\u002D\u0074\u006F\u0074\u0061\u006C\u005D")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=round(_0x5_0x579);});return _0xcd8f;}function showMessage(text,kind=''){$("\u0073\u0074\u0061\u0074\u0075\u0073")['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=text;$("sutats".split("").reverse().join(""))['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']=" sutats".split("").reverse().join("")+kind;}function syncCycle(){document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u006E\u0061\u006D\u0065\u003D\u0022\u0063\u0079\u0063\u006C\u0065\u0043\u0068\u006F\u0069\u0063\u0065\u0022\u005D")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](radio=>{radio['\u0063\u0068\u0065\u0063\u006B\u0065\u0064']=radio['\u0076\u0061\u006C\u0075\u0065']===$("elcyc".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065'];});}function changed(){syncCycle();updatePracticeVisibility();dirty=!![];verified=false;formRevision++;updateActionButtons();showMessage(".nimikifirev ineyrK .nauhsyrdn tan\xEBhd \xEBT".split("").reverse().join(""));updateTotals();}function validationErrors(result){const _0x2dad=[];if(!internalDate($("\u0073\u0074\u0061\u0072\u0074")['\u0076\u0061\u006C\u0075\u0065'])){_0x2dad['\u0070\u0075\u0073\u0068'](".tirtsemes e nimillif r\xEBp emhsfelv \xEBt \xEBtad \xEBjn inhdijgZ".split("").reverse().join(""));}$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][400130^400130]['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u0074\u0072")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((tr,index)=>{let _0xa_0x1e7;const _0xf4494c=tr['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u005B\u0064\u0061\u0074\u0061\u002D\u006B\u003D\u0022\u0064\u0061\u0074\u0065\u0022\u005D")['\u0076\u0061\u006C\u0075\u0065'];_0xa_0x1e7=646113^646115;if(!internalDate(_0xf4494c)){_0x2dad['\u0070\u0075\u0073\u0068']("\u0052\u0072\u0065\u0073\u0068\u0074\u0069\u0020"+(index+(570536^570537))+"\u003A\u0020\u007A\u0067\u006A\u0069\u0064\u0068\u006E\u0069\u0020\u006E\u006A\u00EB\u0020\u0064\u0061\u0074\u00EB\u0020\u0074\u00EB\u0020\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u002E");}});labels['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((label,index)=>{const _0x13b=numericValue($("\u0067"+index)['\u0076\u0061\u006C\u0075\u0065']);const _0x6_0x5f2=numericValue($("\u0063"+index)['\u0076\u0061\u006C\u0075\u0065']);if(!Number['\u0069\u0073\u0049\u006E\u0074\u0065\u0067\u0065\u0072'](_0x13b)||_0x13b<(728908^728908)||_0x13b>(479884^479882)||_0x6_0x5f2>(146723^146723)&&_0x13b<(765732^765733)){_0x2dad['\u0070\u0075\u0073\u0068'](label+"\u003A\u0020\u006C\u0065\u006A\u006F\u0068\u0065\u006E\u0020\u0031\u2013\u0036\u0020\u0067\u0072\u0075\u0070\u0065\u0020\u006B\u0075\u0072\u0020\u006B\u0061\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u002C\u0020"+"\u006F\u0073\u0065\u0020\u0030\u0020\u006B\u0075\u0072\u0020\u006E\u0075\u006B\u0020\u006B\u0061\u002E");}});if(numericValue($("\u0063\u0032")['\u0076\u0061\u006C\u0075\u0065'])<=(127122^127122)){const _0x7_0xe55=[...$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u0068\u003D\u0022\u0032\u0022\u005D")]['\u0073\u006F\u006D\u0065'](input=>numericValue(input['\u0076\u0061\u006C\u0075\u0065'])!==(819765^819765));if(_0x7_0xe55){_0x2dad['\u0070\u0075\u0073\u0068']("\u004B\u0061\u0020\u006F\u0072\u00EB\u0020\u006C\u0061\u0062\u006F\u0072\u0061\u0074\u006F\u0072\u0069\u0020\u006D\u0065\u0020\u007A\u0065\u0072\u006F\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u002E\u0020"+"\u0052\u0069\u0076\u0065\u006E\u0064\u006F\u0073\u006E\u0069\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074\u0020\u0074\u0065\u0020\u0073\u0065\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0030\u0032\u0020\u0070\u00EB\u0072\u0020\u0074\u2019\u0069\u0020\u006B\u006F\u0072\u0072\u0069\u0067\u006A\u0075\u0061\u0072\u002E");}}if(!hasPractice()){var _0xb7dae=(388557^388553)+(952709^952705);const _0x4bd4b=[...$("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u005B\u0064\u0061\u0074\u0061\u002D\u0068\u003D\u0022\u0034\u0022\u005D")]['\u0073\u006F\u006D\u0065'](input=>numericValue(input['\u0076\u0061\u006C\u0075\u0065'])!==(121620^121620));_0xb7dae=(164655^164649)+(792472^792478);if(_0x4bd4b){_0x2dad['\u0070\u0075\u0073\u0068']("\u004B\u0061\u0020\u006F\u0072\u00EB\u0020\u0070\u0072\u0061\u006B\u0074\u0069\u006B\u0065\u0020\u006D\u0065\u0020\u007A\u0065\u0072\u006F\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u002E\u0020"+"\u0052\u0069\u0076\u0065\u006E\u0064\u006F\u0073\u006E\u0069\u0020\u006B\u0072\u0065\u0064\u0069\u0074\u0065\u0074\u0020\u0074\u0065\u0020\u0073\u0065\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0030\u0032\u0020\u0070\u00EB\u0072\u0020\u0074\u2019\u0069\u0020\u006B\u006F\u0072\u0072\u0069\u0067\u006A\u0075\u0061\u0072\u002E");}}$("\u0066\u006F\u0072\u006D")['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("]\"rebmun\"=epyt[tupni".split("").reverse().join(""))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](input=>{if(input['\u0076\u0061\u006C\u0069\u0064\u0069\u0074\u0079']['\u0062\u0061\u0064\u0049\u006E\u0070\u0075\u0074']){_0x2dad['\u0070\u0075\u0073\u0068'](" :et m\xEBhsfelv \xEBt r\xEBmun \xEBjn insodneV".split("").reverse().join("")+(input['\u0067\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("\u0061\u0072\u0069\u0061\u002D\u006C\u0061\u0062\u0065\u006C")||"\u0066\u0075\u0073\u0068\u0061\u0020\u006E\u0075\u006D\u0065\u0072\u0069\u006B\u0065")+"\u002E");}});result['\u0065\u0072\u0072\u006F\u0072\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](error=>{if(error===".tirtsemes \xEBt timillif e n\xEBtad insodneV".split("").reverse().join("")||new RegExp('\u005E\u0052\u0072\u0065\u0073\u0068\u0074\u0069\u0020\u005C\u0064\u002B\u003A\u0020\u0064\u0061\u0074\u0061\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0065\u0020\u0070\u0061\u0076\u006C\u0065\u0066\u0073\u0068\u006D\u0065\u005C\u002E\u0024',"")['\u0074\u0065\u0073\u0074'](error)){return;}_0x2dad['\u0070\u0075\u0073\u0068'](error);});return[...new Set(_0x2dad)];}function verifiedData(){if(!verified){throw new Error("\u004B\u0072\u0079\u0065\u006E\u0069\u0020\u0076\u0065\u0072\u0069\u0066\u0069\u006B\u0069\u006D\u0069\u006E\u0020\u0070\u00EB\u0072\u0070\u0061\u0072\u0061\u0020\u0068\u0061\u0070\u006A\u0065\u0073\u0020\u0073\u00EB\u0020\u0072\u0061\u0070\u006F\u0072\u0074\u0069\u0074\u0020\u006F\u0073\u0065\u0020\u0050\u0044\u0046\u002D\u0073\u00EB\u002E");}const _0xeaa7d=readForm();var _0x3e179d=(383738^383742)+(862137^862128);const _0xe36c8f=validationErrors(evaluate_(_0xeaa7d));_0x3e179d=(102949^102948)+(259546^259547);if(_0xe36c8f['\u006C\u0065\u006E\u0067\u0074\u0068']){verified=false;updateActionButtons();throw new Error(_0xe36c8f['\u006A\u006F\u0069\u006E']("\u000A"));}return _0xeaa7d;}$("\u0066\u006F\u0072\u006D")['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0073\u0075\u0062\u006D\u0069\u0074",event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();});function handleFormEdit(event){const _0xaf9c=event['\u0074\u0061\u0072\u0067\u0065\u0074'];if(!_0xaf9c['\u006D\u0061\u0074\u0063\u0068\u0065\u0073']("tceles ,aeratxet ,tupni".split("").reverse().join(""))||_0xaf9c['\u0074\u0079\u0070\u0065']==="\u0066\u0069\u006C\u0065"){return;}if(_0xaf9c['\u006E\u0061\u006D\u0065']==="\u0063\u0079\u0063\u006C\u0065\u0043\u0068\u006F\u0069\u0063\u0065"){$("elcyc".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']=_0xaf9c['\u0076\u0061\u006C\u0075\u0065'];}if(_0xaf9c['\u0069\u0064']==="trats".split("").reverse().join("")){refreshWeeks();}if(_0xaf9c['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006B']==="\u0077\u0065\u0065\u006B"){const _0xfe67dc=_0xaf9c['\u0063\u006C\u006F\u0073\u0065\u0073\u0074']("rt".split("").reverse().join(""));_0xfe67dc['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006D\u0061\u006E\u0075\u0061\u006C']=_0xaf9c['\u0076\u0061\u006C\u0075\u0065']?"\u0031":"\u0030";if(!_0xaf9c['\u0076\u0061\u006C\u0075\u0065']){updateWeek(_0xfe67dc);}}if(_0xaf9c['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u006B']==="\u0064\u0061\u0074\u0065"){updateWeek(_0xaf9c['\u0063\u006C\u006F\u0073\u0065\u0073\u0074']("rt".split("").reverse().join("")));}changed();}$("\u0066\u006F\u0072\u006D")['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("tupni".split("").reverse().join(""),handleFormEdit);$("\u0066\u006F\u0072\u006D")['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("egnahc".split("").reverse().join(""),handleFormEdit);$("\u0061\u0064\u0064")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();if($("\u006C\u0065\u0073\u0073\u006F\u006E\u0073")['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][945085^945085]['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>=MAX_ROWS){alert("\u004D\u0061\u006B\u0073\u0069\u006D\u0075\u006D\u0069\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020"+MAX_ROWS+"\u0020\u0072\u0065\u0067\u006A\u0069\u0073\u0074\u0072\u0069\u006D\u0065\u002E");return;}addRow();changed();};$("yfirev".split("").reverse().join(""))['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();verified=false;updateActionButtons();try{const result=updateTotals();const errors=validationErrors(result);if(errors['\u006C\u0065\u006E\u0067\u0074\u0068']){showMessage(errors['\u006A\u006F\u0069\u006E']("\u000A"),"\u0065\u0072\u0072\u006F\u0072");return;}verified=!![];updateActionButtons();showMessage("\u0056\u0065\u0072\u0069\u0066\u0069\u006B\u0069\u006D\u0069\u0020\u0070\u00EB\u0072\u0066\u0075\u006E\u0064\u006F\u0069\u002E\u0020\u0054\u00EB\u0020\u0067\u006A\u0069\u0074\u0068\u0061\u0020\u006B\u0061\u0074\u0065\u0067\u006F\u0072\u0069\u0074\u00EB\u0020"+"\u0070\u00EB\u0072\u0070\u0075\u0074\u0068\u0065\u006E\u0020\u006D\u0065\u0020\u006E\u0067\u0061\u0072\u006B\u0065\u0073\u00EB\u006E\u0020\u0065\u0020\u0070\u0061\u0072\u0061\u0073\u0068\u0069\u006B\u0075\u0061\u0072\u002E\u0020"+".\xEBn-FDP inokrakhs \xEBt eso nitropar inorenejg \xEBt dnuM".split("").reverse().join(""),"\u0073\u0075\u0063\u0063\u0065\u0073\u0073");}catch(error){showMessage("\u0056\u0065\u0072\u0069\u0066\u0069\u006B\u0069\u006D\u0069\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u006B\u0072\u0079\u0065\u003A\u0020"+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"\u0065\u0072\u0072\u006F\u0072");}};reportButton['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();try{var _0xe676g=(322605^322606)+(407769^407761);const data=verifiedData();_0xe676g=(517506^517511)+(671453^671452);if(typeof printReport!=="\u0066\u0075\u006E\u0063\u0074\u0069\u006F\u006E"){throw new Error("\u004E\u00EB\u0020\u0070\u0064\u0066\u002E\u006A\u0073\u0020\u006D\u0075\u006E\u0067\u006F\u006E\u0020\u0066\u0075\u006E\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0070\u0072\u0069\u006E\u0074\u0052\u0065\u0070\u006F\u0072\u0074\u0028\u0029\u002E");}printReport(data);}catch(error){showMessage(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"rorre".split("").reverse().join(""));}};if(printPdfButton){printPdfButton['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=async event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();if(pdfBusy)return;var _0x5e0fga=(637566^637559)+(550181^550181);const revisionAtStart=formRevision;_0x5e0fga=(259568^259570)+(242525^242516);try{let _0xf5413a;const data=verifiedData();_0xf5413a=(330239^330239)+(167527^167522);if(typeof pdfMake==="\u0075\u006E\u0064\u0065\u0066\u0069\u006E\u0065\u0064"){throw new Error(" inollortnoK .aukragn u kun ekamfdp".split("").reverse().join("")+"\u0076\u0065\u006E\u0064\u006F\u0072\u002F\u0070\u0064\u0066\u006D\u0061\u006B\u0065\u002E\u006D\u0069\u006E\u002E\u006A\u0073\u0020\u006E\u00EB\u0020\u0069\u006E\u0064\u0065\u0078\u002E\u0068\u0074\u006D\u006C\u002E");}if(typeof generatePdfBlob!=="noitcnuf".split("").reverse().join("")){throw new Error(".)(bolBfdPetareneg inoisknuf nognum sj.fdp \xEBN".split("").reverse().join(""));}if(typeof pdfFilename!=="noitcnuf".split("").reverse().join("")){throw new Error("\u004E\u00EB\u0020\u0070\u0064\u0066\u002E\u006A\u0073\u0020\u006D\u0075\u006E\u0067\u006F\u006E\u0020\u0066\u0075\u006E\u006B\u0073\u0069\u006F\u006E\u0069\u0020\u0070\u0064\u0066\u0046\u0069\u006C\u0065\u006E\u0061\u006D\u0065\u0028\u0029\u002E");}pdfBusy=!![];updateActionButtons();const blob=await generatePdfBlob(data);if(!(blob instanceof Blob)||blob['\u0073\u0069\u007A\u0065']===(319866^319866)){throw new Error(".m\xEBhsfelv \xEBt FDP radeks \xEBjn uehtk kun imirenejG".split("").reverse().join(""));}const filename=pdfFilename(data);const downloadFile=new Blob([blob],{'\u0074\u0079\u0070\u0065':"\u0061\u0070\u0070\u006C\u0069\u0063\u0061\u0074\u0069\u006F\u006E\u002F\u006F\u0063\u0074\u0065\u0074\u002D\u0073\u0074\u0072\u0065\u0061\u006D"});downloadBlob(downloadFile,filename);let message=" :FDP".split("").reverse().join("")+filename;if(formRevision!==revisionAtStart){message+=" ;emhsnov\xEBm \xEBt emihsyrdn ak iralumroF ".split("").reverse().join("")+".ir \xEBt tnemukod \xEBjn r\xEBp ir\xEBsr\xEBp inejokifirev".split("").reverse().join("");}showMessage(message,formRevision===revisionAtStart?"sseccus".split("").reverse().join(""):'');}catch(error){showMessage(error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"rorre".split("").reverse().join(""));}finally{pdfBusy=false;updateActionButtons();}};}function downloadBlob(blob,filename){const _0x8_0x887=URL['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](blob);const _0x0d9d=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0061");_0x0d9d['\u0068\u0072\u0065\u0066']=_0x8_0x887;_0x0d9d['\u0064\u006F\u0077\u006E\u006C\u006F\u0061\u0064']=filename;_0x0d9d['\u0068\u0069\u0064\u0064\u0065\u006E']=!![];try{document['\u0062\u006F\u0064\u0079']['\u0061\u0070\u0070\u0065\u006E\u0064'](_0x0d9d);_0x0d9d['\u0063\u006C\u0069\u0063\u006B']();}finally{_0x0d9d['\u0072\u0065\u006D\u006F\u0076\u0065']();setTimeout(()=>{URL['\u0072\u0065\u0076\u006F\u006B\u0065\u004F\u0062\u006A\u0065\u0063\u0074\u0055\u0052\u004C'](_0x8_0x887);},504772^481700);}}$("\u0073\u0061\u0076\u0065")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();try{var _0xf5b=(796646^796642)+(964566^964563);const draft={'\u0076\u0065\u0072\u0073\u0069\u006F\u006E':1,'\u0064\u0061\u0074\u0065\u0046\u006F\u0072\u006D\u0061\u0074':"\u0079\u0079\u0079\u0079\u002D\u004D\u004D\u002D\u0064\u0064","data":readForm()};_0xf5b=(635501^635492)+(474336^474336);var _0xb1e5b=(188876^188873)+(683916^683919);const blob=new Blob([JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079'](draft,null,847571^847569)],{'\u0074\u0079\u0070\u0065':'application/json'});_0xb1e5b=681965^681966;downloadBlob(blob,"nosj.tfard-acnedivE".split("").reverse().join(""));dirty=false;}catch(error){showMessage("\u0053\u0068\u006B\u0061\u0072\u006B\u0069\u006D\u0069\u0020\u0069\u0020\u0064\u0072\u0061\u0066\u0074\u0069\u0074\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u006E\u0069\u0073\u003A\u0020"+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065'],"\u0065\u0072\u0072\u006F\u0072");}};$("\u006C\u006F\u0061\u0064")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();$("\u0066\u0069\u006C\u0065")['\u0063\u006C\u0069\u0063\u006B']();};function checkDraft(draft){if(!draft||draft['\u0076\u0065\u0072\u0073\u0069\u006F\u006E']!==(533815^533814)||!draft['\u0064\u0061\u0074\u0061']||typeof draft['\u0064\u0061\u0074\u0061']!=="\u006F\u0062\u006A\u0065\u0063\u0074"){throw new Error(".m\xEBhsfelvap i tfarD".split("").reverse().join(""));}const _0x6086c=draft['\u0064\u0061\u0074\u0061'];if(!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](_0x6086c['\u0063\u0072\u0065\u0064\u0069\u0074\u0073'])||_0x6086c['\u0063\u0072\u0065\u0064\u0069\u0074\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']!==(442065^442068)||!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](_0x6086c['\u0067\u0072\u006F\u0075\u0070\u0073'])||![243617^243618,731365^731360]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x6086c['\u0067\u0072\u006F\u0075\u0070\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068'])||!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](_0x6086c['\u0072\u006F\u0077\u0073'])||_0x6086c['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>MAX_ROWS){throw new Error(" emhsfelvap e \xEBths\xEB titfard e arutkurtS".split("").reverse().join("")+"\u006F\u0073\u0065\u0020\u006B\u0061\u0020\u006D\u00EB\u0020\u0073\u0068\u0075\u006D\u00EB\u0020\u0073\u0065\u0020"+MAX_ROWS+"\u0020\u0072\u0065\u0067\u006A\u0069\u0073\u0074\u0072\u0069\u006D\u0065\u002E");}_0x6086c['\u0072\u006F\u0077\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](row=>{if(!row||typeof row!=="\u006F\u0062\u006A\u0065\u0063\u0074"||!Array['\u0069\u0073\u0041\u0072\u0072\u0061\u0079'](row['\u0068\u006F\u0075\u0072\u0073'])||row['\u0068\u006F\u0075\u0072\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']!==(543884^543881)){throw new Error(".tfard \xEBn m\xEBhsfelvap i mirtsijgeR".split("").reverse().join(""));}});return _0x6086c;}$("elif".split("").reverse().join(""))['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=async()=>{let _0x2f_0xf3f;const file=$("elif".split("").reverse().join(""))['\u0066\u0069\u006C\u0065\u0073'][108982^108982];_0x2f_0xf3f=(226205^226204)+(944064^944072);if(!file)return;try{if(file['\u0073\u0069\u007A\u0065']>500000){throw new Error("\u0053\u006B\u0065\u0064\u0061\u0072\u0069\u0020\u00EB\u0073\u0068\u0074\u00EB\u0020\u0073\u0068\u0075\u006D\u00EB\u0020\u0069\u0020\u006D\u0061\u0064\u0068\u002E");}const draft=JSON['\u0070\u0061\u0072\u0073\u0065'](await file['\u0074\u0065\u0078\u0074']());let _0x45f;const data=checkDraft(draft);_0x45f="gickpj".split("").reverse().join("");const invalidDates=data['\u0073\u0074\u0061\u0072\u0074']&&!internalDate(data['\u0073\u0074\u0061\u0072\u0074'])||data['\u0072\u006F\u0077\u0073']['\u0073\u006F\u006D\u0065'](row=>row['\u0064\u0061\u0074\u0065']&&!internalDate(row['\u0064\u0061\u0074\u0065']));if(invalidDates&&!confirm(" .emhsfelvap \xEBt eso atolpap \xEBt atad ak itfarD".split("").reverse().join("")+"\u0041\u0074\u006F\u0020\u0064\u006F\u0020\u0074\u00EB\u0020\u0073\u0068\u0066\u0061\u0071\u0065\u006E\u0020\u0062\u006F\u0073\u0068\u0020\u0070\u00EB\u0072\u0020\u0074\u2019\u0075\u0020\u0070\u006C\u006F\u0074\u00EB\u0073\u0075\u0061\u0072\u0020\u0070\u00EB\u0072\u0073\u00EB\u0072\u0069\u002E\u0020"+"\u0054\u00EB\u0020\u0076\u0061\u007A\u0068\u0064\u006F\u0068\u0065\u0074\u003F")){return;}if(dirty&&!confirm("\u0054\u00EB\u0020\u007A\u00EB\u0076\u0065\u006E\u0064\u00EB\u0073\u006F\u0068\u0065\u006E\u0020\u0070\u006C\u006F\u0074\u00EB\u0073\u0069\u006D\u0065\u0074\u0020\u0061\u006B\u0074\u0075\u0061\u006C\u0065\u003F")){return;}fields['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](([id,,defaultValue])=>{const value=id==="\u0068\u0065\u0061\u0064"?defaultValue:data[id]??defaultValue;$(id)['\u0076\u0061\u006C\u0075\u0065']=id==="\u0073\u0074\u0061\u0072\u0074"?internalDate(value):String(value);});labels['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((_,index)=>{$("\u0063"+index)['\u0076\u0061\u006C\u0075\u0065']=String(data['\u0063\u0072\u0065\u0064\u0069\u0074\u0073'][index]??464231^464231)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C","\u002E");$("\u0067"+index)['\u0076\u0061\u006C\u0075\u0065']=String(data['\u0067\u0072\u006F\u0075\u0070\u0073'][index]??337928^337929)['\u0072\u0065\u0070\u006C\u0061\u0063\u0065']("\u002C","\u002E");});$("\u006E\u006F\u0074\u0065\u0073")['\u0076\u0061\u006C\u0075\u0065']=data['\u006E\u006F\u0074\u0065\u0073']||'';$("snossel".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][723005^723005]['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();data['\u0072\u006F\u0077\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](addRow);if(!data['\u0072\u006F\u0077\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']){addRow();}changed();dirty=false;showMessage("\u0044\u0072\u0061\u0066\u0074\u0069\u0020\u0075\u0020\u0068\u0061\u0070\u002E\u0020\u004B\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u006F\u006E\u0069\u0020\u0074\u00EB\u0020\u0064\u0068\u00EB\u006E\u0061\u0074\u0020"+".\u201DokifireV\u201C inpyths ehd".split("").reverse().join(""));}catch(error){alert("\u0044\u0072\u0061\u0066\u0074\u0069\u0020\u006E\u0075\u006B\u0020\u0075\u0020\u0068\u0061\u0070\u003A\u0020"+error['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']);}finally{$("elif".split("").reverse().join(""))['\u0076\u0061\u006C\u0075\u0065']='';}};$("\u0063\u006C\u0065\u0061\u0072")['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();if(!confirm("\u0054\u00EB\u0020\u0070\u0061\u0073\u0074\u0072\u006F\u0068\u0065\u0074\u0020\u0066\u006F\u0072\u006D\u0075\u006C\u0061\u0072\u0069\u003F\u0020\u0052\u0075\u0061\u006E\u0069\u0020\u0064\u0072\u0061\u0066\u0074\u0069\u006E\u0020\u006E\u00EB\u0073\u0065\u0020\u006A\u0075\u0020\u0064\u0075\u0068\u0065\u0074\u002E")){return;}fields['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](([id,,value])=>{$(id)['\u0076\u0061\u006C\u0075\u0065']=value;});labels['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((_,index)=>{$("\u0063"+index)['\u0076\u0061\u006C\u0075\u0065']=561955^561955;$("\u0067"+index)['\u0076\u0061\u006C\u0075\u0065']=336093^336092;});$("\u006E\u006F\u0074\u0065\u0073")['\u0076\u0061\u006C\u0075\u0065']='';$("snossel".split("").reverse().join(""))['\u0074\u0042\u006F\u0064\u0069\u0065\u0073'][272285^272285]['\u0072\u0065\u0070\u006C\u0061\u0063\u0065\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();addRow();changed();dirty=false;showMessage("\u0050\u006C\u006F\u0074\u00EB\u0073\u006F\u006E\u0069\u0020\u0066\u006F\u0072\u006D\u0075\u006C\u0061\u0072\u0069\u006E\u0020\u0064\u0068\u0065\u0020\u0073\u0068\u0074\u0079\u0070\u006E\u0069\u0020\u201C\u0056\u0065\u0072\u0069\u0066\u0069\u006B\u006F\u201D\u002E");};window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0062\u0065\u0066\u006F\u0072\u0065\u0075\u006E\u006C\u006F\u0061\u0064",event=>{if(dirty){event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();event['\u0072\u0065\u0074\u0075\u0072\u006E\u0056\u0061\u006C\u0075\u0065']='';}});addRow();updateTotals();updatePracticeVisibility();updateActionButtons();
+    `).join('');
+
+  [...$('lessons').tBodies[0].rows].forEach((tr, index) => {
+    const total = data.rows[index].hours.reduce(
+      (sum, value) => sum + numericValue(value),
+      0
+    );
+
+    tr.querySelector('[data-total]').textContent = round(total);
+  });
+
+  return result;
+}
+
+function showMessage(text, kind = '') {
+  $('status').textContent = text;
+  $('status').className = 'status ' + kind;
+}
+
+function syncCycle() {
+  document.querySelectorAll('[name="cycleChoice"]').forEach(radio => {
+    radio.checked = radio.value === $('cycle').value;
+  });
+}
+
+function changed() {
+  syncCycle();
+  updatePracticeVisibility();
+
+  dirty = true;
+  verified = false;
+  formRevision++;
+
+  updateActionButtons();
+  showMessage('Të dhënat ndryshuan. Kryeni verifikimin.');
+  updateTotals();
+}
+
+function validationErrors(result) {
+  const errors = [];
+
+  if (!internalDate($('start').value)) {
+    errors.push(
+      'Zgjidhni një datë të vlefshme për fillimin e semestrit.'
+    );
+  }
+
+  $('lessons').tBodies[0].querySelectorAll('tr').forEach((tr, index) => {
+    const value = tr.querySelector('[data-k="date"]').value;
+
+    if (!internalDate(value)) {
+      errors.push(
+        'Rreshti ' + (index + 1) +
+        ': zgjidhni një datë të vlefshme.'
+      );
+    }
+  });
+
+  labels.forEach((label, index) => {
+    const groups = numericValue($('g' + index).value);
+    const credits = numericValue($('c' + index).value);
+
+    if (
+      !Number.isInteger(groups) ||
+      groups < 0 ||
+      groups > 6 ||
+      (credits > 0 && groups < 1)
+    ) {
+      errors.push(
+        label + ': lejohen 1–6 grupe kur ka kredite, ' +
+        'ose 0 kur nuk ka.'
+      );
+    }
+  });
+
+  if (numericValue($('c2').value) <= 0) {
+    const hasLabHours = [
+      ...$('lessons').querySelectorAll('[data-h="2"]')
+    ].some(input => numericValue(input.value) !== 0);
+
+    if (hasLabHours) {
+      errors.push(
+        'Ka orë laboratori me zero kredite. ' +
+        'Rivendosni kreditet te seksioni 02 për t’i korrigjuar.'
+      );
+    }
+  }
+
+  if (!hasPractice()) {
+    const hasHours = [
+      ...$('lessons').querySelectorAll('[data-h="4"]')
+    ].some(input => numericValue(input.value) !== 0);
+
+    if (hasHours) {
+      errors.push(
+        'Ka orë praktike me zero kredite. ' +
+        'Rivendosni kreditet te seksioni 02 për t’i korrigjuar.'
+      );
+    }
+  }
+
+  $('form').querySelectorAll('input[type="number"]').forEach(input => {
+    if (input.validity.badInput) {
+      errors.push(
+        'Vendosni një numër të vlefshëm te: ' +
+        (input.getAttribute('aria-label') || 'fusha numerike') +
+        '.'
+      );
+    }
+  });
+
+  result.errors.forEach(error => {
+    if (
+      error === 'Vendosni datën e fillimit të semestrit.' ||
+      /^Rreshti \d+: data është e pavlefshme\.$/.test(error)
+    ) {
+      return;
+    }
+
+    errors.push(error);
+  });
+
+  return [...new Set(errors)];
+}
+
+function verifiedData() {
+  if (!verified) {
+    throw new Error(
+      'Kryeni verifikimin përpara hapjes së raportit ose PDF-së.'
+    );
+  }
+
+  const data = readForm();
+  const errors = validationErrors(evaluate_(data));
+
+  if (errors.length) {
+    verified = false;
+    updateActionButtons();
+    throw new Error(errors.join('\n'));
+  }
+
+  return data;
+}
+
+// Ndalon ringarkimin e formularit nga submit.
+$('form').addEventListener('submit', event => {
+  event.preventDefault();
+});
+
+function handleFormEdit(event) {
+  const target = event.target;
+
+  if (
+    !target.matches('input, textarea, select') ||
+    target.type === 'file'
+  ) {
+    return;
+  }
+
+  if (target.name === 'cycleChoice') {
+    $('cycle').value = target.value;
+  }
+
+  if (target.id === 'start') {
+    refreshWeeks();
+  }
+
+  if (target.dataset.k === 'week') {
+    const tr = target.closest('tr');
+    tr.dataset.manual = target.value ? '1' : '0';
+
+    if (!target.value) {
+      updateWeek(tr);
+    }
+  }
+
+  if (target.dataset.k === 'date') {
+    updateWeek(target.closest('tr'));
+  }
+
+  changed();
+}
+
+$('form').addEventListener('input', handleFormEdit);
+$('form').addEventListener('change', handleFormEdit);
+
+// Shto regjistrim.
+$('add').onclick = event => {
+  event.preventDefault();
+
+  if ($('lessons').tBodies[0].rows.length >= MAX_ROWS) {
+    alert('Maksimumi është ' + MAX_ROWS + ' regjistrime.');
+    return;
+  }
+
+  addRow();
+  changed();
+};
+
+// Verifiko formularin.
+$('verify').onclick = event => {
+  event.preventDefault();
+
+  verified = false;
+  updateActionButtons();
+
+  try {
+    const result = updateTotals();
+    const errors = validationErrors(result);
+
+    if (errors.length) {
+      showMessage(errors.join('\n'), 'error');
+      return;
+    }
+
+    verified = true;
+    updateActionButtons();
+
+    showMessage(
+      'Verifikimi përfundoi. Të gjitha kategoritë ' +
+      'përputhen me ngarkesën e parashikuar. ' +
+      'Mund të gjeneroni raportin ose të shkarkoni PDF-në.',
+      'success'
+    );
+  } catch (error) {
+    showMessage(
+      'Verifikimi nuk u krye: ' + error.message,
+      'error'
+    );
+  }
+};
+
+// Hap raportin narrativ HTML.
+reportButton.onclick = event => {
+  event.preventDefault();
+
+  try {
+    const data = verifiedData();
+
+    if (typeof printReport !== 'function') {
+      throw new Error(
+        'Në pdf.js mungon funksioni printReport().'
+      );
+    }
+
+    printReport(data);
+  } catch (error) {
+    showMessage(error.message, 'error');
+  }
+};
+
+// Shkarkon PDF-në pa prompt dhe pa hapur skedë të re.
+if (printPdfButton) {
+  printPdfButton.onclick = async event => {
+    event.preventDefault();
+
+    if (pdfBusy) return;
+
+    const revisionAtStart = formRevision;
+
+    try {
+      const data = verifiedData();
+
+      if (typeof pdfMake === 'undefined') {
+        throw new Error(
+          'pdfmake nuk u ngarkua. Kontrolloni ' +
+          'vendor/pdfmake.min.js në index.html.'
+        );
+      }
+
+      if (typeof generatePdfBlob !== 'function') {
+        throw new Error(
+          'Në pdf.js mungon funksioni generatePdfBlob().'
+        );
+      }
+
+      if (typeof pdfFilename !== 'function') {
+        throw new Error(
+          'Në pdf.js mungon funksioni pdfFilename().'
+        );
+      }
+
+      pdfBusy = true;
+      updateActionButtons();
+
+      const blob = await generatePdfBlob(data);
+
+      if (!(blob instanceof Blob) || blob.size === 0) {
+        throw new Error(
+          'Gjenerimi nuk ktheu një skedar PDF të vlefshëm.'
+        );
+      }
+
+      const filename = pdfFilename(data);
+      const downloadFile = new Blob(
+        [blob],
+        { type: 'application/octet-stream' }
+      );
+
+downloadBlob(downloadFile, filename);
+
+      let message = 'PDF: ' + filename;
+
+      if (formRevision !== revisionAtStart) {
+        message +=
+          ' Formulari ka ndryshime të mëvonshme; ' +
+          'verifikojeni përsëri për një dokument të ri.';
+      }
+
+      showMessage(
+        message,
+        formRevision === revisionAtStart ? 'success' : ''
+      );
+    } catch (error) {
+      showMessage(error.message, 'error');
+    } finally {
+      pdfBusy = false;
+      updateActionButtons();
+    }
+  };
+}
+
+// Përdoret për PDF-në dhe draftin JSON.
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = filename;
+  link.hidden = true;
+
+  try {
+    document.body.append(link);
+    link.click();
+  } finally {
+    link.remove();
+
+    // Pastrim i URL-së pas nisjes së shkarkimit.
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 60000);
+  }
+}
+
+// Ruaj draftin.
+$('save').onclick = event => {
+  event.preventDefault();
+
+  try {
+    const draft = {
+      version: 1,
+      dateFormat: 'yyyy-MM-dd',
+      data: readForm()
+    };
+
+    const blob = new Blob(
+      [JSON.stringify(draft, null, 2)],
+      { type: 'application/json' }
+    );
+
+    downloadBlob(blob, 'Evidenca-draft.json');
+    dirty = false;
+  } catch (error) {
+    showMessage(
+      'Shkarkimi i draftit nuk u nis: ' + error.message,
+      'error'
+    );
+  }
+};
+
+$('load').onclick = event => {
+  event.preventDefault();
+  $('file').click();
+};
+
+function checkDraft(draft) {
+  if (
+    !draft ||
+    draft.version !== 1 ||
+    !draft.data ||
+    typeof draft.data !== 'object'
+  ) {
+    throw new Error('Draft i pavlefshëm.');
+  }
+
+  const data = draft.data;
+
+  if (
+    !Array.isArray(data.credits) ||
+    data.credits.length !== 5 ||
+    !Array.isArray(data.groups) ||
+    ![3, 5].includes(data.groups.length) ||
+    !Array.isArray(data.rows) ||
+    data.rows.length > MAX_ROWS
+  ) {
+    throw new Error(
+      'Struktura e draftit është e pavlefshme ' +
+      'ose ka më shumë se ' + MAX_ROWS + ' regjistrime.'
+    );
+  }
+
+  data.rows.forEach(row => {
+    if (
+      !row ||
+      typeof row !== 'object' ||
+      !Array.isArray(row.hours) ||
+      row.hours.length !== 5
+    ) {
+      throw new Error('Regjistrim i pavlefshëm në draft.');
+    }
+  });
+
+  return data;
+}
+
+// Hap draftin.
+$('file').onchange = async () => {
+  const file = $('file').files[0];
+
+  if (!file) return;
+
+  try {
+    if (file.size > 500000) {
+      throw new Error('Skedari është shumë i madh.');
+    }
+
+    const draft = JSON.parse(await file.text());
+    const data = checkDraft(draft);
+
+    const invalidDates =
+      (data.start && !internalDate(data.start)) ||
+      data.rows.some(row =>
+        row.date && !internalDate(row.date)
+      );
+
+    if (
+      invalidDates &&
+      !confirm(
+        'Drafti ka data të paplota ose të pavlefshme. ' +
+        'Ato do të shfaqen bosh për t’u plotësuar përsëri. ' +
+        'Të vazhdohet?'
+      )
+    ) {
+      return;
+    }
+
+    if (
+      dirty &&
+      !confirm('Të zëvendësohen plotësimet aktuale?')
+    ) {
+      return;
+    }
+
+    fields.forEach(([id, , defaultValue]) => {
+      const value = id === 'head'
+        ? defaultValue
+        : (data[id] ?? defaultValue);
+
+      $(id).value = id === 'start'
+        ? internalDate(value)
+        : String(value);
+    });
+
+    labels.forEach((_, index) => {
+      $('c' + index).value = String(
+        data.credits[index] ?? 0
+      ).replace(',', '.');
+
+      $('g' + index).value = String(
+        data.groups[index] ?? 1
+      ).replace(',', '.');
+    });
+
+    $('notes').value = data.notes || '';
+    $('lessons').tBodies[0].replaceChildren();
+
+    data.rows.forEach(addRow);
+
+    if (!data.rows.length) {
+      addRow();
+    }
+
+    changed();
+    dirty = false;
+
+    showMessage(
+      'Drafti u hap. Kontrolloni të dhënat ' +
+      'dhe shtypni “Verifiko”.'
+    );
+  } catch (error) {
+    alert('Drafti nuk u hap: ' + error.message);
+  } finally {
+    $('file').value = '';
+  }
+};
+
+// Pastron formularin vetëm pas konfirmimit.
+$('clear').onclick = event => {
+  event.preventDefault();
+
+  if (!confirm(
+    'Të pastrohet formulari? Ruani draftin nëse ju duhet.'
+  )) {
+    return;
+  }
+
+  fields.forEach(([id, , value]) => {
+    $(id).value = value;
+  });
+
+  labels.forEach((_, index) => {
+    $('c' + index).value = 0;
+    $('g' + index).value = 1;
+  });
+
+  $('notes').value = '';
+  $('lessons').tBodies[0].replaceChildren();
+
+  addRow();
+  changed();
+  dirty = false;
+
+  showMessage(
+    'Plotësoni formularin dhe shtypni “Verifiko”.'
+  );
+};
+
+// Paralajmëron kur mbyllet ose ringarkohet formulari.
+window.addEventListener('beforeunload', event => {
+  if (dirty) {
+    event.preventDefault();
+    event.returnValue = '';
+  }
+});
+
+// Ekzekutohet vetëm kur ngarkohet faqja e formularit.
+addRow();
+updateTotals();
+updatePracticeVisibility();
+updateActionButtons();
