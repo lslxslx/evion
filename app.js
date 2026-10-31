@@ -790,7 +790,15 @@ $('save').onclick = event => {
       { type: 'application/json' }
     );
 
-    downloadBlob(blob, 'Evidenca-draft.json');
+    const now = new Date();
+    const downloadDate = [
+      String(now.getDate()).padStart(2, '0'),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      now.getFullYear()
+    ].join('.');
+    
+    downloadBlob(blob, `formular_evidence_${downloadDate}.json`);
+    
     dirty = false;
   } catch (error) {
     showMessage(
